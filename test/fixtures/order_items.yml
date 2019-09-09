@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_id: 1
+  item_name: MyString
+  item_count: 1
+  list_price: 9.99
+  tax_rate: 9.99
+
+two:
+  order_id: 1
+  item_name: MyString
+  item_count: 1
+  list_price: 9.99
+  tax_rate: 9.99

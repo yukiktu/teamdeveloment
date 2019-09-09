@@ -1,0 +1,2 @@
+class GacketImage < ApplicationRecord
+end

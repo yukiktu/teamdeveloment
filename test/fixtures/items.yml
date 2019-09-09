@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  label_id: 1
+  item_name: MyString
+  list_price: 9.99
+  cost_price: 9.99
+  sales_status: MyString
+  release_date: 2019-09-09
+
+two:
+  label_id: 1
+  item_name: MyString
+  list_price: 9.99
+  cost_price: 9.99
+  sales_status: MyString
+  release_date: 2019-09-09
