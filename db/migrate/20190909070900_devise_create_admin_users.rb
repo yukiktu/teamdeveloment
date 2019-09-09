@@ -4,8 +4,8 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration[5.2]
   def change
     create_table :admin_users do |t|
       ## Database authenticatable
-      t.string :email,              null: false, default: ""
-      t.string :encrypted_password, null: false, default: ""
+      t.string :email,              null: false, default: "yuuki0421ktu@gmail.com"
+      t.string :encrypted_password, null: false, default: "kattakatao"
 
       ## Recoverable
       t.string   :reset_password_token
@@ -32,7 +32,7 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-
+      t.string :name
       t.timestamps null: false
     end
 
