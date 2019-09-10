@@ -13,10 +13,16 @@
  *= require_tree .
  *= require_self
  */
-
 /*deviseログイン画面*/
 
 .verification_message{
 	color: black;
 	margin-bottom: 10px;
+}
+
+/*deviseのパスワード再発行画面*/
+.text_type{
+	width: 250px;
+	height: 50px;
+	font-size: 0.9em;
 }
