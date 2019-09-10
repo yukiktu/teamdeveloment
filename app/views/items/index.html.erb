@@ -1,0 +1,19 @@
+<div class="main">
+
+    <table>
+        <thead>
+            <tr>
+                <th>header</th>
+            </tr>
+        </thead>
+        <tbody>
+             <% @item.each do |i| %>
+            <tr>
+                <td><%= attachment_image_tag @gacket_image, :gacket_image %></td>
+                <td><% i.item_name%></td>
+                <tb><% i.artist_name%></tb>
+            </tr>
+        </tbody>
+    </table>
+    <%= paginate @item.each, class: "paginate" %>
+</div>
