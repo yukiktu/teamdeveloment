@@ -5,12 +5,15 @@
 
 <% @oders.each do |t| %>
 	<table>
-		<caption>発送準備中</caption>
 		<caption>
+			<% s_options = [["未発送", 0],["発送済み", 1]] %>
+			<%= t.form.select :delivery_status, s_options %>
+		</caption>
+		<div>
 			<%= t.addressee%><br>
 			<%= t.postal_code %><br>
 			<%= t.adress %>
-		</caption>
+		</div>
 		<thead>
 			<tr>
 				<th>購入日</th>
@@ -35,4 +38,4 @@
 		</tbody>
 	</table>
 <% end %>
-<% end %>
+<% end %>e
