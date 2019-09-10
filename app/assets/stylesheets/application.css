@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+/*deviseログイン画面*/
+
+.verification_message{
+	color: black;
+	margin-bottom: 10px;
+}
