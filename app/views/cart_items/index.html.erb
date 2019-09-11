@@ -1,0 +1,27 @@
+<%# @cart_items.each do |c| %>
+
+<div class="table clearfix">
+  <div class="item_image big"> </div>
+  <div item_information>
+    <p>item_name</p>
+    <p>artist_name</p>
+  </div>
+</div>
+<div class="line">
+  <div class="line_box"><%#= @c.list_price %>1000円</div>
+  <div class="line_box"><%#= c.number_field :item_count %>1点</div>
+</div>
+<div class="line">
+  <div class="line_box">1080円
+    <%#price = c.item_count*c.list_price*@tax_rate%>
+    <%# price %>
+  </div>
+  <div class="line_box">
+    <%#=c.item_count %>小計(税込み)
+  </div>
+</div>
+<%# end %>
+<div class="line total">
+  <div class="line_box">1080円</div>
+  <div class="line_box">総計(税込み)</div>
+</div>
