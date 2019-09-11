@@ -41,6 +41,9 @@ class DeviseCreateEndUsers < ActiveRecord::Migration[5.2]
       t.string :phone_number        null: false
       t.integer :enrollment_status  null: false
       t.timestamps null: false      null: false
+
+      # indexの設定
+      add_index end_
     end
 
     add_index :end_users, :email,                unique: true
