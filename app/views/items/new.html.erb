@@ -1,3 +1,7 @@
+<% @item.errors.full_messages.each do |message| %>
+  <p><%= message %></p>
+<% end %>
+
 
  <h1>新規商品登録</h1>
 
@@ -18,20 +22,29 @@
    <%= f.text_field :cost_price %>
 </div>
 
+<div class="field">
+   <%= f.label :販売ステータス %>
+   <%= f.text_field :sales_status %>
+</div>
+
+<div class="field">
+   <%= f.label :発売日 %>
+   <%= f.text_field :release_date %>
+</div>
+
 <div class="disc-form">
  <%= f.fields_for :discs do |d| %>
   <div class="form-groups">
-     <%= d.label :アーティスト %>
-     <%= d.text_field :artist_name %>
-     <%= d.label :ジャンル %>
-     <%= d.text_field :genre_name %>
+     <%= d.label :ディスク名 %>
+     <%= d.text_field :disc_name %>
+     <%= d.label :ディスク番号 %>
+     <%= d.text_field :disc_number %>
   </div>
  <% end %>
 </div>
 
-
 <div class="song-form">
- <%= f.fields_for :disc do |s| %>
+ <%= f.fields_for :song do |s| %>
    <div class="form-group">
      <%= s.label :曲順 %>
      <%= s.text_field :recording_number %>
