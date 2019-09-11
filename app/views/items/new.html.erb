@@ -1,2 +1,50 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+
+ <h1>新規商品登録</h1>
+
+<%= form_for(@item) do |f| %>
+
+<div class="field">
+   <%= f.label :商品名 %>
+   <%= f.text_field :item_name %>
+</div>
+
+<div class="field">
+   <%= f.label :販売価格 %>
+   <%= f.text_field :list_price %>
+</div>
+
+<div class="field">
+　 <%= f.label :原価 %>
+   <%= f.text_field :cost_price %>
+</div>
+
+<div class="disc-form">
+ <%= f.fields_for :discs do |d| %>
+  <div class="form-groups">
+     <%= d.label :アーティスト %>
+     <%= d.text_field :artist_name %>
+     <%= d.label :ジャンル %>
+     <%= d.text_field :genre_name %>
+  </div>
+ <% end %>
+</div>
+
+
+<div class="song-form">
+ <%= f.fields_for :disc do |s| %>
+   <div class="form-group">
+     <%= s.label :曲順 %>
+     <%= s.text_field :recording_number %>
+     <%= s.label :曲名 %>
+     <%= s.text_field :song_title %>
+     <%= s.label :タイム %>
+     <%= s.text_field :play_time %>
+   </div>
+ <% end %>
+</div>
+
+ <div class="actions">
+   <%= f.submit "保存する" %>
+ </div>
+
+ <% end %>
