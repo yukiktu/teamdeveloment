@@ -1,3 +1,25 @@
-<% @label.each do |l| %>
-	<%= l.label_name %>
-<% end %>
+<table>
+	<caption>商品一覧</caption>
+	<thead>
+		<tr>
+			<th>　　　</th>
+			<th>　　　　</th>
+			<th>最終入荷情報</th>
+		</tr>
+		<tr>
+			<th>商品名</th>
+			<th>アーティスト</th>
+			<th>数量　　入荷日</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @items.each do |i| %>
+			<tr>
+				<th><%= i.item_name %></th>
+				<td><%= @artists %></td>
+				<td><%= @arrivals.arrival_count %></td>
+				<td><%= @arrivals.arrival_expected_date %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
