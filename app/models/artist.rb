@@ -1,4 +1,4 @@
 class Artist < ApplicationRecord
-	belong_to :label
+	belongs_to :label
 	has_many :items
 end

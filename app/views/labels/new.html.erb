@@ -1,0 +1,62 @@
+label/new
+
+<%= form_for @label do |l| %>
+<label>レーベル</label>
+<%= l.text_field :label_name %>
+
+
+<%= form_for @artist, url: labels_path do |a| %>
+<label>アーティスト</label>
+<%= a.text_field :artist_name %>
+
+
+<%= form_for @item, url: labels_path do |i| %>
+<label>商品名</label>
+<%= i.text_field :item_name %>
+<label>定価</label>
+<%= i.text_field :list_price %>
+<label>仕入値</label>
+<%= i.text_field :cost_price %>
+<label>販売ステータス</label>
+<%= i.text_field :sales_status %>
+<label>発売日</label>
+<%= i.text_field :release_date %>
+
+<%= form_for @disc, url: labels_path do |d| %>
+<label>ディスク名</label>
+<%= d.text_field :disc_name %>
+<label>ディスク番号</label>
+<%= d.text_field :disc_number %>
+
+<%= form_for @song, url: labels_path do |s| %>
+<label>収録番号</label>
+<%= s.text_field :recording_number %>
+<label>曲名</label>
+<%= s.text_field :song_title %>
+<label>再生時間</label>
+<%= s.text_field :play_time %>
+
+<%= form_for @genre, url: labels_path do |g| %>
+<label>ジャンル</label>
+<%= g.text_field :genre_name %>
+
+<%#= form_for @gacket_image, url: labels_path do |image| %>
+<!--<label>ジャケット番号</label>-->
+<%#= image.text_field :jacket_number %>
+<label>ジャケット画像</label>
+<%= i.attachment_field :gacket_images_images, multiple: true %>
+
+
+
+
+
+<%= l.submit "新規登録" %>
+
+<%# end %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+

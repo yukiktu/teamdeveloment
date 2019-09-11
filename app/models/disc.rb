@@ -1,5 +1,5 @@
 class Disc < ApplicationRecord
-	belong_to :item
-	belong_to :genre
+	belongs_to :item
+	belongs_to :genre
 	has_many :songs
 end
