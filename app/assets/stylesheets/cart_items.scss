@@ -1,3 +1,36 @@
 // Place all the styles related to the cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.table{
+	width: 80%;
+	height: 260px;
+	margin: 0 auto;
+	padding: 10px;
+	display: flex;
+}
+.item_image{
+	background-color: gray;
+	margin-right: 10px;
+}
+.big{
+	height: 240px;
+	width:  240px;
+}
+.calculation_box{
+	width: 80%;
+	text-align: right;
+}
+.line{
+	height: 24px;
+	width: 80%;
+	text-align: right;
+	margin: 0 auto;
+	border-bottom: 2px solid black;
+}
+.line_box{
+	width: 150px;
+	float: right;
+}
+.total{
+	margin-top: 20px;
+}
