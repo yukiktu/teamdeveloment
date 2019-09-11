@@ -7,11 +7,13 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+            @item.item_disces.build
+
   end
 
   def create
-   @item = Item.new(item_params)
-　　 @item.save
+   @item = Item.new
+　　@item.save
    redirect_to items_path
   end
 
