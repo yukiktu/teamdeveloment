@@ -1,0 +1,37 @@
+body {
+  background-color: #C0C0C0;
+  color: black;
+}
+
+.field {
+  color: black;
+  padding: 10px 0px;
+}
+
+.form-group {
+  color: black;
+  padding-bottom: 10px;
+}
+
+.disc-form {
+	padding: 10px 10px;
+}
+
+.gakect_images {
+  color: black;
+  padding: 10px 10px;
+}
+
+label {
+  border: solid 1px black;
+}
+
+.actions {
+	text-align: center;
+}
+
+input.field1 {
+width:500px;
+height:20px;
+font-size: 16px;
+}

@@ -1,4 +1,4 @@
 class Artist < ApplicationRecord
 
-	belongs_to :disc
+	has_many :discs
 end
