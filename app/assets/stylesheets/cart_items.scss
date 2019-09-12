@@ -39,23 +39,37 @@
 
 
 
-.one_item{
-	width: 75%;
+
+
+.body{
+	background-color: gray;
+}
+.cart_box{
+	width: 1000px;
 	height: auto;
-	// background-color: green;
+	background-color: white;
 	margin: auto;
 }
-.cd_info{
+h1{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.one_item{
+	background-color: green;
 	width: 100%;
-	height: 100%;
+	height: 280px;
+}
+.cd_info{
+	width: 1000px;
+	height: auto;
 	background-color: #ff7fbf;
 	display: inline-block;
 }
 .jacket_img{
 	background-image: url(thee);
 	background-size: cover;
-	width:300px;
-	height:300px;
+	width:200px;
+	height:200px;
 	margin: 10px;
 	display: inline-block;
 	float: left;
@@ -64,25 +78,38 @@
 	background-color: orange;
 	display: inline-block;
 	float: left;
+	width: 760px;
+	height: 200px;
 	margin-top: 10px;
-	margin-left: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
+	position: relative;
 }
 .price{
 	float: right;
-	// background-color: orange;
+	float: bottom;
+	background-color: red;
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
 .table_block{
 	background-color: yellow;
 	margin: auto;
 	height: 50px;
+	width: 300px;
 	float: right;
+	text-align: right;
 }
 .table_1{
-	background-color: blue;
-	float: right;
+	// background-color: blue;
+	text-align: right;
+	widows: 300px;
 }
 .total{
 	float: right;
+	// background-color: red;
+	display: block;
 }
 
 
