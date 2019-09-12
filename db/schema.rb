@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_09_11_090922) do
+=======
+ActiveRecord::Schema.define(version: 2019_09_10_204503) do
+>>>>>>> 8749b72ecf2947188dfd4e8d997c695fff3ac350
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "yuuki0421ktu@gmail.com", null: false
@@ -142,7 +146,11 @@ ActiveRecord::Schema.define(version: 2019_09_11_090922) do
     t.decimal "tax_rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.string "artist_name", null: false
+=======
+    t.string "artist_name"
+>>>>>>> 8749b72ecf2947188dfd4e8d997c695fff3ac350
   end
 
   create_table "orders", force: :cascade do |t|
