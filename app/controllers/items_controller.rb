@@ -28,20 +28,21 @@ class ItemsController < ApplicationController
   end
 
   def create #↓@gacket_imageは多分不要？paramsも
-    @label = Label.new(label_params)
-    @genre = Genre.new(genre_params)
-    @artist = Artist.new(artist_params)
+    #@label = Label.new(label_params)
+    #@genre = Genre.new(genre_params)
+    #@artist = Artist.new(artist_params)
     @item = Item.new(item_params)
     #@gacket_image = GacketImage.new(gacket_image_params)
-    @disc = Disc.new(disc_params)
-    @song = Song.new(song_params)
+    @disc = Disc.new#(disc_params)
+    @song = Song.new#(song_params)
 
     @song.disc = @disc
     @disc.item = @item
     @disc.genre = @genre
     @disc.artist = @artist
     @item.label = @label
-    @artist.label = @label
+    #@artist.label = @label
+    redirect_to items_path
   end
 
     #@gacket_image.item = @item
