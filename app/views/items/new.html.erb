@@ -1,57 +1,60 @@
-<body>
-
- <h1>新規商品登録ですs</h1>
-
-
-<%= form_for(@item) do |f| %>
-
-<div class="field">
-   <%= f.label :item_name, "商品名" %>
-   <%= f.text_field :item_name %>
+<div class="create_display">
+   <h2>新規商品登録です</h2>
+   <%= form_for @label, url: items_path do |l| %>
+   <%= form_for @artist, url: items_path do |a| %>
+   <%= form_for @item, url: items_path do |i| %>
+   <%= form_for @disc, url: items_path do |d| %>
+   <%= form_for @song, url: items_path do |s| %>
+   <%= form_for @genre, url: items_path do |g| %>
+   <%= form_for @gacket_image, url: items_path do |g_image| %>
+      <div class="field">
+         <%= i.label :item_name, "商品名"%>
+         <%= i.text_field :item_name, class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= i.label :list_price, "販売価格" %>
+         <%= i.number_field :list_price,class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= i.label :cost_price, "原価" %>
+         <%= i.number_field :cost_price, class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= i.label :sales_status, "販売ステータス" %>
+         <%= i.select(:sales_status, [["販売中",1],["停止中",2]], class: "entry_field") %>
+      </div>
+      <div class="field">
+         <%= i.label :release_date, "発売日" %>
+         <%= i.date_select :release_date,class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= g_image.label :release_date, "ジャケット画像" %>
+         <%#= g_image.attachment_field :gacket_images_images, multiple: true %>
+         <!--↑refileのエラーです。ﾌﾄｼさんお願いします。-->
+      </div>
+      <div class="field">
+         <%= l.label :label_name, "レーベル" %>
+         <%= l.text_field :label_name,class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= g.label :genre_name, "ジャンル" %>
+         <%= g.text_field :genre_name,class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= a.label :genre_name, "アーティスト" %>
+         <%= a.text_field :artist_name,class: "entry_field" %>
+      </div>
+      <div id="discs">
+         <%= d.fields_for :discs do |disc| %>
+         <%= render 'disc_fields', d: disc %>
+                  <%= l.submit "保存する" %>
+      </div>
+   <% end %>
+   <% end %>
+   <% end %>
+   <% end %>
+   <% end %>
+   <% end %>
+   <% end %>
+   <% end %>
 </div>
-
-<div class="field">
-   <%= f.label :list_price, "販売価格" %>
-   <%= f.number_field :list_price %>
-</div>
-
-<div class="field">
-　 <%= f.label :cost_price, "原価" %>
-   <%= f.number_field :cost_price %>
-</div>
-
-<div class="field">
-   <%= f.label :sales_status, "販売ステータス" %>
-   <%= f.select(:sales_status, [["販売中",1],["停止中",2]]) %>
-</div>
-
-<div class="field">
-   <%= f.label :release_date, "発売日" %>
-   <%= f.date_select :release_date %>
-</div>
-
-<div class="field">
-   <%= f.label :release_date, "ジャケット画像" %>
-   <%= f.attachment_field :gacket_images_images, multiple: true %>
-</div>
-
-<%= form_for @label do |l| %>
-<label>レーベル</label>
-<%= l.text_field :label_name %>
-<% end %>
-
-<%= form_for @artist, url: labels_path do |a| %>
-<label>アーティスト</label>
-<%= a.text_field :artist_name %>
-<% end %>
-
-<div id="discs">
- <%= f.fields_for :discs do |disc| %>
-  <%= render 'disc_fields', f: disc %>
- <% end %>
-
- <%= f.submit "保存する" %>
-</div>
- <% end %>
-
-</body>

@@ -1,10 +1,10 @@
 <div class="nested-fields form-inline">
   <div class="form-group">
-  	<%= f.label :曲順s %>
-  	<%= f.number_field :recording_number %>
-    <%= f.label :曲名 %>
-    <%= f.text_field :song_title %>
-    <%= f.label :再生時間 %>
-    <%= f.text_field :play_time %>
+  	<%= s.label :曲順s %>
+  	<%= s.number_field :recording_number,class: "entry_field" %>
+    <%= s.label :曲名 %>
+    <%= s.text_field :song_title,class: "entry_field" %>
+    <%= s.label :再生時間 %>
+    <%= s.text_field :play_time,class: "entry_field" %>
   </div>
 </div>
