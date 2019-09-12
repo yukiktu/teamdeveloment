@@ -8,7 +8,7 @@ class LabelsController < ApplicationController
 		else
 			@arrivals = Arrival.new
 			@arrivals.arrival_count = '0'
-			@arrivals.arrival_expected_date = "未納"
+			@arrivals.arrival_expected_date = ""
 		end
 	end
 
