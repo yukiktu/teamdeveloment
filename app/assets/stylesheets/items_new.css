@@ -1,0 +1,51 @@
+* {
+  color: black;
+  /*border: solid 0.5px black;*/
+}
+
+.create_display{
+  width: 100%;
+  padding: 30px 10%;
+  background-color: #C0C0C0;
+}
+
+.field {
+  display: flex;
+  padding: 10px 0px;
+
+}
+
+.entry_field {
+  background-color: white;
+}
+
+.form-group {
+  color: black;
+  padding-bottom: 10px;
+}
+
+.disc-form {
+  padding: 30px 10px;
+}
+
+.gakect_images {
+  color: black;
+  padding: 10px 10px;
+}
+
+label {
+  border: solid 1px #FFFFFF;
+  background-color: #CCFFCC;
+  display: block;
+  width: 150px;
+}
+
+.actions {
+  text-align: center;
+}
+
+input.field1 {
+  width: 500px;
+  height: 20px;
+  font-size: 16px;
+}

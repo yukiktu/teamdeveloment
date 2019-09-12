@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,28 +14,31 @@
 
         <% genre.genre_name %>
         <% label.label_name %>
-        <% f.submit"カートに入れる" %>
+        <%# f.submit"カートに入れる" %>
 
             </div>
 
-            <div class="title">
+            <div class="s.title">
               <% item.item_name %>
               <% artist.artist_name %>
             </div>
 
             <table>
               <thead>
+                <% song.each do |s| %>
+
                 <tr>
                   <th>Title</th>
                   <th>Artist</th>
                   <th>Time</th>
                 </tr>
               </thead>
+
               <tbody>
                 <tr>
-                  <td><% song.song_name %></td>
-                  <td><% artist.artist_name %></td>
-                  <td><% song.song_time %></td>
+                  <td><% i.song_name %></td>
+                  <td><% i.artist_name %></td>
+                  <td><% i.song_time %></td>
                 </tr>
               </tbody>
             </table>
@@ -42,3 +46,4 @@
 
 </body>
 </html>
+

@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheets" href="item_index.scss">
 	<title></title>
 </head>
 <body>
+	 <div class="S_main">
   <%= form_tag(search_path,:method => 'get') do %>
     <%= text_field_tag :search %>
       <%= submit_tag 'Search', :name => nil %>
     <% end %>
 
-	  <div class="S_main">
-	  	<table>
-	  		<thead>
-	  			<tr>
-	  			</tr>
-	  		</thead>
-	  		<tbody>
-	  			<tr>
-	  				<td class="j_image"><%= attachment_image_tag gacket_image, :gacket_image %></td>
-	  				<td><% item.item_name %></td>
-	  				<td><% item.list_price %></td>
-	  				<td><% artist.artist_name %></td>
-	  				<td><% item.sales_status %></td>
-	  			</tr>
-	  		</tbody>
-	  	</table>
+    <% item.each do |i| %>
+
+	   <div class="i.item">
+	  	<div class="j_image"><%= attachment_image_tag gacket_image, :gacket_image %></div>
+	  	<p class="i.name"><% i.item_name %></p>
+	  	<p class="i.price"><% i.list_price %></p>
+	  	<p class="i.artist"><% i.artist_name %></p>
+	  	<p class="i.status"><% i.sales_status %></p>
 	  </div>
+	</div>
+	<% end %>
 
 </body>
 </html>
