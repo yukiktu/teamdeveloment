@@ -17,5 +17,5 @@
 //= require cocoon
 //= require_tree .
 
-var title = "あああああああああ";
-alert(title);
+//var title = "welcome to ながのmusic";
+//alert(title);
