@@ -1,15 +1,21 @@
-<h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="welcom_message"><h1>パスワード確認画面</h1></div>
+<div class="end_user_infomation">
+<div class="entries_field">
+<%= form_for(resource, as: resource_name, url: password_path(resource_name)) do |f| %>
+　<div class="text_message" align="left">
+	<font color="gray">登録したメールアドレスを入力してください。入力確認後 ”確認メールを送信” を押すと入力したメールアドレスにメールが届きます。
+	</font>
+  </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <label class="labels">メールアドレス</label>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field_box" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "確認メールを送信" %>
   </div>
 <% end %>
 

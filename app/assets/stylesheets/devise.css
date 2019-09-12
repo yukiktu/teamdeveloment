@@ -1,0 +1,122 @@
+
+*{
+	padding: 0;
+	margin:  0;
+	box-sizing: border-box;
+}
+
+.clearfix{
+	content: "";
+  	display: block;
+  	clear: both;
+}
+
+/*devise新規作成画面*/
+
+.welcom_message{
+	display: block;
+	/*border-top-left-radius: 30px;*/
+	/*border-top-right-radius: 30px;*/
+	background-color: ;/*welcomeのバックグラウンドカラー*/
+	/*margin: 50px 10% 0px 10%;*/
+	padding: 10px;
+	text-align: center;
+	/*border: 1px solid gray;*/
+}
+.end_user_infomation{
+	margin: 0px 10% 30px 10%;
+	text-align: center;
+	color: white;
+	background-color: ;/*箱の中の背景色*/
+	/*border-bottom-left-radius: 30px;*/
+	/*border-bottom-right-radius: 30px;*/
+	/*border: 1px solid gray;*/
+}
+
+.entries_field{
+	width: 80%;
+	margin: 0 auto;
+	padding: 10px 10%;
+}
+
+.field{
+	font-size: 20px;
+	display: flex;
+	text-align:center;
+}
+
+.labels{
+	display: block;
+	line-height: 40px;
+	width: 35%;
+	height: 40px;
+	background-color: gray;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.field_box{
+	width: 65%;
+	height: 40px;
+	border:0;
+	padding:10px;
+	font-size:1.3em;
+	font-family:Arial, sans-serif;
+	color:#aaa;
+	border:solid 1px #ccc;
+	margin:0 0 20px;
+	-webkit-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+/*input:focus {
+    border:solid 1px #EEA34A;
+}*/
+.actions{
+	margin: 0 auto;
+	width: 180px;
+}
+
+.buttons{
+	width: 180px;
+	height: 60px;
+	display: block;
+	border:solid 1px #ccc;
+	padding:15px 30px;
+	margin:0 0 20px;
+	font-family:Arial, sans-serif;
+	font-size:1.2em;
+	text-transform:uppercase;
+	font-weight:bold;
+	color:#333;
+	cursor:pointer;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#ddd), to(#aaa));
+	background-image: -webkit-linear-gradient(top, #ddd, #aaa);
+	background-image: -moz-linear-gradient(top, #ddd, #aaa);
+	background-image: -ms-linear-gradient(top, #ddd, #aaa);
+	background-image: -o-linear-gradient(top, #ddd, #aaa);
+	background-image: linear-gradient(top, #ddd, #aaa);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ddd', endColorstr='#aaa',GradientType=0 ); /* IE6-9 */
+	-moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0px 1px 2px rgba(0, 0, 0, 0.2);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-shadow: 0px -1px 1px rgba(255, 255, 255, 0.8);
+}
+
+/*deviseログイン画面*/
+
+.verification_message{
+	color: black;
+	margin-bottom: 10px;
+}
+/*devise新規登録画面*/
+
+.devise_background_img{
+	background-image : url(KAZ829003)
+}

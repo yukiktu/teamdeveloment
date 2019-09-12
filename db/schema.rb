@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_090922) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "end_user_id", null: false
-    t.integer "item_count", null: false
+    t.integer "item_count", default: 1
     t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_090922) do
     t.decimal "tax_rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "artist_name"
+    t.string "artist_name", null: false
   end
 
   create_table "orders", force: :cascade do |t|
