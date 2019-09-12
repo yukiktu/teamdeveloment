@@ -2,14 +2,18 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.item_disces.build
+    @item.discs.build
+    @label = Label.new
 
   end
 
 
   def create
    @item = Item.new(item_params)
+   @label = Label.new
+
    if @item.save
+      @label.save
 
    redirect_to items_path
 
@@ -21,9 +25,6 @@ end
 
   def index
     @items = Item.all
-    @gacket_image = Jacket_image.find(params[:id])
-    @artist = Artist.find(params[:id])
-
   end
 
    def show

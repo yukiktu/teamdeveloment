@@ -33,26 +33,35 @@
 </div>
 
 <div class="disc-form">
- <%= f.fields_for :discs do |d| %>
+ <%= f.fields_for :discs do |f| %>
   <div class="form-groups">
-     <%= d.label :ディスク名 %>
-     <%= d.text_field :disc_name %>
-     <%= d.label :ディスク番号 %>
-     <%= d.text_field :disc_number %>
+     <%= f.label :ディスク名 %>
+     <%= f.text_field :disc_name %>
+     <%= f.label :ディスク番号 %>
+     <%= f.text_field :disc_number %>
   </div>
  <% end %>
 </div>
 
 <div class="song-form">
- <%= f.fields_for :song do |s| %>
+ <%= f.fields_for :song do |f| %>
    <div class="form-group">
-     <%= s.label :曲順 %>
-     <%= s.text_field :recording_number %>
-     <%= s.label :曲名 %>
-     <%= s.text_field :song_title %>
-     <%= s.label :タイム %>
-     <%= s.text_field :play_time %>
+     <%= f.label :曲順 %>
+     <%= f.text_field :recording_number %>
+     <%= f.label :曲名 %>
+     <%= f.text_field :song_title %>
+     <%= f.label :タイム %>
+     <%= f.text_field :play_time %>
    </div>
+ <% end %>
+</div>
+
+<div class="label-form">
+ <%= f.fields_for :label do |f| %>
+  <div class="form-groups">
+     <%= f.label :レーベル名 %>
+     <%= f.text_field :label_name %>
+  </div>
  <% end %>
 </div>
 

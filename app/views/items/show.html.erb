@@ -1,41 +1,44 @@
-<div class="sidebar">
-    <div class="jacketimage">
-    	<%= attachment_image_tag @gacket_image, :gacket_image %>
-    </div>
-    <% @item.list_price %>
-    <% @label.label_name %>
-    <% @genre.genre_name %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
+  <div class="sidebar">
+    <div>
+      <%= attachment_image_tag gacket_image, :gacket_image %>
+
+      </div>
+
+        <% genre.genre_name %>
+        <% label.label_name %>
+        <% f.submit"カートに入れる" %>
+
+            </div>
+
+            <div class="title">
+              <% item.item_name %>
+              <% artist.artist_name %>
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Artist</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><% song.song_name %></td>
+                  <td><% artist.artist_name %></td>
+                  <td><% song.song_time %></td>
+                </tr>
+              </tbody>
+            </table>
 
 
-  </div>
-        <div class="main">
-        	<% @item.item_name %>
-        	<% @artist.artist_name %>
-        </div>
-
-        <div>
-
-        	 <table>
-  　　　　　　　　　　<thead>
-   　　　　　　　　　　　　 <tr>
-      　　　　　　　　　　　　　<th>Title</th>
-    　　　　　　　　　　　　　　<th>Artist</th>
-      　　　　　　　　　　　　　<th>Time</th>
-
-    　　　　　　　　　　　　</tr>
- 　　　　　　　　　　　 </thead>
-
-  　　　　　　　　　 <tbody>
-    　　　　        <% @disc.each do |d| %>
-
-    　　             <tr>
-                      <td><% d.song_title %></td>
-                      <td><% d.artist_name%></td>
-                      <td><% d.play_time %></td>
-                    </tr>
-                    <% end %>
-
-
-         </tbody>
-       </table>
-</div>
+</body>
+</html>

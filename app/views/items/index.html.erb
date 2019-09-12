@@ -1,8 +1,31 @@
-<div class="arrival index">
- <h1>発注履歴</h1>
-  <% @items.each do |item| %>
-  <p>CD</p>
-  <span><%= @item.item_name %></span>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <%= form_tag(search_path,:method => 'get') do %>
+    <%= text_field_tag :search %>
+      <%= submit_tag 'Search', :name => nil %>
+    <% end %>
 
-</div>
- <% end %>
+	  <div class="S_main">
+	  	<table>
+	  		<thead>
+	  			<tr>
+	  			</tr>
+	  		</thead>
+	  		<tbody>
+	  			<tr>
+	  				<td class="j_image"><%= attachment_image_tag gacket_image, :gacket_image %></td>
+	  				<td><% item.item_name %></td>
+	  				<td><% item.list_price %></td>
+	  				<td><% artist.artist_name %></td>
+	  				<td><% item.sales_status %></td>
+	  			</tr>
+	  		</tbody>
+	  	</table>
+	  </div>
+
+</body>
+</html>
