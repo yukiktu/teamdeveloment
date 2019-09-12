@@ -11,7 +11,5 @@ class Item < ApplicationRecord
     accepts_attachments_for :gacket_images, attachment: :image
     belongs_to :label
     has_many :discs
-    accepts_nested_attributes_for :discs
     has_many :songs
-    accepts_nested_attributes_for :songs
 end

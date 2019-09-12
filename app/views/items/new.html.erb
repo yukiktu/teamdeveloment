@@ -2,6 +2,7 @@
 
  <h1>新規商品登録です</h1>
 
+
 <%= form_for(@item) do |f| %>
 
 <div class="field">
@@ -33,6 +34,16 @@
    <%= f.label :release_date, "ジャケット画像" %>
    <%= f.attachment_field :gacket_images_images, multiple: true %>
 </div>
+
+<%= form_for @label do |l| %>
+<label>レーベル</label>
+<%= l.text_field :label_name %>
+<% end %>
+
+<%= form_for @artist, url: labels_path do |a| %>
+<label>アーティスト</label>
+<%= a.text_field :artist_name %>
+<% end %>
 
 <div id="discs">
  <%= f.fields_for :discs do |disc| %>
