@@ -1,20 +1,20 @@
 <%#= d.object %>
 <div class="nested-fields well well-compact">
   <div class="field">
-     <%= d.label :ディスク名 %>
-     <%= d.text_field :disc_name %>
+     <%= f.label :ディスク名 %>
+     <%= f.text_field :disc_name %>
   </div>
   <div class="field">
-     <%= d.label :ディスク番号s %>
-     <%= d.number_field :disc_number %><br>
+     <%= f.label :ディスク番号 %>
+     <%= f.number_field :disc_number %><br>
   </div>
 
   <div class="songs">
-    <%= d.fields_for :songs do |song| %>
-      <%= render 'song_fields', f: song %>
+    <%= f.fields_for :songs do |song| %>
+      <%= render 'song_fields', d: song %>
     <%end%>
     <div class="links">
-      <%= link_to_add_association "add song", d, :songs %>
+      <%= link_to_add_association "add song", f, :songs %>
       <!--@ﾌﾄｼさん_原因不明エラーです。多分変数関連-->
     </div>
   </div>

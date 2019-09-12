@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.discs.build
     @item.discs[0].songs.build
+    @item.gacket_images.build
     # @disc = Disc.new
     # @song = Song.new
     # @genre = Genre.new
@@ -42,6 +43,13 @@ class ItemsController < ApplicationController
     @disc.artist = @artist
     @item.label = @label
     @artist.label = @label
+
+    @label.save
+    @genre.save
+    @artist.save
+    @item.save
+    @disc.save
+    @song.save
   end
 
     #@gacket_image.item = @item
@@ -49,25 +57,31 @@ class ItemsController < ApplicationController
 
 
   private
-
-  def label_params
-    params.require(:label).permit(:label_name)
+ def item_params
+     params.require(:item).permit(
+      :item_name, :list_price, :cost_price, :sales_status, :release_date, :jacket_number, gacket_images:[],
+      disc_attributes: [:id,:genre_id, :item_id, :disc_name, :disc_number, ],
+      song_attributes: [:id, :disc_id, :recording_number, :song_title, :play_time, ],
+      )
   end
-  def artist_params
-    params.require(:artist).permit(:artist_name)
-  end
-  def item_params
-    params.require(:item).permit(:artist_id, :item_name, :list_price, :cost_price, :sales_status, :release_date, :label_id, gacket_images_images: [])
-  end
-  def genre_params
-    params.require(:genre).permit(:genre_name)
-  end
-  def disc_params
-    params.require(:disc).permit(:disc_name, :dis_number, :genre_id, :item_id, :genre_id, :artist_id)
-  end
-  def song_params
-    params.require(:song).permit(:record_number, :song_title, :play_time, :disc_id,)
-  end
+  #def label_params
+   #params.require(:label).permit(:label_name)
+  #end
+  #def artist_params
+    #params.require(:artist).permit(:artist_name)
+  #end
+  #def item_params
+    #params.require(:item).permit(:artist_id, :item_name, :list_price, :cost_price, :sales_status, :release_date, :label_id, gacket_images_images: [])
+  #end
+  #def genre_params
+    #params.require(:genre).permit(:genre_name)
+  #end
+  #def disc_params
+    #params.require(:disc).permit(:disc_name, :dis_number, :genre_id, :item_id, :genre_id, :artist_id)
+  #end
+  #def song_params
+    #params.require(:song).permit(:record_number, :song_title, :play_time, :disc_id,)
+  #end
   #def gacket_image_params
   # params.require(:gacket_image).require(:jacket_number)#, :image_id)
   #end
