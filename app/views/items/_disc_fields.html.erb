@@ -1,17 +1,19 @@
-<%#= d.object %>
 <div class="nested-fields well well-compact">
   <div class="field">
      <%= f.label :ディスク名 %>
      <%= f.text_field :disc_name %>
-  </div>
-  <div class="field">
      <%= f.label :ディスク番号 %>
      <%= f.number_field :disc_number %><br>
+     <%#= link_to_remove_association "remove disc", f %>
   </div>
+  <!--<div class="field">
+     <%= f.label :ディスク番号 %>
+     <%= f.number_field :disc_number %><br>
+  </div>-->
 
   <div class="songs">
     <%= f.fields_for :songs do |song| %>
-      <%= render 'song_fields', d: song %>
+      <%= render 'song_fields', f: song %>
     <%end%>
     <div class="links">
       <%= link_to_add_association "add song", f, :songs %>

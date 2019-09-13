@@ -2,7 +2,7 @@
    <h2>新規商品登録です</h2>
    <%#= form_for @label, url: items_path do |l| %>
    <%#= form_for @artist, url: items_path do |a| %>
-   <%= form_for @item, url: items_path do |f| %>
+   <%= form_for @item do |f| %>
    <%#= form_for @disc, url: items_path do |d| %>
    <%#= form_for @song, url: items_path do |s| %>
    <%#= form_for @genre, url: items_path do |g| %>
@@ -27,23 +27,15 @@
          <%= f.label :release_date, "発売日" %>
          <%= f.date_select :release_date,class: "entry_field" %>
       </div>
-       
-       <div class="gaket_images">
-      <%= f.fields_for :gacket_images do |gacket_image| %>
-         <%= render 'disc_fields', f: gacket_image %>
-         <% end %>
-      <div class="field">
-         <#= f.label :gackt_images, "ジャケット画像" %>
-         <%= f.attachment_field :gacket_images_images %>
-         <!--↑refileのエラーです。ﾌﾄｼさんお願いします。-->  
-         <div class="links">
-      <%= link_to_add_association "add song", f, :image %>
-      <!--@ﾌﾄｼさん_原因不明エラーです。多分変数関連-->
-    </div>
- </div>
-</div>
 
       <div class="field">
+         <%= f.label :gackt_images, "ジャケット画像" %>
+         <%= f.attachment_field :gacket_images_images, multiple: true %>
+         <!--i.attachment_field :image, multiple: true, name: "gacket_images_attributes[0][image][]" %
+        ↑refileのエラーです。ﾌﾄｼさんお願いします。-->
+      </div>
+
+      <!--<div class="field">
          <%#= l.label :label_name, "レーベル" %>
          <%#= l.text_field :label_name,class: "entry_field" %>
       </div>
@@ -54,19 +46,24 @@
       <div class="field">
          <%#= a.label :genre_name, "アーティスト" %>
          <%#= a.text_field :artist_name,class: "entry_field" %>
-      </div>
+      </div>-->
       <div id="discs">
          <%= f.fields_for :discs do |disc| %>
-         <%= render 'disc_fields', d: disc %>
+         <%= render 'disc_fields', f: disc %>
          <% end %>
-                  <%= f.submit "保存する" %>
+
+         <div id="links">
+            <%= link_to_add_association 'add disc',f, :discs %>
+         </div>
+
+
       </div>
+     <%= f.submit "保存する" %>
+   </div>
    <%# end %>
    <%# end %>
    <%# end %>
    <%# end %>
    <%# end %>
    <%# end %>
-   
    <% end %>
-</div>

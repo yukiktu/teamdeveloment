@@ -1,16 +1,25 @@
-<div class="main">
+<% @items.each do |t| %>
+<%= t.item_name %>
+<%= t.list_price %>
+<%= t.cost_price %>
+<%= t.sales_status %>
+<%= t.release_date %>
+<% end %>
 
-<%= form_for (@fee) do |s| %>
+
+<!--<div class="main">
+
+<%#= form_for (@fee) do |s| %>
    <div class="field">
-      <%= s.label :shipping_fee, "送料設定" %>
-      <%= s.number_field :shipping_fee %>
+      <%#= s.label :shipping_fee, "送料設定" %>
+      <%#= s.number_field :shipping_fee %>
 </div>
 
-<%= form_for () do |t| %>
+<%#= form_for () do |t| %>
 	<div class="field">
-	  <%= t.label :tax_rate, "税率設定" %>
-	  <%= t.number_field :tax_rate %>
+	  <%#= t.label :tax_rate, "税率設定" %>
+	  <%#= t.number_field :tax_rate %>
     </div>
 
-<% end %>
-<% end %>
+<%# end %>
+<%# end %> -->
