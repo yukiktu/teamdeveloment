@@ -1,7 +1,15 @@
 class ItemsController < ApplicationController
 
   def index
-    @items = Item.all
+    @items = Item.all#where(label_id: 42)
+    # if @label_id.nil?
+    #   redirect_to items_path
+    #   #@label.id = 1
+    # else
+    @label = Label.find_by(@label_id)#@label_id)
+    # end
+    @disc = Disc.where(item_id: @item_id)
+    @artist = Artist.find_by(id: @artist_id)
     #@artists = Artist.find(id: @items.artist)
     #↑初期に作ったテーブルがnullなのでそれを削除すると使えます
     #arrival = Arrival.where(item_id: @items)
@@ -16,37 +24,44 @@ class ItemsController < ApplicationController
 
 
   def new
-    # @label = Label.new
-    # @artist = Artist.new
+    @label = Label.new
+    #@label = @label.items.build
+    @artist = Artist.new
     @item = Item.new
     @item.gacket_images.build
     @disc = @item.discs.build
     @song = @disc.songs.build
+
     # @disc = Disc.new
     # @song = Song.new
     # @genre = Genre.new
     # @gacket_image = GacketImage.new
   end
 
-  def create #↓@gacket_imageは多分不要？paramsも
-    #@label = Label.new(label_params)
+  def create
+    #↓@gacket_imageは多分不要？paramsも
+    @label = Label.new(label_params)
     #@genre = Genre.new(genre_params)
-    #@artist = Artist.new(artist_params)
+    if Artist.where(artist_name: artist_params["artist_name"]).empty?
+      @artist = Artist.create(artist_params)
+    else
+      @artist = Artist.find_by(artist_params["artist_name"])
+    end
     @item = Item.new(item_params)
     #@gacket_image = GacketImage.new(gacket_image_params)
-    #@disc = Disc.new(disc_params)
+    #@disc = Disc.new#(disc_params)
     #@song = Song.new(song_params)
-
     #@song.disc = @disc
     #@disc.item = @item
     #@disc.genre = @genre
     #@disc.artist = @artist
-    #@item.label = @label
-    #@artist.label = @label
-
-    #@label.save
+    @label.save
+    @item.label_id = @label.id
+    @item.genre_id = @genre.id
+    @item.artist_id = @artist.id
+    binding.pry
+    #@disc.artist_id = @artist.id
     #@genre.save
-    #@artist.save
     @item.save
     #@disc.save
     #@song.save
@@ -70,7 +85,7 @@ class ItemsController < ApplicationController
     def item_params
      params.require(:item).permit(
       :item_name, :list_price, :cost_price, :sales_status, :release_date, :jacket_number, gacket_images:[],
-      discs_attributes: [:id, :disc_name, :disc_number,
+      discs_attributes: [:id, :disc_name, :disc_number, :artist_id,
       songs_attributes: [:id, :recording_number, :song_title, :play_time ]])
   end
 
@@ -81,12 +96,12 @@ class ItemsController < ApplicationController
  #      song_attributes: [:id, :disc_id, :recording_number, :song_title, :play_time, ],
  #      )
  #  end
-   #def label_params
-   #params.require(:label).permit(:label_name)
-  #end
-  #def artist_params
-    #params.require(:artist).permit(:artist_name)
-  #end
+  def label_params
+    params.require(:label).permit(:id, :label_name)
+  end
+  def artist_params
+    params.require(:artist).permit(:id, :artist_name)
+  end
   #def item_params
     #params.require(:item).permit(:artist_id, :item_name, :list_price, :cost_price, :sales_status, :release_date, :disc_id, :label_id, gacket_images_images: [])
   #end
@@ -94,7 +109,7 @@ class ItemsController < ApplicationController
     #params.require(:genre).permit(:genre_name)
   #end
   #def disc_params
-   # params.require(:disc).permit(:disc_name, :disc_number, :genre_id, :item_id, :genre_id, :artist_id)
+    #params.require(:disc).permit(:disc_name, :disc_number, :artist_id)
   #end
   #def song_params
     #params.require(:song).permit(:record_number, :song_title, :play_time, :disc_id,)

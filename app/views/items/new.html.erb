@@ -1,8 +1,9 @@
 <div class="create_display">
    <h2>新規商品登録です</h2>
-   <%#= form_for @label, url: items_path do |l| %>
-   <%#= form_for @artist, url: items_path do |a| %>
+   <%= form_for @label, url: items_path do |l| %>
+   <%= form_for @artist, url: items_path do |a| %>
    <%= form_for @item do |f| %>
+   <%= f.object %><%= l.object %><%= a.object %>
    <%#= form_for @disc, url: items_path do |d| %>
    <%#= form_for @song, url: items_path do |s| %>
    <%#= form_for @genre, url: items_path do |g| %>
@@ -35,18 +36,18 @@
         ↑refileのエラーです。ﾌﾄｼさんお願いします。-->
       </div>
 
-      <!--<div class="field">
-         <%#= l.label :label_name, "レーベル" %>
-         <%#= l.text_field :label_name,class: "entry_field" %>
-      </div>
+      <div class="field">
+         <%= l.label :label_name, "レーベル" %>
+         <%= l.text_field :label_name, class: "entry_field" %>
+      </div><!--
       <div class="field">
          <%#= g.label :genre_name, "ジャンル" %>
          <%#= g.text_field :genre_name,class: "entry_field" %>
-      </div>
-      <div class="field">
-         <%#= a.label :genre_name, "アーティスト" %>
-         <%#= a.text_field :artist_name,class: "entry_field" %>
       </div>-->
+      <div class="field">
+         <%= a.label :genre_name, "アーティスト" %>
+         <%= a.text_field :artist_name,class: "entry_field" %>
+      </div>
       <div id="discs">
          <%= f.fields_for :discs do |disc| %>
          <%= render 'disc_fields', f: disc %>
@@ -64,6 +65,6 @@
    <%# end %>
    <%# end %>
    <%# end %>
-   <%# end %>
-   <%# end %>
+   <% end %>
+   <% end %>
    <% end %>

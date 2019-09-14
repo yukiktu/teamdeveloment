@@ -1,10 +1,41 @@
 <% @items.each do |t| %>
-<%= t.item_name %>
-<%= t.list_price %>
-<%= t.cost_price %>
-<%= t.sales_status %>
-<%= t.release_date %>
+<%#= t.discs.id %>
+<table>
+	<thead>
+		<tr>
+			<th>item_ID</th>
+			<th>item(label_id)</th>
+			<th>レーベル名</th>
+			<th>ディスクID</th>
+			<th>ディスク名</th>
+			<th>アーティスト_ID</th>
+			<th>アーティスト</th>
+			<th>商品名</th>
+			<th>定価</th>
+			<th>販売ステータス</th>
+			<th>発売日</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= t.id %></td>
+			<td><%= t.label_id %></td>
+			<td><% @label_id = t.label_id %>
+				<%= @label.label_name %></td>
+			<th><%@item_id = t.id %>
+				<%#= @disc %></th>
+			<th><%#= @disc.disc_name %></th>
+			<th><%#= t.artist_id %></th>
+			<th><%#= t.artist_id %></th>
+			<td><%= t.item_name %></td>
+			<td><%= t.list_price %></td>
+			<th><%= t.sales_status %></th>
+			<th><%= t.release_date %></th>
+		</tr>
+	</tbody>
+</table>
 <% end %>
+<%# end %>
 
 
 <!--<div class="main">
