@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_152419) do
+ActiveRecord::Schema.define(version: 2019_09_09_070900) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "yuuki0421ktu@gmail.com", null: false
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_152419) do
     t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "label_id"
   end
 
   create_table "cart_items", force: :cascade do |t|
@@ -118,7 +117,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_152419) do
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "artist_id"
   end
 
   create_table "labels", force: :cascade do |t|
@@ -135,7 +133,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_152419) do
     t.decimal "tax_rate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "artist_name"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -149,6 +146,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_152419) do
     t.decimal "shipping_fee"
     t.decimal "grand_total"
     t.integer "delivery_status"
+    t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

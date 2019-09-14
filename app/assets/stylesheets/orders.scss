@@ -1,3 +1,44 @@
 // Place all the styles related to the orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+.orders_table{
+	display: block;
+	// background-color: green;
+	width: 90%;
+	padding: 10px 20px;
+	margin: 0 auto;
+}
+.table_top{
+	display: flex;
+	margin-bottom: 10px;
+	border-bottom: 2px solid black;
+}
+.order_status{
+	// background-color: blue;
+}
+.option0{
+
+}
+.option1{
+
+}
+
+.post{
+	margin-left: 20px;
+	// background-color: red;
+}
+
+thead{
+	width: 100%;
+	// background-color: white;
+}
+tbody{
+	width: 100%;
+	// background-color: gray;
+	text-align: center;
+}
