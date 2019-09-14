@@ -1,0 +1,46 @@
+/admin_users/orders/shipping
+<%# if flash[:notice].present? %>
+	<!-- flash[:notice] -->
+<%# else %>
+
+<%# @oders.each do |t| %>
+<h1>受注画面</h1>
+	<table class = "orders_table">
+		<caption class="table_top">
+			<select class="order_status">
+				<option value="0" style="color: #ff0000;">未発送</option>
+				<option value="1" style="color: #0000ff;">発送済み</option>
+			<%# s_options = [["未発送", 0],["発送済み", 1]] %>
+			<%#= t.form.select :delivery_status, s_options %>
+			</select>
+			<div class = "post">
+				住所<!-- <%#= t.addressee%><br>
+				<%#= t.postal_code %><br>
+				<%#= t.adress %> -->
+			</div>
+		</caption>
+		<thead>
+			<tr>
+				<th width="10%">購入日</th>
+				<th width="10%">購入者</th>
+				<th width="20%">商品</th>
+				<th width="10%">アーティスト</th>
+				<th width="10%">枚数</th>
+				<th width="10%">価格(税抜き)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<%# @order_items.each do |i| %>
+					<td>1sample<%#= t.created_at %></td>
+					<td>2samole<%#= t.user.last_name t.user.first.name%></td>
+					<td>3sample<%#= i.name %></td>
+					<td>4sample<%#= i.artist_name %></td>
+					<td>1枚<%#= i.item_count %></td>
+					<td>5sample<%#= i.list_price %></td>
+				<%# end %>
+			</tr>
+		</tbody>
+	</table>
+ <%# end %>
+ <%# end %>
