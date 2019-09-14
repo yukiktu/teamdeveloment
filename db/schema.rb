@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_09_09_123720) do
+=======
+ActiveRecord::Schema.define(version: 2019_09_11_090922) do
+>>>>>>> master
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "yuuki0421ktu@gmail.com", null: false
@@ -42,21 +46,24 @@ ActiveRecord::Schema.define(version: 2019_09_09_123720) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.integer "item_count"
-    t.integer "item_id"
+    t.integer "end_user_id", null: false
+    t.integer "item_count", default: 1
+    t.integer "item_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "delivery_adresses", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.string "addressee"
-    t.text "postal_code"
-    t.string "phone_number"
+    t.integer "end_user_id", null: false
+    t.string "addressee", null: false
+    t.text "postal_code", null: false
+    t.string "phone_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "address"
+    t.text "address", null: false
+    t.index ["address"], name: "index_delivery_adresses_on_address"
+    t.index ["addressee"], name: "index_delivery_adresses_on_addressee"
+    t.index ["phone_number"], name: "index_delivery_adresses_on_phone_number"
   end
 
   create_table "discs", force: :cascade do |t|
@@ -80,17 +87,23 @@ ActiveRecord::Schema.define(version: 2019_09_09_123720) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "kana_last_name"
-    t.string "kana_first_name"
-    t.string "postal_code"
-    t.string "address"
-    t.string "phone_number"
-    t.integer "enrollment_status"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "kana_last_name", null: false
+    t.string "kana_first_name", null: false
+    t.string "postal_code", null: false
+    t.string "address", null: false
+    t.string "phone_number", null: false
+    t.integer "enrollment_status", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_end_users_on_address"
     t.index ["email"], name: "index_end_users_on_email", unique: true
+    t.index ["first_name"], name: "index_end_users_on_first_name"
+    t.index ["kana_first_name"], name: "index_end_users_on_kana_first_name"
+    t.index ["kana_last_name"], name: "index_end_users_on_kana_last_name"
+    t.index ["last_name"], name: "index_end_users_on_last_name"
+    t.index ["phone_number"], name: "index_end_users_on_phone_number"
     t.index ["reset_password_token"], name: "index_end_users_on_reset_password_token", unique: true
   end
 
@@ -126,29 +139,37 @@ ActiveRecord::Schema.define(version: 2019_09_09_123720) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id"
-    t.string "item_name"
-    t.integer "item_count"
-    t.decimal "list_price"
-    t.decimal "tax_rate"
+    t.integer "order_id", null: false
+    t.string "item_name", null: false
+    t.integer "item_count", null: false
+    t.decimal "list_price", null: false
+    t.decimal "tax_rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.string "artist_name"
+=======
+    t.string "artist_name", null: false
+>>>>>>> master
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "end_user_id"
-    t.string "addressee"
-    t.string "postal_code"
-    t.text "address"
+    t.integer "end_user_id", null: false
+    t.string "addressee", null: false
+    t.string "postal_code", null: false
+    t.text "address", null: false
     t.string "phone_number"
-    t.string "payment_methods"
-    t.decimal "subtotal"
-    t.decimal "shipping_fee"
-    t.decimal "grand_total"
-    t.integer "delivery_status"
+    t.string "payment_methods", null: false
+    t.decimal "subtotal", null: false
+    t.decimal "shipping_fee", null: false
+    t.decimal "grand_total", null: false
+    t.integer "delivery_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["address"], name: "index_orders_on_address"
+    t.index ["addressee"], name: "index_orders_on_addressee"
+    t.index ["end_user_id"], name: "index_orders_on_end_user_id"
+    t.index ["phone_number"], name: "index_orders_on_phone_number"
   end
 
   create_table "shipping_fees", force: :cascade do |t|
