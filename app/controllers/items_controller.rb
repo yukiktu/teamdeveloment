@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @gacket_images = GacketImage.all
     #@artists = Artist.find(id: @items.artist)
     #↑初期に作ったテーブルがnullなのでそれを削除すると使えます
     #arrival = Arrival.where(item_id: @items)
@@ -36,7 +37,6 @@ class ItemsController < ApplicationController
     #@gacket_image = GacketImage.new(gacket_image_params)
     #@disc = Disc.new(disc_params)
     #@song = Song.new(song_params)
-
     #@song.disc = @disc
     #@disc.item = @item
     #@disc.genre = @genre
@@ -69,14 +69,14 @@ class ItemsController < ApplicationController
   private
     def item_params
      params.require(:item).permit(
-      :item_name, :list_price, :cost_price, :sales_status, :release_date, :jacket_number, gacket_images:[],
+      :item_name, :list_price, :cost_price, :sales_status, :release_date, :id, :image, :jacket_number, gacket_images_images:[],
+      #gacket_images_attributes: [:id, :image, :jacket_number,
       discs_attributes: [:id, :disc_name, :disc_number,
       songs_attributes: [:id, :recording_number, :song_title, :play_time ]])
   end
-
  # def item_params
  #     params.require(:item).permit(
- #      :item_name, :list_price, :cost_price, :sales_status, :release_date, :jacket_number, gacket_images:[],
+ #      :item_name, :list_price, :cost_price, :sales_status, :release_date, :jacket_number, gacket_images_images:[],
  #      disc_attributes: [:id,:genre_id, :item_id, :disc_name, :disc_number, ],
  #      song_attributes: [:id, :disc_id, :recording_number, :song_title, :play_time, ],
  #      )

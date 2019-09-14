@@ -28,12 +28,14 @@
          <%= f.date_select :release_date,class: "entry_field" %>
       </div>
 
-      <div class="field">
-         <%= f.label :gackt_images, "ジャケット画像" %>
+         <%= f.label :gacket_images, "ジャケット画像" %>
          <%= f.attachment_field :gacket_images_images, multiple: true %>
-         <!--i.attachment_field :image, multiple: true, name: "gacket_images_attributes[0][image][]" %
-        ↑refileのエラーです。ﾌﾄｼさんお願いします。-->
-      </div>
+         <%#= f.attachment_field :gacket_images_images, multiple: true %>
+         <%#= i.attachment_field :gacket_image, multiple: true, name: "gacket_images_attributes[0][image][]" %>
+
+      <!--<div class="field">
+        ↑refileのエラーです。ﾌﾄｼさんお願いします。
+      </div>-->
 
       <!--<div class="field">
          <%#= l.label :label_name, "レーベル" %>

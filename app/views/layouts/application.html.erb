@@ -6,21 +6,17 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!--<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
 
   <body>
-    <div id="container">
-  <div id="theTarget">
-    <div class="image1"></div>
-    <div class="image2"></div>
-    <div class="image3"></div>
-  </div>
-</div>
 
- <div class="main-visual">
-  <!-- <h1>About</h1> -->
- </div>
+ <!--<div class="main-visual">
+   <h1>About</h1>
+ </div>-->
 
     <%= yield %>
   </body>

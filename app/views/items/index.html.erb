@@ -1,25 +1,43 @@
 <% @items.each do |t| %>
-<%= t.item_name %>
-<%= t.list_price %>
-<%= t.cost_price %>
-<%= t.sales_status %>
-<%= t.release_date %>
+   <%= t.item_name %>
+   <%= t.list_price %>
+   <%= t.cost_price %>
+   <%= t.sales_status %>
+   <%= t.release_date %>
+  <% @gacket_images.each do |gacket_image| %>
+    <%= attachment_image_tag gacket_image, :image %>
+  <% end %>
 <% end %>
 
+ <%# @item.gacket_images.each do |image| %>
+    <%#= attachment_image_tag image, :image, :fill, 200, 200, format: 'jpeg' %>
+  <%# end %>
 
-<!--<div class="main">
+  <%# item.gacket_images.each do |g| %>
+     <%#= attachment_image_tag g, :image, :fill, 200, 200, format: 'jpeg' %>
 
-<%#= form_for (@fee) do |s| %>
-   <div class="field">
-      <%#= s.label :shipping_fee, "送料設定" %>
-      <%#= s.number_field :shipping_fee %>
-</div>
+<!--<div class="about">
+ <div class="slider">
+    <%= image_tag 'music.jpg' %>
+    <%= image_tag 'music2.jpg' %>
+    <%= image_tag 'record.jpg' %>
+ </div>
+</div>-->
 
-<%#= form_for () do |t| %>
-	<div class="field">
-	  <%#= t.label :tax_rate, "税率設定" %>
-	  <%#= t.number_field :tax_rate %>
-    </div>
-
+<%# if @item.gacket_images.present? %>
+  <%# @item.gacket_images.each do |image| %>
+    <%#= attachment_image_tag gacket_image, :image, :fill, 200, 200, format: "jpg" %>
+  <%# end %>
+  <%# else %>
+    <%#= image_tag 'no_image.jpg', size: '200x200' %>
 <%# end %>
-<%# end %> -->
+
+
+<!--<div class="post-meta-top">
+    <div class="post-image">
+      <%#= attachment_image_tag @gacket_image, :image %>
+    </div>
+    </div>-->
+<%# @items.each do |item| %>
+    <%# item.gacket_images.each do |j| %>
+        <%#= attachment_image_tag j, :image, :fill, 60, 60 %>

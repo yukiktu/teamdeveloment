@@ -6,8 +6,9 @@ class Item < ApplicationRecord
         Item.all
       end
     end
-    
+
     has_many :gacket_images
+    #accepts_nested_attributes_for :gacket_images
     accepts_attachments_for :gacket_images, attachment: :image
     #belongs_to :label
     has_many :discs
