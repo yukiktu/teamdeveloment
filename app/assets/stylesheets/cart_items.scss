@@ -43,14 +43,14 @@
 
 .body{
 	background-color: gray;
-	background-image: url(washitexture01_TP_V);
+	// background-image: url(washitexture01_TP_V);
 	width: 1000px;
 	height: auto;
 	margin: auto;
 }
 .cart_box{
-    background-color: white;
-    // background-image: url(washitexture01_TP_V);
+    // background-color: white;
+    background-image: url(ELLY863_washi14132906_TP_V);
 	padding: 10px;
 }
 h1{
@@ -58,7 +58,7 @@ h1{
 	margin-bottom: 10px;
 }
 .one_item{
-	background-color: orange;
+	// background-color: orange;
 	margin-bottom: 10px;
 	width: 100%;
 	height: auto;
@@ -66,7 +66,7 @@ h1{
 }
 
 .cd_info{
-	background-color: #ff7fbf;
+	// background-color: #ff7fbf;
 	width: 980px;
 	height: auto;
 	display: inline-block;
@@ -90,9 +90,8 @@ h1{
 	float: left;
 }
 .cd_name_block{
-	background-color: blue;
+	// background-color: blue;
 	display: inline-block;
-	// text-align: center;
 	float: left;
 	width: 740px;
 	height: auto;
@@ -104,63 +103,58 @@ h1{
 .cd_table{
 	height: 100%;
 }
-// .price{
-// 	background-color: red;
-// 	float: right;
-// 	float: bottom;
-// 	position: absolute;
-// 	right: 0;
-// 	bottom: 0;
-// }
 .table_block{
-	background-color: red;
+	// background-color: red;
 	margin-right: 10px;
 	margin-bottom: 10px;
 	margin-left: 10px;
 	height: 40px;
 	width: 960px;
-	// float: right;
 	text-align: right;
 }
 .table_1{
-	background-color: blue;
-	// text-align: right;
+	// background-color: blue;
 	width: 200px;
 	height: 100%;
 	float: right;
 }
 .total{
-	background-color: green;
-	// margin-right: 10px;
+	// background-color: white;
+    background-image: url(ELLY863_washi14132906_TP_V);
 	margin-bottom: 10px;
-	// margin-left: 10px;
 	height: 40px;
-	width: 980px;
+	width: 1000px;
 	float: right;
-	// text-align: right;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
 }
 .table_total{
-	background-color: red;
+	// background-color: red;
 	width: 200px;
 	height: 100%;
 	float: right;
+	margin-right: 16px;
 }
 
 .cd_table td{
-	background-color: yellow;
+	// background-color: yellow;
 	width: 900px;
 	padding: 4px 10px;
 }
 .table_1 td{
-	background-color: yellow;
+	// background-color: yellow;
 	padding: 2px 2px;
 	text-align: right;
 }
 .table_total td{
-	background-color: yellow;
+	// background-color: yellow;
 	padding: 2px 2px;
 	text-align: right;
 }
+.button_table{
+
+}
+
 
 
 
