@@ -1,0 +1,41 @@
+/admin_users/orders/shipping
+<% if flash[:notice].present? %>
+	flash[:notice]
+<% else %>
+
+<% @oders.each do |t| %>
+	<table>
+		<caption>
+			<% s_options = [["未発送", 0],["発送済み", 1]] %>
+			<%= t.form.select :delivery_status, s_options %>
+		</caption>
+		<div>
+			<%= t.addressee%><br>
+			<%= t.postal_code %><br>
+			<%= t.adress %>
+		</div>
+		<thead>
+			<tr>
+				<th>購入日</th>
+				<th>購入者</th>
+				<th>商品</th>
+				<th>アーティスト</th>
+				<th>購入枚数</th>
+				<th>価格(税抜き)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<% @order_items.each do |i| %>
+					<td><%= t.created_at %></td>
+					<td><%= t.user.last_name t.user.first.name%></td>
+					<td><%= i.name %></td>
+					<td><%= i.artist_name %><td>
+					<td><%= i.item_count %></td>
+					<td><%= i.list_price %></td>
+				<% end %>
+			</tr>
+		</tbody>
+	</table>
+<% end %>
+<% end %>

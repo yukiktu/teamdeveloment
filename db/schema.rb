@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_090922) do
     t.decimal "shipping_fee", null: false
     t.decimal "grand_total", null: false
     t.integer "delivery_status", default: 0
+    t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_orders_on_address"
