@@ -70,4 +70,12 @@ gem "refile-mini_magick"
 gem 'kaminari', '~> 1.1.1'
 
 gem 'bootstrap-sass', '~> 3.3.6'
+# <<<<<<< HEAD
 gem 'jquery-rails'
+
+gem 'cocoon'
+
+gem 'pry-rails'
+# =======
+# gem 'jquery-rails'
+# >>>>>>> d93e7231977a4fb586ec1e590655a6a985814c81
