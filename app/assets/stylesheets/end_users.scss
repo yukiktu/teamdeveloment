@@ -14,9 +14,14 @@
 	width: 100%;
 	height: 200px;
 }
-.table_1{
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.table {
 	background-color: orange;
-	// float: left;
+	float: left;
 	width: 80%;
 	height: auto;
 	// margin: 10px;
@@ -24,19 +29,23 @@
 
 .table td{
 	background-color: green;
-	// float: left;
+	float: left;
 	width: auto;
 	margin-right: 2px;
+	text-align: left;
+}
+.td_title{
+	text-align: right;
 }
 .prof_blo_left{
 	background-color: red;
-	// float: left;
+	float: left;
 	width: 80%;
 	height: auto;
 }
 .prof_blo_right{
 	background-color: yellow;
-	float: left;
+	float: right;
 	width: 100px;
 	height: 100%;
 }
