@@ -12,9 +12,6 @@ resources :labels
   resources :cart_items
   resources :orders
   resources :items
-
-
-
 # >>>>>>> d93e7231977a4fb586ec1e590655a6a985814c81
 end
 
