@@ -28,7 +28,8 @@ class LabelsController < ApplicationController
 		else
 			@label = Label.find_by(label_name: label_params["label_name"])
 		end
-		# binding.pry
+
+		 # binding.pry
 		@item = Item.new(item_params)
 		# @item.id = 1
 		 @item.artist_id = @artist.id
@@ -42,11 +43,11 @@ class LabelsController < ApplicationController
 
 	private
 		def artist_params
-			params.require(:artist).permit(:id, :artist_name)
+			params.require(:artist).permit(:artist_name)
 		end
 
 		def label_params
-    		params.require(:label).permit(:id, :label_name)
+    		params.require(:label).permit(:label_name)
   		end
 
   		def genre_params
