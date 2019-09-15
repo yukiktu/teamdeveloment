@@ -1,0 +1,56 @@
+<% @items.each do |t| %>
+<%#= t.discs.id %>
+<table>
+	<thead>
+		<tr>
+			<th>item_ID</th>
+			<th>item(label_id)</th>
+			<th>レーベル名</th>
+			<th>ディスクID</th>
+			<th>ディスク名</th>
+			<th>アーティスト_ID</th>
+			<th>アーティスト</th>
+			<th>商品名</th>
+			<th>定価</th>
+			<th>販売ステータス</th>
+			<th>発売日</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><%= t.id %></td>
+			<td><%= t.label_id %></td>
+			<td><%# @label_id = t.label_id %>
+				<%#= @label.label_name %></td>
+			<th><%#@item_id = t.id %>
+				<%#= @disc %></th>
+			<th><%#= @disc.disc_name %></th>
+			<th><%#= t.artist_id %></th>
+			<th><%#= t.artist_id %></th>
+			<td><%= t.item_name %></td>
+			<td><%= t.list_price %></td>
+			<th><%= t.sales_status %></th>
+			<th><%= t.release_date %></th>
+		</tr>
+	</tbody>
+</table>
+<% end %>
+<%# end %>
+
+
+<!--<div class="main">
+
+<%#= form_for (@fee) do |s| %>
+   <div class="field">
+      <%#= s.label :shipping_fee, "送料設定" %>
+      <%#= s.number_field :shipping_fee %>
+</div>
+
+<%#= form_for () do |t| %>
+	<div class="field">
+	  <%#= t.label :tax_rate, "税率設定" %>
+	  <%#= t.number_field :tax_rate %>
+    </div>
+
+<%# end %>
+<%# end %> -->

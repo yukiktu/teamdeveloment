@@ -1,0 +1,21 @@
+追加する商品のジャンルおよびアーティスト、レーベルを指定してくだい。
+<%= form_for @label, url: labels_path do |l| %>
+<%= form_for @genre, url: labels_path do |g| %>
+<%= form_for @artist, url: labels_path do |a| %>
+<%= form_for @item, url: labels_path do |i| %>
+<label>レーベル</label>
+<%= l.text_field :label_name, class: "entry_field" %>
+<label>ジャンル</label>
+<%= g.text_field :genre_name, class: "entry_field" %>
+<label>アーティスト</label>
+<%= a.text_field :artist_name, class: "entry_field" %>
+<label>商品名</label>
+<%= i.text_field :item_name, class: "entry_field" %>
+
+<%= i.submit "次へ" %>
+
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+

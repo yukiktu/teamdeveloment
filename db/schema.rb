@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_09_11_090922) do
+=======
+ActiveRecord::Schema.define(version: 2019_09_14_075315) do
+>>>>>>> 1878bcafb1943c9ca1b190dbac57f45cfcee8d75
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "yuuki0421ktu@gmail.com", null: false
@@ -63,8 +67,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_090922) do
   end
 
   create_table "discs", force: :cascade do |t|
-    t.integer "artist_id"
-    t.integer "genre_id"
     t.integer "item_id"
     t.string "disc_name"
     t.integer "disc_number"
@@ -126,6 +128,8 @@ ActiveRecord::Schema.define(version: 2019_09_11_090922) do
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "genre_id"
+    t.integer "artist_id"
   end
 
   create_table "labels", force: :cascade do |t|
