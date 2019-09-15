@@ -2,8 +2,8 @@
  <%= form_for(@arrival_new) do |t| %>
 
 <div class="field">
- <label>CD</label>
-  <%= t.text_field :item_id %>
+ <label>商品名</label>
+  <%#= t.collection_select(:name, @categories, :id, :item_name) %>
 
   <label>アーティスト</label>
 

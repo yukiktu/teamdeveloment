@@ -14,6 +14,7 @@ class Item < ApplicationRecord
     belongs_to :artist
     has_many :discs
     accepts_nested_attributes_for :discs
+    has_many :arrivals
     #has_many :songs
     #accepts_nested_attributes_for :songs
 end
