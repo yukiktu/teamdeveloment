@@ -1,0 +1,51 @@
+ <h1>新規発注</h1>
+ <%= form_for(@arrival_new) do |t| %>
+
+<div class="field">
+ <label>CD</label>
+  <%= t.text_field :item_id %>
+
+  <label>アーティスト</label>
+
+
+  <label>発注数</label>
+  <%= t.text_field :arrival_count %>
+
+  <label>発注先</label>
+
+
+  <label>発注日</label>
+  <%= t.text_field :purchase_order_date %>
+
+  <label>入荷予定日</label>
+  <%= t.text_field :arrival_expected_date %>
+
+ <div class="actions">
+  <%= t.submit %>
+
+</div>
+
+ <% end %>
+</div>
+
+<div class="arrival index">
+ <h1>発注履歴</h1>
+ <% @arrivals.each do |arrival| %>
+  <p>CD</p>
+  <span><%= arrival.item_id %></span>
+
+  <p>アーティスト</p>
+
+  <p>発注数</p>
+  <span><%= arrival.arrival_count %></span>
+
+  <p>発注先</p>
+
+  <p>発注日</p>
+  <span><%= arrival.purchase_order_date %></span>
+
+  <p>入荷予定日</p>
+  <span><%= arrival.arrival_expected_date %></span>
+
+</div>
+ <% end %>
