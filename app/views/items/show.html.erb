@@ -2,15 +2,15 @@
 
 <div class="main">
 	<div class="sidebar">
-	    <div class="s_image"></div>
-	        <% @item.list_price,class: "s.price" %>
-	        <% @genre.ganre_name,class: "s.genre" %>
-	        <% @rabel.rabel_name,class: "s.rabel" %>
+	    <div class="s_image"><%= attachment_image_tag @gacket_image, :image %></div>
+	        <%= @item.list_price %>
+	        <%= @genre.genre_name %>
+	        <%= @label.label_name %>
         </div>
 
         <div class="s.titles">
-        		<% @item.item_name,class: "s.title" %>
-        		<% @artist.artist_name,class: "s.artist" %>
+        		<%= @item.item_name %>
+        		<%= @artist.artist_name %>
 
         	<table class="s.table">
         		<thead>
@@ -23,14 +23,11 @@
         		<tbody>
         			<% @song.each do |s| %>
         			<tr>
-        				<td><% s.song_title %></td>
-        				<td><% @artist.artist_name %></td>
-        				<td><% s.play_time %></td>
+        				<td><%= s.song_title %></td>
+        				<td><%= @artist.artist_name %></td>
+        				<td><%= s.play_time %></td>
         			</tr>
         			<% end %>
         		</tbody>
         	</table>
     </div>
-
-
-

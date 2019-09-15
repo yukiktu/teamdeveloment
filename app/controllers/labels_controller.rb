@@ -14,17 +14,19 @@ class LabelsController < ApplicationController
 		else
 			@artist = Artist.find_by(artist_name: artist_params["artist_name"])
 		end
+
 		if Genre.where(genre_name: genre_params["genre_name"]).empty?
 			@genre = Genre.new(genre_params)
 			@genre.save
 		else
 			@genre = Genre.find_by(genre_name: genre_params["genre_name"])
 		end
+
 		if Label.where(label_name: label_params["label_name"]).empty?
 			@label = Label.new(label_params)
 			@label.save
 		else
-			@label = Label.find_by(label_name: genre_params["label_name"])
+			@label = Label.find_by(label_name: label_params["label_name"])
 		end
 		# binding.pry
 		@item = Item.new(item_params)
