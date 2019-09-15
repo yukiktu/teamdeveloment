@@ -10,7 +10,7 @@
 
 <body class="body">
   <h1>カート内商品</h1>
-  <%# @cart_items.each do |c| %>
+  <% @cart_items.each do |c| %>
   <div class="cart_box">
     <div class="one_item">
       <%# @item.each do |item| %><!--たぶんいらないかも-->
@@ -19,26 +19,26 @@
         </div>
         <div class="cd_name_block">
           <table class="cd_table">
-            <tr><td><h2><%#= @c.list_albam_name %>chicken zombies</h2></td></tr>
-            <tr><td><h2><%#= @c.list_arthist_name %>THEE MICHELLE GUN ELLEPHANT</h2></td></tr>
-            <tr><td><h4><%#= @c.list_genre %>Rock</h4></td></tr>
-            <tr><td><h4><%#= @c.list_label %>日本コロムビア</h4></td></tr>
-            <tr><td><h4><%#= @c.list_price %>¥2,000</h4></td></tr>
+            <tr><td><h2><%= @item.item_name %>chicken zombies</h2></td></tr>
+            <tr><td><h2><%= @item.artists.artist_name %>THEE MICHELLE GUN ELLEPHANT</h2></td></tr>
+            <tr><td><h4><%= @item.genre.genre_name %>Rock</h4></td></tr>
+            <tr><td><h4><%= @item.label.list_label %>日本コロムビア</h4></td></tr>
+            <tr><td><h4><%= @item.list_price %>¥2,000</h4></td></tr>
           </table>
         </div>
       </div>
       <div class="table_block">
         <table class="table_1">
           <tr>
-            <td><p><%#= c.number_field :item_count %>2点</p></td>
+            <td><p><%= c.number_field :item_count %>2点</p></td>
             <td><p>小計</p></td>
-            <td><p><%#price = c.item_count*c.list_price*@tax_rate%>
-    <%# price %>¥4,000</p></td>
+            <td><p><% price = c.item_count*c.list_price*1.08#@tax_rate %>
+    <% price %>¥4,000</p></td>
           </tr>
         </table>
       </div>
     </div>
-    <%# end %>
+    <% end %>
 
     <div class="one_item">
       <div class="cd_info">
