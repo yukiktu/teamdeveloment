@@ -1,4 +1,4 @@
 class Artist < ApplicationRecord
 
-	has_many :discs
+	has_many :items
 end
