@@ -3,6 +3,7 @@ class CartItemsController < ApplicationController
 
 	def edit
 		@cart_item = Cart_item.where(end_user_id: currentuser)
+		@item = Item.find_by(id: @cart_item.item_id)
 	end
 
 	def create
