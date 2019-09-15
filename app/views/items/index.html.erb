@@ -1,18 +1,20 @@
-<div class="itemheader"></div>
-
+<div class="itemheader">
+</div>
 <div class="i_main">
-
 	<% @items.each do |i| %>
-		<div class="oneitem">
-			<% i.gacket_images.each do |gacket_image| %>
-				<div class="j_image"><%= attachment_image_tag @gacket_image, :image %></div>
-			<% end %>
-			<%= i.item_name %>
-			<%= i.list_price %>
-			<%= @artist.artist_name %>
-			<%= i.sales_status %>
-		</div>
+	<%#binding.pry%>
+			<div class="oneitem">
+				<%= link_to(item_path(i)) do %>
+					<% i.gacket_images.each do |gacket_image| %>
+						<div class="j_image">
+							<%=attachment_image_tag @gacket_image, :image %>
+						</div>
+					<% end %>
+					<%= i.item_name %>
+				<% end %>
+				<%= i.list_price %>
+				<%= @artist.artist_name %>
+				<%= i.sales_status %>
+			</div>
 	<% end %>
 </div>
-
-
