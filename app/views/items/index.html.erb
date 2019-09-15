@@ -3,12 +3,16 @@
 <div class="i_main">
 
 	<% @items.each do |i| %>
-	<div class="oneitem">
-		<div class="j_image"></div>
-		<% i.item_name %>
-		<% i.list_price %>
-		<% @artist.artist_name %>
-		<% i.sales_status %>
-	</div>
+		<div class="oneitem">
+			<% i.gacket_images.each do |gacket_image| %>
+				<div class="j_image"><%= attachment_image_tag @gacket_image, :image %></div>
+			<% end %>
+			<%= i.item_name %>
+			<%= i.list_price %>
+			<%= @artist.artist_name %>
+			<%= i.sales_status %>
+		</div>
+	<% end %>
 </div>
-<% end %>
+
+
