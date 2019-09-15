@@ -3,6 +3,7 @@ class ArrivalsController < ApplicationController
   def index
   	@arrival_new = Arrival.new
   	@arrivals = Arrival.all
+    @categories = Item.all
   end
 
   def create
@@ -12,7 +13,6 @@ class ArrivalsController < ApplicationController
   end
 
   def edit
-   @
   end
 
   def arrival_params
