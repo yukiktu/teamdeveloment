@@ -10,6 +10,8 @@ class ItemsController < ApplicationController
     # end
     @genre = Genre.find_by(@item)
     @artist = Artist.find_by(@artist)
+    #@gacket_image = Gacket_image.find(params[:id])
+
     #@artists = Artist.find(id: @items.artist)
     #↑初期に作ったテーブルがnullなのでそれを削除すると使えます
     #arrival = Arrival.where(item_id: @items)
@@ -70,9 +72,9 @@ class ItemsController < ApplicationController
   end
   def show
     @item = Item.find(params[:id])
-    #@gacket_image = Gacket_image.find(params[:id])
-    #@artist = Artist.find(params[:id])
-    #@label = Label.find(params[:id])
+    @gacket_image = Gacket_image.find(params[:id])
+    @artist = Artist.find(params[:id])
+    @label = Label.find(params[:id])
     @disc = Disc.find(params[:id])
     @song = Song.find(params[:id])
    end

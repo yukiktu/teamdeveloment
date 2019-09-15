@@ -1,0 +1,68 @@
+<div class="create_display">
+   <h2>商品詳細を記録する</h2>
+   <%#= form_for @label, url: items_path do |l| %>
+   <%#= form_for @artist, url: items_path do |a| %>
+   <%= form_for @item do |f| %>
+   <%#= f.object %><%#= l.object %><%#= a.object %>
+   <%#= form_for @disc, url: items_path do |d| %>
+   <%#= form_for @song, url: items_path do |s| %>
+   <%#= form_for @genre, url: items_path do |g| %>
+   <%#= form_for @gacket_image, url: items_path do |g_image| %>
+      <div class="field">
+         <%= f.label :item_name, "商品名"%>
+         <%= f.text_field :item_name, class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= f.label :list_price, "販売価格" %>
+         <%= f.number_field :list_price,class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= f.label :cost_price, "原価" %>
+         <%= f.number_field :cost_price, class: "entry_field" %>
+      </div>
+      <div class="field">
+         <%= f.label :sales_status, "販売ステータス" %>
+         <%= f.select(:sales_status, [["販売中",1],["停止中",2]], class: "entry_field") %>
+      </div>
+      <div class="field">
+         <%= f.label :release_date, "発売日" %>
+         <%= f.date_select :release_date,class: "entry_field" %>
+      </div>
+
+      <div class="field">
+         <%= f.label :gackt_images, "ジャケット画像" %>
+         <%= f.attachment_field :gacket_images_images, multiple: true %>
+         <!--i.attachment_field :image, multiple: true, name: "gacket_images_attributes[0][image][]" %
+        ↑refileのエラーです。ﾌﾄｼさんお願いします。-->
+      </div>
+
+      <!-- <div class="field">
+         <%#= l.label :label_name, "レーベル" %>
+         <%#= l.text_field :label_name, class: "entry_field" %>
+      </div> --><!--
+      <div class="field">
+         <%#= g.label :genre_name, "ジャンル" %>
+         <%#= g.text_field :genre_name,class: "entry_field" %>
+      </div>-->
+      <!-- <div class="field">
+         <%#= a.label :genre_name, "アーティスト" %>
+         <%#= a.text_field :artist_name,class: "entry_field" %>
+      </div> -->
+      <div id="discs">
+         <%= f.fields_for :discs do |disc| %>
+         <%= render 'disc_fields', f: disc %>
+         <% end %>
+
+         <div id="links">
+            <%= link_to_add_association 'add disc',f, :discs %>
+         </div>
+
+
+      </div>
+     <%= f.submit "保存する" %>
+   </div>
+   <%# end %>
+   <%# end %>
+   <%# end %>
+   <%# end %>
+   <% end %>
