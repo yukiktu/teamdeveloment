@@ -1,6 +1,23 @@
-<% @items.each do |t| %>
+<div class="itemheader"></div>
+
+<div class="i_main">
+
+	<% @items.each do |i| %>
+	<div class="oneitem">
+		<div class="j_image"></div>
+		<% i.item_name %>
+		<% i.list_price %>
+		<% @artist.artist_name %>
+		<% i.sales_status %>
+	</div>
+<% end %>
+
+</div>
+
+
+<%# @items.each do |t| %>
 <%#= t.discs.id %>
-<table>
+<!--<table>
 	<thead>
 		<tr>
 			<th>item_ID</th>
@@ -34,8 +51,9 @@
 		</tr>
 	</tbody>
 </table>
-<% end %>
 <%# end %>
+<%# end %>
+-->
 
 
 <!--<div class="main">
