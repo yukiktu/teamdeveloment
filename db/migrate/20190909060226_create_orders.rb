@@ -11,7 +11,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.decimal :shipping_fee
       t.decimal :grand_total
       t.integer :delivery_status
-
+      t.string :artist_name
       t.timestamps
     end
   end

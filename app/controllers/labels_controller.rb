@@ -36,12 +36,15 @@ class LabelsController < ApplicationController
 	end
 
 	private
+
 		def artist_params
 			params.require(:artist).permit(:id, :artist_name)
 		end
+
 		def label_params
     		params.require(:label).permit(:id, :label_name)
   		end
+
   		def genre_params
   			params.require(:genre).permit(:genre_name)
   		end

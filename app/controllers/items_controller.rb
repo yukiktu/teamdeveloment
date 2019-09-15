@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
     # #binding.pry
     #@disc.artist_id = @artist.id
     #@genre.save
-    # @item.update
+    @item.update(item_params)
     #@disc.save
     #@song.save
     #@artist.label = @label

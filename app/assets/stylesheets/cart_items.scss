@@ -1,0 +1,160 @@
+// Place all the styles related to the cart_items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.table{
+	width: 80%;
+	height: 260px;
+	margin: 0 auto;
+	padding: 10px;
+	display: flex;
+}
+.item_image{
+	background-color: gray;
+	margin-right: 10px;
+}
+.big{
+	height: 240px;
+	width:  240px;
+}
+.calculation_box{
+	width: 80%;
+	text-align: right;
+}
+.line{
+	height: 24px;
+	width: 80%;
+	text-align: right;
+	margin: 0 auto;
+	border-bottom: 2px solid black;
+}
+.line_box{
+	width: 150px;
+	float: right;
+}
+.total{
+	margin-top: 20px;
+}
+
+
+
+
+
+.body{
+	// background-color: gray;
+	// background-image: url(washitexture01_TP_V);
+	width: 1000px;
+	height: auto;
+	margin: auto;
+}
+.cart_box{
+    // background-color: white;
+    background-image: url(ELLY863_washi14132906_TP_V);
+	padding: 10px;
+}
+h1{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.one_item{
+	// background-color: orange;
+	margin-bottom: 10px;
+	width: 100%;
+	height: auto;
+	border-top: 1px solid black;
+}
+
+.cd_info{
+	// background-color: #ff7fbf;
+	width: 980px;
+	height: auto;
+	display: inline-block;
+}
+.jacket_img_1{
+	background-image: url(thee);
+	background-size: cover;
+	width:200px;
+	height:200px;
+	margin: 10px;
+	display: inline-block;
+	float: left;
+}
+.jacket_img_2{
+	background-image: url(91RVgur54DL._SL1500_);
+	background-size: cover;
+	width:200px;
+	height:200px;
+	margin: 10px;
+	display: inline-block;
+	float: left;
+}
+.cd_name_block{
+	// background-color: blue;
+	display: inline-block;
+	float: left;
+	width: 740px;
+	height: auto;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	position: relative;
+}
+.cd_table{
+	height: 100%;
+}
+.table_block{
+	// background-color: red;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	height: 40px;
+	width: 960px;
+	text-align: right;
+}
+.table_1{
+	// background-color: blue;
+	width: 200px;
+	height: 100%;
+	float: right;
+}
+.total{
+	// background-color: white;
+    background-image: url(ELLY863_washi14132906_TP_V);
+	margin-bottom: 10px;
+	height: 40px;
+	width: 1000px;
+	float: right;
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+}
+.table_total{
+	// background-color: red;
+	width: 200px;
+	height: 100%;
+	float: right;
+	margin-right: 16px;
+}
+
+.cd_table td{
+	// background-color: yellow;
+	width: 900px;
+	padding: 4px 10px;
+}
+.table_1 td{
+	// background-color: yellow;
+	padding: 2px 2px;
+	text-align: right;
+}
+.table_total td{
+	// background-color: yellow;
+	padding: 2px 2px;
+	text-align: right;
+}
+.button_table{
+
+}
+
+
+
+

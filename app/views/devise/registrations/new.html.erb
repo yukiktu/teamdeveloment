@@ -1,3 +1,7 @@
+<link rel="stylesheet" type="text/css" href="devise.css">
+
+<div class="devise_background_img">
+
 <h1 class="welcom_message">WELCOME NAGANO RECORD</h1>
 <div class="end_user_infomation">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -29,14 +33,14 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field_box" %>
         </div>
         <div class="field">
-          <%= f.label :password, class: "labels" %>
+          <%= f.label :パスワード, class: "labels" %>
             <% if @minimum_password_length %>
               <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
               <% end %>
                 <%= f.password_field :password, autocomplete: "new-password", class: "field_box" %>
         </div>
         <div class="field">
-          <%= f.label :password_confirmation, class: "labels" %>
+          <%= f.label :確認用パスワード, class: "labels" %>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field_box" %>
         </div>
         <div class="actions">
