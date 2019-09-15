@@ -5,25 +5,25 @@
     <!--autocomplete消してあります。実装可能性でしたら追記してください。-->
       <div class="entries_field">
         <div class="field"> <label class="labels">姓</label>
-          <%= f.email_field :last_name, autofocus: true, class: "field_box" %>
+          <%= f.text_field :last_name, autofocus: true, class: "field_box" %>
         </div>
         <div class="field"> <label class="labels">名</label>
-          <%= f.email_field :first_name, autofocus: true, class: "field_box" %>
+          <%= f.text_field :first_name, autofocus: true, class: "field_box" %>
         </div>
         <div class="field"> <label class="labels">フリガナ(姓)</label>
-          <%= f.email_field :kana_last_name, autofocus: true, class: "field_box" %>
+          <%= f.text_field :kana_last_name, autofocus: true, class: "field_box" %>
         </div>
         <div class="field"> <label class="labels">フリガナ(名)</label>
-          <%= f.email_field :kana_first_name, autofocus: true, class: "field_box" %>
+          <%= f.text_field :kana_first_name, autofocus: true, class: "field_box" %>
         </div>
         <div class="field"> <label class="labels">郵便番号</label>
-          <%= f.email_field :postal_code, autofocus: true, class: "field_box" %>
+          <%= f.text_field :postal_code, autofocus: true, class: "field_box" %>
         </div>
         <div class="field"> <label class="labels">住　所</label>
-          <%= f.email_field :address, autofocus: true, class: "field_box" %>
+          <%= f.text_field :address, autofocus: true, class: "field_box" %>
         </div>
         <div class="field"> <label class="labels">電話番号</label>
-          <%= f.email_field :phone_number, autofocus: true, class: "field_box" %>
+          <%= f.text_field :phone_number, autofocus: true, class: "field_box" %>
         </div>
         <div class="field"> <label class="labels">メールアドレス</label>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field_box" %>
