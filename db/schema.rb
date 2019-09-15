@@ -11,10 +11,10 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_09_14_075315) do
-=======
 ActiveRecord::Schema.define(version: 2019_09_11_090922) do
->>>>>>> d93e7231977a4fb586ec1e590655a6a985814c81
+=======
+ActiveRecord::Schema.define(version: 2019_09_14_075315) do
+>>>>>>> 1878bcafb1943c9ca1b190dbac57f45cfcee8d75
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "yuuki0421ktu@gmail.com", null: false
@@ -160,10 +160,7 @@ ActiveRecord::Schema.define(version: 2019_09_11_090922) do
     t.decimal "shipping_fee", null: false
     t.decimal "grand_total", null: false
     t.integer "delivery_status", default: 0
-<<<<<<< HEAD
-=======
     t.string "artist_name"
->>>>>>> d93e7231977a4fb586ec1e590655a6a985814c81
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_orders_on_address"
