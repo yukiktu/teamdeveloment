@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+before_action :authenticate_admin_user!, only: [:edit, :update]
   def index
     @items = Item.all#where(label_id: 42)
     # if @label_id.nil?
