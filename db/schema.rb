@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_14_075315) do
+ActiveRecord::Schema.define(version: 2019_09_16_044327) do
 
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "yuuki0421ktu@gmail.com", null: false
@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(version: 2019_09_14_075315) do
     t.integer "arrival_count"
     t.date "purchase_order_date"
     t.date "arrival_expected_date"
-    t.integer "arrival_status"
+    t.integer "arrival_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "supplier"
   end
 
   create_table "artists", force: :cascade do |t|
