@@ -1,2 +1,30 @@
-<h1>Arrivals#edit</h1>
-<p>Find me in app/views/arrivals/edit.html.erb</p>
+<h1>編集画面</h1>
+<%= form_for(@arrival) do |t| %>
+
+<div class="field">
+ <label>商品名</label>
+  <%#= f.label :item_id %>
+  <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
+
+  <label>アーティスト</label>
+
+
+  <label>発注数</label>
+  <%= t.number_field :arrival_count %>
+
+  <label>発注先</label>
+
+
+  <label>発注日</label>
+  <%= t.date_field :purchase_order_date %>
+
+  <label>入荷予定日</label>
+  <%= t.date_field :arrival_expected_date %>
+
+ <div class="actions">
+  <%= t.submit %>
+
+</div>
+
+ <% end %>
+</div>

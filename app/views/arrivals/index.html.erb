@@ -1,24 +1,25 @@
  <h1>新規発注</h1>
- <%= form_for(@arrival_new) do |t| %>
+ <%= form_for(@arrival) do |t| %>
 
 <div class="field">
  <label>商品名</label>
-  <%#= t.collection_select(:name, @categories, :id, :item_name) %>
+  <%#= f.label :item_id %>
+  <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
 
   <label>アーティスト</label>
-
+　<%= t.collection_select(:item_id, @artists, :id, :artist_name) %>
 
   <label>発注数</label>
-  <%= t.text_field :arrival_count %>
+  <%= t.number_field :arrival_count %>
 
   <label>発注先</label>
-
+  <%= t.text_field :supplier %>
 
   <label>発注日</label>
-  <%= t.text_field :purchase_order_date %>
+  <%= t.date_field :purchase_order_date %>
 
   <label>入荷予定日</label>
-  <%= t.text_field :arrival_expected_date %>
+  <%= t.date_field :arrival_expected_date %>
 
  <div class="actions">
   <%= t.submit %>
@@ -28,24 +29,34 @@
  <% end %>
 </div>
 
-<div class="arrival index">
- <h1>発注履歴</h1>
- <% @arrivals.each do |arrival| %>
-  <p>CD</p>
-  <span><%= arrival.item_id %></span>
 
-  <p>アーティスト</p>
+<h1>発注・入荷一覧</h1>
+<% @arrivals.each do |arrival| %>
 
-  <p>発注数</p>
-  <span><%= arrival.arrival_count %></span>
-
-  <p>発注先</p>
-
-  <p>発注日</p>
-  <span><%= arrival.purchase_order_date %></span>
-
-  <p>入荷予定日</p>
-  <span><%= arrival.arrival_expected_date %></span>
-
-</div>
- <% end %>
+  <table>
+    <thead>
+      <tr>
+        <th>商品名:</th>
+        <th><%= arrival.item.item_name %><th>
+        <th>アーティスト名:</th>
+        <th><% @artist_id = arrival.item.artist_id %><%#= @artist.artist_name %></th>
+        <th>発注数:</th>
+        <th><%= arrival.arrival_count %><th>
+        <th>発注先:</th>
+        <th><%= arrival.supplier %></th>
+        <th>発注日:</th>
+        <th><%= arrival.purchase_order_date %><th>
+        <th>入荷予定日:</th>
+        <th><%= arrival.arrival_expected_date %><th>
+        <%#= arrival.select :l_status_id, Arrival.l_status_ids.keys, {}, class: "select-default" %>
+        <%= link_to "編集", edit_arrival_path(arrival) %>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <%#= @item.item_name %>
+      </tr>
+    </tbody>
+  </table>
+<%# end %>
+<% end %>
