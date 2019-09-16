@@ -1,4 +1,6 @@
 class LabelsController < ApplicationController
+before_action :authenticate_user!
+before_action :check_admin, only: [:new, :create]
 
 	def new
 		@label = Label.new
