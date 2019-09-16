@@ -24,7 +24,6 @@
 .j_image{
     width: 270px;
     height: 270px;
-    background-image: url(わんおく.jpg);
     background-size: cover;
 }
 
@@ -65,7 +64,7 @@
 
 .sidebar{
 	width: 350px;
-	height: auto;
+	height: 1000px;
 	float: left;
 	margin-left: 90px;
 }
@@ -74,8 +73,6 @@
 
 	width: 280px;
 	height: 280px;
-	background-image: url(わんおく.jpg);
-	background-size: cover;
 	margin-left: 30px;
 	margin-top: 75px;
 
@@ -107,8 +104,8 @@
 }
 
 .s.titles{
-	padding-top: 20px;
-	font-size: 45px;
+    width: 700px;
+    height: 350px;
 }
 
 .s.artist{
@@ -125,6 +122,3 @@
 
 }
 
-s.table{
-	padding-top: 250px;
-}

@@ -37,7 +37,7 @@ class LabelsController < ApplicationController
 		 @item.label_id = @label.id
 		@item.save
 		#session[:temp_artist_name] = @artist.artist_name#params[:artist]
-		# binding.pry
+		#binding.pry
 		redirect_to edit_item_path(@item)
 	end
 

@@ -7,7 +7,7 @@
 				<%= link_to(item_path(i)) do %>
 					<% i.gacket_images.each do |gacket_image| %>
 						<div class="j_image">
-							<%=attachment_image_tag gacket_image, :image %>
+							<%=attachment_image_tag gacket_image, :image, :fill, 270, 270 %>
 						</div>
 					<% end %>
 					<%= i.item_name %>

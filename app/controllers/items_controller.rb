@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
   def show
      @item = Item.find(params[:id])
     # @genre = Genre.find_by(item_id: @item.id)
-    # @gacket_image = Gacket_image.find(item_id: @item.id)
+    #@gacket_image = Image.find(item_id: @item.id)
     # @artist = Artist.find(params[:id])
     # @label = Label.find(params[:id])
     # @disc = Disc.find(params[:id])
