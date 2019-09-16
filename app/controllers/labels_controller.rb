@@ -1,5 +1,5 @@
 class LabelsController < ApplicationController
-before_action :authenticate_user!
+before_action :authenticate_admin_user!
 before_action :check_admin, only: [:new, :create]
 
 	def new

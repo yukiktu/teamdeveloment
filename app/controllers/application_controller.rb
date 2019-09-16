@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
 	def after_sign_in_path_for(resource)
-		user_path(current_user)
+		user_path(current_end_user)
 	end
 
 	before_action :configure_permitted_parameters, if: :devise_controller?
@@ -26,15 +26,15 @@ class ApplicationController < ActionController::Base
 
 	end
 
-	private
+	# private
 
-	def check_admin
-  		if user_signed_in?
-    		if current_user.name != 'admin'
-      			redirect_to root_path
-      			flash[:notice] = "管理者のみ閲覧できます"
-    		end
-  		end
-	end
+	# def check_admin
+ #  		if user_signed_in?
+ #    		if current_admin_user.name != 'admin'
+ #      			redirect_to root_path
+ #      			flash[:notice] = "管理者のみ閲覧できます"
+ #    		end
+ #  		end
+	# end
 
 end
