@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
     def item_params
      params.require(:item).permit(
       :item_name,:list_price,:cost_price,:sales_status,:genre_id,:artist_id,:label_id,:release_date,
-      :jacket_number,gacket_images:[],discs_attributes:[:id,:disc_name,:disc_number,
+      :jacket_number,gacket_images_images:[],discs_attributes:[:id,:disc_name,:disc_number,
       songs_attributes:[:id,:recording_number,:song_title,:play_time]])
     end
 end
