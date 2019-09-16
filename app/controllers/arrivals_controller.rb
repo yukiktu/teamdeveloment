@@ -1,9 +1,7 @@
 class ArrivalsController < ApplicationController
-<<<<<<< HEAD
+
 # before_action :authenticate_admin_user!
-=======
-before_action :authenticate_admin_user!
->>>>>>> b28206d1c2fca8740f8ba4069974f987c27ba8ac
+
   def index
   	@arrival = Arrival.new
   	@arrivals = Arrival.all
