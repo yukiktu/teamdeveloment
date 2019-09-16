@@ -116,9 +116,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_044327) do
     t.datetime "updated_at", null: false
   end
 
-
-
-
   create_table "items", force: :cascade do |t|
     t.integer "label_id"
     t.string "item_name"
@@ -160,7 +157,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_044327) do
     t.decimal "shipping_fee", null: false
     t.decimal "grand_total", null: false
     t.integer "delivery_status", default: 0
-    t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_orders_on_address"
