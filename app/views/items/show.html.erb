@@ -3,6 +3,7 @@
 <div class="main">
 	<div class="sidebar">
 	    <div class="s_image"><%#= attachment_image_tag @item.gacket_image, :image %></div>
+        <div>
 	        <%= @item.list_price %>
 	        <%= @item.genre.genre_name %>
 	        <%= @item.label.label_name %>
@@ -22,14 +23,18 @@
         		</thead>
         		<tbody>
                     <% @item.discs.each do |d| %>
-        			 <% d.song.each do |s| %>
+            			<% d.songs.each do |s| %>
         			     <tr>
         				    <td><%= s.song_title %></td>
         				    <td><%= @item.artist.artist_name %></td>
         				    <td><%= s.play_time %></td>
         			     </tr>
-        			 <% end %>
+             			<% end %>
                     <% end %>
         		</tbody>
         	</table>
+        </div>
     </div>
+<%= link_to 'カートに入れる', cart_items_path(cart_items: {end_user_id: current_end_user.id, item_id: @item.id}), method: :post %>
+</div>
+
