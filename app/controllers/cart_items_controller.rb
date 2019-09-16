@@ -1,27 +1,28 @@
 class CartItemsController < ApplicationController
 before_action :authenticate_end_user!
 
-	def edit
-		@cart_item = Cart_item.where(end_user_id: current_end_user)
-		@item = Item.find_by(id: @cart_item.item_id)
+	def index
+		@cart_items = CartItem.where(end_user_id: current_end_user)
+		#@gacket_images = Gacket_image.where(item_id: @cart_items.item_id)
 	end
 
 	def create
-		@item = Item.find(params[:id])
-		if @cart_item.item_id == item.id
-			@cart_items.item_count +=1
+		cart_item = CartItem.find_by(params[:id])
+		if cart_item.blank?
+			cart_item = CartItem.new(cart_item_params)
+			cart_item.item_count = 1
 		else
-			@cart_items = Cart_item.New{cart_item_params}
-			@cart_item.end_user_id = currentuser
-			@cart_items.item_id = item.id
-			@cart_item.item_count = 1
-
+			cart_item.item_count +=1
 		end
-		redirect_to edit_cart_item_path(current_user)
+		cart_item.save
+		#binding.pry
+		redirect_to cart_items_path
 	end
 
 	def update
-		@cart_item.update
+		i = CartItem.find(params[:id])
+		i.update(cart_items_params)
+		redirect_to cart_items_path
 	end
 
 	def destroy
@@ -29,11 +30,12 @@ before_action :authenticate_end_user!
 	end
 
 	private
+
 		def cart_item_params
-			params.require(:cart_item).require(:id, :end_user_id, :item_count, :item_id)
+			params.require(:cart_items).permit(:end_user_id, :item_count, :item_id)
 		end
 
-
-
-
+		def cart_items_params
+			params.require(:cart_item).permit(:end_user_id, :item_count, :item_id)
+		end
 end

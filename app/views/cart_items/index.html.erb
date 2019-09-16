@@ -13,33 +13,40 @@
   <% @cart_items.each do |c| %>
   <div class="cart_box">
     <div class="one_item">
-      <%# @item.each do |item| %><!--たぶんいらないかも-->
+      <% gacket_images = GacketImage.where(item_id: c.item_id) %>
+      <% gacket_images.each do |g| %>
+      <%= attachment_image_tag acket_images, :image %>
+      <% end %>
       <div class="cd_info">
-        <div class="jacket_img_1">
+        <div>
+          <
         </div>
         <div class="cd_name_block">
           <table class="cd_table">
-            <tr><td><h2><%= @item.item_name %>chicken zombies</h2></td></tr>
-            <tr><td><h2><%= @item.artists.artist_name %>THEE MICHELLE GUN ELLEPHANT</h2></td></tr>
-            <tr><td><h4><%= @item.genre.genre_name %>Rock</h4></td></tr>
-            <tr><td><h4><%= @item.label.list_label %>日本コロムビア</h4></td></tr>
-            <tr><td><h4><%= @item.list_price %>¥2,000</h4></td></tr>
+            <tr><td><h2><% item = Item.find(c.item_id) %><%= item.item_name %><%# binding.pry %></h2></td></tr>
+            <tr><td><h2><% artist = Artist.find(item.artist_id) %><%= artist.artist_name %></h2></td></tr>
+            <tr><td><h4><%= item.genre.genre_name %></h4></td></tr>
+            <tr><td><h4><%= item.label.label_name %></h4></td></tr>
+            <tr><td><h4><%= item.list_price %>円</h4></td></tr>
           </table>
         </div>
       </div>
       <div class="table_block">
         <table class="table_1">
           <tr>
-            <td><p><%= c.number_field :item_count %>2点</p></td>
+            <%= form_for (c)  do |i| %>
+            <td><p><%= i.number_field :item_count %>点</p></td>
+            <%= i.submit "変更を保存する" %>
+            <% end %>
             <td><p>小計</p></td>
-            <td><p><% price = c.item_count*c.list_price*1.08#@tax_rate %>
-    <% price %>¥4,000</p></td>
+            <td><p><%# price = c.item_count*c.list_price*1.08　%><!-- @tax_rate -->
+    <%# price %>¥4,000ここ追記して</p></td>
           </tr>
         </table>
       </div>
     </div>
     <% end %>
-
+<!--
     <div class="one_item">
       <div class="cd_info">
         <div class="jacket_img_2">
@@ -134,57 +141,5 @@
           <td><button type="button" class="btn btn-outline-success btn-lg">購入確定画面へ</button></td>
         </tr>
       </table>
-    </div>
-
+ -->    </div>
 </body>
-
-
-
-
-<!--     <div class="container-fluid">
-      <div class="row">
-        <div class="col-2">
-          コンテンツA
-        </div>
-        <div class="col-4">
-          コンテンツB
-        </div>
-        <div class="col-6">
-          コンテンツC
-        </div>
-      </div>
-    </div>
- -->
-
-
-
-
-
-<!-- <h1>カート</h1>
-<div class="table clearfix">
-  <%# @item.each do |item| %>
-  <div class="item_image big"></div>
-  <div item_information>
-    <p>item_name</p>
-    <p>artist_name</p>
-  </div>
-</div>
-<div class="line">
-  <div class="line_box"><%#= @c.list_price %>1000円</div>
-  <div class="line_box"><%#= c.number_field :item_count %>1点</div>
-</div>
-<div class="line">
-  <div class="line_box">1080円
-    <%#price = c.item_count*c.list_price*@tax_rate%>
-    <%# price %>
-  </div>
-  <div class="line_box">
-    <%#=c.item_count %>小計(税込み)
-  </div>
-</div>
-<%# end %>
-<div class="line total">
-  <div class="line_box">1080円</div>
-  <div class="line_box">総計(税込み)</div>
-</div>
-<%#end%>  -->
