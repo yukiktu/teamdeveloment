@@ -69,8 +69,11 @@ class ItemsController < ApplicationController
     #@artist.label = @label
     redirect_to items_path
   end
+
   def show
-     @item = Item.find(params[:id])
+    @item = Item.find(params[:id])
+    @gacket_image = GacketImage.find_by(item_id: @item.id)
+
     # @genre = Genre.find_by(item_id: @item.id)
     #@gacket_image = Image.find(item_id: @item.id)
     # @artist = Artist.find(params[:id])
@@ -90,6 +93,7 @@ class ItemsController < ApplicationController
       songs_attributes:[:id,:recording_number,:song_title,:play_time]])
     end
 end
+
  # def item_params
  #     params.require(:item).permit(
  #      :item_name, :list_price, :cost_price, :sales_status, :release_date, :jacket_number, gacket_images:[],
