@@ -20,7 +20,9 @@ before_action :authenticate_end_user!
 	end
 
 	def update
-		@cart_item.update
+		i = CartItem.find(params[:id])
+		i.update(cart_items_params)
+		redirect_to cart_items_path
 	end
 
 	def destroy
@@ -31,5 +33,9 @@ before_action :authenticate_end_user!
 
 		def cart_item_params
 			params.require(:cart_items).permit(:end_user_id, :item_count, :item_id)
+		end
+
+		def cart_items_params
+			params.require(:cart_item).permit(:end_user_id, :item_count, :item_id)
 		end
 end

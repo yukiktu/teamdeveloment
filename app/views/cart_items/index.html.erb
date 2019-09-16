@@ -36,7 +36,8 @@
           <tr>
             <%= form_for (c)  do |i| %>
             <td><p><%= i.number_field :item_count %>点</p></td>
-            <%end %>
+            <%= i.submit "変更を保存する" %>
+            <% end %>
             <td><p>小計</p></td>
             <td><p><%# price = c.item_count*c.list_price*1.08　%><!-- @tax_rate -->
     <%# price %>¥4,000ここ追記して</p></td>
