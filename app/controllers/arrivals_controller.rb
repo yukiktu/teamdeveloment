@@ -1,5 +1,5 @@
 class ArrivalsController < ApplicationController
-
+before_action :authenticate_user!
   def index
   	@arrival_new = Arrival.new
   	@arrivals = Arrival.all

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+before_action :authenticate_user!
 	def index
 		# if currentuser.id == admin_users.id
 		# 	@order = Order.all
