@@ -2,12 +2,12 @@
  <%= form_for(@arrival) do |t| %>
 
 <div class="field">
- <label>商品名</label>
+  <label>アーティスト</label>
+　 <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
+
+  <label>商品名</label>
   <%#= f.label :item_id %>
   <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
-
-  <label>アーティスト</label>
-　<%= t.collection_select(:item_id, @artists, :id, :artist_name) %>
 
   <label>発注数</label>
   <%= t.number_field :arrival_count %>
@@ -39,7 +39,8 @@
         <th>商品名:</th>
         <th><%= arrival.item.item_name %><th>
         <th>アーティスト名:</th>
-        <th><% @artist_id = arrival.item.artist_id %><%#= @artist.artist_name %></th>
+        <%# binding.pry %>
+        <th><% artist = Artist.find(arrival.item.artist_id) %><%= artist.artist_name %></th>
         <th>発注数:</th>
         <th><%= arrival.arrival_count %><th>
         <th>発注先:</th>

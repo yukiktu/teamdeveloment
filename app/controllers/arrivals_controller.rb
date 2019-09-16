@@ -3,9 +3,12 @@ class ArrivalsController < ApplicationController
   def index
   	@arrival = Arrival.new
   	@arrivals = Arrival.all
-    @categories = Item.all
     @artists = Artist.all
-    @artist = Artist.find_by(id: @artist_id)
+    @categories = Item.where(artist_id: @artists)
+    #binding.pry
+    #artist_id = @artist_id
+    #binding.pry
+    #@artist = Artist.find(artist_id)
     #binding.pry
     #@item = Item.find_by(id: @arrivals.item_id)
   end
