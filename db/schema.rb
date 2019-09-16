@@ -115,6 +115,9 @@ ActiveRecord::Schema.define(version: 2019_09_14_075315) do
     t.datetime "updated_at", null: false
   end
 
+
+
+
   create_table "items", force: :cascade do |t|
     t.integer "label_id"
     t.string "item_name"
