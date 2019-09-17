@@ -14,6 +14,7 @@ before_action :authenticate_end_user!
 		else
 			cart_item.item_count +=1
 		end
+		cart_item.end_user_id = current_end_user.id
 		cart_item.save
 		#binding.pry
 		redirect_to cart_items_path

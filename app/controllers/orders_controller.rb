@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
 	def new
 		@order = Order.new
 		@order.end_user_id = current_end_user.id
-		@delivery_addressee = DeliveryAdresses.where(end_user_id: current_end_user.id)
-		@new_addressee = DeliveryAdresses.new
+		@delivery_addressee = DeliveryAdress.where(end_user_id: current_end_user.id)
+		@new_addressee = DeliveryAdress.new
 		@new_addressee.end_user_id = current_end_user.id
 		@end_user_home = 'current_end_user.last_name' + 'current_end_user.first_name'
 	end

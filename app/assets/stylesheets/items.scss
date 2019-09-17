@@ -88,7 +88,7 @@
 	width: 295px;
 	text-align:  center;
 	padding-top: 20px;
-	font-size: 32px;
+	font-size: 35px;
 }
 
 .s-genre{
@@ -106,28 +106,33 @@
 }
 
 .s-cart{
-	width: 295px;
+	width: 225px;
 	text-align: center;
-	padding-top: 20px;
-	font-size: 30px;
+	font-size: 28px;
+	border: solid 1px black;
+	margin-top: 30px;
+	margin-left: 35px;
 }
 
 .s-titles{
     width: 750px;
     height: 350px;
+    float: left;
 }
 
 .s-name{
-	text-align: center;
-	padding-top: 70px;
+	text-align: left;
+	padding-top: 85px;
+	padding-left: 20px;
 	font-size: 40px;
 
 }
 
 .s-artist{
-	text-align: center;
+	text-align: left;
 	padding-top: 50px;
-	font-size: 25px;
+	padding-left: 25px;
+	font-size: 30px;
 }
 
 .s-title{
