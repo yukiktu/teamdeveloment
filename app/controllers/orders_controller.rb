@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-# before_action :authenticate_end_user!
-# before_action :authenticate_admin_user!, only: [:index]
+before_action :authenticate_end_user!
+before_action :authenticate_admin_user!, only: [:index]
 	def index
 	end
 
@@ -8,8 +8,8 @@ class OrdersController < ApplicationController
 	def new
 		@order = Order.new
 		@order.end_user_id = current_end_user.id
-		@delivery_addressee = DeliveryAdress.where(end_user_id: current_end_user.id)
-		@new_addressee = DeliveryAdress.new
+		@delivery_addressee = DeliveryAdresses.where(end_user_id: current_end_user.id)
+		@new_addressee = DeliveryAdresses.new
 		@new_addressee.end_user_id = current_end_user.id
 		@end_user_home = 'current_end_user.last_name' + 'current_end_user.first_name'
 	end
@@ -31,13 +31,13 @@ class OrdersController < ApplicationController
 			order_items.artist_name = Artist.find_by(id: item.artist_id)
 			order_items.item_count = c.item_count
 			order_items.list_price = item.list_price
-			order_items.tax_rate = 1.08 #rateテーブル実装後書き換え
+			order_items.tax_rate = TaxRate.find(1)
 		end
 		if order_items.save
 			cart_items.delete
 			redirect_to current_end_user
 		else
-			redirect_to edit_oder_path
+			render: 'edit'
 		end
 	end
 
@@ -47,33 +47,30 @@ class OrdersController < ApplicationController
 	def create
 		order = Order.new(order_params)
 		new_addressee = DeliveryAddress.new(delivery_address_params)
-
 		if new_addressee.blank?
 		else
 			new_addressee.save
 		end
-
 		if order.addressee == 'current_end_user.last_name' + 'current_end_user.first_name'
 			order.postal_code = current_end_user.postal_code
 			order.address = current_end_user.adress
 			order.phone_number =current_end_user.phone_number
 		else
-			delivery_addressee = DeliveryAddress.where(addressee: order.addressee, end_user_id: current_end_user.id)
+			delivery_addressee = DeliveryAddress.where(addressee: order.addressee and end_user_id: current_end_user.id)
 			order.postal_code = delivery_addressee.postal_code
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number
 			order.subtotal = 0 #not_null回避のため
-			shipping_fee = 500 #feeテーブルがまだないので※実装時には最も新しいIDを取ってくる仕様に
+			shipping_fee = ShippingFee.find(1)
 			grand_total = 0 #not_nul回避のため
 			delivery_status = 0 #not_nul回避のため
 		end
+		if order.save
+			redirect_to edit_oder_path
+		else
+			render 'new'
+		end
 	end
-
-		#if order.save
-			#redirect_to edit_oder_path
-		#else
-			#render action: :new
-		#end
 
 	private
 
@@ -84,5 +81,6 @@ class OrdersController < ApplicationController
 	def delivery_address_params
 		params.require(:delivery_address).permit(:end_user_id, :addressee, :postal_code, :address, :phone_number)
 	end
+
 
 end
