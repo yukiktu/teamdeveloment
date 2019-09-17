@@ -1,3 +1,4 @@
+
 // Place all the styles related to the EndUsers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -10,7 +11,7 @@
 }
 
 .prof_block{
-	background-color: teal;
+	// background-color: teal;
 	width: 100%;
 	height: 100%;
 }
@@ -27,39 +28,177 @@
 // 	// margin: 10px;
 // }
 
-.table td{
-	background-color: green;
+.table_prof td{
+	// background-color: green;
 	float: left;
 	width: auto;
 	margin-right: 2px;
 	text-align: left;
 }
 .prof_blo_left{
-	background-color: red;
+	// background-color: red;
 	float: left;
 	width: 70%;
 	height: 100%;
 }
 .prof_blo_right{
-	background-color: yellow;
+	// background-color: yellow;
 	float: right;
 	width: 30%;
 	height: 100%;
 }
 .purchase_history{
-	display: block;
-	width: 30%;
-	height: 50px;
+	// background-color: palegreen;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
 }
 .one_history{
-	background-color: cyan;
-	display: block;
-	width: 70%;
-	height: 50px;
+	// background-color: cyan;
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	padding-bottom: 20px;
 }
 .one_blo_left{
-	background-color: salmon;
+	// background-color: salmon;
+	display: inline-block;
+	float: left;
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	margin: 10px auto;
 }
 .one_blo_right{
-	background-color: ivory;
+	// background-color: ivory;
+	display: inline-block;
+	float: left;
+	height: 100px;
+	margin: 10px auto;
+}
+.end_user_address{
+	// background-color: yellow;
+	display: inline-block;
+	width: 800px;
+	height: 100px;
+	float: left;
+}
+.history{
+	// background-color: gray;
+}
+.table_history{
+	// background-color: green;
+}
+.table_history th{
+	// background-color: blue;
+	// text-align: center;
+	border-bottom: 3px solid black;
+}
+.table_history td{
+	// background-color: blue;
+	// border-bottom: 1px solid black;
+	// background-image: linear-gradient(40deg, #fce043 0%, #fb7ba2 74%)
+}
+.th1{
+	// background-color: red;
+	width: 70px;
+	text-align: left;
+}
+.th2{
+	// background-color: blue;
+	padding-left: 10px;
+	width: 70px;
+	text-align: left;
+}
+.th3{
+	// background-color: orange;
+	width: 200px;
+	text-align: left;
+}
+.th4{
+	// background-color: gray;
+	padding-left: 10px;
+	width: 300px;
+	text-align: left;
+}
+.th5{
+	// background-color: green;
+	width: 100px;
+	text-align: center;
+}
+.th6{
+	// background-color: white;
+	width: 110px;
+	text-align: right;
+}
+.td1{
+	// background-color: white;
+	width: 70px;
+	text-align: left;
+}
+.td2{
+	// background-color: red;
+	width: 70px;
+	height: 70px;
+	text-align: left;
+}
+.td3{
+	// background-color: blue;
+	width: 200px;
+	height: 100px;
+	text-align: left;
+}
+.td4{
+	// background-color: orange;
+	padding-left: 10px;
+	width: 300px;
+	height: 220px;
+	text-align: left;
+	// float: left;
+}
+.td5{
+	// background-color: gray;
+	width: 100px;
+	height: 100px;
+	text-align: center;
+}
+.td6{
+	// background-color: green;
+	width: 110px;
+	height: 100px;
+	text-align: right;
+}
+.td7{
+	// background-color: yellow;
+	text-align: center;
+	border-top: 1px solid black;
+}
+.td8{
+	// background-color: red;
+	text-align: right;
+	border-top: 1px solid black;
+}
+.td9{
+	// background-color: blue;
+	text-align: center;
+}
+.td10{
+	// background-color: green;
+	text-align: right;
+}
+.td11{
+	// background-color: green;
+	text-align: center;
+	border-top: 3px solid black;
+}
+.td12{
+	// background-color: green;
+	text-align: right;
+	border-top: 3px solid black;
+}
+.td13{
+	border-top: 1px solid black;
+}
+.td14{
+	border-top: 3px solid black;
 }

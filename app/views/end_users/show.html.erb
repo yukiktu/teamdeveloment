@@ -7,9 +7,9 @@
 				<tr>
 					<td colspan="2">
 						<h1>
-							<%=@end_users.last_name%><%= "　" %>
+							<%#=@end_users.last_name%><%= "　" %>
 							    山田
-							<%=@end_users.first_name%>
+							<%#=@end_users.first_name%>
 							    太郎 様
 						</h1>
 					</td>
@@ -17,26 +17,26 @@
 			    <tr>
 				    <td>郵便番号:</td>
 				    <td>
-				        <%=@end_users.postal_code%>
+				        <%#=@end_users.postal_code%>
 				            000-0000
 				    </td>
 			    </tr>
 			    <tr>
 				    <td>住所:</td>
 				    <td>
-				        <%=@end_users.address%>〇〇県〇〇市〇〇区〇〇町〇〇-〇〇-〇〇 〇〇マンション000号室aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				        <%#=@end_users.address%>〇〇県〇〇市〇〇区〇〇町〇〇-〇〇-〇〇 〇〇マンション000号室aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 				    </td>
 			    </tr>
 			    <tr>
 				    <td>E-mail:</td>
 				    <td>
-				    	<%=@end_users.mail_address%>yamada@gmail.com
+				    	<%#=@end_users.mail_address%>yamada@gmail.com
 				    </td>
 			    </tr>
 			    <tr>
 				    <td>電話番号:</td>
 				    <td>
-				    	<%=@end_users.phone_number%>000-0000-0000
+				    	<%#=@end_users.phone_number%>000-0000-0000
 				    </td>
 			    </tr>
 			</table>
@@ -49,16 +49,16 @@
 
 	<div class="purchase_history">
 		<h2>購入履歴</h2>
-		<% @oders.each do |o| %>
+		<%# @oders.each do |o| %>
 		<div class="one_history">
 			<div class="one_blo_left">
-					<h2><span class="label label-success" style="font-size:20px" >発送済み<%= o.deryvery_status%><!-- モデルにenumの記述を --></span></h2>
+					<h2><span class="label label-success" style="font-size:20px" >発送済み<%#= o.deryvery_status%><!-- モデルにenumの記述を --></span></h2>
 			</div>
 			<div class="one_blo_right" >
 				<div class="end_user_address">
 					<p>発送先</p>
-					<p>〒000-0000<%= o.postal_code %></p>
-					<p>神奈川県川崎市川崎区川崎町12-34-56 KAWASAKIマンション101号室<%= o.addressee %></p>
+					<p>〒000-0000<%#= o.postal_code %></p>
+					<p>神奈川県川崎市川崎区川崎町12-34-56 KAWASAKIマンション101号室<%#= o.addressee %></p>
 				</div>
 			</div>
 			<div class="history">
@@ -75,20 +75,20 @@
 
 
 					<tr>
-						<td class="td1">2019/01/01<%= o.order_item.first.created_at %></td>
-						<td class="td2"><div class="jacket_img_1"></div><% gacket_images = gacketImages.where(item_id: o.item_id) %><% gacket_images.each do |g| %><%= g.attachment_image_tag acket_images, :image %><% end %></td>
-						<td class="td3">Chicken Zombies<%= o.order_item.item_name %></td>
-						<td class="td4">THEE MICHELLE GUN ELLEPHANT<%= o.order_item.artist_name %></td>
-						<td class="td5">1<%= o.order_item.item_count %></td>
-						<td class="td6">¥1,900<%= o.order_item.list_price %></td>
+						<td class="td1">2019/01/01<%#= o.order_item.first.created_at %></td>
+						<td class="td2"><div class="jacket_img_1"></div><%# gacket_images = gacketImages.where(item_id: o.item_id) %><%# gacket_images.each do |g| %><%#= g.attachment_image_tag acket_images, :image %><%# end %></td>
+						<td class="td3">Chicken Zombies<%#= o.order_item.item_name %></td>
+						<td class="td4">THEE MICHELLE GUN ELLEPHANT<%#= o.order_item.artist_name %></td>
+						<td class="td5">1<%#= o.order_item.item_count %></td>
+						<td class="td6">¥1,900<%#= o.order_item.list_price %></td>
 					</tr>
 					<tr>
-						<td class="td1">2019/01/01<%= o.order_item.first.created_at %></td>
-						<td class="td2"><div class="jacket_img_1"></div><% gacket_images = gacketImages.where(item_id: o.item_id) %><% gacket_images.each do |g| %><%= g.attachment_image_tag acket_images, :image %><% end %></td>
-						<td class="td3">Chicken Zombies<%= o.order_item.item_name %></td>
-						<td class="td4">THEE MICHELLE GUN ELLEPHANT<%= o.order_item.artist_name %></td>
-						<td class="td5">1<%= o.order_item.item_count %></td>
-						<td class="td6">¥1,900<%= o.order_item.list_price %></td>
+						<td class="td1">2019/01/01<%#= o.order_item.first.created_at %></td>
+						<td class="td2"><div class="jacket_img_1"></div><%# gacket_images = gacketImages.where(item_id: o.item_id) %><%# gacket_images.each do |g| %><%#= g.attachment_image_tag acket_images, :image %><%# end %></td>
+						<td class="td3">Chicken Zombies<%#= o.order_item.item_name %></td>
+						<td class="td4">THEE MICHELLE GUN ELLEPHANT<%#= o.order_item.artist_name %></td>
+						<td class="td5">1<%#= o.order_item.item_count %></td>
+						<td class="td6">¥1,900<%#= o.order_item.list_price %></td>
 					</tr>
 
 
@@ -96,19 +96,19 @@
 					<tr>
 						<td class="td13" colspan="4"></td>
 						<td class="td7">小計</td>
-						<td class="td8">¥3,000<%= o.subtotal %></td>
+						<td class="td8">¥3,000<%#= o.subtotal %></td>
 					</tr>
 					<tr>
 						<td colspan="4"></td>
 						<td class="td9">送料</td>
-						<td class="td10">¥500<%= o.shipping_fee %></td>
+						<td class="td10">¥500<%#= o.shipping_fee %></td>
 					</tr>
 					<tr>
 						<td class="td14" colspan="4">
 						<td class="td11" colspan="1">ご請求金額</td>
-						<td class="td12">¥3,500<%= o.grand_total %></td>
+						<td class="td12">¥3,500<%#= o.grand_total %></td>
 					</tr>
-		<% end %>
+		<%# end %>
 				</table>
 			</div>
 		</div>
