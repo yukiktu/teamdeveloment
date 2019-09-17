@@ -1,4 +1,6 @@
 class LabelsController < ApplicationController
+before_action :authenticate_admin_user!
+before_action :check_admin, only: [:new, :create]
 
 	def new
 		@label = Label.new
@@ -14,19 +16,22 @@ class LabelsController < ApplicationController
 		else
 			@artist = Artist.find_by(artist_name: artist_params["artist_name"])
 		end
+
 		if Genre.where(genre_name: genre_params["genre_name"]).empty?
 			@genre = Genre.new(genre_params)
 			@genre.save
 		else
 			@genre = Genre.find_by(genre_name: genre_params["genre_name"])
 		end
+
 		if Label.where(label_name: label_params["label_name"]).empty?
 			@label = Label.new(label_params)
 			@label.save
 		else
-			@label = Label.find_by(label_name: genre_params["label_name"])
+			@label = Label.find_by(label_name: label_params["label_name"])
 		end
-		# binding.pry
+
+		 # binding.pry
 		@item = Item.new(item_params)
 		# @item.id = 1
 		 @item.artist_id = @artist.id
@@ -34,17 +39,17 @@ class LabelsController < ApplicationController
 		 @item.label_id = @label.id
 		@item.save
 		#session[:temp_artist_name] = @artist.artist_name#params[:artist]
-		# binding.pry
+		#binding.pry
 		redirect_to edit_item_path(@item)
 	end
 
 	private
 		def artist_params
-			params.require(:artist).permit(:id, :artist_name)
+			params.require(:artist).permit(:artist_name)
 		end
 
 		def label_params
-    		params.require(:label).permit(:id, :label_name)
+    		params.require(:label).permit(:label_name)
   		end
 
   		def genre_params

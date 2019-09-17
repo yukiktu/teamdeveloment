@@ -1,0 +1,18 @@
+<h1>購入確定画面</h1>
+<% @cart_items.each do |c| %>
+  <% gacket_images = GacketImage.where(item_id: c.item_id) %>
+  <%= c.item_name %>
+  <% item = Item.find(c.item_id) %>
+  <% artist = Artist.find_by(id: item.artist_id) %>
+  <%= artist.artist_name %>
+  <%= c.item_count %>
+  <% toatal = c.list_price*c.item_count %>
+  <%= toatal %>
+  <% grand_total += toatal %>
+<% end %>
+合計<%= subtotal = grand_total %>
+送料500円<%#= fee %>
+<% grand_total += 500 %><!-- fee実装されたら差し替え -->
+ご請求金額<%= grand_total %>
+
+<%= link_to '購入する', order_path(orders: {subtoatal: subtoatal, grand_total: grand_total}), method: :put %>

@@ -1,33 +1,127 @@
 
-
+<!-- コメントアウト外せば使えますたぶん -->
 <body class="body">
-	<div class="prof_block `**clearfix**`">
+	<div class="prof_block clearfix">
 		<div class="prof_blo_left">
-			<table class="table">
+			<table class="table_prof">
 				<tr>
-					<td colspan="2"><h1>山田太郎 様様</h1></td>
+					<td colspan="2">
+						<h1>
+							<%#=@end_users.last_name%><%#= "　" %>
+							    山田
+							<%#=@end_users.first_name%>
+							    太郎 様
+						</h1>
+					</td>
 			    </tr>
 			    <tr>
-				    <td class="td_title">郵便番号:</td>
-				    <td>000-0000</td>
+				    <td>郵便番号:</td>
+				    <td>
+				        <%#=@end_users.postal_code%>
+				            000-0000
+				    </td>
 			    </tr>
 			    <tr>
-				    <td class="td_title">住所:</td>
-				    <td>〇〇県〇〇市〇〇区〇〇町〇〇-〇〇-〇〇 〇〇マンション000号室</td>
+				    <td>住所:</td>
+				    <td>
+				        <%#=@end_users.address%>〇〇県〇〇市〇〇区〇〇町〇〇-〇〇-〇〇 〇〇マンション000号室aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+				    </td>
 			    </tr>
 			    <tr>
-				    <td class="td_title">E-mail:</td>
-				    <td>yamada@gmail.com</td>
+				    <td>E-mail:</td>
+				    <td>
+				    	<%#=@end_users.mail_address%>yamada@gmail.com
+				    </td>
 			    </tr>
 			    <tr>
-				    <td class="td_title">電話番号:</td>
-				    <td>000-0000-0000</td>
+				    <td>電話番号:</td>
+				    <td>
+				    	<%#=@end_users.phone_number%>000-0000-0000
+				    </td>
 			    </tr>
 			</table>
 		</div>
 		<div class="prof_blo_right">
-			aaa
+			<p>プロフィール編集</p>
+			<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
 		</div>
+	</div>
 
+	<div class="purchase_history">
+		<h2>購入履歴</h2>
+		<%# @oders.each do |o| %>
+		<div class="one_history">
+			<div class="one_blo_left">
+					<h2><span class="label label-success" style="font-size:20px" >発送済み<%#= o.deryvery_status%><!-- モデルにenumの記述を --></span></h2>
+			</div>
+			<div class="one_blo_right" >
+				<div class="end_user_address">
+					<p>発送先</p>
+					<p>〒000-0000<%#= o.postal_code %></p>
+					<p>神奈川県川崎市川崎区川崎町12-34-56 KAWASAKIマンション101号室<%#= o.addressee %></p>
+				</div>
+			</div>
+			<div class="history">
+				<table class="table_history">
+					<tr>
+						<th class="th1">購入日</th>
+						<th class="th2">Album art</th>
+						<th class="th3">Album name</th>
+						<th class="th4">Artist</th>
+						<th class="th5">購入枚数</th>
+						<th class="th6">価格(税込)</th>
+					</tr>
+
+					<tr>
+						<td class="td1">2019/01/01<%#= o.order_item.first.created_at %></td>
+						<td class="td2"><div class="jacket_img_1"></div><%# gacket_images = gacketImages.where(item_id: o.item_id) %><%# gacket_images.each do |g| %><%#= g.attachment_image_tag acket_images, :image %><%# end %></td>
+						<td class="td3">Chicken Zombies<%#= o.order_item.item_name %></td>
+						<td class="td4">THEE MICHELLE GUN ELLEPHANT<%#= o.order_item.artist_name %></td>
+						<td class="td5">1<%#= o.order_item.item_count %></td>
+						<td class="td6">¥1,900<%#= o.order_item.list_price %></td>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td class="td7">小計</td>
+						<td class="td8">¥3,000<%#= o.subtotal %></td>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td class="td9">送料</td>
+						<td class="td10">¥500<%#= o.shipping_fee %></td>
+					</tr>
+					<tr>
+						<td colspan="3">
+						<td colspan="2" class="td11">ご請求金額(税込)</td>
+						<td class="td12">¥3,500<%#= o.grand_total %></td>
+					</tr>
+		<%# end %>
+					<tr>
+						<td class="td1">2019/01/01</td>
+						<td class="td2"><div class="jacket_img_1"></div></td>
+						<td class="td3">Chicken Zombies</td>
+						<td class="td4">THEE MICHELLE GUN ELLEPHANT</td>
+						<td class="td5">1</td>
+						<td class="td6">¥1,900</td>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td class="td7">小計</td>
+						<td class="td8">¥3,000</td>
+					</tr>
+					<tr>
+						<td colspan="4"></td>
+						<td class="td9">送料</td>
+						<td class="td10">¥500</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+						<td colspan="2" class="td11">ご請求金額(税込)</td>
+						<td class="td12">¥3,500</td>
+					</tr>
+
+				</table>
+			</div>
+		</div>
 	</div>
 </body>

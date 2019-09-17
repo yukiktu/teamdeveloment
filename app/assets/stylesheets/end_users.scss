@@ -12,20 +12,20 @@
 .prof_block{
 	background-color: teal;
 	width: 100%;
-	height: 200px;
+	height: 100%;
 }
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
-.table {
-	background-color: orange;
-	float: left;
-	width: 80%;
-	height: auto;
-	// margin: 10px;
-}
+// .table {
+// 	background-color: orange;
+// 	float: left;
+// 	width: 100%;
+// 	height: auto;
+// 	// margin: 10px;
+// }
 
 .table td{
 	background-color: green;
@@ -34,19 +34,32 @@
 	margin-right: 2px;
 	text-align: left;
 }
-.td_title{
-	text-align: right;
-}
 .prof_blo_left{
 	background-color: red;
 	float: left;
-	width: 80%;
-	height: auto;
+	width: 70%;
+	height: 100%;
 }
 .prof_blo_right{
 	background-color: yellow;
 	float: right;
-	width: 100px;
+	width: 30%;
 	height: 100%;
 }
-
+.purchase_history{
+	display: block;
+	width: 30%;
+	height: 50px;
+}
+.one_history{
+	background-color: cyan;
+	display: block;
+	width: 70%;
+	height: 50px;
+}
+.one_blo_left{
+	background-color: salmon;
+}
+.one_blo_right{
+	background-color: ivory;
+}

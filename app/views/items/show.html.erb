@@ -1,36 +1,40 @@
+
 <div class="itemheader"></div>
 
-<div class="main">
+<div class="s-main">
 	<div class="sidebar">
-	    <div class="s_image"></div>
-	        <% @item.list_price,class: "s.price" %>
-	        <% @genre.ganre_name,class: "s.genre" %>
-	        <% @rabel.rabel_name,class: "s.rabel" %>
+	    <div class="s-image"><%=attachment_image_tag @gacket_image, :image, :fill, 295, 295 %></div>
+	        <p class="s-price">¥<%= @item.list_price.to_i %></p>
+	        <p class="s-genre"><%= @item.genre.genre_name %></p>
+	        <p class="s-label"><%= @item.label.label_name %></p>
+            <%= link_to 'カートに入れる', cart_items_path(cart_items: {user_id: curent_end_user.id, item_id:
+                @item.id}), method: :post %>
         </div>
 
-        <div class="s.titles">
-        		<% @item.item_name,class: "s.title" %>
-        		<% @artist.artist_name,class: "s.artist" %>
+        <div class="s-titles">
+        		<p class="s-name"><%= @item.item_name %><p>
+        		<p class="s-artist"><%= @item.artist.artist_name %><p>
+            </div>
 
-        	<table class="s.table">
-        		<thead>
-        			<tr>
-        				<th>Title</th>
-        				<th>Artist</th>
-        				<th>Time</th>
+        	<table class="s-tb">
+        		<thead class="s-t-h">
+        			<tr class="tr1">
+        				<th class="t-1">Title</th>
+        				<th class="t-2">Artist</th>
+        				<th class="t-3">Time</th>
         			</tr>
         		</thead>
-        		<tbody>
-        			<% @song.each do |s| %>
-        			<tr>
-        				<td><% s.song_title %></td>
-        				<td><% @artist.artist_name %></td>
-        				<td><% s.play_time %></td>
-        			</tr>
-        			<% end %>
+        		<tbody class="s-t-b">
+                    <% @item.discs.each do |d| %>
+        			 <% d.songs.each do |s| %>
+        			     <tr class="tr2">
+        				    <td class="tt-1"><%= s.song_title %></td>
+        				    <td class="tt-2"><%= @item.artist.artist_name %></td>
+        				    <td class="tt-3"><%= s.play_time.strftime("%H:%M") %></td>
+        			     </tr>
+        			 <% end %>
+                    <% end %>
         		</tbody>
         	</table>
-    </div>
-
-
+        </div>
 

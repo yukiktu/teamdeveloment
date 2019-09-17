@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-
+before_action :authenticate_admin_user!, only: [:edit, :update]
   def index
     @items = Item.all#where(label_id: 42)
     # if @label_id.nil?
@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
     # end
     @genre = Genre.find_by(@item)
     @artist = Artist.find_by(@artist)
+
     #@artists = Artist.find(id: @items.artist)
     #↑初期に作ったテーブルがnullなのでそれを削除すると使えます
     #arrival = Arrival.where(item_id: @items)
@@ -62,19 +63,24 @@ class ItemsController < ApplicationController
     # #binding.pry
     #@disc.artist_id = @artist.id
     #@genre.save
+    binding.pry
     @item.update(item_params)
     #@disc.save
     #@song.save
     #@artist.label = @label
     redirect_to items_path
   end
+
   def show
     @item = Item.find(params[:id])
-    #@gacket_image = Gacket_image.find(params[:id])
-    #@artist = Artist.find(params[:id])
-    #@label = Label.find(params[:id])
-    @disc = Disc.find(params[:id])
-    @song = Song.find(params[:id])
+    @gacket_image = GacketImage.find_by(item_id: @item.id)
+
+    # @genre = Genre.find_by(item_id: @item.id)
+    #@gacket_image = Image.find(item_id: @item.id)
+    # @artist = Artist.find(params[:id])
+    # @label = Label.find(params[:id])
+    # @disc = Disc.find(params[:id])
+    # @song = Song.find(params[:id])
    end
     #@gacket_image.item = @item
 
@@ -84,10 +90,11 @@ class ItemsController < ApplicationController
     def item_params
      params.require(:item).permit(
       :item_name,:list_price,:cost_price,:sales_status,:genre_id,:artist_id,:label_id,:release_date,
-      :jacket_number,gacket_images:[],discs_attributes:[:id,:disc_name,:disc_number,
+      :jacket_number,gacket_images_images:[],discs_attributes:[:id,:disc_name,:disc_number,
       songs_attributes:[:id,:recording_number,:song_title,:play_time]])
     end
 end
+
  # def item_params
  #     params.require(:item).permit(
  #      :item_name, :list_price, :cost_price, :sales_status, :release_date, :jacket_number, gacket_images:[],
