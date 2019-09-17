@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-before_action :authenticate_admin_user!, only: [:edit, :update]
+#before_action :authenticate_admin_user!, only: [:edit, :update]
   def index
     @items = Item.all#where(label_id: 42)
     # if @label_id.nil?
@@ -62,8 +62,7 @@ before_action :authenticate_admin_user!, only: [:edit, :update]
     # @item.artist_id = @artist.id
     # #binding.pry
     #@disc.artist_id = @artist.id
-    #@genre.save
-    binding.pry
+    #@genre.sa
     @item.update(item_params)
     #@disc.save
     #@song.save

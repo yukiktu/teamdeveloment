@@ -1,47 +1,88 @@
 class OrdersController < ApplicationController
-before_action :authenticate_user!
+# before_action :authenticate_end_user!
+# before_action :authenticate_admin_user!, only: [:index]
 	def index
-		# if currentuser.id == admin_users.id
-		# 	@order = Order.all
-		# 	@order_items = Order_item.where(order_id: Order.id)
-		# 	@s_option = Order.delivery_status
-		# elsif currentuser.present?
-		# 	@order = Order.find(currentuser.id)
-		# 	@order_items = Order_item.where(order_id: Order.id)
-		# else
-		# 	flash[:notice] = "nothing user"
-		# 	redirect_to index
-		# end
 	end
 
+
 	def new
-		@payment_methods = Order.new(order_params)
-		@payment_methods.end_user_id = currentuser.id
-		@addressee = Delivery_address.new(delivery_address_params)
-		@addressee.end_user_id = currentuser.id
+		@order = Order.new
+		@order.end_user_id = current_end_user.id
+		@delivery_addressee = DeliveryAdresses.where(end_user_id: current_end_user.id)
+		@new_addressee = DeliveryAdresses.new
+		@new_addressee.end_user_id = current_end_user.id
+		@end_user_home = 'current_end_user.last_name' + 'current_end_user.first_name'
+	end
+
+	def edit
+		@cart_items = CartItem.where(end_user_id: current_end_user.id)
+		@order = Order.find(params[:id])
 	end
 
 	def update
-
+		order = Order.find(params[:id])
+		order.update
+		cart_items = CartItem.where(end_user_id: current_end_user.id)
+		cart_items.each do |c|
+			order_items = OrderItems.new(order_item_params)
+			item = Item.find(c.item_id)
+			order_items.order_id = order.id
+			order_items.item_name = c.item_name
+			order_items.artist_name = Artist.find_by(id: item.artist_id)
+			order_items.item_count = c.item_count
+			order_items.list_price = item.list_price
+			order_items.tax_rate = 1.08 #rateテーブル実装後書き換え
+		end
+		if order_items.save
+			cart_items.delete
+			redirect_to current_end_user
+		else
+			redirect_to edit_oder_path
+		end
 	end
 
 	def destroy
-		@payment_methods.delete
-		#@addressee.delete
 	end
 
 	def create
-		@payment_methods.save
-		@addressee.save
+		order = Order.new(order_params)
+		new_addressee = DeliveryAddress.new(delivery_address_params)
+
+		if new_addressee.blank?
+		else
+			new_addressee.save
+		end
+
+		if order.addressee == 'current_end_user.last_name' + 'current_end_user.first_name'
+			order.postal_code = current_end_user.postal_code
+			order.address = current_end_user.adress
+			order.phone_number =current_end_user.phone_number
+		else
+			delivery_addressee = DeliveryAddress.where(addressee: order.addressee, end_user_id: current_end_user.id)
+			order.postal_code = delivery_addressee.postal_code
+			order.address = delivery_addressee.adress
+			order.phone_number = delivery_addressee.phone_number
+			order.subtotal = 0 #not_null回避のため
+			shipping_fee = 500 #feeテーブルがまだないので※実装時には最も新しいIDを取ってくる仕様に
+			grand_total = 0 #not_nul回避のため
+			delivery_status = 0 #not_nul回避のため
+		end
 	end
 
+		#if order.save
+			#redirect_to edit_oder_path
+		#else
+			#render action: :new
+		#end
+
 	private
+
 	def order_params
-		params.require(:order).permit(:end_user_id, :addressee, :postal_code, :adress, :phone_number, :payment_methods, :subtotal, :shipping_fee, :grand_total)
+		params.require(:order).permit(:end_user_id, :addressee, :postal_code, :address, :phone_number, :payment_methods, :subtotal, :shipping_fee, :grand_total, :delivery_status)
 	end
+
 	def delivery_address_params
 		params.require(:delivery_address).permit(:end_user_id, :addressee, :postal_code, :address, :phone_number)
 	end
-
 
 end

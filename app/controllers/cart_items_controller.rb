@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
 before_action :authenticate_end_user!
 
 	def index
-		@cart_items = CartItem.where(end_user_id: current_end_user)
+		@cart_items = CartItem.where(end_user_id: current_end_user.id)
 		#@gacket_images = Gacket_image.where(item_id: @cart_items.item_id)
 	end
 
