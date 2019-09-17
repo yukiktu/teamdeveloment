@@ -3,11 +3,12 @@
 
 <div class="s-main">
 	<div class="sidebar">
+        <%#binding.pry%>
 	    <div class="s-image"><%=attachment_image_tag @gacket_image, :image, :fill, 295, 295 %></div>
 	        <p class="s-price">¥<%= @item.list_price.to_i %></p>
 	        <p class="s-genre"><%= @item.genre.genre_name %></p>
 	        <p class="s-label"><%= @item.label.label_name %></p>
-            <%= link_to 'カートに入れる', cart_items_path(cart_items: {user_id: curent_end_user.id, item_id:
+            <%= link_to 'カートに入れる', cart_items_path(cart_items: {user_id: current_end_user.id, item_id:
                 @item.id}), method: :post %>
         </div>
 

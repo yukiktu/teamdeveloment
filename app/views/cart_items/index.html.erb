@@ -13,14 +13,11 @@
   <% @cart_items.each do |c| %>
   <div class="cart_box">
     <div class="one_item">
-      <% gacket_images = GacketImage.where(item_id: c.item_id) %>
-      <% gacket_images.each do |g| %>
-      <%= attachment_image_tag acket_images, :image %>
-      <% end %>
+      <% i = Item.where(id: c.item_id) %>
+      <%# @i.gacket_images.each do |g| %>
+      <%#= attachment_image_tag g, :image %>
+      <%# end %>
       <div class="cd_info">
-        <div>
-          <
-        </div>
         <div class="cd_name_block">
           <table class="cd_table">
             <tr><td><h2><% item = Item.find(c.item_id) %><%= item.item_name %><%# binding.pry %></h2></td></tr>

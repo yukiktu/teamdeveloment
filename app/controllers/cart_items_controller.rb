@@ -3,7 +3,8 @@ before_action :authenticate_end_user!
 
 	def index
 		@cart_items = CartItem.where(end_user_id: current_end_user.id)
-		#@gacket_images = Gacket_image.where(item_id: @cart_items.item_id)
+		# @gacket_images = Gacket_image.find_by(item_id: @item.id)
+		#where(item_id: @cart_items.item_id)
 	end
 
 	def create
@@ -14,6 +15,7 @@ before_action :authenticate_end_user!
 		else
 			cart_item.item_count +=1
 		end
+		cart_item.end_user_id = current_end_user.id
 		cart_item.save
 		#binding.pry
 		redirect_to cart_items_path
