@@ -22,7 +22,8 @@ class ArrivalsController < ApplicationController
 
   def edit
     @arrival = Arrival.find(params[:id])
-    @categories = Item.all
+    @artists = Artist.all
+    @categories = Item.where(artist_id: @artists)
   end
 
   def update
@@ -31,8 +32,14 @@ class ArrivalsController < ApplicationController
     redirect_to arrivals_path
   end
 
+  def destroy
+    arrival = Arrival.find(params[:id])
+    arrival.destroy
+    redirect_to arrivals_path
+  end
+
   def arrival_params
-  	params.require(:arrival).permit(:id, :item_id, :artist_id, :arrival_count, :purchase_order_date, :arrival_expected_date, :supplier)
+  	params.require(:arrival).permit(:id, :item_id, :artist_id, :arrival_count, :purchase_order_date, :arrival_expected_date, :supplier, :arrival_status)
   end
 
 end
