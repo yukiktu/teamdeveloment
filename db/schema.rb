@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_182018) do
 
   create_table "arrivals", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "artist_id"
     t.integer "arrival_count"
     t.date "purchase_order_date"
     t.date "arrival_expected_date"
@@ -159,7 +158,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_182018) do
     t.decimal "shipping_fee", null: false
     t.decimal "grand_total", null: false
     t.integer "delivery_status", default: 0
-    t.string "artist_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_orders_on_address"

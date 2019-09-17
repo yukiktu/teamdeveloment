@@ -1,10 +1,11 @@
 class EndUsersController < ApplicationController
-before_action :authenticate_end_user!, only: [:show, :edit]
+# before_action :authenticate_end_user!, only: [:show, :edit]
 
 	def show
-		if
-		@end_user = current_end_user
-		@orders = Oder.where(end_user_id: current_end_user.id)
+		# if
+		@end_users = current_end_user
+		# @orders = Oder.where(end_user_id: current_end_user.id)
+	# end
 	end
 
 	def edit
