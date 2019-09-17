@@ -13,13 +13,14 @@
   <% @cart_items.each do |c| %>
   <div class="cart_box">
     <div class="one_item">
+      <div class="cd_image">
       <% gacket_images = GacketImage.where(item_id: c.item_id) %>
       <% gacket_images.each do |g| %>
-      <%#= attachment_image_tag gacket_images, :image %>
+      <%= attachment_image_tag g, :image, :fill, 200, 200 %>
+    </div>
       <% end %>
       <div class="cd_info">
         <div>
-          <
         </div>
         <div class="cd_name_block">
           <table class="cd_table">
@@ -27,7 +28,7 @@
             <tr><td><h2><% artist = Artist.find(item.artist_id) %><%= artist.artist_name %></h2></td></tr>
             <tr><td><h4><%= item.genre.genre_name %></h4></td></tr>
             <tr><td><h4><%= item.label.label_name %></h4></td></tr>
-            <tr><td><h4><%= item.list_price %>円</h4></td></tr>
+            <tr><td><h4><%= item.list_price .to_i %>円</h4></td></tr>
           </table>
         </div>
       </div>
@@ -35,8 +36,8 @@
         <table class="table_1">
           <tr>
             <%= form_for (c)  do |i| %>
-            <td><p><%= i.number_field :item_count %>点</p></td>
-            <%= i.submit "変更を保存する" %>
+            <td><%= i.submit "変更を保存する" %></td>
+            <td class="button_table"><p><%= i.number_field :item_count %>点</p></td>
             <% end %>
             <td><p>小計</p></td>
             <td><p><%# price = c.item_count*c.list_price*1.08　%><!-- @tax_rate -->
@@ -47,7 +48,7 @@
     </div>
     <% end %>
 <%= link_to 'レジに進む', new_order_path %>
-<!--
+
     <div class="one_item">
       <div class="cd_info">
         <div class="jacket_img_2">
@@ -142,5 +143,5 @@
           <td><button type="button" class="btn btn-outline-success btn-lg">購入確定画面へ</button></td>
         </tr>
       </table>
- -->    </div>
+     </div>
 </body>
