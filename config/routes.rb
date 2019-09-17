@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'numbers/new'
+  get 'numbers/edit'
   devise_for :admin_users
   devise_for :end_users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -8,6 +10,7 @@ resources :cart_items
 resources :orders
 resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
+resources :numbers, only: [:new, :create, :destroy]
 #resources :arrivals
 
 # devise_for :users, controllers: {

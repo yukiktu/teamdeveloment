@@ -31,7 +31,7 @@ before_action :authenticate_admin_user!, only: [:index]
 			order_items.artist_name = Artist.find_by(id: item.artist_id)
 			order_items.item_count = c.item_count
 			order_items.list_price = item.list_price
-			order_items.tax_rate = 1.08 #rateテーブル実装後書き換え
+			order_items.tax_rate = TaxRate.find(1)
 		end
 		if order_items.save
 			cart_items.delete
@@ -61,7 +61,7 @@ before_action :authenticate_admin_user!, only: [:index]
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number
 			order.subtotal = 0 #not_null回避のため
-			shipping_fee = 500　#feeテーブルがまだないので※実装時には最も新しいIDを取ってくる仕様に
+			shipping_fee = ShippingFee.find(1)
 			grand_total = 0 #not_nul回避のため
 			delivery_status = 0 #not_nul回避のため
 		end

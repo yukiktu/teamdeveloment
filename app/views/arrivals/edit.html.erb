@@ -2,24 +2,30 @@
 <%= form_for(@arrival) do |t| %>
 
 <div class="field">
- <label>商品名</label>
+  <label>アーティスト</label>
+　 <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
+
+  <label>商品名</label>
   <%#= f.label :item_id %>
   <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
-
-  <label>アーティスト</label>
-
 
   <label>発注数</label>
   <%= t.number_field :arrival_count %>
 
   <label>発注先</label>
-
+  <%= t.text_field :supplier %>
 
   <label>発注日</label>
   <%= t.date_field :purchase_order_date %>
 
   <label>入荷予定日</label>
   <%= t.date_field :arrival_expected_date %>
+
+ <label>入荷ステータス</label>
+  <%= t.select(:arrival_status, [[""],["入荷済"]]) %>
+
+
+  <%= link_to"削除",arrival_path(@arrival), method: :delete %>
 
  <div class="actions">
   <%= t.submit %>
