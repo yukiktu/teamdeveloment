@@ -63,7 +63,7 @@ before_action :authenticate_admin_user!, only: [:edit, :update]
     # #binding.pry
     #@disc.artist_id = @artist.id
     #@genre.save
-    binding.pry
+    # binding.pry
     @item.update(item_params)
     #@disc.save
     #@song.save

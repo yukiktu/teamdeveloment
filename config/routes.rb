@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :admin_users
-  devise_for :end_users
+
+
+devise_for :admin_users, controllers: {
+       sessions: 'admin_users/sessions',
+       registrations: 'admin_users/registrations',
+       passwords: 'admin_users/passwords'
+}
+
+devise_for :end_users, controllers: {
+       sessions: 'end_users/sessions',
+       registrations: 'end_users/registrations',
+       passwords: 'end_users/passwords'
+}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 resources :labels
 resources :end_users
@@ -14,17 +25,7 @@ resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
 #         sessions: 'users/sessions'
 # }
 
-# devise_for :admin_users, controllers: {
-#        sessions: 'admin_users/sessions',
-#        registrations: 'admin_users/registrations',
-#        passwords: 'admin_users/passwords'
 
-
-# devise_for :end_users, controllers: {
-#        sessions: 'end_users/sessions',
-#        registrations: 'end_users/registrations',
-#        passwords: 'end_users/passwords'
-# }
 
 
 end
