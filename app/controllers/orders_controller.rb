@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-before_action :authenticate_end_user!
-before_action :authenticate_admin_user!, only: [:index]
+# before_action :authenticate_end_user!
+# before_action :authenticate_admin_user!, only: [:index]
 	def index
 	end
 
@@ -37,7 +37,7 @@ before_action :authenticate_admin_user!, only: [:index]
 			cart_items.delete
 			redirect_to current_end_user
 		else
-			render: 'edit'
+			redirect_to edit_oder_path
 		end
 	end
 
@@ -47,30 +47,33 @@ before_action :authenticate_admin_user!, only: [:index]
 	def create
 		order = Order.new(order_params)
 		new_addressee = DeliveryAddress.new(delivery_address_params)
+
 		if new_addressee.blank?
 		else
 			new_addressee.save
 		end
+
 		if order.addressee == 'current_end_user.last_name' + 'current_end_user.first_name'
 			order.postal_code = current_end_user.postal_code
 			order.address = current_end_user.adress
 			order.phone_number =current_end_user.phone_number
 		else
-			delivery_addressee = DeliveryAddress.where(addressee: order.addressee and end_user_id: current_end_user.id)
+			delivery_addressee = DeliveryAddress.where(addressee: order.addressee, end_user_id: current_end_user.id)
 			order.postal_code = delivery_addressee.postal_code
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number
 			order.subtotal = 0 #not_null回避のため
-			shipping_fee = 500　#feeテーブルがまだないので※実装時には最も新しいIDを取ってくる仕様に
+			shipping_fee = 500 #feeテーブルがまだないので※実装時には最も新しいIDを取ってくる仕様に
 			grand_total = 0 #not_nul回避のため
 			delivery_status = 0 #not_nul回避のため
 		end
-		if order.save
-			redirect_to edit_oder_path
-		else
-			render 'new'
-		end
 	end
+
+		#if order.save
+			#redirect_to edit_oder_path
+		#else
+			#render action: :new
+		#end
 
 	private
 
@@ -81,6 +84,5 @@ before_action :authenticate_admin_user!, only: [:index]
 	def delivery_address_params
 		params.require(:delivery_address).permit(:end_user_id, :addressee, :postal_code, :address, :phone_number)
 	end
-
 
 end
