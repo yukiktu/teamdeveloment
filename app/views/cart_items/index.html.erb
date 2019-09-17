@@ -15,7 +15,7 @@
     <div class="one_item">
       <% gacket_images = GacketImage.where(item_id: c.item_id) %>
       <% gacket_images.each do |g| %>
-      <%= attachment_image_tag acket_images, :image %>
+      <%#= attachment_image_tag gacket_images, :image %>
       <% end %>
       <div class="cd_info">
         <div>

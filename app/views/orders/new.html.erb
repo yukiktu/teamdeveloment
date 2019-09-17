@@ -1,5 +1,5 @@
 <h1>お支払方法</h1>
-<%= form_with(model: @order, @new_addressee) do |o| %>
+<%= form_with (model:[@order, @new_addressee]) do |o| %>
 	<label>
 		<%=o.radio_button :payment_methods, "代引き"%>代引き
 	</label>
@@ -37,3 +37,5 @@
 			<%= o.text_firld :phone_number %>
 	<%= o.submit"購入確定画面へ" %>
 <% end %>
+<% end %>
+
