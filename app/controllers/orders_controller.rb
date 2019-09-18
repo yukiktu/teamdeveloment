@@ -47,7 +47,6 @@ before_action :authenticate_end_user!
 
 	def create
 		order = Order.new(order_params)
-		binding.pry
 		order.end_user_id = current_end_user.id
 		#new_addressee = DeliveryAddress.new(delivery_address_params)
 		# if new_addressee.blank?
@@ -79,12 +78,9 @@ before_action :authenticate_end_user!
 		order.grand_total = 0 #not_nul回避のため
 		order.delivery_status = 0 #not_nul回避のため
 		order.subtotal = 0 #not_null回避のため
-		binding.pry
 		if order.save
-			binding.pry
 			redirect_to edit_order_path(order.id)
 		else
-			binding.pry
 			render :new
 		end
 	end

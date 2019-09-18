@@ -14,7 +14,7 @@
 
 	<h1 class="zuuusyo">住所選択</h1>
 <%#= form_with url:orders_path,model:[] do |n| %>
-	
+
 	<div class="sss">
 	<label class="sin">
 		<%= o.radio_button :addressee, '@new_addressee.addressee' %>新しい住所を設定する
@@ -42,7 +42,7 @@
 		</div>
 
 		<label class="zitaku">
-		<%= o.radio_button :addressee, '@end_user_home' %>自宅
+		<%= o.radio_button :addressee, @end_user_home %>自宅
 	</label>
 	<% if @delivery_adresses.present? %>
 		<% @delivery_adresses.each do |d, i| %>

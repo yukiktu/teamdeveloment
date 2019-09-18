@@ -1,6 +1,7 @@
 <h1>購入確定画面</h1>
 <% @cart_items.each do |c| %>
   <% gacket_images = GacketImage.where(item_id: c.item_id) %>
+  <% binding.pry %>
   <%= c.item_name %>
   <% item = Item.find(c.item_id) %>
   <% artist = Artist.find_by(id: item.artist_id) %>
