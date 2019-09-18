@@ -1,3 +1,175 @@
+// // Place all the styles related to the cart_items controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// // .table{
+// // 	width: 80%;
+// // 	height: 260px;
+// // 	margin: 0 auto;
+// // 	padding: 10px;
+// // 	display: flex;
+// // }
+// // .item_image{
+// // 	background-color: gray;
+// // 	margin-right: 10px;
+// // }
+// // .big{
+// // 	height: 240px;
+// // 	width:  240px;
+// // }
+// // .calculation_box{
+// // 	width: 80%;
+// // 	text-align: right;
+// // }
+// // .line{
+// // 	height: 24px;
+// // 	width: 80%;
+// // 	text-align: right;
+// // 	margin: 0 auto;
+// // 	border-bottom: 2px solid black;
+// // }
+// // .line_box{
+// // 	width: 150px;
+// // 	float: right;
+// // }
+// // .total{
+// // 	margin-top: 20px;
+// // }
+
+
+
+
+
+// .body{
+// 	// background-color: gray;
+// 	// background-image: url(washitexture01_TP_V);
+// 	width: 1000px;
+// 	height: auto;
+// 	margin: auto;
+// }
+// .cart_box{
+//     // background-color: white;
+//     background-image: url(ELLY863_washi14132906_TP_V);
+// 	padding: 10px;
+// }
+// h1{
+// 	margin-top: 10px;
+// 	margin-bottom: 10px;
+// }
+// .one_item{
+// 	// background-color: orange;
+// 	margin-bottom: 10px;
+// 	width: 100%;
+// 	height: auto;
+// 	border-top: 1px solid black;
+// }
+
+// .cd_info{
+// 	background-color: #ff7fbf;
+// 	width: 690px;
+// 	height: 290px;
+// 	display: inline-block;
+// }
+// .cd_image{
+// 	background-color: blue;
+// 	background-size: cover;
+// 	// padding-top: 10px;
+// 	// padding-right: 10px;
+// 	// padding-left: 10px;
+// 	display: inline-block;
+// 	float: left;
+// 	padding: 10px;
+// }
+// // .jacket_img_1{
+// // 	background-image: url(thee);
+// // 	background-size: cover;
+// // 	width:200px;
+// // 	height:200px;
+// // 	margin: 10px;
+// // 	display: inline-block;
+// // 	float: left;
+// // }
+// // .jacket_img_2{
+// // 	// background-image: url(91RVgur54DL._SL1500_);
+// // 	background-size: cover;
+// // 	width:200px;
+// // 	height:200px;
+// // 	margin: 10px;
+// // 	display: inline-block;
+// // 	float: left;
+// // }
+// .cd_name_block{
+// 	// background-color: blue;
+// 	display: inline-block;
+// 	float: left;
+// 	width: 670px;
+// 	height: auto;
+// 	margin-top: 10px;
+// 	margin-left: 10px;
+// 	margin-right: 10px;
+// 	position: relative;
+// }
+// .cd_table{
+// 	height: 100%;
+// 	// background-color: blue;
+// }
+// .table_block{
+// 	// background-color: red;
+// 	margin-right: 10px;
+// 	margin-bottom: 10px;
+// 	margin-left: 10px;
+// 	height: 40px;
+// 	width: 960px;
+// 	text-align: right;
+// }
+// .table_1{
+// 	// background-color: blue;
+// 	width: 100px;
+// 	height: 100%;
+// 	float: right;
+// }
+// .total{
+// 	// background-color: white;
+//     // background-image: url(ELLY863_washi14132906_TP_V);
+// 	margin-bottom: 10px;
+// 	height: 40px;
+// 	width: 1000px;
+// 	float: right;
+// 	border-bottom: 1px solid black;
+// 	border-top: 1px solid black;
+// }
+// .table_total{
+// 	background-color: red;
+// 	width: 200px;
+// 	height: 100%;
+// 	float: right;
+// 	margin-right: 16px;
+// }
+
+// .cd_table td{
+// 	background-color: yellow;
+// 	width: 700px;
+// 	padding: 3px;
+// }
+// .table_1 td{
+// 	// background-color: blue;
+// 	background-image: linear-gradient(40deg, #fce043 0%, #fb7ba2 74%);
+// 	padding: 2px 2px;
+// 	text-align: right;
+// 	width: 100px;
+// }
+// .table_total td{
+// 	// background-color: yellow;
+// 	padding: 2px 2px;
+// 	text-align: right;
+// }
+// .button_table{
+
+// }
+
+
+  
 // Place all the styles related to the cart_items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -71,6 +243,14 @@ h1{
 	height: auto;
 	display: inline-block;
 }
+.cd_image{
+	background-size: cover;
+	width:150px;
+	height:150px;
+	margin: 10px;
+	display: inline-block;
+	float: left;
+}
 .jacket_img_1{
 	background-image: url(thee);
 	background-size: cover;
@@ -95,8 +275,8 @@ h1{
 	float: left;
 	width: 740px;
 	height: auto;
-	margin-top: 10px;
-	margin-left: 10px;
+	// margin-top: 10px;
+	// margin-left: 10px;
 	margin-right: 10px;
 	position: relative;
 }
@@ -111,15 +291,17 @@ h1{
 	height: 40px;
 	width: 960px;
 	text-align: right;
+	display: inline-block;
 }
 .table_1{
 	// background-color: blue;
-	width: 200px;
+	width: 500px;
 	height: 100%;
 	float: right;
+	display: inline-block;
 }
 .total{
-	// background-color: white;
+	background-color: white;
     background-image: url(ELLY863_washi14132906_TP_V);
 	margin-bottom: 10px;
 	height: 40px;
@@ -138,12 +320,35 @@ h1{
 
 .cd_table td{
 	// background-color: yellow;
+	// background-image: linear-gradient(40deg, #fce043 0%, #fb7ba2 74%);
 	width: 900px;
-	padding: 4px 10px;
+	padding: 2px 2px;
+	text-align: left;
 }
 .table_1 td{
 	// background-color: yellow;
+	// background-image: linear-gradient(40deg, #fce043 0%, #fb7ba2 74%);
 	padding: 2px 2px;
+	// text-align: right;
+	width: 200px;
+	height: 10px;
+}
+.table_td_1{
+	// background-color: blue;
+	padding: 2px;
+	margin: 2px;
+}
+.table_td_2{
+	// background-color: blue;
+	padding: 2px;
+	margin: 2px;
+	text-align: right;
+}
+.table_td_3{
+	// background-color: blue;
+	padding: 2px;
+	margin: 2px;
+	width: 10px;
 	text-align: right;
 }
 .table_total td{
@@ -152,9 +357,26 @@ h1{
 	text-align: right;
 }
 .button_table{
-
+	// background-color: blue;
+	padding: 2px;
+	margin: 2px;
+	width: 20px;
+}
+.botton_block{
+	// background-color: red;
+	display: inline-block;
+	width: 100%;
 }
 
+.button_1{
+	// float: right;
+	right: 0px;
+	display: inline-block;
+}
+.button_2{
+	float: right;
+	display: inline-block;
+}
 
 
 
