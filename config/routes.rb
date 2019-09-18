@@ -21,6 +21,7 @@ resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
 resources :numbers
 get 'search' => 'items#search'
+get 'sales' => 'orders#sales'
 #resources :arrivals
 
 
