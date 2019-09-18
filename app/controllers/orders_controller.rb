@@ -5,6 +5,10 @@ before_action :authenticate_end_user!
 		@oders = Order.all
 	end
 
+	def sales
+    	@arrivals = Arrival.where(arrival_status: "入荷済")
+    	@orders = Order.where(delivary_status: 1)
+  	end
 
 	def new
 		#@order = Order.new
@@ -29,6 +33,7 @@ before_action :authenticate_end_user!
 			redirect_to orders_path
 		elsif end_user_signed_in?#@user.id == current_end_user.idエンドユーザーのみ
 			@order = Order.find(params[:id])
+			@order.shipping_fee = (ShippingFee.last).shipping_fee
 			@order.update(order_params)
 			cart_items = CartItem.where(end_user_id: current_end_user.id)
 			cart_items.each do |c|
@@ -36,10 +41,11 @@ before_action :authenticate_end_user!
 				item = Item.find(c.item_id)
 				order_items.order_id = @order.id
 				order_items.item_name = item.item_name
-				order_items.artist_name = Artist.find_by(id: item.artist_id)
+				artist = Artist.find_by(id: item.artist_id)
+				order_items.artist_name = artist.artist_name
 				order_items.item_count = c.item_count
 				order_items.list_price = item.list_price
-				order_items.tax_rate = TaxRate.find(1)
+				order_items.tax_rate = (TaxRate.last).tax_rate
 				if order_items.save
 					c.delete
 				end
@@ -83,7 +89,7 @@ before_action :authenticate_end_user!
 			# grand_total = 0 #not_nul回避のため
 			# delivery_status = 0 #not_nul回避のため
 		end
-		order.shipping_fee = ShippingFee.find(1)
+		order.shipping_fee = 0
 		order.grand_total = 0 #not_nul回避のため
 		order.delivery_status = 0 #not_nul回避のため
 		order.subtotal = 0 #not_null回避のため

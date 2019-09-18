@@ -9,11 +9,14 @@
     <th class="Count">売上総利益</th>
     <th class="Count">今月分利益</th>
   </tr>
-
+  <tbody>
     <th class="Count-Box1"></th>
     <th class="Count-Box2"></th>
     <th class="Count-Box3"></th>
-
+  </tbody>
+</table>
+<table>
+  <thead>
   <tr>
     <th class="Count2">CD</th>
     <th class="Count2">アーティスト</th>
@@ -21,6 +24,24 @@
     <th class="Count2">入荷枚数</th>
     <th class="Count2">売上総利益</th>
   </tr>
+  </thead>
+  <tbody>
+    <% @arrivals.each do |a| %>
+    <tr>
+      <%# binding.pry %>
+      <th><%= a.item.item_name %></th>
+      <th><%= a.item.artist.artist_name %></th>
+      <% orderitem = OrderItem.where(item_name: a.item.item_name, artist_name: a.item.artist.artist_name) %>
+      <% t = 0 %>
+      <% orderitem.each do |o| %>
+        <% t = t + o.item_count %>
+      <% end %>
+      <th><%= t %></th>
+      <th><%= a.arrival_count %></th>
+      <th></th>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
       <%# @monthly_count.each do |monthly_count| %>
         <%#= monthly_count.month %>
