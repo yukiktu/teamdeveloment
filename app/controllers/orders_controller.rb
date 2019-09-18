@@ -21,26 +21,23 @@ before_action :authenticate_end_user!
 	end
 
 	def update
-		binding.pry
-		order = Order.find(params[:id])
-		#order.update
+		@order = Order.find(params[:id])
+		@order.update(order_params)
 		cart_items = CartItem.where(end_user_id: current_end_user.id)
 		cart_items.each do |c|
-			order_items = OrderItems.new(order_item_params)
+			order_items = OrderItem.new#(order_item_params)
 			item = Item.find(c.item_id)
-			order_items.order_id = order.id
-			order_items.item_name = c.item_name
+			order_items.order_id = @order.id
+			order_items.item_name = item.item_name
 			order_items.artist_name = Artist.find_by(id: item.artist_id)
 			order_items.item_count = c.item_count
 			order_items.list_price = item.list_price
 			order_items.tax_rate = TaxRate.find(1)
+			if order_items.save
+				c.delete
+			end
 		end
-		if order_items.save
-			cart_items.delete
-			redirect_to current_end_user
-		else
-			render :new
-		end
+		redirect_to current_end_user
 	end
 
 	def destroy

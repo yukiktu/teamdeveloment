@@ -26,4 +26,8 @@
 <%= @order.address %>
 <%= @order.phone_number %>
 
-<%= link_to '購入する', order_path(orders: {subtotal: subtotal, grand_total: grand_total}), method: :put %>
+<%= form_for @order do |f| %>
+<%= f.hidden_field :subtotal, value: subtotal %>
+<%= f.hidden_field :grand_total, value: grand_total %>
+<%= f.submit '購入する' %>
+<% end %>
