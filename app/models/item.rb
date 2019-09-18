@@ -1,12 +1,4 @@
 class Item < ApplicationRecord
-	def self.search(search)
-      if search
-        Item.where(['content LIKE ?', "%#{search}%"])
-      else
-        Item.all
-      end
-    end
-
     has_many :gacket_images
     accepts_attachments_for :gacket_images, attachment: :image
     belongs_to :label
@@ -17,4 +9,12 @@ class Item < ApplicationRecord
     has_many :arrivals
     #has_many :songs
     #accepts_nested_attributes_for :songs
+    def self.search_method(search)
+      if search
+        Item.where(['item_name LIKE ?', "%#{search}%"])
+      else
+        Item.all
+      end
+    end
+
 end

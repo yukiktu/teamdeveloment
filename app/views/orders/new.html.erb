@@ -14,21 +14,7 @@
 
 	<h1 class="zuuusyo">住所選択</h1>
 <%#= form_with url:orders_path,model:[] do |n| %>
-	<label class="zitaku">
-		<%= o.radio_button :addressee, '@end_user_home' %>自宅
-	</label>
-	<% if @delivery_adresses.present? %>
-		<% @delivery_adresses.each do |d, i| %>
-			<label>
-				<%= o.radio_button :addressee, 'd.addressee' %>
-				<% i+=1 %>
-				<p>送り先<%= i %></p>
-				<p><%= d.addressee %></p>
-				<p><%= d.postal_code %></p>
-				<p><%= d.address %></p>
-			</label>
-		<% end %>
-	<% end %>
+	
 	<div class="sss">
 	<label class="sin">
 		<%= o.radio_button :addressee, '@new_addressee.addressee' %>新しい住所を設定する
@@ -54,6 +40,22 @@
 			<label class="zyuusyo">住所</label>
 			<%= o.text_field :address , :size => "100*100" %>
 		</div>
+
+		<label class="zitaku">
+		<%= o.radio_button :addressee, '@end_user_home' %>自宅
+	</label>
+	<% if @delivery_adresses.present? %>
+		<% @delivery_adresses.each do |d, i| %>
+			<label>
+				<%= o.radio_button :addressee, 'd.addressee' %>
+				<% i+=1 %>
+				<p>送り先<%= i %></p>
+				<p><%= d.addressee %></p>
+				<p><%= d.postal_code %></p>
+				<p><%= d.address %></p>
+			</label>
+		<% end %>
+	<% end %>
 
 		<div class="bbb">
 	<%= o.submit"購入確定画面へ" , :size => "30*30"%>

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 #before_action :authenticate_admin_user!, only: [:edit, :update]
+
   def index
     @items = Item.all#where(label_id: 42)
     # if @label_id.nil?
@@ -22,6 +23,34 @@ class ItemsController < ApplicationController
       #@arrivals.arrival_expected_date = ""
     #end
   end
+
+  def search
+    @items = Item.where(item_name: params[:search])
+    # if @item.search_method
+      # @items = @item.search_method
+    @label = Label.find_by(@label)#@label_id)
+    # end
+    @genre = Genre.find_by(@item)
+    @artist = Artist.find_by(@artist)
+      render :index
+    # end
+  end
+
+
+  def show
+    @item = Item.find(params[:id])
+    @gacket_image = GacketImage.find_by(item_id: @item.id)
+
+    # @genre = Genre.find_by(item_id: @item.id)
+    #@gacket_image = Image.find(item_id: @item.id)
+    # @artist = Artist.find(params[:id])
+    # @label = Label.find(params[:id])
+    # @disc = Disc.find(params[:id])
+    # @song = Song.find(params[:id])
+   end
+    #@gacket_image.item = @item
+
+
   def edit
     #artist_name = session[:temp_artist_name]
     #@artist = Artist.find_by(artist_name: artist_name)
@@ -39,6 +68,8 @@ class ItemsController < ApplicationController
     # @genre = Genre.new
     # @gacket_image = GacketImage.new
   end
+
+
   def update
     #↓@gacket_imageは多分不要？paramsも
     # @label = Label.new(label_params)
@@ -69,19 +100,6 @@ class ItemsController < ApplicationController
     #@artist.label = @label
     redirect_to items_path
   end
-
-  def show
-    @item = Item.find(params[:id])
-    @gacket_image = GacketImage.find_by(item_id: @item.id)
-
-    # @genre = Genre.find_by(item_id: @item.id)
-    #@gacket_image = Image.find(item_id: @item.id)
-    # @artist = Artist.find(params[:id])
-    # @label = Label.find(params[:id])
-    # @disc = Disc.find(params[:id])
-    # @song = Song.find(params[:id])
-   end
-    #@gacket_image.item = @item
 
 
 
