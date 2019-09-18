@@ -17,6 +17,7 @@ class AdminUsersController < ApplicationController
 
 	def itiran
 		@items = Item.all
+		# @arrinval = Arrival.where(:arrival_status "入荷済")
 		#@arrivals = Arrival.find(:item_id)
 	    # if @label_id.nil?
 	    #   redirect_to items_path

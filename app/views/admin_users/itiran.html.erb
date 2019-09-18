@@ -12,12 +12,26 @@
                 <% @items.each do |i| %>
         		<tbody class="">
         			     <tr class="ddd">
-        				    <td class="ii-1"><%= link_to(item_path(i)) do %><%= i.item_name %><% end %></td>
-        				    <td class="ii-2"><%= i.artist.artist_name %></td>
-        				    <td class="ii-3"><%#= i.arrival.arrival_count %></td>
-                            <td class="ii-4"><%#= i.arrival. %></td>
-                            <td class="ii-5"></td>
+        				    <td class="ii-1">
+                                <%= link_to(item_path(i)) do %><%= i.item_name %>
+                                <% end %>
+                            </td>
+        				    <td class="ii-2">
+                                <%= i.artist.artist_name %>
+                            </td>
+                            <% i.arrivals.each do |a| %>
+        				    <td class="ii-3">
+                                <%= a.arrival_count - 1 %>
+                            </td>
+                            <%# binding.pry %>
+                            <td class="ii-4">
+                                <%= a.last(@params_id).where("arrival_status = '入荷済' ").count %>
+                            </td>
+                            <td class="ii-5">
+                                <%= a.arrival_expected_date %>
+                            </td>
         			     </tr>
+                         <% end %>
         			 <% end %>
         		</tbody>
         	</table>
