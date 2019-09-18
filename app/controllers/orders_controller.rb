@@ -21,8 +21,9 @@ before_action :authenticate_end_user!
 	end
 
 	def update
+		binding.pry
 		order = Order.find(params[:id])
-		order.update
+		#order.update
 		cart_items = CartItem.where(end_user_id: current_end_user.id)
 		cart_items.each do |c|
 			order_items = OrderItems.new(order_item_params)
@@ -58,7 +59,7 @@ before_action :authenticate_end_user!
 			order.address = current_end_user.address
 			order.phone_number = current_end_user.phone_number
 		elsif order.address.present?
-			new_addressee = DeliveryAdress.new(delivery_address_params)
+			new_addressee = DeliveryAdress.new#(delivery_address_params)
 			new_addressee.addressee = order.addressee
 			new_addressee.end_user_id = current_end_user.id
 			new_addressee.postal_code = order.postal_code
