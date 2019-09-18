@@ -6,8 +6,7 @@
 　 <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
 
   <label>商品名</label>
-  <%#= f.label :item_id %>
-  <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
+   <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
 
   <label>発注数</label>
   <%= t.number_field :arrival_count %>
@@ -27,10 +26,10 @@
 
   <%= link_to"削除",arrival_path(@arrival), method: :delete %>
 
- <div class="actions">
+  <div class="actions">
   <%= t.submit %>
 
 </div>
 
  <% end %>
-</div>
+ </div>
