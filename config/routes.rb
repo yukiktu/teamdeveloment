@@ -20,6 +20,8 @@ resources :orders
 resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
 get 'search' => 'items#search'
+resources :admin_users
+get 'itiran' => 'admin_users#itiran'
 #resources :arrivals
 
 
