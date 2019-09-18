@@ -1,16 +1,17 @@
 <%= form_for @tax_rate, url:numbers_path do |t| %>
 
 
- <div class="field">
+  <div class="field">
          <%= t.label :tax_rate, "税率"%>
          <%= t.text_field :tax_rate %>
- </div>
+  </div>
 
 <%= form_for @shipping_fee, url:numbers_path do |t| %>
- <div class="field">
+
+  <div class="field">
          <%= t.label :shipping_fee, "送料"%>
          <%= t.number_field :shipping_fee %>
- </div>
+  </div>
 
 <%= t.submit "保存する" %>
 

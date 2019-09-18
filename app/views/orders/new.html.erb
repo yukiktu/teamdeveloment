@@ -1,5 +1,5 @@
 <h1>お支払方法</h1>
-<%= form_with (model:[@order, @new_addressee]) do |o| %>
+<%= form_with url:orders_path,model: Order.new do |o| %>
 	<label>
 		<%=o.radio_button :payment_methods, "代引き"%>代引き
 	</label>
@@ -11,31 +11,33 @@
 	</label>
 
 	<h1>住所選択</h1>
+<%#= form_with url:orders_path,model:[] do |n| %>
 	<label>
-		<%=o.radio_button :addressee, '@end_user_home' %>自宅
+		<%= o.radio_button :addressee, '@end_user_home' %>自宅
 	</label>
-	<% @delivery_adresses.each do |d, i| %>
-		<label>
-			<%= o.radio_button :addressee, 'd.addressee' %>
-			<% i+=1 %>
-			<p>送り先<%= i %></p>
-			<p><%= d.addressee %></p>
-			<p><%= d.postal_code %></p>
-			<p><%= d.address %></p>
-		</label>
+	<% if @delivery_adresses.present? %>
+		<% @delivery_adresses.each do |d, i| %>
+			<label>
+				<%= o.radio_button :addressee, 'd.addressee' %>
+				<% i+=1 %>
+				<p>送り先<%= i %></p>
+				<p><%= d.addressee %></p>
+				<p><%= d.postal_code %></p>
+				<p><%= d.address %></p>
+			</label>
+		<% end %>
 	<% end %>
 	<label>
-		<%= o.radio_button :adressee, '@new_addressee.addressee' %>新しい住所を設定する
+		<%= o.radio_button :addressee, '@new_addressee.addressee' %>新しい住所を設定する
 	</label>
 			<label>宛先</label>
-			<%= o.text_field :adressee %>
+			<%= o.text_field :addressee %>
 			<label>郵便番号</label>
 			<%= o.text_field :postal_code %>
 			<label>住所</label>
 			<%= o.text_field :address %>
 			<label>電話番号</label>
-			<%= o.text_firld :phone_number %>
+			<%= o.text_field :phone_number %>
 	<%= o.submit"購入確定画面へ" %>
-<% end %>
-<% end %>
 
+<% end %>

@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 	def self.search(search)
       if search
-        Item.where(['content LIKE ?', "%#{search}%"])
+        Item.where(['content LIKE ?', "%#{item_name}%"])
       else
         Item.all
       end

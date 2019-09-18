@@ -1,5 +1,5 @@
 class LabelsController < ApplicationController
-before_action :authenticate_admin_user!
+#before_action :authenticate_admin_user!
 
 	def new
 		@label = Label.new
@@ -36,7 +36,7 @@ before_action :authenticate_admin_user!
 		 @item.artist_id = @artist.id
 		 @item.genre_id = @genre.id
 		 @item.label_id = @label.id
-		@item.save
+		 @item.save
 		#session[:temp_artist_name] = @artist.artist_name#params[:artist]
 		#binding.pry
 		redirect_to edit_item_path(@item)

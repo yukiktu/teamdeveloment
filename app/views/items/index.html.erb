@@ -1,8 +1,14 @@
 <div class="itemheader">
 </div>
+<p>検索</p>
+	<%= form_tag(search_path,:method => 'get') do %>
+	   <%= text_field_tag :search %>
+	   <%= submit_tag 'Search', :name => nil %>
+	<% end %>
 <div class="i-main">
 	<% @items.each do |i| %>
 	<%#binding.pry%>
+
 			<div class="oneitem">
 				<%= link_to(item_path(i)) do %>
 					<% i.gacket_images.each do |gacket_image| %>

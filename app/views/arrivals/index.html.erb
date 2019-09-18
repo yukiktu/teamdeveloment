@@ -1,33 +1,32 @@
 <h1>新規発注</h1>
- <%= form_for(@arrival) do |t| %>
+<%= form_for(@arrival) do |t| %>
 
 <div class="field">
   <label>アーティスト</label>
-　 <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
+　  <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
 
   <label>商品名</label>
-  <%#= f.label :item_id %>
-  <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
+   <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
 
   <label>発注数</label>
-  <%= t.number_field :arrival_count %>
+   <%= t.number_field :arrival_count %>
 
   <label>発注先</label>
-  <%= t.text_field :supplier %>
+   <%= t.text_field :supplier %>
 
   <label>発注日</label>
-  <%= t.date_field :purchase_order_date %>
+   <%= t.date_field :purchase_order_date %>
 
   <label>入荷予定日</label>
-  <%= t.date_field :arrival_expected_date %>
+   <%= t.date_field :arrival_expected_date %>
 
- <div class="actions">
-  <%= t.submit %>
+  <div class="actions">
+   <%= t.submit %>
 
 </div>
 
- <% end %>
-</div>
+<% end %>
+ </div>
 
 
 <h1>発注・入荷一覧</h1>
@@ -44,7 +43,8 @@
       </tr>
 
       <% @arrivals.each do |arrival| %>
-        <tr>
+
+      <tr>
         <th><%= arrival.item.item_name %></th>
         <th><% artist = Artist.find(arrival.item.artist_id) %><%= artist.artist_name %></th>
         <th><%= arrival.arrival_count %></th>

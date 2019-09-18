@@ -13,6 +13,7 @@ devise_for :end_users, controllers: {
        passwords: 'end_users/passwords'
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+get 'search' => 'items#search'
 resources :labels
 resources :end_users
 resources :cart_items
