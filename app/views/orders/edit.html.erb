@@ -20,4 +20,9 @@
 <% grand_total = subtotal + 500 %><!-- fee実装されたら差し替え -->
 ご請求金額<%= grand_total %>
 <%# binding.pry %>
+<%= @order.addressee %>
+<%= @order.postal_code %>
+<%= @order.address %>
+<%= @order.phone_number %>
+
 <%= link_to '購入する', order_path(orders: {subtotal: subtotal, grand_total: grand_total}), method: :put %>
