@@ -1,7 +1,39 @@
 /admin_users/orders/sales
+<% m_terms=[] %>
+<% y_terms=[] %>
+<% @items.each do |test| %>
+  <% m = test.created_at %>
+  <%= m.strftime("%Y-%m") %>
+  <% y_terms.push(m.year) %>
+  <% y_terms.uniq %>
+  <% m_terms.push(m.strftime("%Y-%m")) %>
+  <% m_terms.uniq %>
+<% end %>
+<%= y_terms %>
+<%= m_terms %>
+<% term = 0 %>
+<%#= form_for term do |term| %>
+<%= m_terms.select {|term|}%>
+<%# end %>
+<!-- <form id="term" method="post">
+<select form="term">
+    <%# y_terms.each do |y| %>
+      <option value = <%#= y %>><%#= y %>年</option>
+    <%# end %>
+</select>
+<input type="submit" value="検索する">
+</form>
+<form action="term" method="post">
+<select form="term">
+    <%# m_terms.each do |m| %>
+      <option value = <%#= m %>><%#= m %></option>
+    <%# end %>
+</select>
+<input type="submit" value="検索する"> -->
+<% if term == 0 %>
 <h1>売上管理画面</h1>
-
-<h3 class="Total"><◯月分売上></h3>
+<h3 class="Total"><%#= term %>分売上</h3>
+</form>
 
 <table>
   <tr>
@@ -10,11 +42,12 @@
     <th class="Count">今月分利益</th>
   </tr>
   <tbody>
-    <th class="Count-Box1"></th>
-    <th class="Count-Box2"></th>
-    <th class="Count-Box3"></th>
+    <th class="Count-Box1"><%= @total_cost %></th>
+    <th class="Count-Box2"><%= @totalgain %></th>
+    <th class="Count-Box3"><%= @totalgain - @total_cost %></th>
   </tbody>
 </table>
+
 <table>
   <thead>
   <tr>
@@ -26,24 +59,32 @@
   </tr>
   </thead>
   <tbody>
-    <% @arrivals.each do |a| %>
-    <tr>
-      <%# binding.pry %>
-      <th><%= a.item.item_name %></th>
-      <th><%= a.item.artist.artist_name %></th>
-      <% orderitem = OrderItem.where(item_name: a.item.item_name, artist_name: a.item.artist.artist_name) %>
-      <% t = 0 %>
-      <% orderitem.each do |o| %>
-        <% t = t + o.item_count %>
-      <% end %>
+    <% a_totalcount = 0 %>
+    <%# binding.pry %>
+    <% @items.each do |i| %>
+      <tr>
+        <th><%= i.item_name %></th>
+        <th><%= i.artist.artist_name %></th>
+        <% t = 0 %>
+        <% @orders.each do |b| %>
+          <% orderitem = OrderItem.where(item_name: i.item_name, artist_name: i.artist.artist_name, order_id: b.id) %>
+          <% orderitem.each do |o| %>
+            <% t = t + o.item_count %>
+          <% end %>
+        <% end %>
       <th><%= t %></th>
-      <th><%= a.arrival_count %></th>
-      <th></th>
+      <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
+      <% a_totalcount = 0 %>
+      <% arrivals.each do |a| %>
+      <% a_totalcount = a_totalcount + a.arrival_count %>
+      <% end %>
+      <th><%= a_totalcount %></th>
+      <% gain = 0 %>
+      <% gain = t*i.list_price - a_totalcount*i.cost_price %>
+      <th><%= gain %></th>
     </tr>
     <% end %>
   </tbody>
 </table>
-      <%# @monthly_count.each do |monthly_count| %>
-        <%#= monthly_count.month %>
-        <%#= monthly_count.count %>
-      <%# end %>
+<% else %>
+<% end %>

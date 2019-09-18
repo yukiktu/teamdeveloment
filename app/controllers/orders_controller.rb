@@ -6,8 +6,27 @@ before_action :authenticate_end_user!
 	end
 
 	def sales
-    	@arrivals = Arrival.where(arrival_status: "入荷済")
-    	@orders = Order.where(delivary_status: 1)
+		@items = Item.all
+    	@orders = Order.where(delivery_status: 1)
+    	# 入荷代金総計の計算
+    	arrivals = Arrival.where(arrival_status: "入荷済")
+    	total_cost = 0
+    	arrivals.each do |a|
+    		cost = a.item.cost_price
+    		count = a.arrival_count
+    		total_cost = total_cost + cost*count
+    	end
+    	@total_cost = total_cost
+    	# 売上総利益
+    	totalgain = 0
+    	@orders.each do |o|
+    		orderitems = OrderItem.where(order_id: o.id)
+    		orderitems.each do |i|
+    			totalgain = totalgain + i.list_price*i.item_count
+    		end
+    	end
+    	@totalgain = totalgain
+    	#@term= [[]]
   	end
 
 	def new
@@ -76,12 +95,13 @@ before_action :authenticate_end_user!
 				new_addressee.addressee = order.addressee
 				new_addressee.end_user_id = current_end_user.id
 				new_addressee.postal_code = order.postal_code
-				new_addressee.address = order.addressee
+				new_addressee.address = order.address
 				new_addressee.phone_number = order.phone_number
 				new_addressee.save
 			end
 		else
 			delivery_addressee = DeliveryAdress.where(addressee: order.addressee, end_user_id: current_end_user.id)
+			binding.pry
 			order.postal_code = delivery_addressee.postal_code
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number

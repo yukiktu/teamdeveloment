@@ -17,7 +17,7 @@
 
 	<div class="sss">
 	<label class="sin">
-		<%= o.radio_button :addressee, '@new_addressee.addressee' %>新しい住所を設定する
+		<%= o.radio_button :addressee, '' %>新しい住所を設定する
 	</label>
 </div>
 
@@ -44,15 +44,17 @@
 		<label class="zitaku">
 		<%= o.radio_button :addressee, @end_user_home %>自宅
 	</label>
-	<% if @delivery_adresses.present? %>
-		<% @delivery_adresses.each do |d, i| %>
+	<%# binding.pry %>
+	<% if @delivery_addressee.present? %>
+		<% i = 0 %>
+		<% @delivery_addressee.each do |d| %>
 			<label>
-				<%= o.radio_button :addressee, 'd.addressee' %>
+				<%= o.radio_button :addressee, d.addressee %>
 				<% i+=1 %>
 				<p>送り先<%= i %></p>
-				<p><%= d.addressee %></p>
-				<p><%= d.postal_code %></p>
-				<p><%= d.address %></p>
+				<p>宛先<%= d.addressee %></p>
+				<p>〒<%= d.postal_code %></p>
+				<p>住所<%= d.address %></p>
 			</label>
 		<% end %>
 	<% end %>
