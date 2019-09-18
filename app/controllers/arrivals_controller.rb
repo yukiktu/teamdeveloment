@@ -7,17 +7,10 @@ def index
     @arrivals = Arrival.all
     @artists = Artist.all
     @categories = Item.where(artist_id: @artists)
-    #binding.pry
-    #artist_id = @artist_id
-    #binding.pry
-    #@artist = Artist.find(artist_id)
-    #binding.pry
-    #@item = Item.find_by(id: @arrivals.item_id)
   end
 
   def create
     @arrival = Arrival.new(arrival_params)
-    #@arrival.artist_id = Artist.find_by(id: @artists.id)
     @arrival.save
     redirect_to arrivals_path
   end
@@ -45,3 +38,4 @@ def index
   end
 
 end
+

@@ -4,19 +4,16 @@
      <%= f.text_field :disc_name %>
      <%= f.label :ディスク番号 %>
      <%= f.number_field :disc_number %><br>
+    <%= link_to_remove_association "削除", f, class: "glyphicon glyphicon-trash", style:"font-size:25px;" %>
      <%#= link_to_remove_association "remove disc", f %>
   </div>
-  <!--<div class="field">
-     <%= f.label :ディスク番号 %>
-     <%= f.number_field :disc_number %><br>
-  </div>-->
 
   <div class="songs">
     <%= f.fields_for :songs do |song| %>
       <%= render 'song_fields', f: song %>
     <%end%>
     <div class="links">
-      <%= link_to_add_association "add song", f, :songs %>
+      <%= link_to_add_association "曲を追加", f, :songs, style:"font-size:20px;" %>
       <!--@ﾌﾄｼさん_原因不明エラーです。多分変数関連-->
     </div>
   </div>
