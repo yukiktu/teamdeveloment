@@ -26,7 +26,7 @@
       </div>
       <div class="field">
          <%= f.label :release_date, "発売日" %>
-         <%= f.date_select :release_date,class: "entry_field" %>
+         <%= f.date_select :release_date, start_year: 50.years.ago(Date.today).year, :use_month_numbers => true,class: "entry_field" %>
       </div>
 
       <div class="field">
