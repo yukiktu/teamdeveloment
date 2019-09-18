@@ -19,6 +19,7 @@ resources :cart_items
 resources :orders
 resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
+resources :numbers
 get 'search' => 'items#search'
 #resources :arrivals
 

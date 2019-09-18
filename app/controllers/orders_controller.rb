@@ -2,6 +2,11 @@ class OrdersController < ApplicationController
 before_action :authenticate_end_user!
 #before_action :authenticate_admin_user!, only: [:index]
 	def index
+		#@cost_price = item.cost_price
+		#@grand_total =
+		#@orders = Order.all
+		#@arrivals = Arrival.where(:arrival_id)
+		#@monthly_count = Order.group("YEAR(created_at)").group("MONTH(created_at)").count
 	end
 
 

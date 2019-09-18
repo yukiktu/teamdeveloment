@@ -1,2 +1,27 @@
 /admin_users/orders/sales
 <h1>売上管理画面</h1>
+
+<h3><月分売上></h3>
+
+<table>
+      <tr>
+        <th>入荷代金総計</th>
+        <th>売上総利益</th>
+        <th>今月分利益</th>
+      </tr>
+
+      <% @monthly_count.each do |monthly_count| %>
+        <%= monthly_count.month %>
+        <%= monthly_count.count %>
+      <% end %>
+  </table>
+
+
+
+<tr>
+<th>CD</th>
+<th>アーティスト</th>
+<th>販売枚数</th>
+<th>入荷枚数</th>
+<th>売上総利益</th>
+</tr>
