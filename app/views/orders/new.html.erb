@@ -1,45 +1,66 @@
-<h1>お支払方法</h1>
+<div class="header"></div>
+<div class="lll">
+<h1 class="osiharai">お支払方法</h1>
 <%= form_with url:orders_path,model: Order.new do |o| %>
-	<label>
+	<label class="daibiki">
 		<%=o.radio_button :payment_methods, "代引き"%>代引き
 	</label>
-	<label>
+	<label class="hurikomi">
 		<%=o.radio_button :payment_methods, "銀行振込"%>銀行振込
 	</label>
-	<label>
+	<label class="kureka">
 		<%=o.radio_button :payment_methods, "クレジット払い"%>クレジット払い
 	</label>
 
-	<h1>住所選択</h1>
-	<%#= form_with url:orders_path,model:[] do |n| %>
-	<label>
-		<%= o.radio_button :addressee, '' %>新しい住所を設定する
+	<h1 class="zuuusyo">住所選択</h1>
+<%#= form_with url:orders_path,model:[] do |n| %>
+	
+	<div class="sss">
+	<label class="sin">
+		<%= o.radio_button :addressee, '@new_addressee.addressee' %>新しい住所を設定する
 	</label>
- 			<label>宛先</label>
-			<%= o.text_field :addressee %>
-			<label>郵便番号</label>
-			<%= o.text_field :postal_code %>
-			<label>住所</label>
-			<%= o.text_field :address %>
-			<label>電話番号</label>
-			<%= o.text_field :phone_number %>			<%#binding.pry %>
-		<label>
-		<%= o.radio_button :addressee, @end_user_home %>自宅
-		<%# binding.pry %>
-		</label>
-		<% if @delivery_adresses.present? %>
-			<% @delivery_adresses.each do |d, i| %>
-				<label>
-					<%= o.radio_button :addressee, d.addressee %>
-					<% i+=1 %>
-					<p>送り先<%= i %></p>
-					<p><%= d.addressee %></p>
-					<p><%= d.postal_code %></p>
-					<p><%= d.address %></p>
-				</label>
-			<% end %>
-		<% end %>
+</div>
 
-	<%= o.submit"購入確定画面へ" %>
+			<div class="b">
+			<label class="atesaki">宛先</label>
+			<%= o.text_field :addressee , :size => "30*30"%>
+		</div>
+
+		 <div class="b">
+			<label class="dennwa">電話番号</label>
+			<%= o.text_field :phone_number %>
+		</div>
+
+		    <div class="b">
+			<label class="yuubin">郵便番号</label>
+			<%= o.text_field :postal_code  %>
+		</div>
+
+		    <div class="b">
+			<label class="zyuusyo">住所</label>
+			<%= o.text_field :address , :size => "100*100" %>
+		</div>
+
+		<label class="zitaku">
+		<%= o.radio_button :addressee, '@end_user_home' %>自宅
+	</label>
+	<% if @delivery_adresses.present? %>
+		<% @delivery_adresses.each do |d, i| %>
+			<label>
+				<%= o.radio_button :addressee, 'd.addressee' %>
+				<% i+=1 %>
+				<p>送り先<%= i %></p>
+				<p><%= d.addressee %></p>
+				<p><%= d.postal_code %></p>
+				<p><%= d.address %></p>
+			</label>
+		<% end %>
+	<% end %>
+
+		<div class="bbb">
+	<%= o.submit"購入確定画面へ" , :size => "30*30"%>
+</div>
 
 <% end %>
+</div>
+

@@ -19,7 +19,10 @@ resources :cart_items
 resources :orders
 resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
+get 'search' => 'items#search'
 #resources :arrivals
+
+
 
 # devise_for :users, controllers: {
 #         sessions: 'users/sessions'
