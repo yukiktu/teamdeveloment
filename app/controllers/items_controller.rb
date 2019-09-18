@@ -3,14 +3,15 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all#where(label_id: 42)
+    @items = Item.page(params[:page]).per(12).order(:id)
     # if @label_id.nil?
     #   redirect_to items_path
     #   #@label.id = 1
     # else
-    @label = Label.find_by(@label)#@label_id)
+    #@label = Label.find_by(@label)#@label_id)
     # end
-    @genre = Genre.find_by(@item)
-    @artist = Artist.find_by(@artist)
+    #@genre = Genre.find_by(@item)
+    #@artist = Artist.find_by(@artist)
 
     #@artists = Artist.find(id: @items.artist)
     #↑初期に作ったテーブルがnullなのでそれを削除すると使えます

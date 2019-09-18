@@ -1,0 +1,25 @@
+<div class="header"></div>
+
+<div class="admain">
+<table class="adtable">
+	<thead>
+		<tr class="adh">
+			<th class="adsimei">氏名</th>
+			<th class="add">メールアドレス</th>
+			<th class="adlogin">最終ログイン</th>
+		</tr>
+	</thead>
+	<% @end_users.each do |e| %>
+	<tbody>
+		<tr class="adb">
+			<td class="adname"><%= link_to(end_user_path(e.id)) do %>
+					<%= e.last_name %><%= e.first_name %></td>
+				<% end %>
+			<td class="admail"><%= e.email %></td>
+			<td class="adtime"><%= e.updated_at.strftime("%Y-%m-%d") %></td>
+
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+</div>

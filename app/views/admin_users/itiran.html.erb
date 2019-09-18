@@ -1,0 +1,23 @@
+<div class="header"></div>
+<table class="">
+        		<thead class="aaaa">
+        			<tr class="">
+        				<th class="i-1">アイテム名</th>
+        				<th class="i-2">アーティスト</th>
+        				<th class="i-3">在庫枚数</th>
+                        <th class="i-4">前回入荷数量</th>
+                        <th class="i-5">前回入荷日</th>
+        			</tr>
+        		</thead>
+                <% @items.each do |i| %>
+        		<tbody class="">
+        			     <tr class="ddd">
+        				    <td class="ii-1"><%= link_to(item_path(i)) do %><%= i.item_name %><% end %></td>
+        				    <td class="ii-2"><%= i.artist.artist_name %></td>
+        				    <td class="ii-3"><%#= i.arrival.arrival_count %></td>
+                            <td class="ii-4"><%#= i.arrival. %></td>
+                            <td class="ii-5"></td>
+        			     </tr>
+        			 <% end %>
+        		</tbody>
+        	</table>

@@ -31,8 +31,8 @@
         				<th class="t-3">Time</th>
         			</tr>
         		</thead>
+                <% @item.discs.each do |d| %>
         		<tbody class="s-t-b">
-                    <% @item.discs.each do |d| %>
         			 <% d.songs.each do |s| %>
         			     <tr class="tr2">
         				    <td class="tt-1"><%= s.song_title %></td>
