@@ -38,4 +38,8 @@ class AdminUsersController < ApplicationController
 	    #end
 	end
 
+	def syousai
+		@item = Item.find(params[:id])
+	end
+
 end
