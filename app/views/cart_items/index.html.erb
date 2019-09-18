@@ -13,22 +13,50 @@
   <% @cart_items.each do |c| %>
   <div class="cart_box">
     <div class="one_item">
-      <div class="cd_image">
-      <% gacket_images = GacketImage.where(item_id: c.item_id) %>
-      <% gacket_images.each do |g| %>
-      <%= attachment_image_tag g, :image, :fill, 200, 200 %>
-    </div>
-      <% end %>
       <div class="cd_info">
-        <div>
-        </div>
         <div class="cd_name_block">
+          <div class="cd_image">
+            <% gacket_images = GacketImage.where(item_id: c.item_id) %>
+            <% gacket_images.each do |g| %>
+            <%= attachment_image_tag g, :image, :fill, 150, 150 %>
+            <% end %>
+          </div>
           <table class="cd_table">
-            <tr><td><h2><% item = Item.find(c.item_id) %><%= item.item_name %><%# binding.pry %></h2></td></tr>
-            <tr><td><h2><% artist = Artist.find(item.artist_id) %><%= artist.artist_name %></h2></td></tr>
-            <tr><td><h4><%= item.genre.genre_name %></h4></td></tr>
-            <tr><td><h4><%= item.label.label_name %></h4></td></tr>
-            <tr><td><h4><%= item.list_price .to_i %>円</h4></td></tr>
+            <tr>
+              <td>
+                <h4>
+                  <% item = Item.find(c.item_id) %><%= item.item_name %><%# binding.pry %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>
+                  <% artist = Artist.find(item.artist_id) %><%= artist.artist_name %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>
+                  <%= item.genre.genre_name %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>
+                  <%= item.label.label_name %>
+                </h4>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h4>
+                  <%= item.list_price .to_i %>円
+                </h4>
+              </td>
+            </tr>
           </table>
         </div>
       </div>
@@ -36,20 +64,19 @@
         <table class="table_1">
           <tr>
             <%= form_for (c)  do |i| %>
-            <td><%= i.submit "変更を保存する" %></td>
-            <td class="button_table"><p><%= i.number_field :item_count %>点</p></td>
+            <td class="table_td_1"><%= i.submit "変更を保存" %></td>
+            <td class="button_table"><%= i.number_field :item_count %>点</td>
             <% end %>
-            <td><p>小計</p></td>
-            <td><p><%# price = c.item_count*c.list_price*1.08　%><!-- @tax_rate -->
-    <%# price %>¥4,000ここ追記して</p></td>
+            <td class="table_td_2">小計</td>
+            <td class="table_td_3"><%# price = c.item_count*c.list_price*1.08　%><!-- @tax_rate --><% @price %></td>
           </tr>
         </table>
       </div>
     </div>
     <% end %>
-<%= link_to 'レジに進む', new_order_path %>
 
-    <div class="one_item">
+
+<!--     <div class="one_item">
       <div class="cd_info">
         <div class="jacket_img_2">
         </div>
@@ -132,16 +159,13 @@
           <td><p>¥10,000</p></td>
         </tr>
       </table>
-    </div>
+    </div> -->
     <%# end %>
 
     <div class="botton_block">
-      <table class="button_table">
-        <tr>
-          <td><button type="button" class="btn btn-secondary">戻る</button></td>
-          <td></td>
-          <td><button type="button" class="btn btn-outline-success btn-lg">購入確定画面へ</button></td>
-        </tr>
-      </table>
+      <div class="button_1">
+          <button type="button" class="btn btn-secondary btn-lg"><%= link_to '戻る', new_order_path %></button></div>
+          <div class="button_2"><button type="button" class="btn btn-outline-success btn-lg"><%= link_to '購入確定画面へ', new_order_path %></button></div>
+      </div>
      </div>
 </body>
