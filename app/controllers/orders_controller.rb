@@ -1,17 +1,18 @@
 class OrdersController < ApplicationController
 before_action :authenticate_end_user!
-before_action :authenticate_admin_user!, only: [:index]
+#before_action :authenticate_admin_user!, only: [:index]
 	def index
 	end
 
 
 	def new
-		@order = Order.new
-		@order.end_user_id = current_end_user.id
-		@delivery_addressee = DeliveryAdresses.where(end_user_id: current_end_user.id)
-		@new_addressee = DeliveryAdresses.new
-		@new_addressee.end_user_id = current_end_user.id
-		@end_user_home = 'current_end_user.last_name' + 'current_end_user.first_name'
+		#@order = Order.new
+		#@order.end_user_id = current_end_user.id
+		@delivery_addressee = DeliveryAdress.where(end_user_id: current_end_user.id)
+		#@new_addressee = DeliveryAdress.new
+		#@new_addressee.end_user_id = current_end_user.id
+		@end_user_home = current_end_user.last_name + current_end_user.first_name
+		#binding.pry
 	end
 
 	def edit
@@ -37,7 +38,7 @@ before_action :authenticate_admin_user!, only: [:index]
 			cart_items.delete
 			redirect_to current_end_user
 		else
-			render: 'edit'
+			render :new
 		end
 	end
 
@@ -46,36 +47,52 @@ before_action :authenticate_admin_user!, only: [:index]
 
 	def create
 		order = Order.new(order_params)
-		new_addressee = DeliveryAddress.new(delivery_address_params)
-		if new_addressee.blank?
-		else
-			new_addressee.save
-		end
-		if order.addressee == 'current_end_user.last_name' + 'current_end_user.first_name'
+		binding.pry
+		order.end_user_id = current_end_user.id
+		#new_addressee = DeliveryAddress.new(delivery_address_params)
+		# if new_addressee.blank?
+		# else
+		# 	new_addressee.save
+		# end
+		if order.addressee == current_end_user.last_name + current_end_user.first_name
 			order.postal_code = current_end_user.postal_code
-			order.address = current_end_user.adress
-			order.phone_number =current_end_user.phone_number
+			order.address = current_end_user.address
+			order.phone_number = current_end_user.phone_number
+		elsif order.address.present?
+			new_addressee = DeliveryAdress.new(delivery_address_params)
+			new_addressee.addressee = order.addressee
+			new_addressee.end_user_id = current_end_user.id
+			new_addressee.postal_code = order.postal_code
+			new_addressee.address = order.addressee
+			new_addressee.phone_number = order.phone_number
+			new_addressee.save
 		else
-			delivery_addressee = DeliveryAddress.where(addressee: order.addressee and end_user_id: current_end_user.id)
+			delivery_addressee = DeliveryAdress.where(addressee: order.addressee, end_user_id: current_end_user.id)
 			order.postal_code = delivery_addressee.postal_code
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number
-			order.subtotal = 0 #not_null回避のため
-			shipping_fee = ShippingFee.find(1)
-			grand_total = 0 #not_nul回避のため
-			delivery_status = 0 #not_nul回避のため
+			# order.subtotal = 0 #not_null回避のため
+			# grand_total = 0 #not_nul回避のため
+			# delivery_status = 0 #not_nul回避のため
 		end
+		order.shipping_fee = ShippingFee.find(1)
+		order.grand_total = 0 #not_nul回避のため
+		order.delivery_status = 0 #not_nul回避のため
+		order.subtotal = 0 #not_null回避のため
+		binding.pry
 		if order.save
-			redirect_to edit_oder_path
+			binding.pry
+			redirect_to edit_order_path(order.id)
 		else
-			render 'new'
+			binding.pry
+			render :new
 		end
 	end
 
 	private
 
 	def order_params
-		params.require(:order).permit(:end_user_id, :addressee, :postal_code, :address, :phone_number, :payment_methods, :subtotal, :shipping_fee, :grand_total, :delivery_status)
+		params.require(:order).permit(:end_user_id, :addressee, :postal_code, :address, :phone_number, :payment_methods, :subtotal, :shipping_fee, :grand_total, :delivery_status, :new_addressee)
 	end
 
 	def delivery_address_params
