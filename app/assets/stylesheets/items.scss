@@ -30,10 +30,6 @@
 .i-name{
 	font-size: 21px;
 }
-.i-price{
-	font-size: 23px;
-	text-align: right;
-}
 
 .i-artist{
 	text-align: left;
@@ -42,7 +38,17 @@
 
 .i-status{
 	color: red;
-	text-align: right;
+	text-align: left;
+}
+
+.i-price{
+	font-size: 23px;
+    float: right;
+}
+
+.aaa{
+	padding-bottom: 15px;
+	border-bottom: solid black 1px;
 }
 
 

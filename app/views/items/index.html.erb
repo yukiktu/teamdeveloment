@@ -19,8 +19,10 @@
 					<p class="i-name"><%= i.item_name %></p>
 				<% end %>
 				<p class="i-artist"><%= i.artist.artist_name %></p>
-				<p class="i-price"><%= i.list_price.to_i %></p>
-				<p class="i-status"><%= i.sales_status %></p>
+				<div class="aaa">
+				<span class="i-status"><%= i.sales_status %></span>
+				<span class="i-price">¥<%= i.list_price.to_i %></span>
+			</div>
 			</div>
 	<% end %>
 </div>
