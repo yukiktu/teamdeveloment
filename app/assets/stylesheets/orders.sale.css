@@ -1,0 +1,41 @@
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+.Total {
+	padding-top: 30px;
+}
+
+.Count {
+	padding: 30px 50px;
+	font-size: 25px;
+	white-space: nowrap;
+}
+
+.Count-Box1 {
+	border: double 1px #4ec4d3;
+	height: 40px;
+	width: 200px;
+}
+
+.Count-Box2 {
+	border: double 1px #4ec4d3;
+	height: 40px;
+	width: 200px;
+}
+
+.Count-Box3 {
+	border: double 1px #4ec4d3;
+	height: 40px;
+	width: 200px;
+}
+
+.Count2 {
+    padding: 20px 50px;
+	font-size: 15px;
+	white-space: nowrap;
+}
+
+

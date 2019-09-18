@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 before_action :authenticate_end_user!
 #before_action :authenticate_admin_user!, only: [:index]
 	def index
+		@oders = Order.all
 	end
 
 
@@ -21,25 +22,30 @@ before_action :authenticate_end_user!
 	end
 
 	def update
-		binding.pry
-		order = Order.find(params[:id])
-		#order.update
-		cart_items = CartItem.where(end_user_id: current_end_user.id)
-		cart_items.each do |c|
-			order_items = OrderItems.new(order_item_params)
-			item = Item.find(c.item_id)
-			order_items.order_id = order.id
-			order_items.item_name = c.item_name
-			order_items.artist_name = Artist.find_by(id: item.artist_id)
-			order_items.item_count = c.item_count
-			order_items.list_price = item.list_price
-			order_items.tax_rate = TaxRate.find(1)
-		end
-		if order_items.save
-			cart_items.delete
+		#@user = EndUser.fnd(parms[:id])
+		if admin_user_signed_in?
+			@order = Order.find(params[:id])
+			@order.update(order_params)
+			redirect_to orders_path
+		elsif end_user_signed_in?#@user.id == current_end_user.idエンドユーザーのみ
+			@order = Order.find(params[:id])
+			@order.update(order_params)
+			cart_items = CartItem.where(end_user_id: current_end_user.id)
+			cart_items.each do |c|
+				order_items = OrderItem.new#(order_item_params)
+				item = Item.find(c.item_id)
+				order_items.order_id = @order.id
+				order_items.item_name = item.item_name
+				order_items.artist_name = Artist.find_by(id: item.artist_id)
+				order_items.item_count = c.item_count
+				order_items.list_price = item.list_price
+				order_items.tax_rate = TaxRate.find(1)
+				if order_items.save
+					c.delete
+				end
+			end
 			redirect_to current_end_user
 		else
-			render :new
 		end
 	end
 
@@ -59,13 +65,15 @@ before_action :authenticate_end_user!
 			order.address = current_end_user.address
 			order.phone_number = current_end_user.phone_number
 		elsif order.address.present?
-			new_addressee = DeliveryAdress.new#(delivery_address_params)
-			new_addressee.addressee = order.addressee
-			new_addressee.end_user_id = current_end_user.id
-			new_addressee.postal_code = order.postal_code
-			new_addressee.address = order.addressee
-			new_addressee.phone_number = order.phone_number
-			new_addressee.save
+			if DeliveryAdress.where(end_user_id: current_end_user.id, addressee: order.addressee).empty?
+				new_addressee = DeliveryAdress.new#(delivery_address_params)
+				new_addressee.addressee = order.addressee
+				new_addressee.end_user_id = current_end_user.id
+				new_addressee.postal_code = order.postal_code
+				new_addressee.address = order.addressee
+				new_addressee.phone_number = order.phone_number
+				new_addressee.save
+			end
 		else
 			delivery_addressee = DeliveryAdress.where(addressee: order.addressee, end_user_id: current_end_user.id)
 			order.postal_code = delivery_addressee.postal_code
