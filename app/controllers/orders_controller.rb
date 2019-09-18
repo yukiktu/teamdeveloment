@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
 		end
 		if order_items.save
 			cart_items.delete
-			redirect_to current_end_user
+			redirect_to current_end_user_path
 		else
 			redirect_to edit_oder_path
 		end
@@ -67,13 +67,14 @@ class OrdersController < ApplicationController
 			grand_total = 0 #not_nul回避のため
 			delivery_status = 0 #not_nul回避のため
 		end
+		if order.save
+				redirect_to edit_oder_path
+			else
+				render action: :new
+			end
 	end
 
-		#if order.save
-			#redirect_to edit_oder_path
-		#else
-			#render action: :new
-		#end
+
 
 	private
 

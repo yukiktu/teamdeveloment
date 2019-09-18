@@ -1,40 +1,44 @@
-
 <div class="itemheader"></div>
-
 <div class="s-main">
-	<div class="sidebar">
-	    <div class="s-image"><%=attachment_image_tag @gacket_image, :image, :fill, 295, 295 %></div>
-	        <p class="s-price">¥<%= @item.list_price.to_i %></p>
-	        <p class="s-genre"><%= @item.genre.genre_name %></p>
-	        <p class="s-label"><%= @item.label.label_name %></p>
-            <p class="s-cart"><%= link_to 'カートに入れる', cart_items_path(cart_items: {user_id: current_end_user.id, item_id:
-                @item.id}), method: :post %></p>
-        </div>
-
-        <div class="s-titles">
-        		<p class="s-name"><%= @item.item_name %><p>
-        		<p class="s-artist"><%= @item.artist.artist_name %><p>
-            </div>
-
-        	<table class="s-tb">
-        		<thead class="s-t-h">
-        			<tr class="tr1">
-        				<th class="t-1">Title</th>
-        				<th class="t-2">Artist</th>
-        				<th class="t-3">Time</th>
-        			</tr>
-        		</thead>
-        		<tbody class="s-t-b">
-                    <% @item.discs.each do |d| %>
-        			 <% d.songs.each do |s| %>
-        			     <tr class="tr2">
-        				    <td class="tt-1"><%= s.song_title %></td>
-        				    <td class="tt-2"><%= @item.artist.artist_name %></td>
-        				    <td class="tt-3"><%= s.play_time.strftime("%H:%M") %></td>
-        			     </tr>
-        			 <% end %>
+    <div class="sidebar">
+        <div class="s-image"><%=attachment_image_tag @gacket_image, :image, :fill, 295, 295 %></div>
+            <p class="s-price">¥<%= @item.list_price.to_i %></p>
+            <p class="s-genre"><%= @item.genre.genre_name %></p>
+            <p class="s-label"><%= @item.label.label_name %></p>
+           <% if current_end_user.present? %>
+               <p class="s-cart"><%= link_to 'カートに入れる', cart_items_path(cart_items: {user_id: current_end_user.id, item_id:
+               @item.id}), method: :post %></p>
+           <% elsif current_admin_user.present? %>
+               編集ボタン
+           <% else %>
+               <p class="s-cart"><%= link_to 'テスト用カート消してね', cart_items_path(cart_items: {user_id: 1, item_id:
+               @item.id}), method: :post %></p>
+           <% end %>
+       </div>
+       <div class="s-titles">
+               <p class="s-name"><%= @item.item_name %><p>
+               <p class="s-artist"><%= @item.artist.artist_name %><p>
+           </div>
+           <table class="s-tb">
+               <thead class="s-t-h">
+                   <tr class="tr1">
+                       <th class="t-1">Title</th>
+                       <th class="t-2">Artist</th>
+                       <th class="t-3">Time</th>
+                   </tr>
+               </thead>
+               <tbody class="s-t-b">
+                   <% @item.discs.each do |d| %>
+                    <% d.songs.each do |s| %>
+                        <tr class="tr2">
+                           <td class="tt-1"><%= s.song_title %></td>
+                           <td class="tt-2"><%= @item.artist.artist_name %></td>
+                           <td class="tt-3"><%= s.play_time.strftime("%M:%S") %></td>
+                        </tr>
                     <% end %>
-        		</tbody>
-        	</table>
-        </div>
+                   <% end %>
+               </tbody>
+           </table>
+       </div>
+
 
