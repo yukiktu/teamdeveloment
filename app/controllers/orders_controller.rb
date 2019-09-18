@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
 before_action :authenticate_end_user!
 #before_action :authenticate_admin_user!, only: [:index]
 	def index
+		@oders = Order.all
 	end
 
 
@@ -21,23 +22,31 @@ before_action :authenticate_end_user!
 	end
 
 	def update
-		@order = Order.find(params[:id])
-		@order.update(order_params)
-		cart_items = CartItem.where(end_user_id: current_end_user.id)
-		cart_items.each do |c|
-			order_items = OrderItem.new#(order_item_params)
-			item = Item.find(c.item_id)
-			order_items.order_id = @order.id
-			order_items.item_name = item.item_name
-			order_items.artist_name = Artist.find_by(id: item.artist_id)
-			order_items.item_count = c.item_count
-			order_items.list_price = item.list_price
-			order_items.tax_rate = TaxRate.find(1)
-			if order_items.save
-				c.delete
+		#@user = EndUser.fnd(parms[:id])
+		if admin_user_signed_in?
+			@order = Order.find(params[:id])
+			@order.update(order_params)
+			redirect_to orders_path
+		elsif end_user_signed_in?#@user.id == current_end_user.idエンドユーザーのみ
+			@order = Order.find(params[:id])
+			@order.update(order_params)
+			cart_items = CartItem.where(end_user_id: current_end_user.id)
+			cart_items.each do |c|
+				order_items = OrderItem.new#(order_item_params)
+				item = Item.find(c.item_id)
+				order_items.order_id = @order.id
+				order_items.item_name = item.item_name
+				order_items.artist_name = Artist.find_by(id: item.artist_id)
+				order_items.item_count = c.item_count
+				order_items.list_price = item.list_price
+				order_items.tax_rate = TaxRate.find(1)
+				if order_items.save
+					c.delete
+				end
 			end
+			redirect_to current_end_user
+		else
 		end
-		redirect_to current_end_user
 	end
 
 	def destroy
