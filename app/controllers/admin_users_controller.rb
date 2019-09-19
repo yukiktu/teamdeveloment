@@ -17,6 +17,8 @@ class AdminUsersController < ApplicationController
 
 	def itiran
 		@items = Item.all
+
+		#@arrival = Arrival.where(:arrival_status, ["入荷済"])
 		#@arrivals = Arrival.find(:item_id)
 	    # if @label_id.nil?
 	    #   redirect_to items_path
@@ -36,6 +38,11 @@ class AdminUsersController < ApplicationController
 	      #@arrivals.arrival_count = '0'
 	      #@arrivals.arrival_expected_date = ""
 	    #end
+	end
+
+	def syousai
+		@item = Item.find(params[:id])
+
 	end
 
 end
