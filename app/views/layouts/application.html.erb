@@ -10,6 +10,55 @@
   </head>
 
   <body>
+    <header id="header" class="junbotron">
+    <ul>
+
+    <% if end_user_signed_in? %>
+   <li class="about">
+    <%= link_to 'abotu', about_path %>
+    </li>
+   <li class="maipe">
+      <%= link_to 'マイページ', end_user_path(current_end_user.id) %>
+    </li>
+   <li class="logout">
+      <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
+    </li>
+
+    <% elsif admin_user_signed_in? %>
+    <li>
+      <%= link_to '新規商品追加', new_label_path %>
+      </li>
+    <li>
+      <%= link_to 'ユーザ一覧', end_users_path %>
+      </li>
+    <li>
+      <%= link_to '注文確認', orders_path %>
+      </li>
+    <li>
+      <%= link_to '入荷一覧', arrivals_path %>
+      </li>
+    <li>
+      <%= link_to '売り上げ確認', sales_path %>
+      </li>
+    <li>
+      <%= link_to 'ログアウト', destroy_adomin_user_path, method: :delete %>
+      </li>
+
+    <% else %>
+    <li>
+      <%= link_to 'abotu', about_path %>
+      </li>
+   <li>
+      <%= link_to 'サインアップ', new_end_user_session_path %>
+    </li>
+   <li>
+      <%= link_to 'サインイン', end_user_session_path %>
+    </li>
+    <% end %>
+
+
+</ul>
+ </header>
     <%= yield %>
   </body>
 </html>
