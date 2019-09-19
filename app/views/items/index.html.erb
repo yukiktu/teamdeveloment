@@ -7,9 +7,9 @@
   <%= submit_tag 'Search', :item_name => nil %>
 <% end %>
 
-	<% @items.each do |i| %>
 
-			<div class="oneitem">
+	<% @items.each do |i| %>
+		<div class="oneitem">
 				<%= link_to(item_path(i)) do %>
 					<% i.gacket_images.each do |gacket_image| %>
 						<div class="j-image">
@@ -25,6 +25,7 @@
 			</div>
 			</div>
 	<% end %>
+
 
 </div>
 
