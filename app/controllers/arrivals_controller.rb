@@ -2,12 +2,13 @@ class ArrivalsController < ApplicationController
 
 # before_action :authenticate_admin_user!
 
-def index
+  def index
     @arrival = Arrival.new
     @arrivals = Arrival.all
     @artists = Artist.all
     @categories = Item.where(artist_id: @artists)
   end
+
 
   def create
     @arrival = Arrival.new(arrival_params)
