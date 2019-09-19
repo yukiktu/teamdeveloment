@@ -5,6 +5,29 @@ before_action :authenticate_end_user!
 		@oders = Order.all
 	end
 
+	def sales
+		@items = Item.all
+    	@orders = Order.where(delivery_status: 1)
+    	# 入荷代金総計の計算
+    	arrivals = Arrival.where(arrival_status: "入荷済")
+    	total_cost = 0
+    	arrivals.each do |a|
+    		cost = a.item.cost_price
+    		count = a.arrival_count
+    		total_cost = total_cost + cost*count
+    	end
+    	@total_cost = total_cost
+    	# 売上総利益
+    	totalgain = 0
+    	@orders.each do |o|
+    		orderitems = OrderItem.where(order_id: o.id)
+    		orderitems.each do |i|
+    			totalgain = totalgain + i.list_price*i.item_count
+    		end
+    	end
+    	@totalgain = totalgain
+    	#@term= [[]]
+  	end
 
 	def new
 		#@order = Order.new
@@ -29,6 +52,7 @@ before_action :authenticate_end_user!
 			redirect_to orders_path
 		elsif end_user_signed_in?#@user.id == current_end_user.idエンドユーザーのみ
 			@order = Order.find(params[:id])
+			@order.shipping_fee = (ShippingFee.last).shipping_fee
 			@order.update(order_params)
 			cart_items = CartItem.where(end_user_id: current_end_user.id)
 			cart_items.each do |c|
@@ -36,10 +60,11 @@ before_action :authenticate_end_user!
 				item = Item.find(c.item_id)
 				order_items.order_id = @order.id
 				order_items.item_name = item.item_name
-				order_items.artist_name = Artist.find_by(id: item.artist_id)
+				artist = Artist.find_by(id: item.artist_id)
+				order_items.artist_name = artist.artist_name
 				order_items.item_count = c.item_count
 				order_items.list_price = item.list_price
-				order_items.tax_rate = TaxRate.find(1)
+				order_items.tax_rate = (TaxRate.last).tax_rate
 				if order_items.save
 					c.delete
 				end
@@ -70,12 +95,13 @@ before_action :authenticate_end_user!
 				new_addressee.addressee = order.addressee
 				new_addressee.end_user_id = current_end_user.id
 				new_addressee.postal_code = order.postal_code
-				new_addressee.address = order.addressee
+				new_addressee.address = order.address
 				new_addressee.phone_number = order.phone_number
 				new_addressee.save
 			end
 		else
 			delivery_addressee = DeliveryAdress.where(addressee: order.addressee, end_user_id: current_end_user.id)
+			binding.pry
 			order.postal_code = delivery_addressee.postal_code
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number
@@ -83,7 +109,7 @@ before_action :authenticate_end_user!
 			# grand_total = 0 #not_nul回避のため
 			# delivery_status = 0 #not_nul回避のため
 		end
-		order.shipping_fee = ShippingFee.find(1)
+		order.shipping_fee = 0
 		order.grand_total = 0 #not_nul回避のため
 		order.delivery_status = 0 #not_nul回避のため
 		order.subtotal = 0 #not_null回避のため
