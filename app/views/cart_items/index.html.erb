@@ -68,7 +68,7 @@
             <td class="button_table"><%= i.number_field :item_count %>点</td>
             <% end %>
             <td class="table_td_2">小計</td>
-            <td class="table_td_3"><%# price = c.item_count*c.list_price*1.08　%><!-- @tax_rate --><% @price %></td>
+            <td class="table_td_3"><% price = c.item_count * item.list_price*(TaxRate.last).tax_rate %><!-- @tax_rate --><%= price %></td>
           </tr>
         </table>
       </div>

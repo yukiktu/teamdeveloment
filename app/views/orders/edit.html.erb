@@ -15,48 +15,50 @@
             </tr>
             <tr>
               <% grand_total = 0 %>
+              <% subtotal = 0 %>
               <% @cart_items.each do |c| %>
               <!-- <td class="td1_c"></td> -->
-              <td class="td2_c">
-                <div class="jacket_img_A">
-                  <% gacket_images = GacketImage.where(item_id: c.item_id) %>
-                  <% gacket_images.each do |g| %>
-                  <%= attachment_image_tag g, :image, :fill, 100, 100 %>
-                  <% end %>
-                </div>
-              </td>
-              <td class="td3_c">
-                <% item = Item.find(c.item_id) %>
-                <% artist = Artist.find_by(id: item.artist_id) %>
-                <%= item.item_name %>
-              </td>
-              <td class="td4_c">
-                <%= artist.artist_name %>
-              </td>
-              <td class="td5_c">
-                <%= c.item_count %>
-              </td>
-              <td class="td6_c">
-                <% total = item.list_price*c.item_count %>
-                <%= total %>
-              </td>
-            </tr>
-            <% end %>
+                <td class="td2_c">
+                  <div class="jacket_img_A">
+                    <% gacket_images = GacketImage.where(item_id: c.item_id) %>
+                    <% gacket_images.each do |g| %>
+                    <%= attachment_image_tag g, :image, :fill, 100, 100 %>
+                    <% end %>
+                  </div>
+                </td>
+                <td class="td3_c">
+                  <% item = Item.find(c.item_id) %>
+                  <% artist = Artist.find_by(id: item.artist_id) %>
+                  <%= item.item_name %>
+                </td>
+                <td class="td4_c">
+                  <%= artist.artist_name %>
+                </td>
+                <td class="td5_c">
+                  <%= c.item_count %>
+                </td>
+                <td class="td6_c">
+                  <% total = item.list_price*c.item_count*(TaxRate.last).tax_rate %>
+                  <%= total %>
+                  <% subtotal = subtotal + total %>
+                </td>
+              </tr>
+              <% end %>
             <tr>
               <td class="td13_c" colspan="3"></td>
               <td class="td7_c">小計</td>
-              <td class="td8_c"><%= subtotal = grand_total %>
+              <td class="td8_c"><%= subtotal %>
               </td>
             </tr>
             <tr>
               <td colspan="3"></td>
               <td class="td9_c">送料</td>
-              <td class="td10_c"><%#= o.shipping_fee %></td>
+              <td class="td10_c"><%= (ShippingFee.last).shipping_fee %></td>
             </tr>
             <tr>
               <td class="td14_c" colspan="3"></td>
               <td class="td11_c" colspan="1">ご請求金額</td>
-              <td class="td12_c"><%= grand_total %></td>
+              <td class="td12_c"><%= grand_total = subtotal + (ShippingFee.last).shipping_fee %></td>
             </tr>
       <%# end %>
           </table>
@@ -82,17 +84,13 @@
 
     <div class="foot_blo">
       <div class="foot_blo_left">
-        <%= form_for (@order) do |o|%>
-        <% o.text_field :subtotal, value: subtotal %>
-        <% o.text_field :grand_total, value: grand_total %>
-        <%= o.submit 'カート内に戻る(リンクまだです)' %>
-        <% end %>
+
       </div>
       <div class="foot_blo_right">
-        <%= form_for (@order) do |o|%>
-        <% o.text_field :subtotal, value: subtotal %>
-        <% o.text_field :grand_total, value: grand_total %>
-        <%= o.submit '購入する' %>
+        <%= form_for @order do |f| %>
+        <%= f.hidden_field :subtotal, value: subtotal %>
+        <%= f.hidden_field :grand_total, value: grand_total %>
+        <%= f.submit '購入する' %>
         <% end %>
       </div>
     </div>
@@ -100,8 +98,4 @@
 </body>
 
 
-<%= form_for @order do |f| %>
-<%= f.hidden_field :subtotal, value: subtotal %>
-<%= f.hidden_field :grand_total, value: grand_total %>
-<%= f.submit '購入する' %>
-<% end %>
+
