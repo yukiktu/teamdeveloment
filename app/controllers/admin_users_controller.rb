@@ -17,6 +17,30 @@ class AdminUsersController < ApplicationController
 
 	def itiran
 		@items = Item.all
+
+
+
+    	#@term= [[]]
+    	# 入荷代金総計の計算
+    	# arrivals = Arrival.where(arrival_status: "入荷済")
+    	# total_cost = 0
+    	# arrivals.each do |a|
+    	# 	cost = a.item.cost_price
+    	# 	count = a.arrival_count
+    	# 	total_cost = total_cost + cost*count
+    	# end
+    	# @total_cost = total_cost
+    	# # 売上総利益
+    	# totalgain = 0
+    	# @orders.each do |o|
+    	# 	orderitems = OrderItem.where(order_id: o.id)
+    	# 	orderitems.each do |i|
+    	# 		totalgain = totalgain + i.list_price*i.item_count
+    	# 	end
+    	# end
+    	# @totalgain = totalgain
+    	#@term= [[]]
+
 		# @arrinval = Arrival.where(:arrival_status "入荷済")
 		#@arrivals = Arrival.find(:item_id)
 	    # if @label_id.nil?

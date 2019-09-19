@@ -21,11 +21,20 @@
                             </td>
                             <% i.arrivals.each do |a| %>
         				    <td class="ii-3">
-                                <%= a.arrival_count - 1 %>
+                                <%= a.arrival_count - 100 %>
                             </td>
                             <%# binding.pry %>
                             <td class="ii-4">
-                                <%= a.last(@params_id).where("arrival_status = '入荷済' ").count %>
+                            <%#= a.last(@params_id).where("arrival_status = '入荷済' ").count %>
+                            <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
+                            <% a_totalcount = 0 %>
+                            <%# arrivals.each do |a| %>
+                            <% a_totalcount = a_totalcount + a.arrival_count %>
+                            <%# end %>
+                            <th><%= a_totalcount %></th>
+                            <% gain = 0 %>
+                            <%# gain = t*i.list_price - a_totalcount*i.cost_price %>
+                            <th><%= gain %></th>
                             </td>
                             <td class="ii-5">
                                 <%= a.arrival_expected_date %>
@@ -35,3 +44,5 @@
         			 <% end %>
         		</tbody>
         	</table>
+
+
