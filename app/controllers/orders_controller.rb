@@ -6,7 +6,7 @@ before_action :authenticate_end_user!
 	end
 
 	def sales
-		binding.pry
+		#binding.pry
 		@items = Item.all
     	@orders = Order.where(delivery_status: 1)
     	# 入荷代金総計の計算
