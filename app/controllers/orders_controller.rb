@@ -6,6 +6,7 @@ before_action :authenticate_end_user!
 	end
 
 	def sales
+		binding.pry
 		@items = Item.all
     	@orders = Order.where(delivery_status: 1)
     	# 入荷代金総計の計算
@@ -26,6 +27,10 @@ before_action :authenticate_end_user!
     		end
     	end
     	@totalgain = totalgain
+
+
+
+
     	#@term= [[]]
   	end
 

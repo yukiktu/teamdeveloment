@@ -63,8 +63,8 @@ class ItemsController < ApplicationController
     @disc = @item.discs.build
     @song = @disc.songs.build
     @label = Label.find_by(id: @item.label_id)
-    @genre = Genre.find_by(id: @item.artist_id)
-    @artist = Artist.find_by(id: @item.genre_id)
+    @genre = Genre.find_by(id: @item.genre_id)
+    @artist = Artist.find_by(id: @item.artist_id)
 
     # @disc = Disc.new
     # @song = Song.new
@@ -74,7 +74,6 @@ class ItemsController < ApplicationController
 
 
   def update
-
     if Artist.where(artist_name: artist_params["artist_name"]).empty?
       @artist = Artist.new(artist_params)
       @artist.save

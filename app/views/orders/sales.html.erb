@@ -16,23 +16,14 @@
 <%#= form_for term do |term| %>
 <%#= m_terms.select {|term|}%>
 <%# end %>
-<!-- <form id="term" method="post">
-<select form="term">
-    <%# y_terms.each do |y| %>
-      <option value = <%#= y %>><%#= y %>年</option>
-    <%# end %>
-</select>
-<input type="submit" value="検索する">
-</form>
-<form action="term" method="post">
-<select form="term">
-    <%# m_terms.each do |m| %>
-      <option value = <%#= m %>><%#= m %></option>
-    <%# end %>
-</select>
-<input type="submit" value="検索する"> -->
+<%= form_tag({:controller => 'orders',:action => 'sales'}, {:method => :get}) do %>
+  <%# m_terms.each do |m| %>
+    <%= select_tag 'order', options_for_select(m_terms)%>
+<%= submit_tag'検索' %>
+
+<% end %>
 <% if term == 0 %>
-<!-- </form> -->
+
 <!-- ↑検索機能もしくはソート機能検討中 -->
 <h1>売上管理画面</h1>
 <h3 class="Total">全期間売上</h3>
