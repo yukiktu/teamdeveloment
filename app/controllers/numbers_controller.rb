@@ -1,5 +1,9 @@
 class NumbersController < ApplicationController
 
+def index
+   @tax_rate = TaxRate.all
+   @shipping_fee = ShippingFee.all
+end
 
 def new
    @tax_rate = TaxRate.new
@@ -11,9 +15,8 @@ def new
    @tax_rate.save
    @shipping_fee = ShippingFee.new(shipping_fee_params)
    @shipping_fee.save
-   redirect_to numbers_new_path
+   redirect_to numbers_path
  end
-
 
  private
 
@@ -26,4 +29,3 @@ def new
    end
 
  end
-

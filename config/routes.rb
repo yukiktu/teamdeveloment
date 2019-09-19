@@ -25,7 +25,7 @@ resources :cart_items
 resources :orders
 resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
-resources :numbers
+resources :numbers, only: [:new, :create, :index]
 get 'search' => 'items#search'
 
 get 'sales' => 'orders#sales'

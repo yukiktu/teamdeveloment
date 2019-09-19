@@ -4,38 +4,113 @@
 	box-sizing: border-box;
 }
 
+main {
+  height: 2000px;
+  width: 100%;
+  background-color: silver;
+}
+
+.main-image {
+   position: relative;
+}
+
+.main-image p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  font-size: 100px;
+  color: black;
+}
+
+.main-image  {
+  width: 100%;
+  height: 800px;
+  background-size: cover;
+  opacity: 0.5;
+  background-image: url("kami.jpg")
+}
+
 .Total {
 	padding-top: 30px;
+	padding-bottom: 30px;
+	color: black;
+	text-align: center;
 }
 
 .Count {
-	padding: 30px 50px;
-	font-size: 25px;
-	white-space: nowrap;
+  color: white;
 }
 
-.Count-Box1 {
-	border: double 1px #4ec4d3;
-	height: 40px;
-	width: 200px;
+.Count-Total1 {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
 }
 
-.Count-Box2 {
-	border: double 1px #4ec4d3;
-	height: 40px;
-	width: 200px;
+.Count-Total2 {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	padding: 15px 15px;
+
 }
 
-.Count-Box3 {
-	border: double 1px #4ec4d3;
-	height: 40px;
-	width: 200px;
+.Count-Total3 {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+  padding-top: 10px;
 }
 
-.Count2 {
-    padding: 20px 50px;
-	font-size: 15px;
-	white-space: nowrap;
+.Count-Total4 {
+  width: 100%;
 }
 
+.Count-Total1 th {
+  text-align: center;
+  font-size: 20px;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-right: 3px solid black;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 20%;
+  padding: 10px 0px;
+}
 
+.Count-Total2 td {
+  text-align: center;
+  color:white;
+  background: black;
+  border-left: 3px solid white;
+  border-bottom: 3px solid white;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
+  box-shadow: 0px 3px 3px rgba(255,255,255,0.3) inset;
+  width: 20%;
+  padding: 30px 0px;
+  font-size: 20px;
+}
+
+.Count-Total3 th {
+  text-align: center;
+  color:white;
+  background: linear-gradient(#829ebc,#225588);
+  border-right: 3px solid black;
+  border-top: 1px solid #3c6690;
+  border-bottom: 1px solid #3c6690;
+  box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
+  width: 20%;
+  padding: 10px 0px;
+}
+
+.Count-Total3 td {
+  padding-top: 15px;
+  font-size: 20px;
+}
