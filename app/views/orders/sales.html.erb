@@ -1,4 +1,5 @@
 /admin_users/orders/sales
+<!-- ↓検索機能もしくはソート機能検討中 -->
 <% m_terms=[] %>
 <% y_terms=[] %>
 <% @items.each do |test| %>
@@ -13,7 +14,7 @@
 <%= m_terms %>
 <% term = 0 %>
 <%#= form_for term do |term| %>
-<%= m_terms.select {|term|}%>
+<%#= m_terms.select {|term|}%>
 <%# end %>
 <!-- <form id="term" method="post">
 <select form="term">
@@ -31,9 +32,11 @@
 </select>
 <input type="submit" value="検索する"> -->
 <% if term == 0 %>
+<!-- </form> -->
+<!-- ↑検索機能もしくはソート機能検討中 -->
 <h1>売上管理画面</h1>
-<h3 class="Total"><%#= term %>分売上</h3>
-</form>
+<h3 class="Total">全期間売上</h3>
+
 
 <table>
   <tr>
@@ -72,19 +75,21 @@
             <% t = t + o.item_count %>
           <% end %>
         <% end %>
-      <th><%= t %></th>
-      <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
-      <% a_totalcount = 0 %>
-      <% arrivals.each do |a| %>
-      <% a_totalcount = a_totalcount + a.arrival_count %>
-      <% end %>
-      <th><%= a_totalcount %></th>
-      <% gain = 0 %>
-      <% gain = t*i.list_price - a_totalcount*i.cost_price %>
+        <th><%= t %></th>
+        <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
+        <% a_totalcount = 0 %>
+        <% arrivals.each do |a| %>
+          <% a_totalcount = a_totalcount + a.arrival_count %>
+        <% end %>
+        <th><%= a_totalcount %></th>
+        <% gain = 0 %>
+        <% gain = t*i.list_price - a_totalcount*i.cost_price %>
       <th><%= gain %></th>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+
 <% else %>
 <% end %>
