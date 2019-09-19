@@ -11,7 +11,11 @@ def new
    @tax_rate.save
    @shipping_fee = ShippingFee.new(shipping_fee_params)
    @shipping_fee.save
-   redirect_to numbers_new_path
+ end
+
+ def show
+   @tax_rate = TaxRate.new(tax_rate_params)
+   @shipping_fee = ShippingFee.new(shipping_fee_params)
  end
 
 

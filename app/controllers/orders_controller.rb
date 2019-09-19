@@ -6,7 +6,7 @@ before_action :authenticate_end_user!
 	end
 
 	def sales
-		binding.pry
+		#binding.pry
 		@items = Item.all
     	@orders = Order.where(delivery_status: 1)
     	# 入荷代金総計の計算
@@ -106,7 +106,7 @@ before_action :authenticate_end_user!
 			end
 		else
 			delivery_addressee = DeliveryAdress.where(addressee: order.addressee, end_user_id: current_end_user.id)
-			binding.pry
+			#binding.pry
 			order.postal_code = delivery_addressee.postal_code
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number

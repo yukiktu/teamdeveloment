@@ -25,7 +25,6 @@
 <% if term == 0 %>
 
 <!-- ↑検索機能もしくはソート機能検討中 -->
-<h1>売上管理画面</h1>
 <h3 class="Total">全期間売上</h3>
 
 
@@ -42,16 +41,17 @@
   </tbody>
 </table>
 
-<table>
+<table class="Count-Total3">
   <thead>
   <tr>
-    <th class="Count2">CD</th>
-    <th class="Count2">アーティスト</th>
-    <th class="Count2">販売枚数</th>
-    <th class="Count2">入荷枚数</th>
-    <th class="Count2">売上総利益</th>
+    <th class="Count">CD</th>
+    <th class="Count">アーティスト</th>
+    <th class="Count">販売枚数</th>
+    <th class="Count">入荷枚数</th>
+    <th class="Count">売上総利益</th>
   </tr>
   </thead>
+
   <tbody>
     <% a_totalcount = 0 %>
     <%# binding.pry %>
@@ -74,7 +74,7 @@
         <% end %>
         <th><%= a_totalcount %></th>
         <% gain = 0 %>
-        <% gain = t*i.list_price - a_totalcount*i.cost_price %>
+        <%# gain = t*i.list_price - a_totalcount*i.cost_price %>
       <th><%= gain %></th>
     </tr>
     <% end %>
@@ -84,3 +84,39 @@
 
 <% else %>
 <% end %>
+
+<!--/admin_users/orders/sales
+<main>
+
+<div class="main-image">
+  <p>売上管理画面</p>
+</div>
+
+<h3 class="Total"><9月分売上></h3>
+
+<table class="Count-Total1">
+  <tr>
+    <th class="Count">入荷代金総計</th>
+    <th class="Count">売上総利益</th>
+    <th class="Count">今月分利益</th>
+  </tr>
+</table>
+
+<table class="Count-Total2">
+  <tr>
+    <td class="Count"></td>
+    <td class="Count"></td>
+    <td class="Count"></td>
+  </tr>
+</table>
+
+<table class="Count-Total3">
+  <tr>
+    <th class="Count">CD</th>
+    <th class="Count">アーティスト</th>
+    <th class="Count">販売枚数</th>
+    <th class="Count">入荷枚数</th>
+    <th class="Count">売上総利益</th>
+  </tr>
+</table>
+</main>-->
