@@ -24,9 +24,9 @@
                     <% @orders.each do |o|%>
                         <% i_orders = OrderItem.where(order_id: o.id) %>
                         <% i_orders.each do |oi| %>
-                            <% orderitem = OrderItem.where(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name) %>
-                            <% binding.pry %>
-                            <% order_total = order_total + orderitem.item_count %>
+                            <% orderitem = OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name) %>
+                            <%# binding.pry %>
+                            <%# order_total = order_total + orderitem.item_count %>
                         <% end %>
                     <% end %>
             <% end %>
@@ -36,7 +36,7 @@
                     <%#= a.last(@arrival).where("arrival = '入荷済'").count %>
                 </td>
                 <td class="ii-5">
-                    <%= a.arrival_expected_date %>
+                    <%#= a.arrival_expected_date %>
                 </td>
         	</tr>
     <% end %>

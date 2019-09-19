@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_085550) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
@@ -41,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_085550) do
     t.integer "arrival_count"
     t.date "purchase_order_date"
     t.date "arrival_expected_date"
-    t.string "arrival_status"
+    t.string "arrival_status", default: "0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "supplier"
