@@ -28,6 +28,8 @@ AdminUser.create!(
   ]
 )
 
+
+
 # AdminUser.create(email: "yuuki0421ktu@gmail.com",password:"kattakatao")
 # AdminUser.create(email: "xxx@xxx",password:"xxxxxx")
 # AdminUser.create(email: "yyy@yyy",password:"yyyyyy")
