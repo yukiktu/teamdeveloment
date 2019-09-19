@@ -28,8 +28,8 @@
                                 </td>
 
                             <td class="ii-4">
-                                <%= a.last(@arrival).where("arrival = '入荷済'").count %>
-                                </td>
+                            <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
+                                 </td>
                             <td class="ii-5">
                                 <%= a.arrival_expected_date %>
                             </td>

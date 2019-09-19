@@ -89,19 +89,12 @@
         <% end %>
       </div>
       <div class="foot_blo_right">
-        <%= form_for (@order) do |o|%>
-        <% o.text_field :subtotal, value: subtotal %>
-        <% o.text_field :grand_total, value: grand_total %>
-        <%= o.submit '購入する' %>
+        <%= form_for @order do |f| %>
+        <%= f.hidden_field :subtotal, value: subtotal %>
+        <%= f.hidden_field :grand_total, value: grand_total %>
+        <%= f.submit '購入する' %>
         <% end %>
       </div>
     </div>
   </div>
 </body>
-
-
-<%= form_for @order do |f| %>
-<%= f.hidden_field :subtotal, value: subtotal %>
-<%= f.hidden_field :grand_total, value: grand_total %>
-<%= f.submit '購入する' %>
-<% end %>
