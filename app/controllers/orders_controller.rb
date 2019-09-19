@@ -59,7 +59,7 @@ before_action :authenticate_end_user!
 			@order = Order.find(params[:id])
 			@order.shipping_fee = (ShippingFee.last).shipping_fee
 			@order.update(order_params)
-			cart_items = CartItem.where(end_user_id: current_end_user.id)
+			cart_items = CartItem.find_by(end_user_id: current_end_user.id)
 			cart_items.each do |c|
 				order_items = OrderItem.new#(order_item_params)
 				item = Item.find(c.item_id)
