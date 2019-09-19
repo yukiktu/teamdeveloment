@@ -106,10 +106,10 @@ before_action :authenticate_end_user!
 				new_addressee.save
 			end
 		else
-			delivery_addressee = DeliveryAdress.where(addressee: order.addressee, end_user_id: current_end_user.id)
+			delivery_addressee = DeliveryAdress.find_by(addressee: order.addressee, end_user_id: current_end_user.id)
 			#binding.pry
-			order.postal_code = postal_code.postal_code
-			order.address = delivery_addressee.adress
+			order.postal_code = delivery_addressee.postal_code
+			order.address = delivery_addressee.address
 			order.phone_number = delivery_addressee.phone_number
 			# order.subtotal = 0 #not_null回避のため
 			# grand_total = 0 #not_nul回避のため
