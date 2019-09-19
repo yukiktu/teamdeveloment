@@ -1,40 +1,44 @@
 <div class="header"></div>
 <table class="">
-        		<thead class="aaaa">
-        			<tr class="">
-        				<th class="i-1">アイテム名</th>
-        				<th class="i-2">アーティスト</th>
-        				<th class="i-3">在庫枚数</th>
-                        <th class="i-4">前回入荷数量</th>
-                        <th class="i-5">前回入荷日</th>
-        			</tr>
-        		</thead>
-                <% @items.each do |i| %>
-        		<tbody class="">
-        			     <tr class="ddd">
-
-        				    <td class="ii-1">
-                                <%= link_to(item_path(i)) do %><%= i.item_name %>
-                                <% end %>
-                                </td>
-
-        				    <td class="ii-2">
-                                <%= i.artist.artist_name %>
-                                </td>
-
-                            <% i.arrivals.each do |a| %>
-        				    <td class="ii-3">
-                                <%= a.arrival_count - 1 %>
-                                </td>
-
-                            <td class="ii-4">
-                                <%= a.last(@arrival).where("arrival = '入荷済'").count %>
-                                </td>
-                            <td class="ii-5">
-                                <%= a.arrival_expected_date %>
-                            </td>
-        			     </tr>
-        			 <% end %>
-                     <% end %>
-        		</tbody>
-        	</table>
+    <thead class="aaaa">
+        <tr class="">
+        	<th class="i-1">商品</th>
+        	<th class="i-2">アーティスト</th>
+        	<th class="i-3">在庫枚数</th>
+            <th class="i-4">前回入荷数量</th>
+            <th class="i-5">前回入荷日</th>
+        </tr>
+    </thead>
+    <% @items.each do |i| %>
+    	<tbody class="">
+            <tr class="ddd">
+                <td class="ii-1">
+                    <%= link_to(item_path(i)) do %><%= i.item_name %><% end %>
+                </td>
+			    <td class="ii-2">
+                    <%= i.artist.artist_name %>
+                </td>
+	       	    <td class="ii-3">
+                    <% order_total = 0 %>
+            <% if @orders.present? %>
+                    <% @orders.each do |o|%>
+                        <% i_orders = OrderItem.where(order_id: o.id) %>
+                        <% i_orders.each do |oi| %>
+                            <% orderitem = OrderItem.where(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name) %>
+                            <% binding.pry %>
+                            <% order_total = order_total + orderitem.item_count %>
+                        <% end %>
+                    <% end %>
+            <% end %>
+                    <%= order_total %>
+                </td>
+                <td class="ii-4">
+                    <%#= a.last(@arrival).where("arrival = '入荷済'").count %>
+                </td>
+                <td class="ii-5">
+                    <%= a.arrival_expected_date %>
+                </td>
+        	</tr>
+    <% end %>
+    </tbody>
+</table>

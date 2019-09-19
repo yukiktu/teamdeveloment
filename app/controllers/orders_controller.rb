@@ -70,6 +70,7 @@ before_action :authenticate_end_user!
 				order_items.item_count = c.item_count
 				order_items.list_price = item.list_price
 				order_items.tax_rate = (TaxRate.last).tax_rate
+				#binding.pry
 				if order_items.save
 					c.delete
 				end
@@ -106,8 +107,8 @@ before_action :authenticate_end_user!
 			end
 		else
 			delivery_addressee = DeliveryAdress.where(addressee: order.addressee, end_user_id: current_end_user.id)
-			binding.pry
-			order.postal_code = delivery_addressee.postal_code
+			#binding.pry
+			order.postal_code = postal_code.postal_code
 			order.address = delivery_addressee.adress
 			order.phone_number = delivery_addressee.phone_number
 			# order.subtotal = 0 #not_null回避のため
