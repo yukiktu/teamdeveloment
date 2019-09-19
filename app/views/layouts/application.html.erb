@@ -10,14 +10,17 @@
   </head>
 
   <body>
-    <header id="header" class="">
+    <header id="header" class="junbotron">
     <ul>
+
     <% if end_user_signed_in? %>
-    <%# link_to 'abotu', about_path %>
-   <li>
+   <li class="about">
+    <%= link_to 'abotu', about_path %>
+    </li>
+   <li class="maipe">
       <%= link_to 'マイページ', end_user_path(current_end_user.id) %>
     </li>
-   <li>
+   <li class="logout">
       <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
     </li>
 
@@ -38,18 +41,18 @@
       <%= link_to '売り上げ確認', sales_path %>
       </li>
     <li>
-      <%= link_to 'ログアウト', destroy_adomin_user_path %>
+      <%= link_to 'ログアウト', destroy_adomin_user_path, method: :delete %>
       </li>
 
     <% else %>
     <li>
-      <%#= link_to 'abotu', about_path %>
+      <%= link_to 'abotu', about_path %>
       </li>
    <li>
-      <%= link_to 'サインイン', end_user_session_path %>
+      <%= link_to 'サインアップ', new_end_user_session_path %>
     </li>
    <li>
-      <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
+      <%= link_to 'サインイン', end_user_session_path %>
     </li>
     <% end %>
 

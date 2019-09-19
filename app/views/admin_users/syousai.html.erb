@@ -1,5 +1,4 @@
 
-<div class="itemheader"></div>
 
 <div class="s-main">
 	<div class="sidebar">
@@ -11,10 +10,7 @@
                 <p class="s-cart"><%= link_to 'カートに入れる', cart_items_path(cart_items: {user_id: current_end_user.id, item_id:
                 @item.id}), method: :post %></p>
             <% elsif current_admin_user.present? %>
-               <% link_to edit_item_path()
-            <% else %>
-                <p class="s-cart"><%= link_to 'テスト用カート消してね', cart_items_path(cart_items: {user_id: 1, item_id:
-                @item.id}), method: :post %></p>
+               <% link_to edit_item_path(@item.id) %>
             <% end %>
         </div>
 
