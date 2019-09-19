@@ -2,9 +2,9 @@
    <h2>商品詳細を記録する</h2>
 
    <%= form_for @item do |f| %>
-   <%= form_for @label, url: labels_path do |l| %>
-   <%= form_for @genre, url: labels_path do |g| %>
-   <%= form_for @artist, url: labels_path do |a| %>
+   <%= form_for @label,url: item_path(@item) do |l| %>
+   <%= form_for @genre, url: item_path(@item) do |g| %>
+   <%= form_for @artist,url: item_path(@item) do |a| %>
 
        <div class="field">
          <%= l.label :label_name, "レーベル" %>
