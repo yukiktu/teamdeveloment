@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where(item_name: params[:search])
+    @items = Item.where(item_name: params[:search]).page(params[:page]).per(12).order(:id)
     # if @item.search_method
       # @items = @item.search_method
     @label = Label.find_by(@label)#@label_id)
