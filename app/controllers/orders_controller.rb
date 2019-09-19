@@ -3,6 +3,7 @@ before_action :authenticate_end_user!
 #before_action :authenticate_admin_user!, only: [:index]
 	def index
 		@oders = Order.all
+		@end_users = EndUser.all
 	end
 
 	def sales

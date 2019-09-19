@@ -1,0 +1,21 @@
+// 主に受注画面のscssを記載してます
+
+.orders_table{
+	display: block;
+	background-color: green;
+	width: 90%;
+	padding: 10px 20px;
+	margin: 0 auto;
+}
+.table_top{
+	display: flex;
+	margin-bottom: 10px;
+	border-bottom: 2px solid black;
+}
+.order_status{
+	background-color: blue;
+}
+.post{
+	margin-left: 20px;
+	background-color: red;
+}
