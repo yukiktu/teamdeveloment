@@ -15,13 +15,8 @@ class ApplicationController < ActionController::Base
 			                                               :postal_code,
 			                                               :address,
 			                                               :phone_number,
-			                                               :mail_address,
-			                                               :password,
-			                                               :enrollment_status,
-			                                               :updated_at,
-			                                               :created_at ])
-		devise_parameter_sanitizer.permit(:sign_in, keys: [:mail_address,
-		                                                   :password])
+			                                               :enrollment_status])
+
 		devise_parameter_sanitizer.permit(:account_update, keys: [:name])
 
 	end
