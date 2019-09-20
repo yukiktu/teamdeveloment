@@ -5,9 +5,10 @@ before_action :authenticate_end_user!
 		@cart_items = CartItem.where(end_user_id: current_end_user.id)
 		#@gacket_images = Gacket_image.where(item_id: @cart_items.item_id)
 	end
-
+ 
 	def create
-		cart_item = CartItem.where(end_user_id: current_end_user.id, item_id: @item_id)
+		cart_item = CartItem.find_by(end_user_id: current_end_user.id, item_id: cart_item_params["item_id"])
+		binding.pry
 		if cart_item.blank?
 			cart_item = CartItem.new(cart_item_params)
 			cart_item.item_count = 1
@@ -23,6 +24,9 @@ before_action :authenticate_end_user!
 	def update
 		i = CartItem.find(params[:id])
 		i.update(cart_items_params)
+		if i.item_count == 0
+			i.delete
+		end
 		redirect_to cart_items_path
 	end
 
