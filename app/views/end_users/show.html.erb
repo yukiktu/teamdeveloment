@@ -42,76 +42,89 @@
 			<p>プロフィール編集</p>
 		</div>
 	</div>
-
-
-
 	<div class="purchase_history">
 		<h2>購入履歴</h2>
 		<% @orders.each do |o| %>
-		<div class="well">
-		<div class="one_history">
-			<div class="one_blo_left">
-					<h2><span class="label label-success" style="font-size:20px" ><%#= o.deryvery_status%><!-- モデルにenumの記述を --></span></h2>
-			</div>
-			<div class="one_blo_right" >
-				<div class="end_user_address">
-					<p>＊発送先＊</p>
-					<p>〒<%= o.postal_code %></p>
-					<p><%= o.addressee %></p>
+			<div class="well">
+				<div class="one_history">
+					<div class="one_blo_left">
+						<h2>
+							<% if o.delivery_status == 0%>
+									<span class="label" style="font-size:20px" >準備中</span>
+							<% elsif o.delivery_status == 1	%>
+								<span class="label label-success" style="font-size:20px" >発送済</span>
+							<% else %>
+									error!
+								<% end %>
+								</span></h2>
+					</div>
+					<div class="one_blo_right" >
+						<div class="end_user_address">
+							<p>＊発送先＊</p>
+							<p>〒<%= o.postal_code %></p>
+							<p><%= o.addressee %></p>
+						</div>
+					</div>
+					<div class="history">
+						<table class="table_history">
+							<tr>
+								<th class="th1">購入日</th>
+								<th class="th2">Album art</th>
+								<th class="th3">Album name</th>
+								<th class="th4">Artist</th>
+								<th class="th5">購入枚数</th>
+								<th class="th6">価格(税込)</th>
+							</tr>
+							<% o.order_items.each.with_index do |oi, index| %>
+								<tr>
+									<% if index == 0 %>
+										<td class="td1">
+											<%= (o.order_items.first).created_at %>
+										</td>
+									<% else %>
+										<td></td>
+									<% end %>
+									<td class="td2">
+										<% item = Item.find_by(id: oi.item_id)%>
+										<% item.gacket_images.each do |gacket_image| %>
+											<div>
+												<%=attachment_image_tag gacket_image, :image, :fill %>
+											</div>
+										<% end %>
+									</td>
+									<td class="td3">
+										<%= oi.item_name %>
+									</td>
+									<td class="td4">
+										<%= oi.artist_name %>
+									</td>
+									<td class="td5">
+										<%= oi.item_count %>
+									</td>
+									<td class="td6">
+										¥<%= oi.list_price %>
+									</td>
+								</tr>
+							<% end %>
+							<tr>
+								<td class="td13" colspan="4"></td>
+								<td class="td7">小計</td>
+								<td class="td8">¥<%= o.subtotal %></td>
+							</tr>
+							<tr>
+								<td colspan="4"></td>
+								<td class="td9">送料</td>
+								<td class="td10">¥<%= o.shipping_fee %></td>
+							</tr>
+							<tr>
+								<td class="td14" colspan="4"></td>
+								<td class="td11" colspan="1">ご請求金額</td>
+								<td class="td12">¥<%= o.grand_total %></td>
+							</tr>
+						</table>
+					</div>
 				</div>
 			</div>
-			<div class="history">
-				<table class="table_history">
-					<tr>
-						<th class="th1">購入日</th>
-						<th class="th2">Album art</th>
-						<th class="th3">Album name</th>
-						<th class="th4">Artist</th>
-						<th class="th5">購入枚数</th>
-						<th class="th6">価格(税込)</th>
-					</tr>
-
-
-
-					<tr>
-						<td class="td1"><%= o.order_items.first.created_at %></td>
-						<td class="td2"><div>
-							<%# gacket_images = GacketImage.where(item_id: Item.where(item_name: o.order_items.item_name, artist_name: o.order_items.artist_name)) %><%# gacket_images.each do |g| %><%#= g.attachment_image_tag acket_images, :image %><%# end %>
-							</div>
-						</td>
-						<td class="td3"><%= o.order_items.item_name %></td>
-						<td class="td4"><%= o.order_items.artist_name %></td>
-						<td class="td5"><%= o.order_items.item_count %></td>
-						<td class="td6">¥<%= o.order_items.list_price %></td>
-					</tr>
-					<tr>
-						<td class="td1"><%= o.order_item.first.created_at %></td>
-						<td class="td2"><div><% gacket_images = gacketImages.where(item_id: o.item_id) %><% gacket_images.each do |g| %><%= g.attachment_image_tag acket_images, :image %><% end %></div></td>
-						<td class="td3"><%= o.order_item.item_name %></td>
-						<td class="td4"><%= o.order_item.artist_name %></td>
-						<td class="td5">1<%= o.order_item.item_count %></td>
-						<td class="td6"><%= o.order_item.list_price %></td>
-					</tr>
-
-
-
-					<tr>
-						<td class="td13" colspan="4"></td>
-						<td class="td7">小計</td>
-						<td class="td8">¥<%= o.subtotal %></td>
-					</tr>
-					<tr>
-						<td colspan="4"></td>
-						<td class="td9">送料</td>
-						<td class="td10">¥<%= o.shipping_fee %></td>
-					</tr>
-					<tr>
-						<td class="td14" colspan="4">
-						<td class="td11" colspan="1">ご請求金額</td>
-						<td class="td12">¥<%= o.grand_total %></td>
-					</tr>
 		<% end %>
-				</table>
-			</div>
-		</div>
 	</div>
+</body>

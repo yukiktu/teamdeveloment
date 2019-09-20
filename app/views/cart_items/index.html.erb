@@ -169,9 +169,16 @@
     <%# end %>
 
     <div class="botton_block">
-      <div class="button_1">
-          <button type="button" class="btn btn-secondary btn-lg"><%= link_to '戻る', new_order_path %></button></div>
-          <div class="button_2"><button type="button" class="btn btn-outline-success btn-lg"><%= link_to '購入確定画面へ', new_order_path %></button></div>
-      </div>
-     </div>
+      <%= link_to(items_path) do %>
+        <div class="button_1">
+          <button type="button" class="btn btn-secondary btn-lg">TOPページへ</button>
+        </div>
+      <%end%>
+      <%= link_to(new_order_path) do %>
+        <div class="button_2">
+          <button type="button" class="btn btn-outline-success btn-lg">入確定画面へ</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </body>
