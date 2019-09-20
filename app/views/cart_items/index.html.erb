@@ -1,6 +1,6 @@
 
 
-<!-- BootstrapのCSS読み込み -->
+<!-- Boots trapのCSS読み込み -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- jQuery読み込み -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -63,13 +63,19 @@
       <div class="table_block">
         <table class="table_1">
           <tr>
-            <%= form_for (c)  do |i| %>
-            <td class="table_td_1"><%= i.submit "変更を保存" %></td>
-            <td class="button_table"><%= i.number_field :item_count %>点</td>
-            <% end %>
+              <%= form_for (c)  do |i| %>
+                <td class="table_td_1"><%= i.submit "変更を保存" %></td>
+                <td class="button_table"><%= i.number_field :item_count,min:0, max:100 %>点</td><!-- 在庫数を上限にする？ -->
+              <% end %>
             <td class="table_td_2">小計</td>
             <td class="table_td_3"><% price = c.item_count * item.list_price*(TaxRate.last).tax_rate %><!-- @tax_rate --><%= price %></td>
           </tr>
+          <td class="table_td_1">
+            <%= form_for (c)  do |ci| %>
+              <%= ci.hidden_field :item_count, value: 0 %>
+              <%= ci.submit'カートから商品を出す' %>
+            <% end %>
+          </td>
         </table>
       </div>
     </div>
