@@ -2,7 +2,13 @@ class OrdersController < ApplicationController
 before_action :authenticate_end_user!
 #before_action :authenticate_admin_user!, only: [:index]
 	def index
-		@oders = Order.all
+		orderitems = OrderItem.all
+		order_id = []
+		orderitems.each{|oi|
+			order_id.push(oi.order_id)
+		}
+		order_id.uniq
+		@oders = Order.where(id: order_id)
 	end
 
 	def sales
@@ -81,6 +87,9 @@ before_action :authenticate_end_user!
 	end
 
 	def destroy
+		@order = Order.find(params[:id])
+		@order.delete
+		redirect_to cart_items_path
 	end
 
 	def create
