@@ -7,8 +7,7 @@ class Item < ApplicationRecord
     has_many :discs
     accepts_nested_attributes_for :discs
     has_many :arrivals
-    #has_many :songs
-    #accepts_nested_attributes_for :songs
+
     def self.search_method(search)
       if search
         Item.where(['item_name LIKE ?', "%#{search}%"])
@@ -16,5 +15,4 @@ class Item < ApplicationRecord
         Item.all
       end
     end
-
 end

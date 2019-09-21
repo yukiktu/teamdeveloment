@@ -10,11 +10,11 @@
 			<%# s_options = [["未発送", 0],["発送済み", 1]] %>
 			<%#= t.form.select :delivery_status, s_options %>
 			<% if t.delivery_status == 0 %>
-			<%= form_for t do |f| %>
-			<%= f.hidden_field :delivery_status, value: 1 %>
-			<%= button_tag( class: "btn btn-default btn-sm") do %>
-            <%= content_tag :span, "送信", class: "glyphicon glyphicon-asterisk" %>
-            <% end %>
+				<%= form_for t do |f| %>
+				<%= f.hidden_field :delivery_status, value: 1 %>
+				<%= button_tag( class: "btn btn-default btn-sm") do %>
+           		<%= content_tag :span, "送信", class: "glyphicon glyphicon-asterisk" %>
+            	<% end %>
 			<%#= f.submit'発送する', class: "glyphicon glyphicon-asterisk", style:"font-size:25px;"%>
             <%#= f.button_tag :type =>"submit", :class =>"glyphicon glyphicon-asterisk" do %>
 			<% end %>
@@ -24,6 +24,7 @@
 			<%= f.hidden_field :delivery_status, value: 0 %>
 			<%= f.submit'発送取り消し' %>
 			<% end %>
+<!-- <<<<<<< HEAD -->
 		<% end %>
 
 
@@ -55,7 +56,7 @@
 			<td><%= t.created_at.strftime("%Y-%m-%d") %></td>
 			<td>
 				<% @end_users.each do |e| %>
-				<%= e.last_name %><%= e.first_name %>
+				<%= e.last_name %><%= e.first_name å%>
 				<% end %>
 			</td>
 			<td><%= i.item_name %></td>
@@ -66,4 +67,43 @@
 		<% end %>
 	</tbody>
 </table>
+=======
+			</div>
+			<div class = "post">
+				宛名：<%= t.addressee%><br>
+				〒<%= t.postal_code %><br>
+				住所：<%= t.address %>
+			</div>
+		</caption>
+		<thead>
+			<tr>
+				<th width="10%">購入日</th>
+				<th width="10%">購入者</th>
+				<th width="20%">商品</th>
+				<th width="10%">アーティスト</th>
+				<th width="10%">枚数</th>
+				<th width="15%">総計(税込み) <%= t.grand_total %>円</th>
+			</tr>
+		</thead>
+			<tbody>
+			<% t.order_items.each_with_index do |i, index| %>
+				<tr>
+					<% if index == 0 %>
+						<td><%= t.created_at %></td>
+						<td><%= t.end_user.last_name %> <%= t.end_user.first_name %></td>
+					<% else %>
+						<td></td>
+						<td></td>
+					<% end %>
+					<td><%= i.item_name %></td>
+					<td><%= i.artist_name %></td>
+					<td><%= i.item_count %></td>
+					<% subtotal = 0 %>
+					<% subtotal = i.list_price * i.item_count * i.tax_rate %>
+					<td>小計(税込み) <%= subtotal %>円</td>
+				</tr>
+			</tbody>
+		<% end %>
+	</table>
+>>>>>>> 28235499222d038a3259cd5479060f3e8dc69f88
 <% end %>
