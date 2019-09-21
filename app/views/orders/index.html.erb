@@ -21,9 +21,9 @@
 			<% end %>
 			</div>
 			<div class = "post">
-				住所<%= t.addressee%><br>
-				<%= t.postal_code %><br>
-				<%= t.address %>
+				宛名：<%= t.addressee%><br>
+				〒<%= t.postal_code %><br>
+				住所：<%= t.address %>
 			</div>
 		</caption>
 		<thead>
@@ -33,20 +33,27 @@
 				<th width="20%">商品</th>
 				<th width="10%">アーティスト</th>
 				<th width="10%">枚数</th>
-				<th width="10%">価格(税抜き)</th>
+				<th width="15%">総計(税込み) <%= t.grand_total %>円</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<% t.order_items.each do |i| %>
-					<td><%= t.created_at %></td>
-					<td><%= t.addressee%></td>
+			<tbody>
+			<% t.order_items.each_with_index do |i, index| %>
+				<tr>
+					<% if index == 0 %>
+						<td><%= t.created_at %></td>
+						<td><%= t.end_user.last_name %> <%= t.end_user.first_name %></td>
+					<% else %>
+						<td></td>
+						<td></td>
+					<% end %>
 					<td><%= i.item_name %></td>
 					<td><%= i.artist_name %></td>
 					<td><%= i.item_count %></td>
-					<td><%= i.list_price %></td>
-				<% end %>
-			</tr>
-		</tbody>
+					<% subtotal = 0 %>
+					<% subtotal = i.list_price * i.item_count * i.tax_rate %>
+					<td>小計(税込み) <%= subtotal %>円</td>
+				</tr>
+			</tbody>
+		<% end %>
 	</table>
 <% end %>

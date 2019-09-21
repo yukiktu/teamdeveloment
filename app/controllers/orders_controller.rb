@@ -75,6 +75,7 @@ before_action :authenticate_end_user!
 				order_items.artist_name = artist.artist_name
 				order_items.item_count = c.item_count
 				order_items.list_price = item.list_price
+				order_items.item_id = item.id
 				order_items.tax_rate = (TaxRate.last).tax_rate
 				#binding.pry
 				if order_items.save
