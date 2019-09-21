@@ -56,27 +56,29 @@
     <% a_totalcount = 0 %>
     <%# binding.pry %>
     <% @items.each do |i| %>
-      <tr>
-        <th><%= i.item_name %></th>
-        <th><%= i.artist.artist_name %></th>
-        <% t = 0 %>
-        <% @orders.each do |b| %>
-          <% orderitem = OrderItem.where(item_name: i.item_name, artist_name: i.artist.artist_name, order_id: b.id) %>
-          <% orderitem.each do |o| %>
-            <% t = t + o.item_count %>
+      <% if i.arrivals.present? %>
+        <tr>
+          <th><%= i.item_name %></th>
+          <th><%= i.artist.artist_name %></th>
+          <% t = 0 %>
+          <% @orders.each do |b| %>
+            <% orderitem = OrderItem.where(item_name: i.item_name, artist_name: i.artist.artist_name, order_id: b.id) %>
+            <% orderitem.each do |o| %>
+              <% t = t + o.item_count %>
+            <% end %>
           <% end %>
-        <% end %>
-        <th><%= t %></th>
-        <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
-        <% a_totalcount = 0 %>
-        <% arrivals.each do |a| %>
-          <% a_totalcount = a_totalcount + a.arrival_count %>
-        <% end %>
-        <th><%= a_totalcount %></th>
-        <% gain = 0 %>
-        <% gain = t*i.list_price - a_totalcount*i.cost_price %>
-      <th><%= gain %></th>
-    </tr>
+          <th><%= t %></th>
+          <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
+          <% a_totalcount = 0 %>
+          <% arrivals.each do |a| %>
+            <% a_totalcount = a_totalcount + a.arrival_count %>
+          <% end %>
+          <th><%= a_totalcount %></th>
+          <% gain = 0 %>
+          <% gain = t*i.list_price - a_totalcount*i.cost_price %>
+          <th><%= gain %></th>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
