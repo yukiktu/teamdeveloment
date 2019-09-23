@@ -30,7 +30,9 @@ before_action :authenticate_end_user!
 	end
 
 	def index
-		@oders = Order.all
+		@cart_items = CartItem.where(end_user_id: current_end_user.id)
+		@orders = Order.all
+		# @order = Order.find(params[:id])
 		@end_users = EndUser.all
 		orderitems = OrderItem.all
 		order_id = []

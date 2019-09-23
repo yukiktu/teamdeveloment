@@ -2,20 +2,75 @@
 
 .orders_table{
 	display: block;
-	background-color: green;
-	width: 90%;
+	// background-color: green;
+	width: 100%;
 	padding: 10px 20px;
 	margin: 0 auto;
 }
 .table_top{
 	display: flex;
 	margin-bottom: 10px;
-	border-bottom: 2px solid black;
+	// border-bottom: 2px solid black;
 }
 .order_status{
-	background-color: blue;
+	// background-color: blue;
 }
 .post{
 	margin-left: 20px;
-	background-color: red;
+	// background-color: red;
 }
+.tr-o-0{
+	border-top: 2px solid black;
+}
+.th-o-1{
+	// background-color: yellow;
+	width: 10%;
+	text-align: center;
+}
+.th-o-2{
+	// background-color: blue;
+	width: 10%;
+	text-align: center;
+}
+.th-o-3{
+	// background-color: yellow;
+	width: 20%;
+	text-align: center;
+}
+.th-o-4{
+	// background-color: blue;
+	width: 20%;
+	text-align: center;
+}
+.th-o-5{
+	// background-color: yellow;
+	width: 10%;
+	text-align: center;
+}
+.th-o-6{
+	// background-color: blue;
+	width: 10%;
+	text-align: center;
+}
+.rd-o-0{
+	// background-color: blue;
+}
+td{
+// background-image: inear-gradient(40deg, #fce043 0%, #fb7ba2 74%);
+}
+.tr-subtotal{
+	border-top: 1px solid black;
+}
+.tr-total{
+	border-top: 2px solid black;
+}
+.one-order{
+	margin: auto;
+	width: 85%;
+	text-align: center;
+}
+.tr-item{
+	padding-top: 5px;
+}
+
+
