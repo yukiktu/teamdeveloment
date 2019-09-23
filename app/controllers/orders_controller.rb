@@ -30,13 +30,16 @@ before_action :authenticate_end_user!
 	end
 
 	def index
+		@cart_items = CartItem.where(end_user_id: current_end_user.id)
+		@orders = Order.all
+		# @order = Order.find(params[:id])
+		@end_users = EndUser.all
 		orderitems = OrderItem.all
 		order_id = []
 		orderitems.each{|oi|
 			order_id.push(oi.order_id)
 		}
 		order_id.uniq
-		@oders = Order.where(id: order_id)
 	end
 
 	def sales
