@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="devise.css">
 
-<div class="devise_background_img">
+
+<!-- <div class="devise_background_img"> -->
 
 <h1 class="welcom_message">WELCOME NAGANO RECORD</h1>
 <div class="end_user_infomation">
@@ -8,17 +9,15 @@
     <%= render "devise/shared/error_messages", resource: resource %>
     <!--autocomplete消してあります。実装可能性でしたら追記してください。-->
       <div class="entries_field">
-        <div class="field"> <label class="labels">姓</label>
-          <%= f.text_field :last_name, autofocus: true, class: "field_box" %>
+        <div class="field"> <label class="labels-sei">姓</label>
+          <%= f.text_field :last_name, autofocus: true, class: "field_box_sei" %>
+           <label class="labels-mei">名</label>
+          <%= f.text_field :first_name, autofocus: true, class: "field_box_mei" %>
         </div>
-        <div class="field"> <label class="labels">名</label>
-          <%= f.text_field :first_name, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">フリガナ(姓)</label>
-          <%= f.text_field :kana_last_name, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">フリガナ(名)</label>
-          <%= f.text_field :kana_first_name, autofocus: true, class: "field_box" %>
+        <div class="field"> <label class="labels-sei">フリガナ(姓)</label>
+          <%= f.text_field :kana_last_name, autofocus: true, class: "field_box_sei" %>
+        <label class="labels-mei">フリガナ(名)</label>
+          <%= f.text_field :kana_first_name, autofocus: true, class: "field_box_mei" %>
         </div>
         <div class="field"> <label class="labels">郵便番号</label>
           <%= f.text_field :postal_code, autofocus: true, class: "field_box" %>

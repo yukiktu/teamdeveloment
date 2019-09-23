@@ -17,7 +17,6 @@
 	display: block;
 	/*border-top-left-radius: 30px;*/
 	/*border-top-right-radius: 30px;*/
-	background-color: ;/*welcomeのバックグラウンドカラー*/
 	/*margin: 50px 10% 0px 10%;*/
 	padding: 10px;
 	text-align: center;
@@ -27,7 +26,6 @@
 	margin: 0px 10% 30px 10%;
 	text-align: center;
 	color: white;
-	background-color: ;/*箱の中の背景色*/
 	/*border-bottom-left-radius: 30px;*/
 	/*border-bottom-right-radius: 30px;*/
 	/*border: 1px solid gray;*/
@@ -37,25 +35,67 @@
 	width: 80%;
 	margin: 0 auto;
 	padding: 10px 10%;
+	/*background-color: yellow;*/
 }
 
 .field{
 	font-size: 10px;
 	display: flex;
 	text-align:center;
+	/*background-color: red;*/
 }
 
 .labels{
 	display: block;
-	line-height: 25px;
-	width: 35%;
-	height: 25px;
+	line-height: 40px;
+	width: 30%;
+	height: 40px;
+
 	background-color: gray;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+.labels-sei{
+	display: block;
+	line-height: 40px;
+	width: 20%;
+	height: 40px;
+	background-color: gray;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.labels-mei{
+	display: block;
+	line-height: 40px;
+	width: 20%;
+	height: 40px;
+	background-color: gray;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
 .field_box{
+	width: 70%;
+	height: 40px;
+	border:0;
+	padding:10px;
+	font-size:1.3em;
+	font-family:Arial, sans-serif;
+	color:#aaa;
+	border:solid 1px #ccc;
+	margin:0 0 20px;
+	-webkit-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	/*background-color: green;*/
+}
+.field_box_sei{
 	width: 65%;
 	height: 40px;
 	border:0;
@@ -71,6 +111,26 @@
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	margin-right: 10px;
+	/*background-color: green;*/
+}
+.field_box_mei{
+	width: 65%;
+	height: 40px;
+	border:0;
+	padding:10px;
+	font-size:1.3em;
+	font-family:Arial, sans-serif;
+	color:#aaa;
+	border:solid 1px #ccc;
+	margin:0 0 20px;
+	-webkit-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	-moz-box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	box-shadow: 0px 1px rgba(255, 255, 255, 0.5);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	/*background-color: green;*/
 }
 /*input:focus {
     border:solid 1px #EEA34A;
@@ -121,3 +181,4 @@
 .devise_background_img{
 	background-image : url(KAZ829003)
 }
+
