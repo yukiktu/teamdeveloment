@@ -7,7 +7,8 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where(item_name: params[:search])
+
+    @items = Item.where(item_name: params[:search]).page(params[:page]).per(12).order(:id)
     @label = Label.find_by(@label)#@label_id)
     @genre = Genre.find_by(@item)
     @artist = Artist.find_by(@artist)

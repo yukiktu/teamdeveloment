@@ -16,9 +16,19 @@ before_action :authenticate_end_user!, only: [:show, :edit]
 	end
 
 	def edit
+		@end_user = EndUser.find(params[:id])
+		if @end_user.id != current_end_user.id
+			redirect_to end_user_path(current_end_user.id)
+		end
 	end
 
 	def update
+		@end_user = EndUser.find(params[:id])
+		if @end_user.update(end_user_params)
+			redirect_to end_user_path(@end_user.id)
+		else
+			render :edit
 	end
-
 end
+end
+
