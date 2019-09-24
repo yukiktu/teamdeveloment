@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
 before_action :authenticate_admin!, only: [:edit, :update]
 
   def index
-    @items = Item.where(sales_status: "販売中")
-    @items = Item.page(params[:page]).per(12).order(:id)
+    @items = Item.where(sales_status: "販売中").page(params[:page]).per(12).order(:id)
   end
 
   def search
