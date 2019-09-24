@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 before_action :authenticate_end_user!
-#before_action :authenticate_admin_user!, only: [:index]
+before_action :authenticate_admin!, only: [:index, :sales]
 	def get_stok(item)
 		order_total = 0
 		order_items = OrderItem.all

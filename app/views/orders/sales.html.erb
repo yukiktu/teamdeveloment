@@ -1,4 +1,3 @@
-/admin_users/orders/sales
 <!-- ↓検索機能もしくはソート機能検討中 -->
 <% m_terms=[] %>
 <% y_terms=[] %>
@@ -25,64 +24,68 @@
 <% if term == 0 %>
 
 <!-- ↑検索機能もしくはソート機能検討中 -->
-<h1>売上管理画面</h1>
-<h3 class="Total">全期間売上</h3>
+<main>
 
+<div class="main-image">
+  <div class="main-mask">
+  <p class="View">売上管理画面</p>
+  </div>
+</div>
 
-<table>
+<h3 class="Total"><9月分売上></h3>
+
+<table class="Count-Total1">
   <tr>
     <th class="Count">入荷代金総計</th>
     <th class="Count">売上総利益</th>
     <th class="Count">今月分利益</th>
   </tr>
-  <tbody>
-    <th class="Count-Box1"><%= @total_cost %></th>
-    <th class="Count-Box2"><%= @totalgain %></th>
-    <th class="Count-Box3"><%= @totalgain - @total_cost %></th>
-  </tbody>
 </table>
 
-<table>
-  <thead>
+<table class="Count-Total2">
   <tr>
-    <th class="Count2">CD</th>
-    <th class="Count2">アーティスト</th>
-    <th class="Count2">販売枚数</th>
-    <th class="Count2">入荷枚数</th>
-    <th class="Count2">売上総利益</th>
+    <td class="Count"><%= @total_cost.to_i %></td>
+    <td class="Count"><%= @totalgain.to_i %></td>
+    <td class="Count"><%= @totalgain.to_i - @total_cost.to_i %></td>
   </tr>
-  </thead>
-  <tbody>
-    <% a_totalcount = 0 %>
-    <%# binding.pry %>
-    <% @items.each do |i| %>
-      <% if i.arrivals.present? %>
-        <tr>
-          <th><%= i.item_name %></th>
-          <th><%= i.artist.artist_name %></th>
-          <% t = 0 %>
-          <% @orders.each do |b| %>
-            <% orderitem = OrderItem.where(item_name: i.item_name, artist_name: i.artist.artist_name, order_id: b.id) %>
-            <% orderitem.each do |o| %>
-              <% t = t + o.item_count %>
-            <% end %>
-          <% end %>
-          <th><%= t %></th>
-          <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
-          <% a_totalcount = 0 %>
-          <% arrivals.each do |a| %>
-            <% a_totalcount = a_totalcount + a.arrival_count %>
-          <% end %>
-          <th><%= a_totalcount %></th>
-          <% gain = 0 %>
-          <% gain = t*i.list_price - a_totalcount*i.cost_price %>
-          <th><%= gain %></th>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
 </table>
 
+   <% a_totalcount = 0 %>
 
+    <% @items.each do |i| %>
+
+<table class="Count-Total3">
+  <tr>
+    <th class="Count">CD</th>
+    <th class="Count">アーティスト</th>
+    <th class="Count">販売枚数</th>
+    <th class="Count">入荷枚数</th>
+    <th class="Count">売上総利益</th>
+  </tr>
+
+      <tr>
+        <td><%= i.item_name %></td>
+        <td><%= i.artist.artist_name %></td>
+        <% t = 0 %>
+        <% @orders.each do |b| %>
+          <% orderitem = OrderItem.where(item_name: i.item_name, artist_name: i.artist.artist_name, order_id: b.id) %>
+          <% orderitem.each do |o| %>
+            <% t = t + o.item_count %>
+          <% end %>
+        <% end %>
+        <td><%= t %></td>
+        <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
+        <% a_totalcount = 0 %>
+        <% arrivals.each do |a| %>
+          <% a_totalcount = a_totalcount + a.arrival_count %>
+        <% end %>
+        <td><%= a_totalcount %></td>
+        <% gain = 0 %>
+        <% gain = t*i.list_price - a_totalcount*i.cost_price %>
+      <td><%= gain.to_i %></td>
+    </tr>
+  </table>
+    <% end %>
+</main>
 <% else %>
 <% end %>
