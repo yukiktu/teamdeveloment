@@ -14,10 +14,11 @@
     <header id="header" class="junbotron">
     <nav>
     <ul class="headline1">
-      <li class="nav-list-icon">
-          <% link_to(items_path) do %>
-          <% end %>
-        </li>
+      <li class="nav-list-icons">
+        <%= link_to items_path do %>
+        <%= image_tag 'logos.png' , class: "nav-list-icon" %>
+        <% end %>
+      </li>
     </ul>
 
     <ul class="av-list-ul">
