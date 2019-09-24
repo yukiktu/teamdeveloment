@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-before_action :authenticate_end_user!
+before_action :authenticate_end_user!, only: [:create, :new]
 before_action :authenticate_admin!, only: [:index, :sales]
 	def get_stok(item)
 		order_total = 0
@@ -79,7 +79,7 @@ before_action :authenticate_admin!, only: [:index, :sales]
 	end
 
 	def update
-		if admin_user_signed_in?
+		if admin_signed_in?
 			@order = Order.find(params[:id])
 			@order.update(order_params)
 			redirect_to orders_path
