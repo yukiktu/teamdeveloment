@@ -37,10 +37,12 @@
 			    </tr>
 			</table>
 		</div>
-		<div class="prof_blo_right">
-			<span class="glyphicon glyphicon-wrench"   aria-hidden="true"></span>
-			<p>プロフィール編集</p>
-		</div>
+		<%= link_to(edit_end_user_path(@end_users.id)) do %>
+			<div class="prof_blo_right">
+				<span class="glyphicon glyphicon-wrench"   aria-hidden="true"></span>
+				<p>プロフィール編集</p>
+			</div>
+		<% end %>
 	</div>
 	<div class="purchase_history">
 		<h2>購入履歴</h2>
