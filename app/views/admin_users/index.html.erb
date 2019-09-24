@@ -11,12 +11,13 @@
 	<% @end_users.each do |e| %>
 	<tbody>
 		<tr class="adb">
-			<td class="adname"><%= link_to(end_user_path(e.id)) do %>
+			<td class="adname"><%= link_to(admin_user_path(e.id)) do %>
 					<%= e.last_name %><%= e.first_name %></td>
 				<% end %>
 			<td class="admail"><%= e.email %></td>
 			<td class="adtime"><%= e.updated_at.strftime("%Y-%m-%d") %></td>
-			<tb class="editbotan"><%#= link_to "編集", edit_item_path(@item.id) %></tb>
+
+			<!-- <tb class="editbotan"><%#= link_to "編集", edit_end_user_path(e.id) %></tb> -->
 
 		</tr>
 	</tbody>
