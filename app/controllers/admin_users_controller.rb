@@ -9,12 +9,15 @@ class AdminUsersController < ApplicationController
 	end
 
 	def show
-		@end_user = EndUser.find(params[:id])
-		@orders = Order.where(end_user_id: current_end_user.id)
-
+		@end_users = current_end_user
+		order_items = OrderItem.all
+		order_ids = []
+		order_items.each do |oi|
+			order_ids.push(oi.order_id)
+		end
+		@orders = Order.where(end_user_id: current_end_user.id, id: order_ids)
 		@pages = Order.all.order(created_at: :desc)
 		@pages = Order.page(params[:page]).per(4)
-
 	end
 
 	def edit
@@ -60,19 +63,6 @@ class AdminUsersController < ApplicationController
 	      #@arrivals.arrival_count = '0'
 	      #@arrivals.arrival_expected_date = ""
 	    #end
-	end
-
-	def syousai
-		@end_users = current_end_user
-		order_items = OrderItem.all
-		order_ids = []
-		order_items.each do |oi|
-			order_ids.push(oi.order_id)
-		end
-		@orders = Order.where(end_user_id: current_end_user.id, id: order_ids)
-		@pages = Order.all.order(created_at: :desc)
-		@pages = Order.page(params[:page]).per(4)
-		# end
 	end
 
 end
