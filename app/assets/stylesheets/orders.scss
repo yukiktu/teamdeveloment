@@ -6,21 +6,9 @@
 	padding: 0px;
 	box-sizing: border-box;
 }
-.orders_table{
-	display: block;
-	// background-color: green;
-	width: 90%;
-	padding: 10px 20px;
-	margin: 0 auto;
-}
-.table_top{
-	display: flex;
-	margin-bottom: 10px;
-	border-bottom: 2px solid black;
-}
-.order_status{
-	// background-color: blue;
-}
+
+
+
 .option0{
 
 }
@@ -28,10 +16,8 @@
 
 }
 
-.post{
-	margin-left: 20px;
-	// background-color: red;
-}
+
+
 
 thead{
 	width: 100%;
@@ -164,7 +150,7 @@ tbody{
 
 
 // 以下edit画面（購入確認画面）
-.main_box{
+.main_box_1{
 	// background-color: teal;
 	width: 100%;
 	height: 100%;
@@ -176,7 +162,7 @@ tbody{
   clear: both;
 }
 
-.order_body{
+.order_body_1{
 	// background-color: cyan;
 	display: inline-block;
 	width: 100%;
@@ -184,7 +170,7 @@ tbody{
 	padding-bottom: 20px;
 }
 .cart{
-	// background-color: yellow;
+	background-color: yellow;
 }
 .history{
 	// background-color: gray;
@@ -328,3 +314,4 @@ tbody{
 	display: inline-block;
 	float: right;
 }
+

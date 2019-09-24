@@ -1,52 +1,102 @@
 /admin_users/orders/shipping
 <h1>受注画面</h1>
-<% @oders.each do |t| %>
+
+<% @orders.each do |t| %>
+<div class="one-order">
+<div class="well">
 	<table class = "orders_table">
 		<caption class="table_top">
 			<div class="order_status">
-				<!-- <option value="0" style="color: #ff0000;">未発送</option>
-				<option value="1" style="color: #0000ff;">発送済み</option> -->
-			<%# s_options = [["未発送", 0],["発送済み", 1]] %>
-			<%#= t.form.select :delivery_status, s_options %>
-			<% if t.delivery_status == 0 %>
-				<%= form_for t do |f| %>
-				<%= f.hidden_field :delivery_status, value: 1 %>
-				<%= f.submit'発送する' %>
+				<% if t.delivery_status == 0 %>
+					<%= form_for t do |f| %>
+						<%= f.hidden_field :delivery_status, value: 1 %>
+						<%= button_tag( class: "btn btn-default btn-lg btn-danger	") do %>
+							<%= content_tag :div, "未発送", class: "label "  %>
+						<% end %>
+					<% end %>
+				<% else  %>
+					<%= form_for t do |f| %>
+						<%= f.hidden_field :delivery_status, value: 0 %>
+						<%= button_tag( class: "btn btn-default btn-lg btn-success" ) do %>
+							<%= content_tag :div, "発送済", class: "label "  %>
+						<% end %>
+					<% end %>
 				<% end %>
-			<% else #t.delivery_status == 1 %>
-				<%= form_for t do |f| %>
-				<%= f.hidden_field :delivery_status, value: 0 %>
-				<%= f.submit'発送取り消し' %>
-				<% end %>
-			<% end %>
 			</div>
+
 			<div class = "post">
-				住所<%= t.addressee%><br>
-				<%= t.postal_code %><br>
+				<%= t.addressee%> 様<br>
+				〒<%= t.postal_code %><br>
 				<%= t.address %>
 			</div>
 		</caption>
+
 		<thead>
-			<tr>
-				<th width="10%">購入日</th>
-				<th width="10%">購入者</th>
-				<th width="20%">商品</th>
-				<th width="10%">アーティスト</th>
-				<th width="10%">枚数</th>
-				<th width="10%">価格(税抜き)</th>
+			<tr class="tr-o-0">
+				<th class="th-o-1">購入日</th>
+				<th class="th-o-2">購入者</th>
+				<th class="th-o-3">商品</th>
+				<th class="th-o-4">アーティスト</th>
+				<th class="th-o-5">枚数</th>
+				<th class="th-o-6">価格(税抜き)</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<% t.order_items.each do |i| %>
-					<td><%= t.created_at %></td>
-					<td><%= t.addressee%></td>
-					<td><%= i.item_name %></td>
-					<td><%= i.artist_name %></td>
-					<td><%= i.item_count %></td>
-					<td><%= i.list_price %></td>
-				<% end %>
-			</tr>
+			<% t.order_items.each do |i| %>
+				<tr class="tr-item">
+					<td class="tr-o-1" rowspan="i"><%= t.created_at.strftime("%Y-%m-%d") %></td>
+					<td class="tr-o-2">
+						<% @end_users.each do |e| %>
+							<%= e.last_name %><%= e.first_name %>
+						<% end %>
+					</td>
+					<td class="tr-o-3"><%= i.item_name %></td>
+					<td class="tr-o-4"><%= i.artist_name %></td>
+					<td class="tr-o-5"><%= i.item_count %></td>
+					<td class="tr-o-6">¥<%= i.list_price .to_i  %></td>
+				</tr>
+			<% end %>
 		</tbody>
+
+		<tfoot>
+			<tr class="tr-subtotal">
+				<td colspan="4"></td>
+				<td>小計</td>
+				<td class="td-o-0">
+	<%# @cart_items.each do |c| %>
+	<%# item = Item.find(c.item_id) %>
+	<%# grand_total = 0 %>
+	<%# subtotal = 0 %>
+	<%# total = item.list_price*c.item_count*(TaxRate.last).tax_rate %>
+	<%#= total %>
+	<%# subtotal = subtotal + total %>
+	<%#= subtotal %>
+
+					<% t.order_items.each do |i| %>
+						<% i.item_count %>
+						<% i.list_price .to_i  %>
+						<% grand_total = 0 %>
+						<% subtotal = 0 %>
+	<%# total = item.list_price*c.item_count*(TaxRate.last).tax_rate %>
+	<%#= total %>
+
+					<% end %>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4"></td>
+				<td>送料</td>
+				<td>
+					<%= (ShippingFee.last).shipping_fee %>
+				</td>
+			</tr>
+			<tr class="tr-total">
+				<td colspan="4"></td>
+				<td><b>ご請求金額(税込)</b></td>
+	 <td><%#= grand_total = subtotal + (ShippingFee.last).shipping_fee %></td>
+			</tr>
+		</tfoot>
 	</table>
+</div>
+</div>
 <% end %>

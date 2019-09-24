@@ -9,7 +9,7 @@ class LabelsController < ApplicationController
 	end
 
 	def create
-		#binding.pry
+
 		if Artist.where(artist_name: artist_params["artist_name"]).empty?
 			@artist = Artist.new(artist_params)
 			@artist.save

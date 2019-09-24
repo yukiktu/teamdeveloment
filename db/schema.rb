@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_085550) do
     t.integer "arrival_count"
     t.date "purchase_order_date"
     t.date "arrival_expected_date"
-    t.string "arrival_status"
+    t.string "arrival_status", default: "0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "supplier"
