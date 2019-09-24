@@ -1,13 +1,12 @@
 class ItemsController < ApplicationController
-#before_action :authenticate_admin_user!, only: [:edit, :update]
+before_action :authenticate_admin!, only: [:edit, :update]
 
   def index
-    @items = Item.all
+    @items = Item.where(sales_status: "販売中")
     @items = Item.page(params[:page]).per(12).order(:id)
   end
 
   def search
-
     @items = Item.where(item_name: params[:search]).page(params[:page]).per(12).order(:id)
     @label = Label.find_by(@label)#@label_id)
     @genre = Genre.find_by(@item)
@@ -16,7 +15,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id], sales_status: "販売中")
     @gacket_image = GacketImage.find_by(item_id: @item.id)
   end
 
