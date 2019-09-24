@@ -81,7 +81,7 @@
 								<tr>
 									<% if index == 0 %>
 										<td class="td1">
-											<%= (o.order_items.first).created_at %>
+											<%= (o.order_items.first).created_at.strftime("%Y-%m-%d") %>
 										</td>
 									<% else %>
 										<td></td>
@@ -106,24 +106,24 @@
 										<%= oi.item_count %>
 									</td>
 									<td class="td6">
-										¥<%= oi.list_price %>
+										¥<%= oi.list_price.to_i %>
 									</td>
 								</tr>
 							<% end %>
 							<tr>
 								<td class="td13" colspan="4"></td>
 								<td class="td7">小計</td>
-								<td class="td8">¥<%= o.subtotal %></td>
+								<td class="td8">¥<%= o.subtotal.to_i %></td>
 							</tr>
 							<tr>
 								<td colspan="4"></td>
 								<td class="td9">送料</td>
-								<td class="td10">¥<%= o.shipping_fee %></td>
+								<td class="td10">¥<%= o.shipping_fee.to_i %></td>
 							</tr>
 							<tr>
 								<td class="td14" colspan="4"></td>
 								<td class="td11" colspan="1">ご請求金額</td>
-								<td class="td12">¥<%= o.grand_total %></td>
+								<td class="td12">¥<%= o.grand_total.to_i %></td>
 							</tr>
 						</table>
 					</div>

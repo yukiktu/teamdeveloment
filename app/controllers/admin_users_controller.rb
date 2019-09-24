@@ -8,6 +8,11 @@ class AdminUsersController < ApplicationController
 
 	end
 
+	def search
+    @items = Item.where(item_name: params[:search]).page(params[:page]).per(20).order(:id)
+      render :itiran
+  end
+
 	def show
 		@end_users = current_end_user
 		order_items = OrderItem.all
@@ -40,8 +45,7 @@ class AdminUsersController < ApplicationController
 		end
 	end
 	def itiran
-		@items = Item.all
-		@items = Item.page(params[:page]).per(20).order(:id)
+		@items = Item.all.page(params[:page]).per(20).order(:id)
 		@orders = Order.where(delivery_status: 1)
 		@arrivals = Arrival.where(arrival_status: "入荷済")
 		#@arrivals = Arrival.find(:item_id)

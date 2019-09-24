@@ -1,5 +1,10 @@
 class NumbersController < ApplicationController
 
+  def index
+    @tax_rate = TaxRate.all
+    @shipping_fee = ShippingFee.all
+  end
+
 
 def new
    @tax_rate = TaxRate.new
@@ -7,13 +12,17 @@ def new
  end
 
  def create
+   if 
    @tax_rate = TaxRate.new(tax_rate_params)
    @tax_rate.save
    @shipping_fee = ShippingFee.new(shipping_fee_params)
    @shipping_fee.save
-   redirect_to numbers_new_path
- end
+    redirect_to numbers_path
 
+  else
+    render :new
+  end
+end
 
  private
 
