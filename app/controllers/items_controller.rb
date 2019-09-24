@@ -7,7 +7,6 @@ before_action :authenticate_admin!, only: [:edit, :update]
   end
 
   def search
-
     @items = Item.where(item_name: params[:search]).page(params[:page]).per(12).order(:id)
     @label = Label.find_by(@label)#@label_id)
     @genre = Genre.find_by(@item)
