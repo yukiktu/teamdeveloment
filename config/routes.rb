@@ -35,7 +35,6 @@ get 'sales' => 'orders#sales'
 resources :admin_users
 get 'about' => 'items#about'
 get 'itiran' => 'admin_users#itiran'
-get 'syousai/:id' => 'admin_users#syousai'
 #resources :arrivals
 
 
