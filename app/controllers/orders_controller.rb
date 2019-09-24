@@ -71,6 +71,9 @@ before_action :authenticate_admin!, only: [:index, :sales]
 	def new
 		@delivery_addressee = DeliveryAdress.where(end_user_id: current_end_user.id)
 		@end_user_home = current_end_user.last_name + current_end_user.first_name
+		@end_user_homes = current_end_user.postal_code
+		@end_user_homess = current_end_user.address
+
 	end
 
 	def edit
