@@ -66,7 +66,7 @@
         <td><%= arrival.supplier %></td>
         <td><%= arrival.purchase_order_date %></td>
         <td><%= arrival.arrival_expected_date %></td>
-      </tr>
+        <td>
           <% if arrival.arrival_status == "入荷済" %>
             入荷済
           <% else %>
@@ -75,7 +75,7 @@
               <%= a_status.submit'入荷確認' %>
             <% end %>
           <% end %>
-        </th>
+        </td>
         <th>
           <% if arrival.item.sales_status == "停止中" %>
               <%= link_to"販売を再開する", edit_item_path(arrival.item) %>
