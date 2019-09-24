@@ -1,9 +1,9 @@
 class Song < ApplicationRecord
 	belongs_to :disc
 	#belongs_to :item
-  validates :recoding_number, presence: true
-  validates :song_title, presence: true
-  validates :play_time, presence: true
+  # validates :recoding_number, presence: true
+  # validates :song_title, presence: true
+  # validates :play_time, presence: true
 
 	def validate_each(record, attribute, value)
     record.errors[attribute] << I18n.t('errors.messages.invalid_date_format') unless /\A\d{1,4}\-\d{1,2}\-\d{1,2}\Z/ =~ value

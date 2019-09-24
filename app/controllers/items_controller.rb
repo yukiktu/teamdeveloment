@@ -20,7 +20,7 @@ before_action :authenticate_admin!, only: [:edit, :update]
 
   def edit
     @item = Item.find(params[:id])
-    @item.gacket_images.build
+    @gacket_images = @item.gacket_images.build
     @disc = @item.discs.build
     @song = @disc.songs.build
     @label = Label.find_by(id: @item.label_id)
@@ -51,14 +51,17 @@ before_action :authenticate_admin!, only: [:edit, :update]
       @label = Label.find_by(label_name: label_params["label_name"])
     end
 
+
     @item = Item.find(params[:id])
     @item.artist_id = @artist.id
     @item.genre_id = @genre.id
     @item.label_id = @label.id
+binding.pry
+    if @item.update(item_params)
+      redirect_to items_path
+    else
 
-    @item.update(item_params)
-
-    redirect_to items_path
+    end
   end
 
 private
