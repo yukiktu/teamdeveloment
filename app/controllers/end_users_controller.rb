@@ -27,8 +27,12 @@ before_action :authenticate_end_user!, only: [:show, :edit]
 		@end_user = EndUser.find(params[:id])
 		@delivery_adresses = DeliveryAdress.where(end_user_id: @end_user)
 		if @end_user.update(end_user_params)
-			@delivery_adresses.update(delivery_address_params)
-			redirect_to end_user_path(@end_user.id)
+			if @delivery_adresses.present?
+				@delivery_adresses.update(delivery_address_params)
+				redirect_to end_user_path(@end_user.id)
+			else
+				redirect_to end_user_path(@end_user.id)
+			end
 		else
 			render :edit
 		end
