@@ -11,10 +11,12 @@
 	<% @items.each do |i| %>
 		<div class="oneitem">
 				<%= link_to(item_path(i)) do %>
-					<% i.gacket_images.each do |gacket_image| %>
-						<div class="j-image">
-							<%=attachment_image_tag gacket_image, :image, :fill, 240, 240 %>
-						</div>
+					<% i.gacket_images.each_with_index do |gacket_image, index| %>
+						<% if index == 0 %>
+							<div class="j-image">
+								<%=attachment_image_tag gacket_image, :image, :fill, 240, 240 %>
+							</div>
+						<% end %>
 					<% end %>
 					<p class="i-name"><%= i.item_name %></p>
 				<% end %>

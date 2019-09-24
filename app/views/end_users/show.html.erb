@@ -86,10 +86,12 @@
 									<% end %>
 									<td class="td2">
 										<% item = Item.find_by(id: oi.item_id)%>
-										<% item.gacket_images.each do |gacket_image| %>
-											<div>
-												<%=attachment_image_tag gacket_image, :image, :fill %>
-											</div>
+										<% item.gacket_images.each_with_index do |gacket_image, index| %>
+											<% if index == 0 %>
+												<div>
+													<%= attachment_image_tag gacket_image, :image, :fill,100,100 %>
+												</div>
+											<% end %>
 										<% end %>
 									</td>
 									<td class="td3">
