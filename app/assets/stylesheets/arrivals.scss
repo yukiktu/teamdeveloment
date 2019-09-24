@@ -1,3 +1,63 @@
 // Place all the styles related to the arrivals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
+main {
+    backgorund-color: silver;
+}
+
+.Arrival-title {
+	text-align: center;
+}
+
+.Arrival-title2 {
+	text-align: center;
+	padding: 15px 0px;
+}
+
+.Arrival-title3 {
+	text-align: center;
+}
+
+.Arrival-index {
+	text-align: center;
+	font-size: 20px;
+	color: white;
+	background: linear-gradient(#829ebc, #225588);
+	border-right: 3px solid black;
+	border-top: 1px solid #3c6690;
+	border-bottom: 1px solid #3c6690;
+	box-shadow: 0px 1px 1px
+	rgba(255,255,255,0.3);
+	width: 100%;
+}
+
+.Arrival-index th {
+	text-align: center;
+}
+
+.Arrival-index td {
+    border-bottom: 1px solid black;
+}
+
+.Arrival-edit {
+	text-align: center;
+	color: white;
+}
+
+.Arrival-status {
+	color: red;
+}
+
+label {
+	padding: 20px 20px;
+}
+
+.form-group1 {
+	width: 600px;
+}
