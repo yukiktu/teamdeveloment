@@ -16,7 +16,7 @@ before_action :authenticate_admin!, only: [:edit, :update]
   end
 
   def show
-    @item = Item.find(params[:id])
+    @item = Item.find_by(id: params[:id], sales_status: "販売中")
     @gacket_image = GacketImage.find_by(item_id: @item.id)
   end
 
