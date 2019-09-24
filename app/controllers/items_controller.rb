@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-#before_action :authenticate_admin_user!, only: [:edit, :update]
+before_action :authenticate_admin!, only: [:edit, :update]
 
   def index
-    @items = Item.all
+    @items = Item.where(sales_status: "販売中")
     @items = Item.page(params[:page]).per(12).order(:id)
   end
 
