@@ -11,13 +11,23 @@ class LabelsController < ApplicationController
 	def create
 
 		if Artist.where(artist_name: artist_params["artist_name"]).empty?
-			@artist = Artist.new(artist_params)
-			@artist.save
+			if artist_params["artist_name"] == ""
+				@artist = Artist.new
+			else
+				@artist = Artist.new(artist_params)
+				@artist.save
+			end
 		else
 			@artist = Artist.find_by(artist_name: artist_params["artist_name"])
 		end
 
 		if Genre.where(genre_name: genre_params["genre_name"]).empty?
+			if genre_params["genre_name"] == ""
+				@genre = Genre.new
+			else
+				@genre = Genre.new(genre_params)
+				@genre.save
+			end
 			@genre = Genre.new(genre_params)
 			@genre.save
 		else
@@ -25,22 +35,32 @@ class LabelsController < ApplicationController
 		end
 
 		if Label.where(label_name: label_params["label_name"]).empty?
+			if label_params["label_name"] == ""
+				@labele = Label.new
+			else
+				@label = Label.new(label_params)
+				@label.save
+			end
 			@label = Label.new(label_params)
 			@label.save
 		else
 			@label = Label.find_by(label_name: label_params["label_name"])
+			# render :new
 		end
 
-		 # binding.pry
+
+		if @item.item_name == ""
+			@item = Item.new
+			render :new
+		else
+					 # binding.pry
 		@item = Item.new(item_params)
 		# @item.id = 1
 		 @item.artist_id = @artist.id
 		 @item.genre_id = @genre.id
 		 @item.label_id = @label.id
-		@item.save
-		#session[:temp_artist_name] = @artist.artist_name#params[:artist]
-		#binding.pry
 		redirect_to edit_item_path(@item)
+		end
 	end
 
 	private

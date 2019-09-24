@@ -8,6 +8,9 @@ class Item < ApplicationRecord
     accepts_nested_attributes_for :discs
     has_many :arrivals
 
+    validates :item_name, presence: true
+    
+
     def self.search_method(search)
       if search
         Item.where(['item_name LIKE ?', "%#{search}%"])
