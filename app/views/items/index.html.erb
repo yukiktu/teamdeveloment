@@ -1,10 +1,11 @@
 
 <div class="i-main">
-	<p>検索</p>
+<div class="i-search">
 <%= form_tag(search_path,:method => 'get') do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :item_name => nil %>
 <% end %>
+</div>
 
 
 	<% @items.each do |i| %>
@@ -12,13 +13,13 @@
 				<%= link_to(item_path(i)) do %>
 					<% i.gacket_images.each do |gacket_image| %>
 						<div class="j-image">
-							<%=attachment_image_tag gacket_image, :image, :fill, 270, 270 %>
+							<%=attachment_image_tag gacket_image, :image, :fill, 240, 240 %>
 						</div>
 					<% end %>
 					<p class="i-name"><%= i.item_name %></p>
 				<% end %>
-				<p class="i-artist"><%= i.artist.artist_name %></p>
 				<div class="aaa">
+				<p class="i-artist"><%= i.artist.artist_name %></p>
 				<span class="i-status"><%= i.sales_status %></span>
 				<span class="i-price">¥<%= i.list_price.to_i %></span>
 			</div>

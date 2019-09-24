@@ -20,4 +20,63 @@ header{
 	width: 100%;
 	height: 130px;
 	background-color: black;
+	position: fixed;
+	top: 0;
 }
+
+.sita{
+	height: 130px;
+
+}
+
+nav{
+	width: 100%;
+	height: 130px;
+	position: center;
+}
+
+footer{
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	background-color: black;
+}
+
+.headline1{
+	float: left;
+
+}
+
+.nav-list-icon{
+	background-image: url(logos.png);
+	background-size: cover;
+	width: 350px;
+	height: 60px;
+	margin-top: 35px;
+	margin-left: 25px;
+}
+
+.headline2{
+	float: right;
+
+}
+
+.av-list-ul{
+	float: right;
+}
+
+.av-list-item{
+	float: right;
+	display: inline-block;
+	font-size: 16px;
+	margin-right: 20px;
+	margin-left: 20px;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	color: black;
+	border: 1px solid white;
+	padding: 6px;
+	border-radius: 10px 30px 20px 40px;
+
+}
+

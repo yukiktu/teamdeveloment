@@ -10,54 +10,63 @@
   </head>
 
   <body>
+    <div class="sita"></div>
     <header id="header" class="junbotron">
-    <ul>
+    <nav>
+    <ul class="headline1">
+      <li class="nav-list-icon">
+          <% link_to(items_path) do %>
+          <% end %>
+        </li>
+    </ul>
 
+    <ul class="av-list-ul">
     <% if end_user_signed_in? %>
-   <li class="about">
-    <%= link_to 'abotu', about_path %>
+   <li class="av-list-item">
+    <%= link_to 'aboute', about_path, :style=>"color:white;"%>
     </li>
-   <li class="maipe">
-      <%= link_to 'マイページ', end_user_path(current_end_user.id) %>
+   <li class="av-list-item">
+      <%= link_to 'マイページ', end_user_path(current_end_user.id), :style=>"color:white;" %>
     </li>
-   <li class="logout">
-      <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete %>
+   <li class="av-list-item">
+      <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, :style=>"color:white;" %>
     </li>
 
-    <% elsif admin_user_signed_in? %>
-    <li>
-      <%= link_to '新規商品追加', new_label_path %>
+    <% elsif admin_signed_in? %>
+    <li class="av-list-item">
+      <%= link_to '新規商品追加', new_label_path, :style=>"color:white;" %>
       </li>
-    <li>
-      <%= link_to 'ユーザ一覧', end_users_path %>
+    <li class="av-list-item">
+      <%= link_to 'ユーザ一覧', itiran_path, :style=>"color:white;" %>
       </li>
-    <li>
-      <%= link_to '注文確認', orders_path %>
+    <li class="av-list-item">
+      <%= link_to '注文確認', orders_path, :style=>"color:white;" %>
       </li>
-    <li>
-      <%= link_to '入荷一覧', arrivals_path %>
+    <li class="av-list-item">
+      <%= link_to '入荷一覧', arrivals_path, :style=>"color:white;" %>
       </li>
-    <li>
-      <%= link_to '売り上げ確認', sales_path %>
+    <li class="av-list-item">
+      <%= link_to '売り上げ確認', sales_path, :style=>"color:white;" %>
       </li>
-    <li>
-      <%= link_to 'ログアウト', destroy_adomin_user_path, method: :delete %>
+    <li class="av-list-item">
+      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, :style=>"color:white;" %>
       </li>
 
     <% else %>
-    <li>
-      <%= link_to 'abotu', about_path %>
+    <li class="av-list-item">
+      <%= link_to 'aboute', about_path, :style=>"color:white;" %>
       </li>
-   <li>
-      <%= link_to 'サインアップ', new_end_user_session_path %>
+   <li class="av-list-item">
+      <%= link_to 'サインアップ', new_end_user_session_path, :style=>"color:white;" %>
     </li>
-   <li>
-      <%= link_to 'サインイン', end_user_session_path %>
+   <li class="av-list-item">
+      <%= link_to 'サインイン', end_user_session_path, :style=>"color:white;" %>
     </li>
     <% end %>
 
 
 </ul>
+</nav>
  </header>
     <%= yield %>
   </body>
