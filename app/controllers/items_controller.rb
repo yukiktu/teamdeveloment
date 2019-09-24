@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
 before_action :authenticate_admin!, only: [:edit, :update]
 
   def index
-    @items = Item.where(sales_status: "販売中")
-    @items = Item.page(params[:page]).per(12).order(:id)
+    @items = Item.where(sales_status: "販売中").page(params[:page]).per(12).order(:id)
   end
 
   def search
@@ -15,7 +14,7 @@ before_action :authenticate_admin!, only: [:edit, :update]
   end
 
   def show
-    @item = Item.find_by(id: params[:id], sales_status: "販売中")
+    @item = Item.find_by(id: params[:id])
     @gacket_image = GacketImage.find_by(item_id: @item.id)
   end
 

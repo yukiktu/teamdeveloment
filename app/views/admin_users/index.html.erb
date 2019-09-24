@@ -16,7 +16,7 @@
 				<% end %>
 			<td class="admail"><%= e.email %></td>
 			<td class="adtime"><%= e.updated_at.strftime("%Y-%m-%d") %></td>
-			<tb class="editbotan"><%= link_to "編集", #edit_item_path(@item.id) %></tb>
+			<tb class="editbotan"><%#= link_to "編集", edit_item_path(@item.id) %></tb>
 
 		</tr>
 	</tbody>

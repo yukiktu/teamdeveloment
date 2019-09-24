@@ -1,4 +1,3 @@
-<div class="header"></div>
 <div class="lll">
 <h1 class="osiharai">お支払方法</h1>
 <%= form_with url:orders_path,model: Order.new do |o| %>
@@ -41,20 +40,24 @@
 			<%= o.text_field :address , :size => "100*100" %>
 		</div>
 
-		<label class="zitaku">
-		<%= o.radio_button :addressee, @end_user_home %>自宅
+		<label class="okurisaki1">
+		<%= o.radio_button :addressee, @end_user_home %>
+		<p>自宅</p>
+			<p>宛先:<%= @end_user_home %></p>
+			<p>〒<%= @end_user_homes %></p>
+			<p>住所:<%= @end_user_homess %></p>
 	</label>
 	<%# binding.pry %>
 	<% if @delivery_addressee.present? %>
 		<% i = 0 %>
 		<% @delivery_addressee.each do |d| %>
-			<label>
+			<label class="okurisaki">
 				<%= o.radio_button :addressee, d.addressee %>
 				<% i+=1 %>
 				<p>送り先<%= i %></p>
-				<p>宛先<%= d.addressee %></p>
+				<p>宛先:<%= d.addressee %></p>
 				<p>〒<%= d.postal_code %></p>
-				<p>住所<%= d.address %></p>
+				<p>住所:<%= d.address %></p>
 			</label>
 		<% end %>
 	<% end %>
