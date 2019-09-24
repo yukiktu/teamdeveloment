@@ -4,77 +4,74 @@
 
 <div class="end_user_infomation">
   <%= form_for(@end_user) do |f| %>
-    <%#= render "devise/shared/error_messages", resource: resource %>
-    <!--autocomplete消してあります。実装可能性でしたら追記してください。-->
-      <div class="entries_field">
-        <div class="field"> <label class="labels">姓</label>
-          <%= f.text_field :last_name, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">名</label>
-          <%= f.text_field :first_name, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">フリガナ(姓)</label>
-          <%= f.text_field :kana_last_name, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">フリガナ(名)</label>
-          <%= f.text_field :kana_first_name, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">郵便番号</label>
-          <%= f.text_field :postal_code, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">住　所</label>
-          <%= f.text_field :address, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">電話番号</label>
-          <%= f.text_field :phone_number, autofocus: true, class: "field_box" %>
-        </div>
-        <div class="field"> <label class="labels">メールアドレス</label>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field_box" %>
-        </div>
-        <div class="field">
-          <%= f.label :パスワード, class: "labels" %>
-            <% if @minimum_password_length %>
-              <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
-              <% end %>
-                <%= f.password_field :password, autocomplete: "new-password", class: "field_box" %>
-        </div>
-        <div class="field">
-          <%= f.label :確認用パスワード, class: "labels" %>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field_box" %>
-        </div>
-
-        <% f.delivery_addressee.each do |f| %>
-      <label>
-        <%= d.radio_button :addressee, d.addressee %>
-          <% i+=1 %>
-            <div class="b">
-              <label class="atesaki">宛先</label>
-                <%= f.text_field :addressee , :size => "30*30"%>
-            </div>
-
-            <div class="b">
-               <label class="dennwa">電話番号</label>
-                 <%= f.text_field :phone_number %>
-            </div>
-
-            <div class="b">
-              <label class="yuubin">郵便番号</label>
-                <%= f.text_field :postal_code  %>
-    </div>
-
-        <div class="b">
-      <label class="zyuusyo">住所</label>
-      <%= f.text_field :address , :size => "100*100" %>
-    </div>
-      </label>
-    <% end %>
-
-
-        <div class="actions">
-          <%= f.submit "更新", class: "buttons" %>
-        </div>
-        <% end %>
-          <%= render "devise/shared/links" %>
+    <div class="entries_field">
+      <div class="field"> <label class="labels">姓</label>
+        <%= f.text_field :last_name, autofocus: true, class: "field_box" %>
       </div>
+      <div class="field"> <label class="labels">名</label>
+        <%= f.text_field :first_name, autofocus: true, class: "field_box" %>
+      </div>
+      <div class="field"> <label class="labels">フリガナ(姓)</label>
+        <%= f.text_field :kana_last_name, autofocus: true, class: "field_box" %>
+      </div>
+      <div class="field"> <label class="labels">フリガナ(名)</label>
+        <%= f.text_field :kana_first_name, autofocus: true, class: "field_box" %>
+      </div>
+      <div class="field"> <label class="labels">郵便番号</label>
+        <%= f.text_field :postal_code, autofocus: true, class: "field_box" %>
+      </div>
+      <div class="field"> <label class="labels">住　所</label>
+        <%= f.text_field :address, autofocus: true, class: "field_box" %>
+      </div>
+      <div class="field"> <label class="labels">電話番号</label>
+        <%= f.text_field :phone_number, autofocus: true, class: "field_box" %>
+      </div>
+      <div class="field"> <label class="labels">メールアドレス</label>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field_box" %>
+      </div>
+      <div class="field">
+        <%= f.label :パスワード, class: "labels" %>
+          <% if @minimum_password_length %>
+            <!--<em>(<%= @minimum_password_length %> characters minimum)</em>-->
+            <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "field_box" %>
+      </div>
+      <div class="field">
+        <%= f.label :確認用パスワード, class: "labels" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "field_box" %>
+      </div>
+      <% @delivery_adresses.each_with_index do |da, index| %>
+        <% index += 1 %>
+<%# binding.pry %>
+        <%= form_for (da), url: end_user_path do |f| %>
+          <label>お届け先<%= index %></label>
+          <div class="b">
+            <label class="atesaki">宛先</label>
+            <%= f.text_field :addressee , :size => "30*30"%>
+          </div>
+
+          <div class="b">
+            <label class="dennwa">電話番号</label>
+            <%= f.text_field :phone_number %>
+          </div>
+
+          <div class="b">
+            <label class="yuubin">郵便番号</label>
+              <%= f.text_field :postal_code  %>
+          </div>
+
+          <div class="b">
+            <label class="zyuusyo">住所</label>
+              <%= f.text_area :address , :size => "100*100" %>
+          </div>
+      <% end %>
+
+          <div class="actions">
+            <%= f.submit "更新", class: "buttons" %>
+          </div>
+        <% end %>
+  <% end %>
+        <%#= render "devise/shared/links" %>
+    </div>
 </div>
 </div>

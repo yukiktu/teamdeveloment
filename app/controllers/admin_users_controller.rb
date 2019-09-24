@@ -3,6 +3,8 @@ class AdminUsersController < ApplicationController
 	def index
 		#@end_user_home = current_end_user.last_name + current_end_user.first_name
 		@end_users = EndUser.all
+		@end_users = EndUser.page(params[:page]).per(20).order(:id)
+
 
 	end
 
@@ -17,6 +19,7 @@ class AdminUsersController < ApplicationController
 
 	def itiran
 		@items = Item.all
+		@items = Item.page(params[:page]).per(20).order(:id)
 		@orders = Order.where(delivery_status: 1)
 		@arrivals = Arrival.where(arrival_status: "入荷済")
 		#@arrivals = Arrival.find(:item_id)

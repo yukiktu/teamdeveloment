@@ -1,9 +1,8 @@
-<div class="header"></div>
 
 <table class="">
     <thead class="aaaa">
         <tr class="">
-        	<th class="i-1">商品</th>
+        	<th class="i-1">商品名</th>
         	<th class="i-2">アーティスト</th>
         	<th class="i-3">在庫枚数</th>
             <th class="i-4">前回入荷数量</th>
@@ -57,3 +56,4 @@
         </tbody>
     <% end %>
 </table>
+<div class="page"><%= paginate(@items) %></div>
