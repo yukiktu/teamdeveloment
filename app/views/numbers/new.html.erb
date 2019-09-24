@@ -1,19 +1,23 @@
+
+<h1 class="tax">税率・送料設定画面</h1>
+
 <%= form_for @tax_rate, url:numbers_path do |t| %>
 
 
-  <div class="field">
+  <div class="tax-field">
          <%= t.label :tax_rate, "税率"%>
-         <%= t.text_field :tax_rate %>
+         <%= t.text_field :tax_rate, :style => "font-size: 20px;" %>
   </div>
 
 <%= form_for @shipping_fee, url:numbers_path do |t| %>
 
-  <div class="field">
+  <div class="tax-field">
          <%= t.label :shipping_fee, "送料"%>
-         <%= t.number_field :shipping_fee %>
+         <%= t.number_field :shipping_fee, :style => "font-size: 20px;"  %>
   </div>
 
-<%= t.submit "保存する" %>
-
+<div class="tax1">
+  <%= t.submit "保存する" %>
+</div>
 <% end %>
 <% end %>
