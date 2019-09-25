@@ -37,7 +37,7 @@ before_action :authenticate_admin!, only: [:index, :sales]
 		}
 		order_id.uniq
 		#@cart_items = CartItem.where(end_user_id: current_admin.id)
-		@orders = Order.where(id: order_id).order(delivery_status: :desc)
+		@orders = Order.where(id: order_id).order(:delivery_status)
 		# @order = Order.find(params[:id])
 		@end_users = EndUser.all
 	end
