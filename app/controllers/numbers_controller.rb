@@ -12,6 +12,7 @@ def new
  end
 
  def create
+
   if tax_rate_params["tax_rate"] == "" && shipping_fee_params["shipping_fee"] == ""
     render :new and return
   elsif shipping_fee_params["shipping_fee"] == ""

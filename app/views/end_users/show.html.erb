@@ -1,6 +1,6 @@
 
 <!-- コメントアウト外せば使えますたぶん -->
-<body class="body">
+<div class="body">
 	<div class="prof_block clearfix">
 		<div class="prof_blo_left">
 			<table class="table_prof">
@@ -88,14 +88,17 @@
 									<% end %>
 									<td class="td2">
 										<% item = Item.find_by(id: oi.item_id)%>
-										<% item.gacket_images.each_with_index do |gacket_image, index| %>
-											<% if index == 0 %>
-												<div>
-													<%= attachment_image_tag gacket_image, :image, :fill,100,100 %>
-												</div>
-											<% end %>
-										<% end %>
-									</td>
+										    <% if item.gacket_images.empty? %>
+						                        <%= image_tag  'no_image.png', size:'100x100' %>
+					                        <% else %>
+						                        <% item.gacket_images.each_with_index do |gacket_image, index| %>
+							                        <% if index == 0 %>
+								                        <div>
+									                        <%= attachment_image_tag gacket_image, :image, fallback: "no_image.png", size:'100x100', format: 'png'%>
+									                    <% end %>
+									                <% end %>
+									            <% end %>
+									        </td>
 									<td class="td3">
 										<%= oi.item_name %>
 									</td>
@@ -126,9 +129,10 @@
 								<td class="td12">¥<%= o.grand_total.to_i %></td>
 							</tr>
 						</table>
-					</div>
-				</div>
-			</div>
-		<% end %>
+					    </div>
+				    </div>
+			    </div>
+		    <% end %>
+		<div class="page"><%= paginate(@orders) %></div>
 	</div>
-</body>
+</div>
