@@ -12,7 +12,7 @@
 .i-main{
 	width: 100%;
 	// height: auto;
-
+	margin-bottom: 200px;
 }
 
 .i-search{
@@ -80,14 +80,16 @@
 
 .sidebar{
 	width: 350px;
-	height: 1000px;
+	height: auto;
 	float: left;
 	margin-left: 70px;
+	margin-bottom: 200px;
 }
 
 .s-main{
     width: 100%;
-    height: 1000px;
+    height: auto;
+    // background-color: blue;
 }
 
 .footer{
@@ -174,7 +176,10 @@
 	float: left;
 
 }
-
+.s-CD-info{
+	// background-color: yellow;
+	margin-bottom: 200px;
+}
 .s-tb{
 	padding-left: 50px;
 	margin-bottom: 10px;
@@ -189,7 +194,8 @@
 
 .tr1{
 	border-bottom: 2px solid black;
-
+	height: 40px;
+	// background-color: red;
 
 }
 
