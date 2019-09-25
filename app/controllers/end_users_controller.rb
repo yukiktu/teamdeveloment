@@ -3,11 +3,13 @@ before_action :authenticate_end_user!, only: [:show, :edit]
 
 	def show
 		@end_users = current_end_user
+
 			order_items = OrderItem.all
 			order_ids = []
 			order_items.each do |oi|
 				order_ids.push(oi.order_id)
 			end
+
 			@orders = Order.where(end_user_id: current_end_user.id, id: order_ids).page(params[:page]).per(5).order(:id)
 
 	end
