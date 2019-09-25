@@ -12,16 +12,22 @@ def new
  end
 
  def create
-   if 
+  if tax_rate_params["tax_rate"] == "" && shipping_fee_params["shipping_fee"] == ""
+    render :new and return
+  elsif shipping_fee_params["shipping_fee"] == ""
    @tax_rate = TaxRate.new(tax_rate_params)
    @tax_rate.save
+  elsif tax_rate_params["tax_rate"] == ""
    @shipping_fee = ShippingFee.new(shipping_fee_params)
    @shipping_fee.save
-    redirect_to numbers_path
-
   else
-    render :new
+    @tax_rate = TaxRate.new(tax_rate_params)
+    @tax_rate.save
+    @shipping_fee = ShippingFee.new(shipping_fee_params)
+    @shipping_fee.save
+    redirect_to numbers_path
   end
+
 end
 
  private
