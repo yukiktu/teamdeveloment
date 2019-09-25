@@ -10,7 +10,7 @@ before_action :authenticate_end_user!, only: [:show, :edit]
 				order_ids.push(oi.order_id)
 			end
 
-			@orders = Order.where(end_user_id: current_end_user.id, id: order_ids).page(params[:page]).per(5).order(:id)
+			@orders = Order.where(end_user_id: current_end_user.id, id: order_ids).order(id: :desc).page(params[:page]).per(5).order(:id)
 
 	end
 
