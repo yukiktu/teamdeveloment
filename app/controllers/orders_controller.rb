@@ -45,6 +45,7 @@ before_action :authenticate_admin!, only: [:index, :sales]
 	def sales
 		@items = Item.all
     	@orders = Order.where(delivery_status: 1)
+    	@arrivals = Arrival.where(arrival_status: "入荷済")
 		if params[:date].nil? or params[:date] == "全期間"
 			@orders = Order.where(delivery_status: 1)
 			# 入荷代金総計の計算
@@ -97,8 +98,13 @@ before_action :authenticate_admin!, only: [:index, :sales]
     		m_terms=["全期間"]
     		d_terms=["全期間"]
     		@m_terms=[]
-			@orders.each do |order|
-  				m = order.created_at
+			@arrivals.zip(@orders).each do |arrival, order|
+  				m = arrival.updated_at
+  				unless d_terms.include?(m.strftime('%Y/%m'))
+  					m_terms.push(m)
+  					d_terms.push(m.strftime('%Y/%m'))
+  				end
+  				m = order.updated_at
   				unless d_terms.include?(m.strftime('%Y/%m'))
   					m_terms.push(m)
   					d_terms.push(m.strftime('%Y/%m'))
