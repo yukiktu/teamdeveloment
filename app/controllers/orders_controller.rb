@@ -30,7 +30,7 @@ before_action :authenticate_admin!, only: [:index, :sales]
 	end
 
 	def index
-		@cart_items = CartItem.where(end_user_id: current_end_user.id)
+		@cart_items = CartItem.where(end_user_id: current_admin.id)
 		@orders = Order.all
 		# @order = Order.find(params[:id])
 		@end_users = EndUser.all

@@ -1,19 +1,19 @@
-追加する商品のジャンルおよびアーティスト、レーベルを指定してくだい。
+<p class="l-a">追加する商品のジャンルおよびアーティスト、レーベルを指定してくだい。</p>
 <%= form_for @label, url: labels_path do |l| %>
 <%# binding.pry %>
 <%= form_for @genre, url: labels_path do |g| %>
 <%= form_for @artist, url: labels_path do |a| %>
 <%= form_for @item, url: labels_path do |i| %>
-<label>レーベル</label>
-<%= l.text_field :label_name, class: "entry_field" %>
-<label>ジャンル</label>
-<%= g.text_field :genre_name, class: "entry_field" %>
-<label>アーティスト</label>
-<%= a.text_field :artist_name, class: "entry_field" %>
-<label>商品名</label>
-<%= i.text_field :item_name, class: "entry_field" %>
+<p class="qq"><label class="l-label">レーベル</label>
+<%= l.text_field :label_name, class: "entry_field1" %></p>
+<p class="qq"><label class="l-genre">ジャンル</label>
+<%= g.text_field :genre_name, class: "entry_field2" %></p>
+<p class="qq"><label class="l-artist">アーティスト</label>
+<%= a.text_field :artist_name, class: "entry_field3" %></p>
+<p class="qq"><label class="l-item">商品名</label>
+<%= i.text_field :item_name, class: "entry_field4" %></p>
 
-<%= i.submit "次へ" %>
+<p class="tugihe"><%= i.submit "次へ" %></p>
 
 <% end %>
 <% end %>
