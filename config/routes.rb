@@ -34,6 +34,7 @@ get 'search' => 'items#search'
 get 'sales' => 'orders#sales'
 resources :admin_users
 get 'about' => 'items#about'
+get 'admin_search' => 'admin_users#search', as: "admin_search"
 get 'itiran' => 'admin_users#itiran'
 #resources :arrivals
 

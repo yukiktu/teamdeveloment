@@ -12,7 +12,7 @@ def new
  end
 
  def create
-   if 
+   if
    @tax_rate = TaxRate.new(tax_rate_params)
    @tax_rate.save
    @shipping_fee = ShippingFee.new(shipping_fee_params)
