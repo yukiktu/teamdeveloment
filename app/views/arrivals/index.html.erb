@@ -1,13 +1,18 @@
 <main>
 
 <h1 class="Arrival-title">新規発注</h1>
-<%= form_for(@arrival) do |t| %>
 
 <form>
+<%= form_tag({:controller => 'arrivals',:action => 'index'}, {:method => :get}) do %>
+
 <div class="form-group1">
   <label for="">アーティスト</label>
-　  <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
-</div>
+　  <%= select_tag 'artist', options_from_collection_for_select(@artists, :artist_name, :artist_name) %>
+      <%= submit_tag'絞り込む' %>
+
+    <% end %>
+
+<%= form_for(@arrival) do |t| %>
 
 <div class="form-group1">
  <label for="">商品名</label>
