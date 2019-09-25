@@ -48,7 +48,7 @@ before_action :authenticate_admin!, only: [:index, :sales]
 		if params[:date].nil? or params[:date] == "全期間"
 			@orders = Order.where(delivery_status: 1)
 			# 入荷代金総計の計算
-			@month = "全期間"
+			@d_month = "全期間"
     		arrivals = Arrival.where(arrival_status: "入荷済")
     		total_cost = 0
     		arrivals.each do |a|
@@ -69,11 +69,12 @@ before_action :authenticate_admin!, only: [:index, :sales]
     	else
     		# 入荷代金総計の計算
 			@month = params[:date]
-			#@month.to_date
+			@d_month = (@month.to_date).strftime('%Y/%m')
+			#@d_month
 			#p !!!!!!!!!!!!
 			#p @month
 			#binding.pry
-			@orders = Order.where(delivery_status: 1, updated_at:  Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
+			@orders = Order.where(delivery_status: 1, updated_at: Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
     		arrivals = Arrival.where(arrival_status: "入荷済", updated_at: Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
     		#, update_at: @month.month.all_month)
     		total_cost = 0
@@ -93,11 +94,18 @@ before_action :authenticate_admin!, only: [:index, :sales]
     		end
     		@totalgain = totalgain
     	end
-    		@m_terms=["全期間"]
+    		m_terms=["全期間"]
+    		d_terms=["全期間"]
+    		@m_terms=[]
 			@orders.each do |order|
   				m = order.created_at
-  					@m_terms.push(m)
-  					@m_terms.uniq!
+  				unless d_terms.include?(m.strftime('%Y/%m'))
+  					m_terms.push(m)
+  					d_terms.push(m.strftime('%Y/%m'))
+  				end
+	    	end
+	    	m_terms.zip(d_terms).each do |m, d|
+	    		@m_terms.push([d, m])
 	    	end
  	end
 
