@@ -1,5 +1,5 @@
-/admin_users/orders/shipping
-<h1>受注画面</h1>
+<!-- /admin_users/orders/shipping
+<h1>受注画面</h1> -->
 
 <% @orders.each do |t| %>
 <div class="one-order">
@@ -63,37 +63,20 @@
 				<td colspan="4"></td>
 				<td>小計</td>
 				<td class="td-o-0">
-	<%# @cart_items.each do |c| %>
-	<%# item = Item.find(c.item_id) %>
-	<%# grand_total = 0 %>
-	<%# subtotal = 0 %>
-	<%# total = item.list_price*c.item_count*(TaxRate.last).tax_rate %>
-	<%#= total %>
-	<%# subtotal = subtotal + total %>
-	<%#= subtotal %>
-
-					<% t.order_items.each do |i| %>
-						<% i.item_count %>
-						<% i.list_price .to_i  %>
-						<% grand_total = 0 %>
-						<% subtotal = 0 %>
-	<%# total = item.list_price*c.item_count*(TaxRate.last).tax_rate %>
-	<%#= total %>
-
-					<% end %>
+					¥<%= t.subtotal .to_i %>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4"></td>
 				<td>送料</td>
 				<td>
-					<%= (ShippingFee.last).shipping_fee %>
+					¥<%= t.shipping_fee .to_i %>
 				</td>
 			</tr>
 			<tr class="tr-total">
 				<td colspan="4"></td>
 				<td><b>ご請求金額(税込)</b></td>
-	 <td><%#= grand_total = subtotal + (ShippingFee.last).shipping_fee %></td>
+ 				<td>¥<%= t.grand_total .to_i %></td>
 			</tr>
 		</tfoot>
 	</table>

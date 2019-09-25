@@ -13,7 +13,6 @@ class Item < ApplicationRecord
     # validates :list_price, presence: true
     # validates :cost_price, presence: true
     # validates :release_date, presence: true
-    
 
     def self.search_method(search)
       if search
