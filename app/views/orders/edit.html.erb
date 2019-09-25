@@ -1,6 +1,6 @@
-<body class="main_box_1">
+<div class="main_box_1">
 
-  <h1>購入確定画面</h1>
+  <p class="kakuteida">購入確定画面</p>
 
   <div class="order_body_1">
 
@@ -78,11 +78,11 @@
 
                 <td class="td6_c">
 
-                  <% total = item.list_price*c.item_count*(TaxRate.last).tax_rate %>
+                  <% total = item.list_price*c.item_count*(TaxRate.last).tax_rate.to_i %>
 
-                  <%= total %>
+                  <%= total.to_i %>
 
-                  <% subtotal = subtotal + total %>
+                  <% subtotal = subtotal + total.to_i %>
 
                 </td>
 
@@ -156,7 +156,7 @@
 
           <h3>お支払い方法</h3>
 
-          <p><%= @order.payment_methods %></p>
+          <p>・<%= @order.payment_methods %></p>
 
         </div>
 
@@ -173,8 +173,8 @@
 
 
       </div>
-
-      <div class="foot_blo_right">
+      <div class="botanz">
+      <span >
 
         <%= form_for @order do |f| %>
 
@@ -182,22 +182,23 @@
 
         <%= f.hidden_field :grand_total, value: grand_total %>
 
-        <%= f.submit '購入する' %>
+        <%= f.submit '購入する', class: "foot_blo_left1", :style=>"color:white;" %>
 
         <% end %>
 
-      </div>
-      <div class="foot_blo_right">
+      </span>
+      <span>
 
-        <%= link_to'カートにもどる', order_path, method: :delete %>
+        <%= link_to'カートにもどる', order_path, method: :delete, class: "foot_blo_right2", :style=>"color:white;"%>
 
-      </div>
+      </span>
+    </div>
 
     </div>
 
   </div>
 
-</body>
+</div>
 
 
 

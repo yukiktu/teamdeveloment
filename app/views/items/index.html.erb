@@ -6,6 +6,7 @@
   <%= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
 <% end %>
 </div>
+<div class="clearfix">
 	<% @items.each do |i| %>
 		<div class="oneitem">
 				<%= link_to(item_path(i)) do %>
@@ -28,6 +29,7 @@
 			</div>
 			</div>
 	<% end %>
+</div>
 </div>
 
 	<div class="page"><%= paginate(@items) %></div>

@@ -1,5 +1,11 @@
 
 <div class="admain">
+	<div class="i-search">
+        <%= form_tag(search_path,:method => 'get') do %>
+            <%= text_field_tag :search %>
+                <%= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
+        <% end %>
+
 <table class="adtable">
 	<thead>
 		<tr class="adh">
@@ -19,9 +25,10 @@
 
 			<!-- <tb class="editbotan"><%#= link_to "編集", edit_end_user_path(e.id) %></tb> -->
 
-		</tr>
-	</tbody>
+		    </tr>
+	    </tbody>
 	<% end %>
-</table>
+  </table>
 </div>
+
 <div class="page"><%= paginate(@end_users) %></div>
