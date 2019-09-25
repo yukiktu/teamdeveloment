@@ -66,11 +66,16 @@
           </div>
       <% end %>
         <% end %>
-         <div class="actions">
+          <div class="actions">
             <%= f.submit "更新", class: "buttons" %>
           </div>
-  <% end %>
-        <%#= render "devise/shared/links" %>
+  <%# end %>
+          <div class="actions">
+            <%#= form_for @end_user do |form|%>
+              <%= f.hidden_field :enrollment_status, value: "0" %>
+            <%= f.submit "退会する", class: "buttons" %>
+            <% end %>
+          </div>
     </div>
 </div>
 </div>

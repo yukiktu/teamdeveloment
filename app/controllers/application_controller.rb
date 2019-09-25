@@ -1,10 +1,18 @@
 class ApplicationController < ActionController::Base
 
+	before_action :configure_permitted_parameters, if: :devise_controller?
 	def after_sign_in_path_for(resource)
-		items_path
+		if end_user_signed_in?
+			items_path
+		elsif admin_singned_in?
+			orders_path
+		end
 	end
 
-	before_action :configure_permitted_parameters, if: :devise_controller?
+	def after_sign_out_path_for(resource)
+  		items_path
+	end
+
 
 	protected
 	def configure_permitted_parameters
@@ -26,7 +34,8 @@ class ApplicationController < ActionController::Base
 
 	end
 
-	# private
+	private
+
 
 	# def check_admin
  #  		if user_signed_in?
