@@ -38,7 +38,7 @@
 				<th class="th-o-3">商品</th>
 				<th class="th-o-4">アーティスト</th>
 				<th class="th-o-5">枚数</th>
-				<th class="th-o-6">価格(税抜き)</th>
+				<th class="th-o-0">価格</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -53,7 +53,7 @@
 					<td class="tr-o-3"><%= i.item_name %></td>
 					<td class="tr-o-4"><%= i.artist_name %></td>
 					<td class="tr-o-5"><%= i.item_count %></td>
-					<td class="tr-o-6">¥<%= i.list_price .to_i  %></td>
+					<td class="th-o-6">¥<%= i.list_price .to_i  %></td>
 				</tr>
 			<% end %>
 		</tbody>
@@ -62,21 +62,21 @@
 			<tr class="tr-subtotal">
 				<td colspan="4"></td>
 				<td>小計</td>
-				<td class="td-o-0">
+				<td class="th-o-6">
 					¥<%= t.subtotal .to_i %>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="4"></td>
 				<td>送料</td>
-				<td>
+				<td class="th-o-6">
 					¥<%= t.shipping_fee .to_i %>
 				</td>
 			</tr>
 			<tr class="tr-total">
 				<td colspan="4"></td>
 				<td><b>ご請求金額(税込)</b></td>
- 				<td>¥<%= t.grand_total .to_i %></td>
+ 				<td class="th-o-6">¥<%= t.grand_total .to_i %></td>
 			</tr>
 		</tfoot>
 	</table>
