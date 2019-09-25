@@ -9,7 +9,6 @@ class Item < ApplicationRecord
     has_many :arrivals
 
     validates :item_name, presence: true
-    
 
     def self.search_method(search)
       if search

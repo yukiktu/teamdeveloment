@@ -1,6 +1,6 @@
 <div class="s-main">
 	<div class="sidebar">
-	    <div class="s-image"><%=attachment_image_tag @gacket_image, :image, :fill, 295, 295 %></div>
+	    <div class="s-image"><%=attachment_image_tag @gacket_image, :image, fallback: "no_image.png", size:'300x300', format: 'png' %></div>
 	        <p class="s-price">¥<%= @item.list_price.to_i %></p>
 	        <p class="s-genre"><%= @item.genre.genre_name %></p>
 	        <p class="s-label"><%= @item.label.label_name %></p>

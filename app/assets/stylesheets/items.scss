@@ -20,6 +20,10 @@
 	text-align: center;
 }
 
+.entry_field11{
+
+}
+
 .oneitem{
 	width: 240px;
 	height:340px;
@@ -37,11 +41,12 @@
 	height: 54px;
 }
 .i-price{
-	font-size: 20px;
+	font-size: 24px;
 	float: right;
 }
 
 .i-artist{
+	font-size: 15px;
 	text-align: left;
 
 }
@@ -52,11 +57,16 @@
 }
 
 .aaa{
-	border-bottom: solid black 1px;
-	padding-bottom: 10px;
+	padding-bottom: 32px;
 	margin-bottom: 5px;
+	border-bottom: solid black 1px;
+
 }
 
+.zei{
+	font-size: 17px;
+	padding-right: 5px;
+}
 
 
 

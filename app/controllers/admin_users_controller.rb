@@ -2,27 +2,30 @@ class AdminUsersController < ApplicationController
 
 	def index
 		#@end_user_home = current_end_user.last_name + current_end_user.first_name
-		@end_users = EndUser.all
-		@end_users = EndUser.page(params[:page]).per(20).order(:id)
+		@end_users = EndUser.all.page(params[:page]).per(20).order(:id)
 
 
 	end
 
 	def search
     @items = Item.where(item_name: params[:search]).page(params[:page]).per(20).order(:id)
+    @orders = Order.where(delivery_status: 1)
+    @arrivals = Arrival.where(arrival_status: "入荷済")
+
       render :itiran
   end
 
 	def show
-		@end_users = current_end_user
+		@end_users = EndUser.find(params[:id])
 		order_items = OrderItem.all
 		order_ids = []
 		order_items.each do |oi|
 			order_ids.push(oi.order_id)
 		end
-		@orders = Order.where(end_user_id: current_end_user.id, id: order_ids)
-		@pages = Order.all.order(created_at: :desc)
-		@pages = Order.page(params[:page]).per(4)
+		@orders = Order.where(end_user_id: @end_users.id, id: order_ids).page(params[:page]).per(5).order(:id)
+
+		#@pages = Order.all.order(created_at: :desc)
+		#@pages = Order.page(params[:page]).per(4)
 	end
 
 	def edit
@@ -44,29 +47,11 @@ class AdminUsersController < ApplicationController
 			render :edit
 		end
 	end
+
 	def itiran
 		@items = Item.all.page(params[:page]).per(20).order(:id)
 		@orders = Order.where(delivery_status: 1)
 		@arrivals = Arrival.where(arrival_status: "入荷済")
-		#@arrivals = Arrival.find(:item_id)
-	    # if @label_id.nil?
-	    #   redirect_to items_path
-	    #   #@label.id = 1
-	    # else
-	    #@label = Label.find_by(@label)#@label_id)
-	    # end
-	    #@genre = Genre.find_by(@item)
-	    #@artist = Artist.find_by(@artist)
-
-	    #@artists = Artist.find(id: @items.artist)
-	    #↑初期に作ったテーブルがnullなのでそれを削除すると使えます
-	    #arrival = Arrival.where(item_id: @items)
-	    #if arrival.present?
-	    #else
-	      #@arrivals = Arrival.new
-	      #@arrivals.arrival_count = '0'
-	      #@arrivals.arrival_expected_date = ""
-	    #end
 	end
 
 end

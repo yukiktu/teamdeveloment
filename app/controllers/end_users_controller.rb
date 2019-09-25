@@ -3,18 +3,15 @@ before_action :authenticate_end_user!, only: [:show, :edit]
 
 	def show
 		@end_users = current_end_user
-		if @end_users.enrollment_status == "1"
+
 			order_items = OrderItem.all
 			order_ids = []
 			order_items.each do |oi|
 				order_ids.push(oi.order_id)
 			end
-			@orders = Order.where(end_user_id: current_end_user.id, id: order_ids)
-			@pages = Order.all.order(created_at: :desc)
-			@pages = Order.page(params[:page]).per(4)
-		else
-			redirect_to items_path
-		end
+
+			@orders = Order.where(end_user_id: current_end_user.id, id: order_ids).order(id: :desc).page(params[:page]).per(5).order(:id)
+
 	end
 
 	def edit
