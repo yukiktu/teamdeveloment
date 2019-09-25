@@ -11,7 +11,9 @@ class EndUsers::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     user = EndUser.find_by(email: params[:end_user][:email])
-    if user.enrollment_status == 0
+    if params[:end_user][:email].empty?
+      super
+    elsif user.enrollment_status == 0
       flash[:notice] = ""
       redirect_to end_user_session_path
     else

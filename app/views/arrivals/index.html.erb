@@ -3,6 +3,8 @@
 <h1 class="Arrival-title">新規発注</h1>
 <%= form_for(@arrival) do |t| %>
 
+<%= render 'layouts/error_messages', err: @arrival %>
+
 <form>
 <div class="form-group1">
   <label for="">アーティスト</label>
