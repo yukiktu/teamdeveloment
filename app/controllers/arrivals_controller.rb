@@ -11,8 +11,14 @@ before_action :authenticate_admin!
 
   def create
     @arrival = Arrival.new(arrival_params)
-    @arrival.save
+   if @arrival.save
     redirect_to arrivals_path
+   else
+    @arrivals = Arrival.all
+    @artists = Artist.all
+    @categories = Item.where(artist_id: @artists)
+    render 'index'
+   end
   end
 
   def edit

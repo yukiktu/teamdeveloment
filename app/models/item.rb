@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     has_many :arrivals
 
 
-    # validates :item_name, length: { maximum: 26 }
+    validates :item_name, length: { maximum: 26 }
     # validates :list_price, presence: true
     # validates :cost_price, presence: true
     # validates :release_date, presence: true

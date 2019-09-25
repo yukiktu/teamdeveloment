@@ -30,37 +30,46 @@ before_action :authenticate_admin!, only: [:edit, :update]
 
 
   def update
-    if Artist.where(artist_name: artist_params["artist_name"]).empty?
-      @artist = Artist.new(artist_params)
-      @artist.save
+    @item = Item.find(params[:id].to_i)
+    if item_params[:cost_price].present? && item_params[:list_price].present?
+      if Artist.where(artist_name: artist_params["artist_name"]).empty?
+        @artist = Artist.new(artist_params)
+        @artist.save
+      else
+        @artist = Artist.find_by(artist_name: artist_params["artist_name"])
+      end
+
+      if Genre.where(genre_name: genre_params["genre_name"]).empty?
+        @genre = Genre.new(genre_params)
+        @genre.save
+      else
+        @genre = Genre.find_by(genre_name: genre_params["genre_name"])
+      end
+
+      if Label.where(label_name: label_params["label_name"]).empty?
+        @label = Label.new(label_params)
+        @label.save
+      else
+        @label = Label.find_by(label_name: label_params["label_name"])
+      end
+
+      @item = Item.find(params[:id].to_i)
+      @item.artist_id = @artist.id
+      @item.genre_id = @genre.id
+      @item.label_id = @label.id
+
+      if @item.update(item_params)
+        redirect_to items_path
+      else
+         # redirect_to edit_item(@item)
+        render 'edit'
+      end
     else
-      @artist = Artist.find_by(artist_name: artist_params["artist_name"])
+      # render 'edit'
+      redirect_to edit_item_path(@item)
+      # redirect_to edit_item_path(params[:id])
     end
-
-    if Genre.where(genre_name: genre_params["genre_name"]).empty?
-      @genre = Genre.new(genre_params)
-      @genre.save
-    else
-      @genre = Genre.find_by(genre_name: genre_params["genre_name"])
-    end
-
-    if Label.where(label_name: label_params["label_name"]).empty?
-      @label = Label.new(label_params)
-      @label.save
-    else
-      @label = Label.find_by(label_name: label_params["label_name"])
-    end
-
-    @item = Item.find(params[:id])
-    @item.artist_id = @artist.id
-    @item.genre_id = @genre.id
-    @item.label_id = @label.id
-
-    @item.update(item_params)
-
-    redirect_to items_path
   end
-
 private
     def item_params
      params.require(:item).permit(
