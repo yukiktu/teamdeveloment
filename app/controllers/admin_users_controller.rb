@@ -8,11 +8,11 @@ class AdminUsersController < ApplicationController
 	end
 
 	def search
-    @items = Item.where(item_name: params[:search]).page(params[:page]).per(20).order(:id)
-    @orders = Order.where(delivery_status: 1)
-    @arrivals = Arrival.where(arrival_status: "入荷済")
+        @items = Item.where(item_name: params[:search]).page(params[:page]).per(20).order(:id)
+        @orders = Order.where(delivery_status: 1)
+        @arrivals = Arrival.where(arrival_status: "入荷済")
 
-      render :itiran
+        render :itiran
   end
 
 	def show

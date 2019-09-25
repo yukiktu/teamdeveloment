@@ -180,7 +180,7 @@
 	height: 260px;
 	margin: 0 auto;
 	padding: 10px;
-	display: flex;
+	//display: flex;
 }
 .item_image{
 	// background-color: gray;
@@ -234,7 +234,8 @@ h1{
 	margin-bottom: 10px;
 	width: 100%;
 	height: auto;
-	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding-bottom: 30px;
 }
 
 .cd_info{
@@ -278,11 +279,56 @@ h1{
 	// margin-top: 10px;
 	// margin-left: 10px;
 	margin-right: 10px;
-	position: relative;
+
 }
+
+.hennkouhozon{
+	border-radius: 10px 10px 10px 10px;
+	border: skyblue 1px;
+	background-color: skyblue;
+    padding-top: 3px;
+	padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 3px;
+
+
+}
+
+.syouhinndasu{
+	border-radius: 10px 10px 10px 10px;
+	border: orange 1px;
+	background-color: orange;
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-left: 3px;
+	padding-bottom: 3px;
+
+
+
+}
+
 .cd_table{
 	height: 100%;
+	padding-left: 120px;
 }
+
+.cd_childs{
+	padding-left: 120px;
+	font-size: 17px;
+
+}
+
+.cd_childs1{
+	padding-left: 120px;
+	font-size: 26px;
+}
+
+.cd_childs2{
+	padding-left: 120px;
+	font-size: 26px;
+}
+
+
 .table_block{
 	// background-color: red;
 	margin-right: 10px;
@@ -340,16 +386,15 @@ h1{
 }
 .table_td_2{
 	// background-color: blue;
-	padding: 2px;
-	margin: 2px;
-	text-align: right;
+	text-align: left;
+	font-size: 20px;
+
 }
 .table_td_3{
 	// background-color: blue;
-	padding: 2px;
-	margin: 2px;
-	width: 10px;
-	text-align: right;
+	//padding-right: 50px;
+	text-align: left;
+	font-size: 27px;
 }
 .table_total td{
 	// background-color: yellow;
@@ -357,13 +402,14 @@ h1{
 	text-align: right;
 }
 .button_table{
+	text-align: left;
+	font-size: 20px;
+
 	// background-color: blue;
-	padding: 2px;
-	margin: 2px;
-	width: 20px;
 }
 .botton_block{
 	// background-color: red;
+	margin-top: 45px;
 	display: inline-block;
 	width: 100%;
 }
@@ -376,6 +422,31 @@ h1{
 .button_2{
 	float: right;
 	display: inline-block;
+}
+
+.btn-secondary{
+	border-radius: 10px 10px 10px 10px;
+	font-size: 25px;
+	border: 1px orange;
+	color: white;
+	background-color: orange;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
+}
+
+.btn-outline-success{
+	float: right;
+	border-radius: 10px 10px 10px 10px;
+	font-size: 25px;
+	border: 1px skyblue;
+	color: white;
+	background-color: skyblue;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-bottom: 5px;
 }
 
 
