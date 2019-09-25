@@ -6,7 +6,7 @@
 <script src="js/bootstrap.min.js"></script>
 
 
-<div class="body">
+<div class="body_1">
   <h1>カート内商品</h1>
   <div class="well">
     <% @cart_items.each do |c| %>
@@ -16,14 +16,14 @@
           <div class="cd_name_block">
             <div class="cd_image">
               <% gacket_images = GacketImage.where(item_id: c.item_id) %>
-                <% if gacket_images.empty? %>
-                  <%= image_tag  'no_image.png', size:'240x240' %>
-                  <% else %>
-                    <% gacket_images.each do |g| %>
-                      <%= attachment_image_tag g, :image, :fill, 240, 240 %>
-                    <% end %>
-                  <% end %>
-                </div>
+              <% if gacket_images.empty? %>
+              <%= image_tag  'no_image.png', size:'240x240' %>
+              <% else %>
+              <% gacket_images.each do |g| %>
+              <%= attachment_image_tag g, :image, :fill, 240, 240 %>
+              <% end %>
+              <% end %>
+            </div>
             <table class="cd_table">
               <tr>
                 <td>
@@ -80,115 +80,29 @@
             </tr>
             <tr>
               <td class="table_td_1">
-              <%= form_for (c)  do |ci| %>
-              <%= ci.hidden_field :item_count, value: 0 %>
-              <%= ci.submit'カートから商品を出す', class: "syouhinndasu", :style=>"color:white;" %>
-              <% end %>
+                <%= form_for (c)  do |ci| %>
+                <%= ci.hidden_field :item_count, value: 0 %>
+                <%= ci.submit'カートから商品を出す', class: "syouhinndasu", :style=>"color:white;" %>
+                <% end %>
               </td>
             </tr>
           </table>
         </div>
       </div>
-      <% end %>
-
-
-<!--     <div class="one_item">
-      <div class="cd_info">
-        <div class="jacket_img_2">
-        </div>
-        <div class="cd_name_block">
-          <table class="cd_table">
-            <tr><td><h2>YELLOW DANCER</h2></td></tr>
-            <tr><td><h2>星野 源</h2></td></tr>
-            <tr><td><h4>Pop</h4></td></tr>
-            <tr><td><h4>ビクターエンタテインメント</h4></td></tr>
-            <tr><td><h4>¥2,000</h4></td></tr>
-          </table>
-        </div>
-      </div>
-      <div class="table_block">
-        <table class="table_1">
-          <tr>
-            <td><p>2点</p></td>
-            <td><p>小計</p></td>
-            <td><p>¥4,000</p></td>
-          </tr>
-        </table>
-      </div>
     </div>
-
-    <div class="one_item">
-      <div class="cd_info">
-        <div class="jacket_img_1">
-        </div>
-        <div class="cd_name_block">
-          <table class="cd_table">
-            <tr><td><h2>Green with Envy, Purple with Passion, White with Anger, Scarlet with Fever, What Were You Doing in Her Arms Last Night Blues</h2></td></tr>
-            <tr><td><h2>The 150 Murderous Passions, Or Those Belonging To The Fourth Class, Composing The 28 Days Of February Spent In Hearing The Narrations Of Madame Desgranges, Interspersed Amongst Which Are The Scandalous Doings At The Chateau During That Month</h2></td></tr>
-            <tr><td><h4>Rock</h4></td></tr>
-            <tr><td><h4>日本コロムビア</h4></td></tr>
-            <tr><td><h4>¥2,000</h4></td></tr>
-          </table>
-        </div>
-      </div>
-      <div class="table_block">
-        <table class="table_1">
-          <tr>
-            <td><p>2点</p></td>
-            <td><p>小計</p></td>
-            <td><p>¥4,000</p></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-
-    <div class="one_item">
-      <div class="cd_info">
-        <div class="jacket_img_1">
-        </div>
-        <div class="cd_name_block">
-          <table class="cd_table">
-            <tr><td><h2>chicken zombies</h2></td></tr>
-            <tr><td><h2>THEE MICHELLE GUN ELLEPHANT</h2></td></tr>
-            <tr><td><h4>Rock</h4></td></tr>
-            <tr><td><h4>日本コロムビア</h4></td></tr>
-            <tr><td><h4>¥2,000</h4></td></tr>
-          </table>
-        </div>
-      </div>
-      <div class="table_block">
-        <table class="table_1">
-          <tr>
-            <td><p>2点</p></td>
-            <td><p>小計(税込)</p></td>
-            <td><p>¥4,000</p></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </div>
-
-    <div class="total">
-      <table class="table_total">
-        <tr>
-          <td><p>総計(税込)</p></td>
-          <td><p>¥10,000</p></td>
-        </tr>
-      </table>
-    </div> -->
-    <%# end %>
-
+    <% end %>
     <div class="botton_block">
-      <%= link_to(items_path) do %>
+        <%= link_to(items_path) do %>
         <div class="button_1">
           <button type="button" class="btn-secondary">TOPページへ</button>
         </div>
-      <%end%>
-      <%= link_to(new_order_path) do %>
+        <%end%>
+        <%= link_to(new_order_path) do %>
         <div class="button_2">
           <button type="button" class="btn-outline-success">入確定画面へ</button>
         </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
   </div>
 </div>
+

@@ -1,75 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>EC</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>EC</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <div class="sita"></div>
-    <header id="header" class="junbotron">
+
+<body>
+  <div class="sita"></div>
+  <header id="header" class="junbotron">
     <nav>
-    <ul class="headline1">
-      <li class="nav-list-icons">
-        <%= link_to items_path do %>
-        <%= image_tag 'logos.png' , class: "nav-list-icon" %>
+      <ul class="headline1">
+        <li class="nav-list-icons">
+          <%= link_to items_path do %>
+          <%= image_tag 'logos.png' , class: "nav-list-icon" %>
+          <% end %>
+        </li>
+      </ul>
+      <ul class="av-list-ul">
+        <% if end_user_signed_in? %>
+        <li class="av-list-item">
+          <%= link_to 'aboute', about_path, :style=>"color:white;"%>
+        </li>
+        <li class="av-list-item">
+          <%= link_to 'マイページ', end_user_path(current_end_user.id), :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, :style=>"color:white;" %>
+        </li>
+        <% elsif admin_signed_in? %>
+        <li class="av-list-item">
+          <%= link_to '新規商品追加', new_label_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to 'ユーザ一覧', admin_users_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to '注文確認', orders_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to '入荷一覧', arrivals_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to '売り上げ確認', sales_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, :style=>"color:white;" %>
+        </li>
+
+        <% else %>
+        <li class="av-list-item">
+          <%= link_to 'aboute', about_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to 'サインアップ', new_end_user_session_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
+          <%= link_to 'サインイン', end_user_session_path, :style=>"color:white;" %>
+        </li>
         <% end %>
-      </li>
-    </ul>
-
-    <ul class="av-list-ul">
-    <% if end_user_signed_in? %>
-   <li class="av-list-item">
-    <%= link_to 'aboute', about_path, :style=>"color:white;"%>
-    </li>
-   <li class="av-list-item">
-      <%= link_to 'マイページ', end_user_path(current_end_user.id), :style=>"color:white;" %>
-    </li>
-   <li class="av-list-item">
-      <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, :style=>"color:white;" %>
-    </li>
-
-    <% elsif admin_signed_in? %>
-    <li class="av-list-item">
-      <%= link_to '新規商品追加', new_label_path, :style=>"color:white;" %>
-      </li>
-    <li class="av-list-item">
-      <%= link_to 'ユーザ一覧', admin_users_path, :style=>"color:white;" %>
-      </li>
-    <li class="av-list-item">
-      <%= link_to '注文確認', orders_path, :style=>"color:white;" %>
-      </li>
-    <li class="av-list-item">
-      <%= link_to '入荷一覧', arrivals_path, :style=>"color:white;" %>
-      </li>
-    <li class="av-list-item">
-      <%= link_to '売り上げ確認', sales_path, :style=>"color:white;" %>
-      </li>
-    <li class="av-list-item">
-      <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, :style=>"color:white;" %>
-      </li>
-
-    <% else %>
-    <li class="av-list-item">
-      <%= link_to 'aboute', about_path, :style=>"color:white;" %>
-      </li>
-   <li class="av-list-item">
-      <%= link_to 'サインアップ', new_end_user_session_path, :style=>"color:white;" %>
-    </li>
-   <li class="av-list-item">
-      <%= link_to 'サインイン', end_user_session_path, :style=>"color:white;" %>
-    </li>
-    <% end %>
-
-
-</ul>
-</nav>
- </header>
-    <%= yield %>
-    <footer><p class="inc">@NaganoRecord.inc</p></footer>
-  </body>
+      </ul>
+    </nav>
+  </header>
+  <%= yield %>
+  <footer><p class="inc">@NaganoRecord.inc</p></footer>
+</body>
 </html>
