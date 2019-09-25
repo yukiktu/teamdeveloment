@@ -51,16 +51,17 @@ class LabelsController < ApplicationController
 		end
 
 		@item_new = Item.new(item_params)
+
 		if @item_new.item_name == ""
 			render :new and return
+		elsif Item.find_by(artist_id: @artist.id, item_name: @item_new.item_name).present?
+		 	render :new and return
 		else
-		# binding.pry
-		# @item.id = 1
-		 @item_new.artist_id = @artist.id
-		 @item_new.genre_id = @genre.id
-		 @item_new.label_id = @label.id
-		 @item_new.save
-		redirect_to edit_item_path(@item_new)
+			@item_new.artist_id = @artist.id
+		 	@item_new.genre_id = @genre.id
+		 	@item_new.label_id = @label.id
+		 	@item_new.save
+			redirect_to edit_item_path(@item_new)
 		end
 	end
 
