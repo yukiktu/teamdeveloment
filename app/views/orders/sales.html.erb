@@ -15,7 +15,7 @@
   <tr>
     <th class="Count">入荷代金総計</th>
     <th class="Count">売上総利益</th>
-    <th class="Count">今月分利益</th>
+    <th class="Count"><%= @d_month %>分利益</th>
   </tr>
 </table>
 
@@ -51,7 +51,7 @@
           <% end %>
         <% end %>
         <td><%= t %></td>
-        <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
+        <% arrivals = @arrivals.where(item_id: i) %>
         <% a_totalcount = 0 %>
         <% arrivals.each do |a| %>
           <% a_totalcount = a_totalcount + a.arrival_count %>

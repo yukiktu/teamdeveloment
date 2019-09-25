@@ -44,9 +44,10 @@ before_action :authenticate_admin!, only: [:index, :sales]
 
 	def sales
 		@items = Item.all
-    	@orders = Order.where(delivery_status: 1)
-    	@arrivals = Arrival.where(arrival_status: "入荷済")
+    	#@orders = Order.where(delivery_status: 1)
+    	#@arrivals = Arrival.where(arrival_status: "入荷済")
 		if params[:date].nil? or params[:date] == "全期間"
+			@arrivals = Arrival.where(arrival_status: "入荷済")
 			@orders = Order.where(delivery_status: 1)
 			# 入荷代金総計の計算
 			@d_month = "全期間"
@@ -76,10 +77,10 @@ before_action :authenticate_admin!, only: [:index, :sales]
 			#p @month
 			#binding.pry
 			@orders = Order.where(delivery_status: 1, updated_at: Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
-    		arrivals = Arrival.where(arrival_status: "入荷済", updated_at: Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
+    		@arrivals = Arrival.where(arrival_status: "入荷済", updated_at: Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
     		#, update_at: @month.month.all_month)
     		total_cost = 0
-    		arrivals.each do |a|
+    		@arrivals.each do |a|
     			cost = a.item.cost_price
     			count = a.arrival_count
     			total_cost = total_cost + cost*count
