@@ -8,7 +8,11 @@ class Item < ApplicationRecord
     accepts_nested_attributes_for :discs
     has_many :arrivals
 
-    validates :item_name, presence: true
+
+    # validates :item_name, length: { maximum: 26 }
+    # validates :list_price, presence: true
+    # validates :cost_price, presence: true
+    # validates :release_date, presence: true
     
 
     def self.search_method(search)

@@ -1,7 +1,7 @@
 class Label < ApplicationRecord
 	has_many :items
 
-	validates :label_name, presence: true,
-	           length: { minimum: 1}
+	# validates :label_name, presence: trues
+
 
 end
