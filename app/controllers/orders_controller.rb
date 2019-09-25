@@ -45,28 +45,61 @@ before_action :authenticate_admin!, only: [:index, :sales]
 	def sales
 		@items = Item.all
     	@orders = Order.where(delivery_status: 1)
-    	# 入荷代金総計の計算
-    	arrivals = Arrival.where(arrival_status: "入荷済")
-    	total_cost = 0
-    	arrivals.each do |a|
-    		cost = a.item.cost_price
-    		count = a.arrival_count
-    		total_cost = total_cost + cost*count
-    	end
-    	@total_cost = total_cost
-    	# 売上総利益
-    	totalgain = 0
-    	@orders.each do |o|
-    		orderitems = OrderItem.where(order_id: o.id)
-    		orderitems.each do |i|
-    			totalgain = totalgain + i.list_price*i.item_count
+		if params[:date].nil? or params[:date] == "全期間"
+			@orders = Order.where(delivery_status: 1)
+			# 入荷代金総計の計算
+			@month = "全期間"
+    		arrivals = Arrival.where(arrival_status: "入荷済")
+    		total_cost = 0
+    		arrivals.each do |a|
+    			cost = a.item.cost_price
+    			count = a.arrival_count
+    			total_cost = total_cost + cost*count
     		end
+    		@total_cost = total_cost
+    		# 売上総利益
+    		totalgain = 0
+    		@orders.each do |o|
+    			orderitems = OrderItem.where(order_id: o.id)
+    			orderitems.each do |i|
+    				totalgain = totalgain + i.list_price*i.item_count
+    			end
+    		end
+    		@totalgain = totalgain
+    	else
+    		# 入荷代金総計の計算
+			@month = params[:date]
+			#@month.to_date
+			#p !!!!!!!!!!!!
+			#p @month
+			#binding.pry
+			@orders = Order.where(delivery_status: 1, updated_at:  Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
+    		arrivals = Arrival.where(arrival_status: "入荷済", updated_at: Time.parse(@month).beginning_of_month..Time.parse(@month).end_of_month)
+    		#, update_at: @month.month.all_month)
+    		total_cost = 0
+    		arrivals.each do |a|
+    			cost = a.item.cost_price
+    			count = a.arrival_count
+    			total_cost = total_cost + cost*count
+    		end
+    		@total_cost = total_cost
+    		# 売上総利益
+    		totalgain = 0
+    		@orders.each do |o|
+    			orderitems = OrderItem.where(order_id: o.id)
+    			orderitems.each do |i|
+    				totalgain = totalgain + i.list_price*i.item_count
+    			end
+    		end
+    		@totalgain = totalgain
     	end
-    	@totalgain = totalgain
-    	#検索コード
-
-
-  	end
+    		@m_terms=["全期間"]
+			@orders.each do |order|
+  				m = order.created_at
+  					@m_terms.push(m)
+  					@m_terms.uniq!
+	    	end
+ 	end
 
 	def new
 		@delivery_addressee = DeliveryAdress.where(end_user_id: current_end_user.id)

@@ -1,29 +1,3 @@
-<!-- ↓検索機能もしくはソート機能検討中 -->
-<% m_terms=[] %>
-<% y_terms=[] %>
-<% @items.each do |test| %>
-  <% m = test.created_at %>
-  <%= m.strftime("%Y-%m") %>
-  <% y_terms.push(m.year) %>
-  <% y_terms.uniq %>
-  <% m_terms.push(m.strftime("%Y-%m")) %>
-  <% m_terms.uniq %>
-<% end %>
-<%= y_terms %>
-<%= m_terms %>
-<% term = 0 %>
-<%#= form_for term do |term| %>
-<%#= m_terms.select {|term|}%>
-<%# end %>
-<%= form_tag({:controller => 'orders',:action => 'sales'}, {:method => :get}) do %>
-  <%# m_terms.each do |m| %>
-    <%= select_tag 'order', options_for_select(m_terms)%>
-<%= submit_tag'検索' %>
-
-<% end %>
-<% if term == 0 %>
-
-<!-- ↑検索機能もしくはソート機能検討中 -->
 <main>
 
 <div class="main-image">
@@ -31,8 +5,11 @@
   <p class="View">売上管理画面</p>
   </div>
 </div>
-
-<h3 class="Total"><9月分売上></h3>
+<%= form_tag({:controller => 'orders',:action => 'sales'}, {:method => :get}) do %>
+  <%= select_tag 'date', options_for_select(@m_terms)%>
+  <%= submit_tag'検索' %>
+<% end %>
+<h3 class="Total"><<%= @month %>分売上></h3>
 
 <table class="Count-Total1">
   <tr>
@@ -87,5 +64,3 @@
   </table>
     <% end %>
 </main>
-<% else %>
-<% end %>
