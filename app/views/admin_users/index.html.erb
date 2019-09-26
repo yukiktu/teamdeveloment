@@ -1,10 +1,11 @@
 
 <div class="admain">
-	<div class="i-search">
+	<div class="aduser-search">
         <%= form_tag(search_path,:method => 'get') do %>
             <%= text_field_tag :search %>
                 <%= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
         <% end %>
+    </div>
 
 <table class="adtable">
 	<thead>
@@ -12,6 +13,7 @@
 			<th class="adsimei">氏名</th>
 			<th class="add">メールアドレス</th>
 			<th class="adlogin">最終ログイン</th>
+			<th class="adstatus1">ステータス</th>
 		</tr>
 	</thead>
 	<% @end_users.each do |e| %>
@@ -22,6 +24,13 @@
 				<% end %>
 			<td class="admail"><%= e.email %></td>
 			<td class="adtime"><%= e.updated_at.strftime("%Y-%m-%d") %></td>
+			<td class="adstatus">
+				<% if e.enrollment_status == 0 %>
+						退会済み
+					<% else  %>
+						登録済み
+					<% end %>
+			</td>
 
 			<!-- <tb class="editbotan"><%#= link_to "編集", edit_end_user_path(e.id) %></tb> -->
 

@@ -1,12 +1,14 @@
 class LabelsController < ApplicationController
 before_action :authenticate_admin!
 
-	def new
-		@item_new = Item.new
+
+
+	def index
 		@label = Label.new
 		@genre = Genre.new
 		@artist = Artist.new
 		@item = Item.new
+		@item_new = Item.new #エラーメッセージ表示用のインスタンス変数
 	end
 
 	def create
@@ -55,17 +57,18 @@ before_action :authenticate_admin!
 
 		if @item_new.item_name.blank?
 			render :new and return
+
 		elsif Item.find_by(artist_id: @artist.id, item_name: @item_new.item_name).present?
-		 	render :new and return
+		 	render :index and return
 		else
-			if @item_new.save
-				@item_new.artist_id = @artist.id
-			 	@item_new.genre_id = @genre.id
-			 	@item_new.label_id = @label.id
-			 	@item_new.save
-				redirect_to "/items/#{@item_new.id}/edit"
-			else
-				render :new and return
+
+			@item_new.artist_id = @artist.id
+		 	@item_new.genre_id = @genre.id
+		 	@item_new.label_id = @label.id
+		 	if @item_new.save
+				redirect_to edit_item_path(@item_new)
+		 	else
+		 		render :index
 			end
 		end
 	end
@@ -86,11 +89,6 @@ before_action :authenticate_admin!
   		def item_params
   			params.require(:item).permit(:item_name, :artist_id, :label_id, :genre_id)
   		end
-  		# def item_params
-    #  		params.require(:item).permit(
-    #   		:item_name,:list_price,:cost_price,:sales_status,:genre_id,:artist_id,:label_id,:release_date,
-    #   		:jacket_number,gacket_images:[],discs_attributes:[:id,:disc_name,:disc_number,
-    #   		songs_attributes:[:id,:recording_number,:song_title,:play_time]])
-    # 	end
+
 
 end

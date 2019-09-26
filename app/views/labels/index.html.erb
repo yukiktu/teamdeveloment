@@ -1,0 +1,28 @@
+<p class="l-a">追加する商品のジャンルおよびアーティスト、レーベルを指定してくだい。</p>
+
+
+<% if @item_new.errors.any? %>
+	<% @item_new.errors.full_messages.each do |message| %>
+		<%= message %>
+	<% end %>
+<% end %>
+	<%= form_for @label, url: labels_path, method: :post do |l| %>
+
+		<%= form_for @genre, url: labels_path, method: :post do |g| %>
+			<%= form_for @artist, url: labels_path, method: :post do |a| %>
+				<%= form_for @item, url: labels_path, method: :post do |i| %>
+				<p class="qq"><label class="l-label">レーベル</label>
+					<%= l.text_field :label_name, class: "entry_field1" %></p>
+					<p class="qq"><label class="l-genre">ジャンル</label>
+						<%= g.text_field :genre_name, class: "entry_field2" %></p>
+						<p class="qq"><label class="l-artist">アーティスト</label>
+							<%= a.text_field :artist_name, class: "entry_field3" %></p>
+							<p class="qq"><label class="l-item">商品名</label>
+								<%= i.text_field :item_name, class: "entry_field4" %></p>
+								<p><%= i.submit "次へ", class: "tugihe", :style=>"color:white;" %></p>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+
+
