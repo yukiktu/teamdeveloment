@@ -1,66 +1,69 @@
-<div>
-<div class="i-search">
-<%= form_tag(admin_search_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :item_name => nil %>
-<% end %>
-</div>
-<table class="">
-    <thead class="aaaa">
-        <tr class="">
-        	<th class="i-1">商品名</th>
-        	<th class="i-2">アーティスト</th>
-        	<th class="i-3">在庫枚数</th>
-            <th class="i-4">前回入荷数量</th>
-            <th class="i-5">前回入荷日</th>
-        </tr>
-    </thead>
-    <% @items.each do |i| %>
-    <tbody class="">
-        <tr class="ddd">
-            <td class="ii-1">
-                <%= link_to(item_path(i)) do %><%= i.item_name %><% end %>
-            </td>
-	        <td class="ii-2">
-                <%= i.artist.artist_name %>
-            </td>
-	        <td class="ii-3">
-                <% order_total = 0 %>
-                <% if @orders.present? %>
+<div class="itiran-box">
+    <div class="i-search">
+        <%= form_tag(admin_search_path,:method => 'get') do %>
+        <%= text_field_tag :search %>
+        <%= submit_tag 'Search', :item_name => nil %>
+        <% end %>
+    </div>
+    <table class="">
+        <thead class="aaaa">
+            <tr class="">
+                <th class="i-1">商品名</th>
+                <th class="i-2">アーティスト</th>
+                <th class="i-3">在庫枚数</th>
+                <th class="i-4">前回入荷数量</th>
+                <th class="i-5">前回入荷日</th>
+            </tr>
+        </thead>
+        <% @items.each do |i| %>
+        <tbody class="">
+            <tr class="ddd">
+                <td class="ii-1">
+                    <%= link_to(item_path(i)) do %><%= i.item_name %><% end %>
+                </td>
+                <td class="ii-2">
+                    <%= i.artist.artist_name %>
+                </td>
+                <td class="ii-3">
+                    <% order_total = 0 %>
+                    <% if @orders.present? %>
                     <% @orders.each do |o| %>
-                        <% if (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).present? %>
-                            <% orderitemcount = (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).item_count %>
-                            <% order_total = order_total + orderitemcount %>
-                        <% end %>
+                    <% if (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).present? %>
+                    <% orderitemcount = (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).item_count %>
+                    <% order_total = order_total + orderitemcount %>
                     <% end %>
-                <% end %>
-                <% arrival_total = 0 %>
-                <% @arrivals.each do |arrival| %>
+                    <% end %>
+                    <% end %>
+                    <% arrival_total = 0 %>
+                    <% @arrivals.each do |arrival| %>
                     <% if (@arrivals.where(item_id: i.id)).present? %>
-                        <% item_arrival_count = arrival.arrival_count %>
-                                <% arrival_total = arrival_total + item_arrival_count %>
+                    <% item_arrival_count = arrival.arrival_count %>
+                    <% arrival_total = arrival_total + item_arrival_count %>
                     <% end %>
-                <% end %>
-                <% stock = arrival_total - order_total %>
-                <%= stock %>
-            </td>
-            <td class="ii-4">
-                <% last_arrival = 0 %>
-                <% if @arrivals.present? %>
-                        <% last_arrival = (@arrivals.last).arrival_count %>
-                <% end %>
-                <%= last_arrival %>
-            </td>
-            <td class="ii-5">
-                <% if @arrivals.present? %>
-                        <%= (@arrivals.last).arrival_expected_date %>
-                <% else %>
-                        <%= "入荷情報がありません" %>
-                <% end %>
-            </td>
-        	</tr>
+                    <% end %>
+                    <% stock = arrival_total - order_total %>
+                    <%= stock %>
+                </td>
+                <td class="ii-4">
+                    <% last_arrival = 0 %>
+                    <% if @arrivals.present? %>
+                    <% last_arrival = (@arrivals.last).arrival_count %>
+                    <% end %>
+                    <%= last_arrival %>
+                </td>
+                <td class="ii-5">
+                    <% if @arrivals.present? %>
+                    <%= (@arrivals.last).arrival_expected_date %>
+                    <% else %>
+                    <%= "入荷情報がありません" %>
+                    <% end %>
+                </td>
+            </tr>
         </tbody>
-    <% end %>
-</table>
+        <% end %>
+    </table>
 </div>
+
 <div class="page"><%= paginate(@items) %></div>
+
+

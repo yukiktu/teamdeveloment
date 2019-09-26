@@ -1,16 +1,16 @@
 <p class="l-a">追加する商品のジャンルおよびアーティスト、レーベルを指定してくだい。</p>
 
-
+<%# binding.pry %>
 <% if @item_new.errors.any? %>
 	<% @item_new.errors.full_messages.each do |message| %>
 		<%= message %>
 	<% end %>
 <% end %>
-	<%= form_for @label, url: labels_path, method: :post do |l| %>
-
-		<%= form_for @genre, url: labels_path, method: :post do |g| %>
-			<%= form_for @artist, url: labels_path, method: :post do |a| %>
-				<%= form_for @item, url: labels_path, method: :post do |i| %>
+	<%= form_for @label, url: labels_path do |l| %>
+	<%# binding.pry %>
+		<%= form_for @genre, url: labels_path do |g| %>
+			<%= form_for @artist, url: labels_path do |a| %>
+				<%= form_for @item, url: labels_path do |i| %>
 				<p class="qq"><label class="l-label">レーベル</label>
 					<%= l.text_field :label_name, class: "entry_field1" %></p>
 					<p class="qq"><label class="l-genre">ジャンル</label>
