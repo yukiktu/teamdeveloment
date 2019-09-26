@@ -1,21 +1,23 @@
-<main>
+<main class="sales-main">
 
 <div class="main-image">
   <div class="main-mask">
   <p class="View">売上管理画面</p>
   </div>
 </div>
+
 <%= form_tag({:controller => 'orders',:action => 'sales'}, {:method => :get}) do %>
   <%= select_tag 'date', options_for_select(@m_terms)%>
   <%= submit_tag'検索' %>
 <% end %>
-<h3 class="Total"><<%= @d_month %>分売上></h3>
+
+<h3 class="Total"><%= @d_month %>分売上></h3>
 
 <table class="Count-Total1">
   <tr>
     <th class="Count">入荷代金総計</th>
     <th class="Count">売上総利益</th>
-    <th class="Count"><%= @d_month %>分利益</th>
+    <th class="Count">%= @d_month %>分利益</th>
   </tr>
 </table>
 
@@ -51,7 +53,7 @@
           <% end %>
         <% end %>
         <td><%= t %></td>
-        <% arrivals = @arrivals.where(item_id: i) %>
+        <% arrivals = Arrival.where(arrival_status: "入荷済", item_id: i) %>
         <% a_totalcount = 0 %>
         <% arrivals.each do |a| %>
           <% a_totalcount = a_totalcount + a.arrival_count %>
@@ -64,3 +66,5 @@
   </table>
     <% end %>
 </main>
+<% else %>
+<% end %>
