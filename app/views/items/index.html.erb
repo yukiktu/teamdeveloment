@@ -36,7 +36,7 @@
 				<% end %>
 				<div class="aaa">
 				<p class="i-artist"><%= i.artist.artist_name %></p>
-				<span class="i-price">¥<%= i.list_price.to_i %><span class="zei">(税込)</span></span>
+				<span class="i-price"><% price = i.list_price*(TaxRate.last).tax_rate %><!-- @tax_rate -->¥<%= price.to_i %><span class="zei">(税込)</span></span>
 			</div>
 			</div>
 <%# unless @items.length == 1 %>
