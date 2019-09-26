@@ -6,40 +6,33 @@ before_action :authenticate_admin!, only: [:edit, :update]
   end
 
   def kensaku
-    #binding.pry
+    if params[:keywords].blank?
+      redirect_to items_path
+      return
+    end
     keywords = params[:keyword]
     terms = keywords.split
     term2=[]
     terms.each do |term|
       term2 = term2 + term.split("　")
     end
-    binding.pry
+    # binding.pry
     keywords = term2
     keywords.uniq!
-    @items = []
-    items = []
+    #items = 'nil'
     keywords.each do |keyword|
       searchword = "%" + keyword.to_s + "%"
-      if Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword).present?
-        items.push(Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword))
-      end
+        #binding.pry
+        items = Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword)
 
-      if Artist.where('artist_name LIKE ?', searchword).present?
-        artist_id = Artist.where('artist_name LIKE ?', search1).present?
-        items.push(Item.where(sales_status: "販売中").where(artist_id: artist_id))
-      end
+        artist_id = Artist.where('artist_name LIKE ?', searchword).present?
+        artists = Item.where(sales_status: "販売中").where(artist_id: artist_id)
 
-      if Genre.where('genre_name LIKE ?', searchword).present?
         genre_id = Genre.where('genre_name LIKE ?', searchword)
-        items.push(Item.where(sales_status: "販売中").where(genre_id: genre_id))
-      end
-
-      if items.empty?
-      else
-        items.uniq!
-        @items = items
-        #.page(params[:page]).per(12).order(:id)
-      end
+        genres = Item.where(sales_status: "販売中").where(genre_id: genre_id)
+        @items = items + artists + genres
+        @items.uniq!
+        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12)
     end
     render 'index'
   end
