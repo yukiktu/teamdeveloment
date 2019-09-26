@@ -3,16 +3,34 @@ class AdminUsersController < ApplicationController
 	def index
 		#@end_user_home = current_end_user.last_name + current_end_user.first_name
 		@end_users = EndUser.all.page(params[:page]).per(20).order(:id)
-
-
 	end
 
-	def search
-        @items = Item.where(item_name: params[:search]).page(params[:page]).per(20).order(:id)
-        @orders = Order.where(delivery_status: 1)
-        @arrivals = Arrival.where(arrival_status: "入荷済")
-
-        render :itiran
+  def search
+    if params[:keywords].blank?
+      redirect_to admin_users_path
+      return
+    end
+    keywords = params[:keywords]
+    terms = keywords.split
+    term2=[]
+    terms.each do |term|
+      term2 = term2 + term.split("　")
+    end
+    keywords = term2
+    keywords.uniq!
+    keywords.each do |keyword|
+      searchword = "%" + keyword.to_s + "%"
+        result1 = EndUser.where('first_name LIKE ?', searchword)
+        result2 = EndUser.where('last_name LIKE ?', searchword)
+        result3 = EndUser.where('kana_last_name LIKE ?', searchword)
+        result4 = EndUser.where('kana_first_name LIKE ?', searchword)
+        result5 = EndUser.where('phone_number LIKE ?', searchword)
+        result6 = EndUser.where('email LIKE ?', searchword)
+        @end_users = result1 + result2 + result3 + result4 + result5 + result6
+        @end_users.uniq!
+        @end_users = Kaminari.paginate_array(@end_users).page(params[:page]).per(12)
+    end
+    render 'index'
   end
 
 	def show

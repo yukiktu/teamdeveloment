@@ -1,6 +1,5 @@
 <div class="create_display">
    <h2>商品詳細を記録する</h2>
-
    <%= form_for @item do |f| %>
    <%= form_for @label,url: item_path(@item) do |l| %>
    <%= form_for @genre, url: item_path(@item) do |g| %>
@@ -27,12 +26,11 @@
       </div>
       <div class="field">
          <%= f.label :list_price, "販売価格" %>
-         <%# f.number_field :list_price.to_i,class: "entry_field" %>
-         <%= f.number_field :list_price,class: "text_field" %>
+         <%= f.number_field :list_price, value: @item.list_price.floor, class: "entry_field" %>
       </div>
       <div class="field">
          <%= f.label :cost_price, "原価" %>
-         <%= f.number_field :cost_price, class: "entry_field" %>
+         <%= f.number_field :cost_price, value: @item.cost_price.floor, class: "entry_field" %>
       </div>
       <div class="field">
          <%= f.label :sales_status, "販売ステータス" %>
