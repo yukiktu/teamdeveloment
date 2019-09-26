@@ -1,8 +1,8 @@
 <main class="Tax">
 <h1 class="tax-index">税率・送料一覧</h1>
 
+<div class="tax-fee">
  <% @tax_rate.each do |t| %>
-
    <table class="tax">
       <tr>
         <th>税率</th>
@@ -30,5 +30,6 @@
         <td><%= s.created_at.strftime('%Y/%m/%d %H:%M') %></td>
       </tr>
    </table>
+  </div>
   <% end %>
 </main>

@@ -1,46 +1,50 @@
-<main>
+<main class="arrival-good">
 
 <h1 class="Arrival-title">新規発注</h1>
+
+<%= form_tag({:controller => 'arrivals',:action => 'index'}, {:method => :get}) do %>
+
+<div class="form-group1">
+  <label class="form-sub">アーティスト</label>
+    <%= select_tag 'artist', options_from_collection_for_select(@artists, :artist_name, :artist_name), {class: "artist"} %>
+      <%= submit_tag'絞り込む', class: "group3" %>
+
+    <% end %>
+
 <%= form_for(@arrival) do |t| %>
 
-<%= render 'layouts/error_messages', err: @arrival %>
+  <div class="form-main">
 
-<form>
 <div class="form-group1">
-  <label for="">アーティスト</label>
-　  <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
+ <label class="form-sub">商品名</label>
+    <%= t.collection_select(:item_id, @categories, :id, :item_name,  {prompt: ""}, {class: "artist"}) %>
 </div>
 
 <div class="form-group1">
- <label for="">商品名</label>
-    <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
+  <label class="form-sub">発注数</label>
+   <%= t.number_field :arrival_count, class: "group1" %>
 </div>
 
 <div class="form-group1">
-  <label for="">発注数</label>
-   <%= t.number_field :arrival_count %>
+  <label class="form-sub">発注先</label>
+   <%= t.text_field :supplier, class: "group1"  %>
 </div>
 
 <div class="form-group1">
-  <label for="">発注先</label>
-   <%= t.text_field :supplier %>
+  <label class="form-sub">発注日</label>
+   <%= t.date_field :purchase_order_date, class: "group1"  %>
 </div>
 
 <div class="form-group1">
-  <label for="">発注日</label>
-   <%= t.date_field :purchase_order_date %>
-</div>
-
-<div class="form-group1">
-  <label for="">入荷予定日</label>
-   <%= t.date_field :arrival_expected_date %>
+  <label class="form-sub">入荷予定日</label>
+   <%= t.date_field :arrival_expected_date, class: "group1"  %>
 </div>
 
 
-  <div class="form-group1">
-   <%= t.submit "保存する" %>
+  <div class="form-group2">
+   <%= t.submit "保存する", class: "group2" %>
   </div>
-</form>
+</div>
 
 
 
@@ -57,7 +61,9 @@
         <th>発注先</th>
         <th>発注日</th>
         <th>入荷予定日</th>
+        <th></th>
         <th>入荷ステータス</th>
+        <th>販売ステータス</th>
       </tr>
 
       <% @arrivals.each do |arrival| %>
@@ -68,22 +74,22 @@
         <td><%= arrival.supplier %></td>
         <td><%= arrival.purchase_order_date %></td>
         <td><%= arrival.arrival_expected_date %></td>
-      </tr>
-          <% if arrival.arrival_status == "入荷済" %>
+        <td><%= link_to "編集", edit_arrival_path(arrival), :style => "color :white" %></td>
+          <td class="arrival_status">
+            <% if arrival.arrival_status == "入荷済" %>
             入荷済
-          <% else %>
-            <%= form_for arrival do |a_status|%>
-              <%= a_status.hidden_field :arrival_status, value: "入荷済" %>
-              <%= a_status.submit'入荷確認' %>
+          </td>
+            <% else %>
+              <%= form_for arrival do |a_status|%>
+                <%= a_status.hidden_field :arrival_status, value: "入荷済" %>
+                <%= a_status.submit'入荷確認', :class => "btn btn-primary", class: "group5" %>
+              <% end %>
             <% end %>
+            <% if arrival.item.sales_status == "停止中" %>
+              <td><%= link_to"販売再開", edit_item_path(arrival.item), :style => "color: white;" %></td>
+          <% else %>
+            <td></td>
           <% end %>
-        </th>
-        <th>
-          <% if arrival.item.sales_status == "停止中" %>
-              <%= link_to"販売を再開する", edit_item_path(arrival.item) %>
-          <% end %>
-        </th>
-        <th> <%= link_to "編集", edit_arrival_path(arrival) %></th>
       </tr>
     <% end %>
   </table>

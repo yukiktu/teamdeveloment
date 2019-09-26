@@ -25,9 +25,13 @@
 
 <%#= render "admins/shared/links" %>
 
-<link rel="stylesheet" type="text/css" href="devise.css">
+<div class="bg"></div>
+<div class="bg bg2"></div>
+<div class="bg bg3"></div>
 
-<div class="welcom_message"><h1>Log In</h1></div>
+<div class="welcom_message">
+  <h1>Log In</h1>
+</div>
 
 <div class="end_user_infomation">
   <div class="entries_field">
@@ -36,14 +40,16 @@
       <label class="labels">Mail Address</label>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field_box" %>
     </div>
+
     <div class="field">
       <label class="labels">Password</label>
       <%= f.password_field :password, autocomplete: "current-password", class: "field_box" %>
     </div>
+
     <% if devise_mapping.rememberable? %>
     <div class="verification_message">
-      <%#= f.check_box :remember_me %>
-      <!-- Remember Passwords. -->
+      <%= f.check_box :remember_me %>
+      Remember Passwords.
       <%#= f.label :remember_me %>
     </div>
     <% end %>
@@ -51,5 +57,4 @@
       <%= f.submit "Login", class: "buttons" %>
     </div>
     <% end %>
-  </div>
-</div>
+
