@@ -30,7 +30,7 @@ resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
 resources :numbers
 get 'search' => 'items#search'
-
+get 'kensaku' => 'items#kensaku'
 get 'sales' => 'orders#sales'
 resources :admin_users
 get 'about' => 'items#about'
