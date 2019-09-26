@@ -7,27 +7,39 @@ before_action :authenticate_admin!, only: [:edit, :update]
 
   def kensaku
     #binding.pry
-    searchword = "%" + params[:keyword] + "%"
+    keywords = params[:keyword]
+    terms = keywords.split
+    term2=[]
+    terms.each do |term|
+      term2 = term2 + term.split("　")
+    end
+    binding.pry
+    keywords = term2
+    keywords.uniq!
     @items = []
     items = []
-    if Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword).present?
-      items.push(Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword))
-    end
+    keywords.each do |keyword|
+      searchword = "%" + keyword.to_s + "%"
+      if Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword).present?
+        items.push(Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword))
+      end
 
-    if Artist.where('artist_name LIKE ?', searchword).present?
-      artist_id = Artist.where('artist_name LIKE ?', search1).present?
-      items.push(Item.where(sales_status: "販売中").where(artist_id: artist_id))
-    end
+      if Artist.where('artist_name LIKE ?', searchword).present?
+        artist_id = Artist.where('artist_name LIKE ?', search1).present?
+        items.push(Item.where(sales_status: "販売中").where(artist_id: artist_id))
+      end
 
-    if Genre.where('genre_name LIKE ?', searchword).present?
-      genre_id = Genre.where('genre_name LIKE ?', searchword)
-      items.push(Item.where(sales_status: "販売中").where(genre_id: genre_id))
-    end
+      if Genre.where('genre_name LIKE ?', searchword).present?
+        genre_id = Genre.where('genre_name LIKE ?', searchword)
+        items.push(Item.where(sales_status: "販売中").where(genre_id: genre_id))
+      end
 
-    if items.empty?
-    else
-      items.uniq!
-      @items = items.page(params[:page]).per(12).order(:id)
+      if items.empty?
+      else
+        items.uniq!
+        @items = items
+        #.page(params[:page]).per(12).order(:id)
+      end
     end
     render 'index'
   end
