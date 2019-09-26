@@ -44,6 +44,13 @@ before_action :authenticate_admin!, only: [:index, :sales]
 	end
 
 	def sales
+		if ((Item.where(list_price: nil)).or(Item.where(cost_price: nil))).present?
+			listerror = Item.where(list_price: nil)
+			costerror = Item.where(cost_price: nil)
+			erroritem = listerror + costerror
+			redirect_to edit_item_path(erroritem.first)
+			return
+		end
 		@items = Item.all
     	#@orders = Order.where(delivery_status: 1)
     	#@arrivals = Arrival.where(arrival_status: "入荷済")
