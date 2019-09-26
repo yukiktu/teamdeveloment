@@ -11,13 +11,13 @@
   <%= submit_tag'検索' %>
 <% end %>
 
-<h3 class="Total"><%= @d_month %>分売上></h3>
+<h3 class="Total"><%= @d_month %><分売上></h3>
 
 <table class="Count-Total1">
   <tr>
     <th class="Count">入荷代金総計</th>
     <th class="Count">売上総利益</th>
-    <th class="Count">%= @d_month %>分利益</th>
+    <th class="Count"><%= @d_month %>分利益</th>
   </tr>
 </table>
 
@@ -66,5 +66,3 @@
   </table>
     <% end %>
 </main>
-<% else %>
-<% end %>
