@@ -10,7 +10,7 @@ before_action :authenticate_admin!, only: [:edit, :update]
       redirect_to items_path
       return
     end
-    keywords = params[:keyword]
+    keywords = params[:keywords]
     terms = keywords.split
     term2=[]
     terms.each do |term|
