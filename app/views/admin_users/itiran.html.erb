@@ -27,35 +27,36 @@
                 <td class="ii-3">
                     <% order_total = 0 %>
                     <% if @orders.present? %>
-                    <% @orders.each do |o| %>
-                    <% if (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).present? %>
-                    <% orderitemcount = (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).item_count %>
-                    <% order_total = order_total + orderitemcount %>
-                    <% end %>
-                    <% end %>
+                        <% @orders.each do |o| %>
+                            <% if (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).present? %>
+                                <% orderitemcount = (OrderItem.find_by(order_id: o.id, item_name: i.item_name, artist_name: i.artist.artist_name)).item_count %>
+                                <% order_total = order_total + orderitemcount %>
+                            <% end %>
+                        <% end %>
                     <% end %>
                     <% arrival_total = 0 %>
-                    <% @arrivals.each do |arrival| %>
                     <% if (@arrivals.where(item_id: i.id)).present? %>
-                    <% item_arrival_count = arrival.arrival_count %>
-                    <% arrival_total = arrival_total + item_arrival_count %>
-                    <% end %>
+                        <% arrivals = @arrivals.where(item_id: i.id) %>
+                        <% arrivals.each do |arrival| %>
+                            <% item_arrival_count = arrival.arrival_count %>
+                            <% arrival_total = arrival_total + item_arrival_count %>
+                        <% end %>
                     <% end %>
                     <% stock = arrival_total - order_total %>
                     <%= stock %>
                 </td>
                 <td class="ii-4">
                     <% last_arrival = 0 %>
-                    <% if @arrivals.present? %>
-                    <% last_arrival = (@arrivals.last).arrival_count %>
+                    <% if arrivals.present? %>
+                        <% last_arrival = (arrivals.last).arrival_count %>
                     <% end %>
                     <%= last_arrival %>
                 </td>
                 <td class="ii-5">
-                    <% if @arrivals.present? %>
-                    <%= (@arrivals.last).arrival_expected_date %>
+                    <% if arrivals.present? %>
+                        <%= (arrivals.last).arrival_expected_date %>
                     <% else %>
-                    <%= "入荷情報がありません" %>
+                        <%= "入荷情報がありません" %>
                     <% end %>
                 </td>
             </tr>
