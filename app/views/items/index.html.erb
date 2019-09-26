@@ -7,7 +7,7 @@
   <%#= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
 <%# end %>
 <%= form_tag({:controller => 'items', :action => 'kensaku'}, {:method => :get}) do %>
-<%= text_field_tag 'keyword' %>
+<%= text_field_tag 'keywords' %>
 <%= submit_tag '検索', class: "entry_field11" %>
 <% end %>
 
