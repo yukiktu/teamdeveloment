@@ -7,11 +7,13 @@
 </div>
 
 <%= form_tag({:controller => 'orders',:action => 'sales'}, {:method => :get}) do %>
-  <%= select_tag 'date', options_for_select(@m_terms)%>
-  <%= submit_tag'切替える' %>
+
+  <%= select_tag 'date', options_for_select(@m_terms), class: "sales-tag"%>
+  <%= submit_tag'切り替える', class: "sales-submit" %>
+
 <% end %>
 
-<h3 class="Total"><%= @d_month %><分売上></h3>
+<h3 class="Total"><<%= @d_month %>売上></h3>
 
 <table class="Count-Total1">
   <tr>

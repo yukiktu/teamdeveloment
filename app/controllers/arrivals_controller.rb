@@ -1,9 +1,11 @@
 class ArrivalsController < ApplicationController
 before_action :authenticate_admin!
 
+PER = 10
+
 def index
     @arrival = Arrival.new
-    @arrivals = Arrival.all
+    @arrivals = Arrival.page(params[:page]).per(PER)
     @artists = Artist.all
      unless params[:artist].nil?
        artist_id = Artist.find_by(artist_name: params[:artist] )
