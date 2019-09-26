@@ -1,4 +1,11 @@
 <p class="l-a">追加する商品のジャンルおよびアーティスト、レーベルを指定してくだい。</p>
+
+<%# binding.pry %>
+<% if @item_new.errors.any? %>
+	<% @item_new.errors.full_messages.each do |message| %>
+		<%= message %>
+	<% end %>
+<% end %>
 	<%= form_for @label, url: labels_path do |l| %>
 	<%# binding.pry %>
 		<%= form_for @genre, url: labels_path do |g| %>
