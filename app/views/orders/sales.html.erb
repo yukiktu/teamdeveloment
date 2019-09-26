@@ -8,7 +8,7 @@
 
 <%= form_tag({:controller => 'orders',:action => 'sales'}, {:method => :get}) do %>
   <%= select_tag 'date', options_for_select(@m_terms)%>
-  <%= submit_tag'検索' %>
+  <%= submit_tag'切替える' %>
 <% end %>
 
 <h3 class="Total"><%= @d_month %><分売上></h3>

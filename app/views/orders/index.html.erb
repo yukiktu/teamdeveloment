@@ -42,14 +42,17 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% t.order_items.each do |i| %>
+				<% t.order_items.each_with_index do |i, index| %>
 					<tr class="tr-item">
-						<td class="tr-o-1" rowspan="i"><%= t.created_at.strftime("%Y-%m-%d") %></td>
-						<td class="tr-o-2">
-							<% @end_users.each do |e| %>
-								<%= e.last_name %><%= e.first_name %>
-							<% end %>
-						</td>
+						<% if index == 0%>
+							<td class="tr-o-1" rowspan="i"><%= t.created_at.strftime("%Y-%m-%d") %></td>
+							<td class="tr-o-2">
+									<%= t.end_user.last_name %><%= t.end_user.first_name %>
+							</td>
+						<% else %>
+							<td class="tr-o-1" rowspan="i"></td>
+							<td class="tr-o-2"></td>
+						<% end %>
 						<td class="tr-o-3"><%= i.item_name %></td>
 						<td class="tr-o-4"><%= i.artist_name %></td>
 						<td class="tr-o-5"><%= i.item_count %></td>

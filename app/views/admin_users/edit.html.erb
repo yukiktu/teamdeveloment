@@ -71,6 +71,15 @@
             <%= f.submit "更新", class: "buttons" %>
           </div>
   <% end %>
+  <%= form_for(@end_user) do |f| %>
+    <% if @end_user.enrollment_status == 1 %>
+      <%= f.hidden_field :enrollment_status, value: "0" %>
+      <%= f.submit "退会させる", class: "buttons" %>
+    <% else %>
+      <%= f.hidden_field :enrollment_status, value: "1" %>
+      <%= f.submit "復帰させる", class: "buttons" %>
+    <% end %>
+  <% end %>
         <%#= render "devise/shared/links" %>
     </div>
 </div>
