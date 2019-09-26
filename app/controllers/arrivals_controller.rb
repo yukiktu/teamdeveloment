@@ -1,11 +1,16 @@
 class ArrivalsController < ApplicationController
 before_action :authenticate_admin!
 
-  def index
+def index
     @arrival = Arrival.new
     @arrivals = Arrival.all
     @artists = Artist.all
-    @categories = Item.where(artist_id: @artists)
+     unless params[:artist].nil?
+       artist_id = Artist.find_by(artist_name: params[:artist] )
+       @categories = Item.where(artist_id: artist_id)
+     else
+       @categories = []
+     end
   end
 
 
@@ -19,6 +24,12 @@ before_action :authenticate_admin!
     @arrival = Arrival.find(params[:id])
     @artists = Artist.all
     @categories = Item.where(artist_id: @artists)
+    unless params[:artist].nil?
+       artist_id = Artist.find_by(artist_name: params[:artist] )
+       @categories = Item.where(artist_id: artist_id)
+     else
+       @categories = []
+     end
   end
 
   def update

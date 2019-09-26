@@ -10,7 +10,6 @@
   </head>
 
   <body>
-    <div class="sita"></div>
     <header id="header" class="junbotron">
     <nav>
     <ul class="headline1">
@@ -24,7 +23,7 @@
     <ul class="av-list-ul">
     <% if end_user_signed_in? %>
    <li class="av-list-item">
-    <%= link_to 'aboute', about_path, :style=>"color:white;"%>
+    <%= link_to 'about', about_path, :style=>"color:white;"%>
     </li>
    <li class="av-list-item">
       <%= link_to 'マイページ', end_user_path(current_end_user.id), :style=>"color:white;" %>
@@ -55,7 +54,7 @@
 
     <% else %>
     <li class="av-list-item">
-      <%= link_to 'aboute', about_path, :style=>"color:white;" %>
+      <%= link_to 'about', about_path, :style=>"color:white;" %>
       </li>
    <li class="av-list-item">
       <%= link_to 'サインアップ', new_end_user_session_path, :style=>"color:white;" %>

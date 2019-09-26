@@ -1,35 +1,53 @@
+<main class="arrival-bad">
+
 <h1 class="Arrival-title3">編集画面</h1>
+
+<%= form_tag({:controller => 'arrivals',:action => 'edit'}, {:method => :get}) do %>
+
+<div class="form-group1">
+    <label class="form-sub">アーティスト</label>
+  <%= select_tag 'artist', options_from_collection_for_select(@artists, :artist_name, :artist_name), {class: "artist"} %>
+      <%= submit_tag'絞り込む', class: "group3" %>
+
+    <% end %>
+
 <%= form_for(@arrival) do |t| %>
 
-<div class="field">
-  <label>アーティスト</label>
-　 <%= t.collection_select(:artist_id, @artists, :id, :artist_name) %>
-
-  <label>商品名</label>
-   <%= t.collection_select(:item_id, @categories, :id, :item_name) %>
-
-  <label>発注数</label>
-  <%= t.number_field :arrival_count %>
-
-  <label>発注先</label>
-  <%= t.text_field :supplier %>
-
-  <label>発注日</label>
-  <%= t.date_field :purchase_order_date %>
-
-  <label>入荷予定日</label>
-  <%= t.date_field :arrival_expected_date %>
-
- <label>入荷ステータス</label>
-  <%= t.select(:arrival_status, [[""],["入荷済"]]) %>
-
-
-  <%= link_to"削除",arrival_path(@arrival), method: :delete %>
-
-  <div class="actions">
-  <%= t.submit %>
-
+<div class="form-group1">
+ <label class="form-sub">商品名</label>
+    <%= t.collection_select(:item_id, @categories, :id, :item_name,  {prompt: ""}, {class: "artist"}) %>
 </div>
 
- <% end %>
- </div>
+<div class="form-group1">
+  <label class="form-sub">発注数</label>
+   <%= t.number_field :arrival_count, class: "group1"  %>
+</div>
+
+<div class="form-group1">
+  <label class="form-sub">発注先</label>
+   <%= t.text_field :supplier, class: "group1"  %>
+</div>
+
+<div class="form-group1">
+  <label class="form-sub">発注日</label>
+   <%= t.date_field :purchase_order_date, class: "group1"  %>
+</div>
+
+<div class="form-group1">
+  <label class="form-sub">入荷予定日</label>
+   <%= t.date_field :arrival_expected_date, class: "group1"  %>
+</div>
+
+ <label class="form-sub">入荷ステータス</label>
+  <%= t.select(:arrival_status, [[""],["入荷済"]],  {prompt: ""}, {class: "artist"}) %>
+
+ <div class="form-group4">
+   <%= t.submit "保存する", class: "group4" %>
+  </div>
+</div>
+
+
+
+<% end %>
+
+</main>

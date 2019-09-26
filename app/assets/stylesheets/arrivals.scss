@@ -1,34 +1,72 @@
 // Place all the styles related to the arrivals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 * {
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
 }
 
+.arrival-good {
+	background-color: silver;
+	height: 1050px;
+}
+
+.arrival-bad {
+	background-color: silver;
+	height: 1050px;
+}
+
 main {
-    backgorund-color: silver;
+    padding-top: 15px;
 }
 
 .Arrival-title {
+	top: 0;
+	margin-left: 500px;
+	padding: 20px 0px 20px 80px;
 	text-align: center;
+	letter-spacing: 15px;
+	border: solid 3px #364e96;
+	width: 480px;
+	padding: 0.5em;
+	border-radius: 0.5em;
 }
 
 .Arrival-title2 {
+    top: 0;
+	margin: 0px auto;
+	margin-left: 500px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-align: center;
+	letter-spacing: 15px;
+	border: solid 3px #364e96;
+	width: 480px;
+	padding: 0.5em;
+	border-radius: 0.5em;
 	text-align: center;
 	padding: 15px 0px;
 }
 
 .Arrival-title3 {
+	top: 0;
+	margin-left: 500px;
+	padding: 20px 0px 20px 80px;
 	text-align: center;
+	letter-spacing: 15px;
+	border: solid 3px #364e96;
+	width: 480px;
+	padding: 0.5em;
+	border-radius: 0.5em;
 }
 
 .Arrival-index {
 	text-align: center;
 	font-size: 20px;
 	color: white;
-	background: linear-gradient(#829ebc, #225588);
+	background: linear-gradient(silver, #225588);
 	border-right: 3px solid black;
 	border-top: 1px solid #3c6690;
 	border-bottom: 1px solid #3c6690;
@@ -38,11 +76,15 @@ main {
 }
 
 .Arrival-index th {
+    border: 1px solid black;
 	text-align: center;
+	padding: 15px 0px;
+	letter-spacing: 5px;
 }
 
 .Arrival-index td {
-    border-bottom: 1px solid black;
+    border: 1px solid black;
+    padding: 20px 0px;
 }
 
 .Arrival-edit {
@@ -54,6 +96,93 @@ main {
 	color: red;
 }
 
-.form-group1 {
-	width: 600px;
+.form-sub {
+	padding: 20px 20px;
+	margin: 20px 0px 20px 420px;
+	text-align: center;
+	font-size: 25px;
+	white-space: nowrap;
+	letter-spacing: 15px;
+	width: 300px;
+}
+
+.compleate {
+	color: red;
+}
+
+.form-main {
+	margin: 0 auto;
+}
+
+submit{
+	background-color: #000;
+}
+
+.form-group2 {
+	margin: 20px 0px 0px 600px;
+	font-size: 20px;
+	color: white;
+}
+
+.form-group3 {
+	margin: 15px 0px 0px 500px;
+}
+
+.form-group4 {
+	margin: 15px 0px 0px 600px;
+	padding-bottom: 30px;
+	font-size: 30px;
+	color: green;
+}
+
+.artist {
+	font-size: 25px;
+	width: 300px;
+	margin-left: 20px;
+	padding-left: 50px;
+	text-indent: 100px;
+}
+
+.arrival_status {
+	color: red;
+}
+
+.group1 {
+	width: 300px;
+	height: 40px;
+	font-size: 25px;
+	margin-left: 20px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.group2 {
+	height: 40px;
+	font-size: 25px;
+	background-color: green;
+	width: 300px;
+}
+
+.group3 {
+    color: white;
+	height: 40px;
+	font-size: 25px;
+	margin-left: 20px;
+	background-color: green;
+}
+
+.group4 {
+    color: white;
+	height: 40px;
+	font-size: 25px;
+	background-color: green;
+	width: 300px;
+}
+
+.group5 {
+    color: white;
+	height: 40px;
+	font-size: 25px;
+	background-color: green;
+	width: 120px;
 }

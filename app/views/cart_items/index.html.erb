@@ -16,8 +16,12 @@
           <div class="cd_name_block">
             <div class="cd_image">
               <% gacket_images = GacketImage.where(item_id: c.item_id) %>
+              <% if gacket_images.empty? %>
+              <%= image_tag 'no_image.png', size:'240x240' %>
+              <% else %>
               <% gacket_images.each do |g| %>
-              <%= attachment_image_tag g, :image, :fill, 150, 150 %>
+              <%= attachment_image_tag g, :image, :fill, 240, 240 %>
+              <% end %>
               <% end %>
             </div>
             <table class="cd_table">

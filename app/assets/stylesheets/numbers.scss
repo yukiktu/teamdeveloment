@@ -7,8 +7,25 @@
 	box-sizing: border-box;
 }
 
+.new-tax-fee {
+  background-color: silver;
+  height: 800px;
+  wodth: 100%;
+}
+
 .Tax {
 	background-color: silver;
+  text-align: center;
+}
+
+.tax-fee {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.tax-fee2 {
+  margin-top: 120px;
+  text-align: center;
 }
 
 .tax {
@@ -25,6 +42,7 @@
   box-shadow: 0px 1px 1px rgba(255,255,255,0.3) inset;
   width: 20%;
   padding: 10px 0px;
+  padding-left: 50px;
 }
 
 .tax td {
@@ -60,7 +78,7 @@
 }
 
 .tax-field {
-	margin: 10px 50px;
+	margin: 20px 0px 0px 480px;
 }
 
 .tax1 {
