@@ -158,7 +158,7 @@ before_action :authenticate_admin!, only: [:index, :sales]
 				end
 				@item = Item.find(c.item_id)
 				get_stok(@item)
-				if @stok.to_i < 1
+				if @stok.to_i > 1
 					@item.sales_status = "停止中"
 					@item.save
 				end
