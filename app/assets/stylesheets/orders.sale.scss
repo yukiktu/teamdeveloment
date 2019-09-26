@@ -9,11 +9,12 @@
   padding: 0;
   background-color: silver;
   display: block;
+  height: 2000px;
 }
 
 .main-image p {
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
@@ -115,4 +116,17 @@
 .Count-Total3 td {
   padding-top: 10px;
   font-size: 20px;
+}
+
+.sales-tag {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.sales-submit {
+  margin-left: 20px;
+  width: 100px;
+
+  margin-top: 0px;
 }

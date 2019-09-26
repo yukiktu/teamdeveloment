@@ -27,7 +27,8 @@
       </div>
       <div class="field">
          <%= f.label :list_price, "販売価格" %>
-         <%= f.number_field :list_price,class: "entry_field" %>
+         <%# f.number_field :list_price.to_i,class: "entry_field" %>
+         <%= f.number_field :list_price,class: "text_field" %>
       </div>
       <div class="field">
          <%= f.label :cost_price, "原価" %>
