@@ -60,8 +60,11 @@ before_action :authenticate_admin!
 			@item_new.artist_id = @artist.id
 		 	@item_new.genre_id = @genre.id
 		 	@item_new.label_id = @label.id
-		 	@item_new.save
-			redirect_to edit_item_path(@item_new)
+		 	if @item_new.save
+				redirect_to edit_item_path(@item_new)
+		 	else
+		 		render :index
+			end
 		end
 	end
 
