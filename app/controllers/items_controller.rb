@@ -16,7 +16,6 @@ before_action :authenticate_admin!, only: [:edit, :update]
     terms.each do |term|
       term2 = term2 + term.split("　")
     end
-    # binding.pry
     keywords = term2
     keywords.uniq!
     #items = 'nil'

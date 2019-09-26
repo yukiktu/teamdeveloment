@@ -29,7 +29,7 @@ resources :orders
 resources :items
 resources :arrivals, only: [:index, :edit, :update, :create, :destroy]
 resources :numbers
-get 'search' => 'items#search'
+get 'search' => 'admin_users#search'
 get 'kensaku' => 'items#kensaku'
 get 'sales' => 'orders#sales'
 resources :admin_users
