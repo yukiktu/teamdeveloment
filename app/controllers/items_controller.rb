@@ -90,14 +90,14 @@ before_action :authenticate_admin!, only: [:edit, :update]
       @item.label_id = @label.id
 
       if @item.update(item_params)
-        redirect_to items_path
+        redirect_to item_path(@item.id)
       else
          # redirect_to edit_item(@item)
         render 'edit'
       end
     else
       # render 'edit'
-      redirect_to edit_item_path(@item)
+      redirect_to edit_item_path(@item.id)
       # redirect_to edit_item_path(params[:id])
     end
   end
