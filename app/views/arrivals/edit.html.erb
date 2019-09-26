@@ -30,16 +30,16 @@
 
 <div class="form-group1">
   <label class="form-sub">発注日</label>
-   <%= t.date_field :purchase_order_date, class: "group1"  %>
+   <%= t.date_field :purchase_order_date, class: "group6"  %>
 </div>
 
 <div class="form-group1">
   <label class="form-sub">入荷予定日</label>
-   <%= t.date_field :arrival_expected_date, class: "group1"  %>
+   <%= t.date_field :arrival_expected_date, class: "group6"  %>
 </div>
 
  <label class="form-sub">入荷ステータス</label>
-  <%= t.select(:arrival_status, [[""],["入荷済"]],  {prompt: ""}, {class: "artist"}) %>
+  <%= t.select(:arrival_status, [[""],["入荷済"]],  {prompt: ""}, {class: "status"}) %>
 
  <div class="form-group4">
    <%= t.submit "保存する", class: "group4" %>
