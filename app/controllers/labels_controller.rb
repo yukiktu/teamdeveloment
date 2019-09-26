@@ -1,7 +1,7 @@
 class LabelsController < ApplicationController
 before_action :authenticate_admin!
 
-	def new
+	def index
 		@label = Label.new
 		@genre = Genre.new
 		@artist = Artist.new
@@ -15,7 +15,7 @@ before_action :authenticate_admin!
 		@item = Item.new
 		if Artist.where(artist_name: artist_params["artist_name"]).empty?
 			if artist_params["artist_name"] == ""
-				render :new and return
+				render :index and return
 			else
 				@artist = Artist.new(artist_params)
 				@artist.save
@@ -26,7 +26,7 @@ before_action :authenticate_admin!
 
 		if Genre.where(genre_name: genre_params["genre_name"]).empty?
 			if genre_params["genre_name"] == ""
-				render :new and return
+				render :index and return
 			else
 				@genre = Genre.new(genre_params)
 				@genre.save
@@ -39,7 +39,7 @@ before_action :authenticate_admin!
 
 		if Label.where(label_name: label_params["label_name"]).empty?
 			if label_params["label_name"] == ""
-				render :new and return
+				render :index and return
 			else
 				@label = Label.new(label_params)
 				@label.save
@@ -53,9 +53,9 @@ before_action :authenticate_admin!
 		@item_new = Item.new(item_params)
 
 		if @item_new.item_name == ""
-			render :new and return
+			render :index and return
 		elsif Item.find_by(artist_id: @artist.id, item_name: @item_new.item_name).present?
-		 	render :new and return
+		 	render :index and return
 		else
 			@item_new.artist_id = @artist.id
 		 	@item_new.genre_id = @genre.id
