@@ -191,7 +191,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_085550) do
     t.integer "disc_id"
     t.integer "recording_number"
     t.string "song_title"
-    t.time "play_time"
+    t.string "play_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

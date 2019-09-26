@@ -48,8 +48,8 @@
 
     <% if devise_mapping.rememberable? %>
     <div class="verification_message">
-      <%= f.check_box :remember_me %>
-      Remember Passwords.
+      <%#= f.check_box :remember_me %>
+      <!-- Remember Passwords. -->
       <%#= f.label :remember_me %>
     </div>
     <% end %>
@@ -57,4 +57,6 @@
       <%= f.submit "Login", class: "buttons" %>
     </div>
     <% end %>
+  </div>
+</div>
 
