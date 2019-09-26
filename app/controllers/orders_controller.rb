@@ -100,12 +100,14 @@ before_action :authenticate_admin!, only: [:index, :sales]
     		m_terms=["全期間"]
     		d_terms=["全期間"]
     		@m_terms=[]
-			@arrivals.zip(@orders).each do |arrival, order|
+			@arrivals.each do |arrival|
   				m = arrival.updated_at
   				unless d_terms.include?(m.strftime('%Y/%m'))
   					m_terms.push(m)
   					d_terms.push(m.strftime('%Y/%m'))
   				end
+  			end
+  			@orders.each do |order|
   				m = order.updated_at
   				unless d_terms.include?(m.strftime('%Y/%m'))
   					m_terms.push(m)
