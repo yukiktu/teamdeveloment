@@ -1,85 +1,86 @@
 <!-- /admin_users/orders/shipping
 <h1>受注画面</h1> -->
-
-<% @orders.each do |t| %>
-<div class="one-order">
-<div class="well">
-	<table class = "orders_table">
-		<caption class="table_top">
-			<div class="order_status">
-				<% if t.delivery_status == 0 %>
-					<%= form_for t do |f| %>
-						<%= f.hidden_field :delivery_status, value: 1 %>
-						<%= button_tag( class: "btn btn-default btn-lg btn-danger	") do %>
-							<%= content_tag :div, "未発送", class: "label "  %>
+<div class="order-box-all">
+	<% @orders.each do |t| %>
+	<div class="one-order">
+	<div class="well">
+		<table class = "orders_table">
+			<caption class="table_top">
+				<div class="order_status">
+					<% if t.delivery_status == 0 %>
+						<%= form_for t do |f| %>
+							<%= f.hidden_field :delivery_status, value: 1 %>
+							<%= button_tag( class: "btn btn-default btn-lg btn-danger	") do %>
+								<%= content_tag :div, "未発送", class: "label "  %>
+							<% end %>
+						<% end %>
+					<% else  %>
+						<%= form_for t do |f| %>
+							<%= f.hidden_field :delivery_status, value: 0 %>
+							<%= button_tag( class: "btn btn-default btn-lg btn-success" ) do %>
+								<%= content_tag :div, "発送済", class: "label "  %>
+							<% end %>
 						<% end %>
 					<% end %>
-				<% else  %>
-					<%= form_for t do |f| %>
-						<%= f.hidden_field :delivery_status, value: 0 %>
-						<%= button_tag( class: "btn btn-default btn-lg btn-success" ) do %>
-							<%= content_tag :div, "発送済", class: "label "  %>
-						<% end %>
-					<% end %>
-				<% end %>
-			</div>
+				</div>
 
-			<div class = "post">
-				<%= t.addressee%> 様<br>
-				〒<%= t.postal_code %><br>
-				<%= t.address %>
-			</div>
-		</caption>
+				<div class = "post">
+					<%= t.addressee%> 様<br>
+					〒<%= t.postal_code %><br>
+					<%= t.address %>
+				</div>
+			</caption>
 
-		<thead>
-			<tr class="tr-o-0">
-				<th class="th-o-1">購入日</th>
-				<th class="th-o-2">購入者</th>
-				<th class="th-o-3">商品</th>
-				<th class="th-o-4">アーティスト</th>
-				<th class="th-o-5">枚数</th>
-				<th class="th-o-0">価格</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% t.order_items.each do |i| %>
-				<tr class="tr-item">
-					<td class="tr-o-1" rowspan="i"><%= t.created_at.strftime("%Y-%m-%d") %></td>
-					<td class="tr-o-2">
-						<% @end_users.each do |e| %>
-							<%= e.last_name %><%= e.first_name %>
-						<% end %>
-					</td>
-					<td class="tr-o-3"><%= i.item_name %></td>
-					<td class="tr-o-4"><%= i.artist_name %></td>
-					<td class="tr-o-5"><%= i.item_count %></td>
-					<td class="th-o-6">¥<%= i.list_price .to_i  %></td>
+			<thead>
+				<tr class="tr-o-0">
+					<th class="th-o-1">購入日</th>
+					<th class="th-o-2">購入者</th>
+					<th class="th-o-3">商品</th>
+					<th class="th-o-4">アーティスト</th>
+					<th class="th-o-5">枚数</th>
+					<th class="th-o-0">価格</th>
 				</tr>
-			<% end %>
-		</tbody>
+			</thead>
+			<tbody>
+				<% t.order_items.each do |i| %>
+					<tr class="tr-item">
+						<td class="tr-o-1" rowspan="i"><%= t.created_at.strftime("%Y-%m-%d") %></td>
+						<td class="tr-o-2">
+							<% @end_users.each do |e| %>
+								<%= e.last_name %><%= e.first_name %>
+							<% end %>
+						</td>
+						<td class="tr-o-3"><%= i.item_name %></td>
+						<td class="tr-o-4"><%= i.artist_name %></td>
+						<td class="tr-o-5"><%= i.item_count %></td>
+						<td class="th-o-6">¥<%= i.list_price .to_i  %></td>
+					</tr>
+				<% end %>
+			</tbody>
 
-		<tfoot>
-			<tr class="tr-subtotal">
-				<td colspan="4"></td>
-				<td>小計</td>
-				<td class="th-o-6">
-					¥<%= t.subtotal .to_i %>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="4"></td>
-				<td>送料</td>
-				<td class="th-o-6">
-					¥<%= t.shipping_fee .to_i %>
-				</td>
-			</tr>
-			<tr class="tr-total">
-				<td colspan="4"></td>
-				<td><b>ご請求金額(税込)</b></td>
- 				<td class="th-o-6">¥<%= t.grand_total .to_i %></td>
-			</tr>
-		</tfoot>
-	</table>
+			<tfoot>
+				<tr class="tr-subtotal">
+					<td colspan="4"></td>
+					<td>小計</td>
+					<td class="th-o-6">
+						¥<%= t.subtotal .to_i %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4"></td>
+					<td>送料</td>
+					<td class="th-o-6">
+						¥<%= t.shipping_fee .to_i %>
+					</td>
+				</tr>
+				<tr class="tr-total">
+					<td colspan="4"></td>
+					<td><b>ご請求金額(税込)</b></td>
+	 				<td class="th-o-6">¥<%= t.grand_total .to_i %></td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	</div>
+	<% end %>
 </div>
-</div>
-<% end %>
