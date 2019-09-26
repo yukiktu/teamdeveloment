@@ -1,6 +1,6 @@
 
 <!-- コメントアウト外せば使えますたぶん -->
-<div class="body">
+<div class="body_1">
     <div class="prof_block clearfix">
         <div class="prof_blo_left">
             <table class="table_prof">
@@ -52,7 +52,7 @@
                     <div class="one_blo_left">
                         <h2>
                             <% if o.delivery_status == 0%>
-                                    <span class="label" style="font-size:20px" >準備中</span>
+                                    <span class="label label-warning" style="font-size:20px" >準備中</span>
                             <% elsif o.delivery_status == 1 %>
                                 <span class="label label-success" style="font-size:20px" >発送済</span>
                             <% else %>
@@ -81,7 +81,7 @@
                                 <tr>
                                     <% if index == 0 %>
                                         <td class="td1">
-                                            <%= (o.order_items.first).created_at %>
+                                            <%= (o.order_items.first).created_at.strftime("%Y-%m-%d") %>
                                         </td>
                                     <% else %>
                                         <td></td>
@@ -96,9 +96,9 @@
                                                         <div>
                                                             <%= attachment_image_tag gacket_image, :image, fallback: "no_image.png", size:'100x100', format: 'png'%>
                                                         <% end %>
+                                                    <% end %>
                                                 <% end %>
-                                            <% end %>
-                                        </td>
+                                            </td>
                                     <td class="td3">
                                         <%= oi.item_name %>
                                     </td>
@@ -109,30 +109,30 @@
                                         <%= oi.item_count %>
                                     </td>
                                     <td class="td6">
-                                        ¥<%= oi.list_price %>
+                                        ¥<%= oi.list_price.to_i %>
                                     </td>
                                 </tr>
                             <% end %>
                             <tr>
                                 <td class="td13" colspan="4"></td>
                                 <td class="td7">小計</td>
-                                <td class="td8">¥<%= o.subtotal %></td>
+                                <td class="td8">¥<%= o.subtotal.to_i %></td>
                             </tr>
                             <tr>
                                 <td colspan="4"></td>
                                 <td class="td9">送料</td>
-                                <td class="td10">¥<%= o.shipping_fee %></td>
+                                <td class="td10">¥<%= o.shipping_fee.to_i %></td>
                             </tr>
                             <tr>
                                 <td class="td14" colspan="4"></td>
                                 <td class="td11" colspan="1">ご請求金額</td>
-                                <td class="td12">¥<%= o.grand_total %></td>
+                                <td class="td12">¥<%= o.grand_total.to_i %></td>
                             </tr>
                         </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        <% end %>
-         <div class="page"><%= paginate(@orders) %></div>
+            <% end %>
+        <div class="page"><%= paginate(@orders) %></div>
     </div>
 </div>

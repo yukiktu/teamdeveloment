@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
 before_action :authenticate_end_user!, only: [:create, :new]
 before_action :authenticate_admin!, only: [:index, :sales]
 	def get_stok(item)
