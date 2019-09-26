@@ -1,9 +1,9 @@
 <div class="itiran-box">
     <div class="i-search">
-        <%= form_tag(admin_search_path,:method => 'get') do %>
-        <%= text_field_tag :search %>
-        <%= submit_tag 'Search', :item_name => nil %>
-        <% end %>
+    <%= form_tag({:controller => 'admin_users', :action => 'itemkensaku'}, {:method => :get}) do %>
+        <%= text_field_tag 'keywords' %>
+        <%= submit_tag '検索', class: "entry_field11" %>
+    <% end %>
     </div>
     <table class="">
         <thead class="aaaa">
