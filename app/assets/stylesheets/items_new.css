@@ -5,8 +5,13 @@
 
 .create_display{
   width: 100%;
-  padding: 30px 10%;
+  /*padding: 30px 10%;*/
+  padding-top: 30px;
+  padding-bottom: 70px;
+  padding-right: 10%;
+  padding-left: 10%;
   background-color: #C0C0C0;
+  margin-bottom: 70px;
 }
 
 .field {

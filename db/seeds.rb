@@ -19,6 +19,20 @@ Admin.create!(
     }
   ]
 )
+TaxRate.create!(
+  [
+    {
+      tax_rate: "1.08"
+    }
+  ]
+  )
+ShippingFee.create!(
+  [
+    {
+      shipping_fee: "500"
+    }
+  ]
+  )
 
 
 

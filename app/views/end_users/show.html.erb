@@ -1,6 +1,6 @@
 
 <!-- コメントアウト外せば使えますたぶん -->
-<div class="body">
+<div class="body_1">
 	<div class="prof_block clearfix">
 		<div class="prof_blo_left">
 			<table class="table_prof">
@@ -52,7 +52,7 @@
 					<div class="one_blo_left">
 						<h2>
 							<% if o.delivery_status == 0%>
-									<span class="label" style="font-size:20px" >準備中</span>
+									<span class="label label-warning" style="font-size:20px" >準備中</span>
 							<% elsif o.delivery_status == 1	%>
 								<span class="label label-success" style="font-size:20px" >発送済</span>
 							<% else %>

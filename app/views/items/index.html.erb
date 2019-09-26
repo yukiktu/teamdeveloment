@@ -1,35 +1,35 @@
 
 <div class="i-main">
-<div class="i-search">
-<%= form_tag(search_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
-<% end %>
-</div>
-<div class="clearfix">
-	<% @items.each do |i| %>
+	<div class="i-search">
+		<%= form_tag(search_path,:method => 'get') do %>
+		<%= text_field_tag :search %>
+		<%= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
+		<% end %>
+	</div>
+	<div class="clearfix">
+		<% @items.each do |i| %>
 		<div class="oneitem">
-				<%= link_to(item_path(i)) do %>
-					<% if i.gacket_images.empty? %>
-						<%= image_tag  'no_image.png', size:'240x240' %>
-					<% else %>
-						<% i.gacket_images.each_with_index do |gacket_image, index| %>
-							<% if index == 0 %>
-								<div class="j-image">
-									<%= attachment_image_tag gacket_image, :image, fallback: "no_image.png", size:'240x240', format: 'png'%>
-								</div>
-							<% end %>
-						<% end %>
-					<% end %>
-					<p class="i-name"><%= i.item_name %></p>
-				<% end %>
-				<div class="aaa">
+			<%= link_to(item_path(i)) do %>
+			<% if i.gacket_images.empty? %>
+			<%= image_tag  'no_image.png', size:'240x240' %>
+			<% else %>
+			<% i.gacket_images.each_with_index do |gacket_image, index| %>
+			<% if index == 0 %>
+			<div class="j-image">
+				<%= attachment_image_tag gacket_image, :image, fallback: "no_image.png", size:'240x240', format: 'png'%>
+			</div>
+			<% end %>
+			<% end %>
+			<% end %>
+			<p class="i-name"><%= i.item_name %></p>
+			<% end %>
+			<div class="aaa">
 				<p class="i-artist"><%= i.artist.artist_name %></p>
 				<span class="i-price">¥<%= i.list_price.to_i %><span class="zei">(税込)</span></span>
 			</div>
-			</div>
-	<% end %>
-</div>
+		</div>
+		<% end %>
+	</div>
 </div>
 
-	<div class="page"><%= paginate(@items) %></div>
+<div class="page"><%= paginate(@items) %></div>
