@@ -41,13 +41,13 @@
                 <td class="td2_c">
 
                   <div class="jacket_img_A">
-
                     <% gacket_images = GacketImage.where(item_id: c.item_id) %>
-
+                    <% if gacket_images.empty? %>
+                    <%= image_tag  'no_image.png', size:'100x100' %>
+                    <% else %>
                     <% gacket_images.each do |g| %>
-
                     <%= attachment_image_tag g, :image, :fill, 100, 100 %>
-
+                    <% end %>
                     <% end %>
 
                   </div>
