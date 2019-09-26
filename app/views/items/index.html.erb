@@ -1,15 +1,25 @@
 
 <div class="i-main">
 <div class="i-search">
-<%= form_tag(search_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
+<%#= form_tag(search_path,:method => 'get') do %>
+  <%#= text_field_tag :search %>
+  <%#= submit_tag 'Search', :item_name => nil, class: "entry_field11" %>
+<%# end %>
+<%= form_tag({:controller => 'items', :action => 'kensaku'}, {:method => :get}) do %>
+<%= text_field_tag 'keyword' %>
+<%= submit_tag 'Aimaikensaku', class: "entry_field11" %>
 <% end %>
+
 </div>
 <div class="clearfix">
+<%# if @items.length == 1 %>
+	<%# i = @items %>
+<%# else %>
 	<% @items.each do |i| %>
+<%# end %>
 		<div class="oneitem">
 				<%= link_to(item_path(i)) do %>
+				<%# binding.pry %>
 					<% if i.gacket_images.empty? %>
 						<%= image_tag  'no_image.png', size:'240x240' %>
 					<% else %>
@@ -28,7 +38,9 @@
 				<span class="i-price">¥<%= i.list_price.to_i %><span class="zei">(税込)</span></span>
 			</div>
 			</div>
+<%# unless @items.length == 1 %>
 	<% end %>
+<%# end %>
 </div>
 </div>
 

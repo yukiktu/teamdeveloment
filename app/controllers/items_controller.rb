@@ -5,6 +5,33 @@ before_action :authenticate_admin!, only: [:edit, :update]
     @items = Item.where(sales_status: "販売中").page(params[:page]).per(12).order(:id)
   end
 
+  def kensaku
+    #binding.pry
+    searchword = "%" + params[:keyword] + "%"
+    @items = []
+    items = []
+    if Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword).present?
+      items.push(Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword))
+    end
+
+    if Artist.where('artist_name LIKE ?', searchword).present?
+      artist_id = Artist.where('artist_name LIKE ?', search1).present?
+      items.push(Item.where(sales_status: "販売中").where(artist_id: artist_id))
+    end
+
+    if Genre.where('genre_name LIKE ?', searchword).present?
+      genre_id = Genre.where('genre_name LIKE ?', searchword)
+      items.push(Item.where(sales_status: "販売中").where(genre_id: genre_id))
+    end
+
+    if items.empty?
+    else
+      items.uniq!
+      @items = items.page(params[:page]).per(12).order(:id)
+    end
+    render 'index'
+  end
+
   def search
     @items = Item.where(item_name: params[:search]).page(params[:page]).per(12).order(:id)
     @label = Label.find_by(@label)#@label_id)
