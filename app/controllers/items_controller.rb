@@ -46,6 +46,11 @@ before_action :authenticate_admin!, only: [:edit, :update]
 
   def show
     @item = Item.find_by(id: params[:id])
+    if @item.list_price == nil or @item.cost_price == nil
+      redirect_to edit_item_path(@item)
+      return
+    end
+    @item = Item.find_by(id: params[:id])
     @gacket_image = GacketImage.find_by(item_id: @item.id)
   end
 
