@@ -49,7 +49,7 @@
       </div>
       <div class="field">
          <%= f.label :release_date, "発売日" %>
-         <%= f.date_select :release_date,class: "entry_field" %>
+         <%= f.date_select(:release_date,class: "entry_field",:use_month_numbers => true, :start_year => 1982) %>
       </div>
 
       <div class="field">
