@@ -30,6 +30,9 @@
           <%= link_to 'マイページ', end_user_path(current_end_user.id), :style=>"color:white;" %>
         </li>
         <li class="av-list-item">
+        <%= link_to 'カートを見る', cart_items_path, :style=>"color:white;" %>
+        </li>
+        <li class="av-list-item">
           <%= link_to 'ログアウト', destroy_end_user_session_path, method: :delete, :style=>"color:white;" %>
         </li>
         <% elsif admin_signed_in? %>
