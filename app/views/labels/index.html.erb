@@ -1,8 +1,8 @@
 <p class="l-a">追加する商品のジャンルおよびアーティスト、レーベルを指定してくだい。</p>
 
 
-<% if @item_new.errors.any? %>
-	<% @item_new.errors.full_messages.each do |message| %>
+<% if @item.errors.any? %>
+	<% @item.errors.full_messages.each do |message| %>
 		<%= message %>
 	<% end %>
 <% end %>
