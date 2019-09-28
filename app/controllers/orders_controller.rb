@@ -187,13 +187,11 @@ before_action :authenticate_admin!, only: [:index, :sales]
 		order = Order.new(order_params)
 		order.end_user_id = current_end_user.id
 		if order.addressee == current_end_user.last_name + current_end_user.first_name
-			binding.pry
 			order.postal_code = current_end_user.postal_code
 			order.address = current_end_user.address
 			order.phone_number = current_end_user.phone_number
 		elsif order.address.present?
 			if DeliveryAdress.where(end_user_id: current_end_user.id, addressee: order.addressee).empty?
-				binding.pry
 				new_addressee = DeliveryAdress.new
 				new_addressee.addressee = order.addressee
 				new_addressee.end_user_id = current_end_user.id
@@ -203,18 +201,15 @@ before_action :authenticate_admin!, only: [:index, :sales]
 				new_addressee.save
 			end
 		else
-			binding.pry
 			delivery_addressee = DeliveryAdress.find_by(addressee: order.addressee, end_user_id: current_end_user.id)
 			order.postal_code = delivery_addressee.postal_code
 			order.address = delivery_addressee.address
 			order.phone_number = delivery_addressee.phone_number
 		end
-		binding.pry
 		order.shipping_fee = 0
 		order.grand_total = 0 #not_nul回避のため
 		order.delivery_status = 0 #not_nul回避のため
 		order.subtotal = 0 #not_null回避のため
-		binding.pry
 		if order.save
 			redirect_to edit_order_path(order.id)
 		else
