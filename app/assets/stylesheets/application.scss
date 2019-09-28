@@ -13,10 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "slick-theme";
  @import "slick";
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
 
 html{
 	position: relative;
@@ -29,6 +36,7 @@ header{
 	background-color: black;
 	opacity: 0.6;
 	position: fixed;
+	z-index: 20;
 	top: 0;
 
 }
@@ -119,9 +127,3 @@ footer{
  .none{
     display: none;
   }
-
-
-.c {
-	height: 500px;
-	width :100%;
-}

@@ -26,3 +26,10 @@ $(document).on('turbolinks:load', function() {
  });
 
 
+$(function(){
+  $("#slider").slick({
+    speed: 1000,
+    dots: true,
+    dotsClass: 'slide-dots'
+  });
+});

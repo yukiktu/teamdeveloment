@@ -1,7 +1,5 @@
 <main class="new-tax-fee">
-
-<h1 class="tax-fee2">税率・送料設定画面</h1>
-
+<div class="new-top">税率・送料設定画面</div>
 <%= form_for @tax_rate, url:numbers_path do |t| %>
 
 
@@ -18,7 +16,7 @@
   </div>
 
 <div class="tax1">
-  <%= t.submit "保存する", :class => "btn btn-success" %>
+  <%= t.submit "保存する", class: "tax-submit"  %>
 </div>
 <% end %>
 <% end %>
