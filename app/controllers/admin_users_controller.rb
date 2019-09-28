@@ -26,7 +26,7 @@ class AdminUsersController < ApplicationController
         genres = Item.where(genre_id: genre_id)
         @items = items + artists + genres
         @items.uniq!
-        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12)
+        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12).order(id: "desc")
     end
     @orders = Order.where(delivery_status: 1)
     @arrivals = Arrival.where(arrival_status: "入荷済")
@@ -95,7 +95,7 @@ class AdminUsersController < ApplicationController
 	end
 
 	def itiran
-		@items = Item.all.page(params[:page]).per(20).order(:id)
+		@items = Item.all.page(params[:page]).per(20).order(id: "desc")
 		@orders = Order.where(delivery_status: 1)
 		@arrivals = Arrival.where(arrival_status: "入荷済")
 	end

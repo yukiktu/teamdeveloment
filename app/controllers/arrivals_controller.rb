@@ -5,7 +5,7 @@ PER = 10
 
 def index
     @arrival = Arrival.new
-    @arrivals = Arrival.page(params[:page]).per(PER)
+    @arrivals = Arrival.page(params[:page]).per(PER).order(id: "desc")
     @artists = Artist.all
      unless params[:artist].nil?
        artist_id = Artist.find_by(artist_name: params[:artist] )

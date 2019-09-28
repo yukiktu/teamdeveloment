@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 before_action :authenticate_admin!, only: [:edit, :update]
 
   def index
-    @items = Item.where(sales_status: "販売中").page(params[:page]).per(12).order(:id)
+    @items = Item.where(sales_status: "販売中").page(params[:page]).per(12).order(id: "desc")
   end
 
   def kensaku
@@ -31,7 +31,7 @@ before_action :authenticate_admin!, only: [:edit, :update]
         genres = Item.where(sales_status: "販売中").where(genre_id: genre_id)
         @items = items + artists + genres
         @items.uniq!
-        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12)
+        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12).order(id: "desc")
     end
     render 'index'
   end
