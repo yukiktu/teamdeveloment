@@ -6,31 +6,32 @@ before_action :authenticate_admin!, only: [:edit, :update]
   end
 
   def kensaku
-    if params[:keywords].blank?
-      redirect_to items_path
+    if params[:keywords].blank? #検索欄がカラですか？
+      redirect_to items_path #カラならitemsのインデックスへ
       return
     end
-    keywords = params[:keywords]
-    terms = keywords.split
-    term2=[]
+    keywords = params[:keywords] #
+    terms = keywords.split #keywordの配列を分解
+    term2=[] #terrm2にカラの配列を代入
     terms.each do |term|
-      term2 = term2 + term.split("　")
+      term2 = term2 + term.split("　") #term.split(" ")←全角スペースで配列分解
     end
     keywords = term2
-    keywords.uniq!
+    keywords.uniq! #重複する要素を削除
     #items = 'nil'
     keywords.each do |keyword|
-      searchword = "%" + keyword.to_s + "%"
+      searchword = "%" + keyword.to_s + "%" #to_sで配列を文字列に直す
         #binding.pry
-        items = Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword)
+        items = Item.where(sales_status: "販売中").where('item_name LIKE ?', searchword) #status販売中かつ
 
-        artist_id = Artist.where('artist_name LIKE ?', searchword).present?
-        artists = Item.where(sales_status: "販売中").where(artist_id: artist_id)
+        artist_id = Artist.where('artist_name LIKE ?', searchword).present? #部分一致のアーティストidを取得
+        artists = Item.where(sales_status: "販売中").where(artist_id: artist_id) #アーティストidからアーティスト名を取得
 
-        genre_id = Genre.where('genre_name LIKE ?', searchword)
-        genres = Item.where(sales_status: "販売中").where(genre_id: genre_id)
-        @items = items + artists + genres
-        @items.uniq!
+        genre_id = Genre.where('genre_name LIKE ?', searchword) #部分一致のジャンルidを取得
+        genres = Item.where(sales_status: "販売中").where(genre_id: genre_id) #ジャンルidからジャンル名を取得
+
+        @items = items + artists + genres #全てのidを@itemsに代入
+        @items.uniq! #重複した要素を削除
         @items = Kaminari.paginate_array(@items).page(params[:page]).per(12).order(id: "desc")
     end
     render 'index'
