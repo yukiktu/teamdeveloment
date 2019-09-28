@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //= require jquery
+//- require turbolinks
 //= require rails-ujs
 //= require activestorage
 //= require bootstrap-sprockets
@@ -17,13 +18,7 @@
 //= require_tree .
 
 
-//初回読み込み、リロード、ページ切り替えで動く。
-// $(document).on('turbolinks:load', function() {
-// 	debugger;
-// 	let arr = document.getElementsByClassName('well')
-// 	let last = arr[arr.length - 1]
-// 	last.parentNode.removeChild(last);
-//  });
+
 
 
 $(function(){

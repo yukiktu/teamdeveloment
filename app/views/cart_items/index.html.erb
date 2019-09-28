@@ -8,9 +8,8 @@
 
 <div class="body_1">
   <h1>カート内商品</h1>
+  <% @cart_items.each do |c| %>
   <div class="well">
-    <% @cart_items.each do |c| %>
-    <%binding.pry%>
       <div class="cart_box">
         <div class="one_item">
           <div class="cd_info">

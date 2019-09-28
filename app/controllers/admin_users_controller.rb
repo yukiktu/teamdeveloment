@@ -20,13 +20,13 @@ class AdminUsersController < ApplicationController
     keywords.each do |keyword|
       searchword = "%" + keyword.to_s + "%"
         items = Item.where('item_name LIKE ?', searchword)
-        artist_id = Artist.where('artist_name LIKE ?', searchword).present?
+        artist_id = Artist.where('artist_name LIKE ?', searchword)
         artists = Item.where(artist_id: artist_id)
         genre_id = Genre.where('genre_name LIKE ?', searchword)
         genres = Item.where(genre_id: genre_id)
         @items = items + artists + genres
         @items.uniq!
-        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12).order(id: "desc")
+        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12)
     end
     @orders = Order.where(delivery_status: 1)
     @arrivals = Arrival.where(arrival_status: "入荷済")

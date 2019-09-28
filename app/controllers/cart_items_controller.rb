@@ -2,7 +2,6 @@ class CartItemsController < ApplicationController
 before_action :authenticate_end_user!
 
 	def get_stock(item)
-		# binding.pry
 		order_total = 0
 		order_items = OrderItem.all
 		order_id = []
