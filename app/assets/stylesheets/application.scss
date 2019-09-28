@@ -15,7 +15,9 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
-
+ @import "slick-theme";
+ @import "slick";
+ 
 html{
 	position: relative;
 	min-height: 100%;
