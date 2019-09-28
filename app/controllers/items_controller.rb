@@ -31,7 +31,7 @@ before_action :authenticate_admin!, only: [:edit, :update]
         genres = Item.where(sales_status: "販売中").where(genre_id: genre_id)
         @items = items + artists + genres
         @items.uniq!
-        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12).order(id: "desc")
+        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12)
     end
     render 'index'
   end
