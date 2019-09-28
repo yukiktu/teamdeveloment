@@ -45,7 +45,7 @@
 <% end %>
       <div class="field">
          <%= f.label :sales_status, "販売ステータス" %>
-         <%= f.select(:sales_status, [["販売中"],["停止中"]], class: "entry_field") %>
+         <%= f.select(:sales_status, [["停止中"],["販売中"]], class: "entry_field") %>
       </div>
       <div class="field">
          <%= f.label :release_date, "発売日" %>
@@ -76,7 +76,7 @@
    <% end %>
 
 
-<script>
+<!-- <script>
   //初回読み込み、リロード、ページ切り替えで動く。
 $(document).on('turbolinks:load', function() {
   debugger;
@@ -85,4 +85,4 @@ $(document).on('turbolinks:load', function() {
   last.parentNode.removeChild(last);
  });
 </script>
-
+ -->

@@ -15,10 +15,7 @@
 //= require activestorage
 //= require bootstrap-sprockets
 //= require cocoon
-//= require_tree .
-
-
-
+//= require_tree.
 
 
 $(function(){
