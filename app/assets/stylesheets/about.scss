@@ -5,7 +5,7 @@
 }
 
 .about {
-  height: 1000px;
+  height: 1050px;
   width: 100%;
   background-color: silver;
 }
@@ -85,6 +85,17 @@ button{
   opacity: 0.73;
 }
 
-audio {
-  opacity: 0.3;
+.text-nagano {
+  letter-spacing:0 px;
+  font-size: 50px;
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  color: #FFF;
+  opacity: 0.73;
 }
