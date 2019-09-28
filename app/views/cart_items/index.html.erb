@@ -10,99 +10,99 @@
   <h1>カート内商品</h1>
   <div class="well">
     <% @cart_items.each do |c| %>
-    <div class="cart_box">
-      <div class="one_item">
-        <div class="cd_info">
-          <div class="cd_name_block">
-            <div class="cd_image">
-              <% gacket_images = GacketImage.where(item_id: c.item_id) %>
-              <% if gacket_images.empty? %>
-              <%= image_tag  'no_image.png', size:'240x240' %>
-              <% else %>
-              <% gacket_images.each do |g| %>
-              <%= attachment_image_tag g, :image, :fill, 240, 240 %>
-              <% end %>
-              <% end %>
+    <%binding.pry%>
+      <div class="cart_box">
+        <div class="one_item">
+          <div class="cd_info">
+            <div class="cd_name_block">
+              <div class="cd_image">
+                <% gacket_images = GacketImage.where(item_id: c.item_id) %>
+                <% if gacket_images.empty? %>
+                  <%= image_tag  'no_image.png', size:'240x240' %>
+                <% else %>
+                  <% gacket_images.each do |g| %>
+                    <%= attachment_image_tag g, :image, :fill, 240, 240 %>
+                  <% end %>
+                <% end %>
+              </div>
+              <table class="cd_table">
+                <tr>
+                  <td>
+                    <p class="cd_childs1">
+                      <% item = Item.find(c.item_id) %><%= item.item_name %><%# binding.pry %>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="cd_childs2">
+                      <% artist = Artist.find(item.artist_id) %><%= artist.artist_name %>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="cd_childs">
+                      ・<%= item.genre.genre_name %>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="cd_childs">
+                      ・<%= item.label.label_name %>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="cd_childs">
+                      ¥<%= item.list_price .to_i %>
+                    </p>
+                  </td>
+                </tr>
+              </table>
             </div>
-            <table class="cd_table">
+          </div>
+          <div class="table_block">
+            <table class="table_1">
               <tr>
-                <td>
-                  <p class="cd_childs1">
-                    <% item = Item.find(c.item_id) %><%= item.item_name %><%# binding.pry %>
-                  </p>
-                </td>
+                <%= form_for (c)  do |i| %>
+                  <td class="table_td_1">
+                    <p><%= i.submit "変更を保存", class: "hennkouhozon", :style=>"color:white;" %></p>
+                  </td>
+                  <% stock_count = get_stock(Item.find_by(id: c.item_id)) %>
+                  <% stock_count.to_i %>
+                  <td class="button_table"><%= i.number_field :item_count, min: 0, max: stock_count %>点</td>
+                <% end %>
+                <td class="table_td_2">小計</td>
+                <td class="table_td_3"><% price = c.item_count * item.list_price*(TaxRate.last).tax_rate %>¥<%= price.to_i %></td>
               </tr>
               <tr>
-                <td>
-                  <p class="cd_childs2">
-                    <% artist = Artist.find(item.artist_id) %><%= artist.artist_name %>
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="cd_childs">
-                    ・<%= item.genre.genre_name %>
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="cd_childs">
-                    ・<%= item.label.label_name %>
-                  </p>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <p class="cd_childs">
-                    ¥<%= item.list_price .to_i %>
-                  </p>
+                <td class="table_td_1">
+                  <%= form_for (c)  do |ci| %>
+                  <%= ci.hidden_field :item_count, value: 0 %>
+                  <%= ci.submit'カートから商品を出す', class: "syouhinndasu", :style=>"color:white;" %>
+                  <% end %>
                 </td>
               </tr>
             </table>
           </div>
         </div>
-        <div class="table_block">
-          <table class="table_1">
-            <tr>
-              <%= form_for (c)  do |i| %>
-              <td class="table_td_1">
-                <p><%= i.submit "変更を保存", class: "hennkouhozon", :style=>"color:white;" %></p>
-              </td>
-              <% stock_count = get_stock(Item.find_by(id: c.item_id)) %>
-              <% stock_count.to_i %>
-              <%# binding.pry %>
-              <td class="button_table"><%= i.number_field :item_count, min: 0, max: stock_count %>点</td><!-- 在庫数を上限にする？ -->
-              <% end %>
-              <td class="table_td_2">小計</td>
-              <td class="table_td_3"><% price = c.item_count * item.list_price*(TaxRate.last).tax_rate %><!-- @tax_rate -->¥<%= price.to_i %></td>
-            </tr>
-            <tr>
-              <td class="table_td_1">
-                <%= form_for (c)  do |ci| %>
-                <%= ci.hidden_field :item_count, value: 0 %>
-                <%= ci.submit'カートから商品を出す', class: "syouhinndasu", :style=>"color:white;" %>
-                <% end %>
-              </td>
-            </tr>
-          </table>
-        </div>
       </div>
     </div>
-  </div>
-    <% end %>
-    <div class="botton_block">
-        <%= link_to(items_path) do %>
-        <div class="button_1">
-          <button type="button" class="btn-secondary">TOPページへ</button>
-        </div>
-        <%end%>
-        <%= link_to(new_order_path) do %>
-        <div class="button_2">
-          <button type="button" class="btn-outline-success">購入確定画面へ</button>
-        </div>
-        <% end %>
+  <% end %>
+  <div class="botton_block">
+    <%= link_to(items_path) do %>
+      <div class="button_1">
+        <button type="button" class="btn-secondary">TOPページへ</button>
       </div>
+    <%end%>
+    <%= link_to(new_order_path) do %>
+      <div class="button_2">
+        <button type="button" class="btn-outline-success">購入確定画面へ</button>
+      </div>
+    <% end %>
   </div>
 </div>
+
