@@ -2,7 +2,7 @@
 	<h1 class="osiharai">お支払方法</h1>
 	<%= form_with url:orders_path,model: Order.new do |o| %>
 	<label class="daibiki">
-		<%=o.radio_button :payment_methods, "代引き"%>代引き
+		<%=o.radio_button :payment_methods, "代引き"%>代引き(ドローン配送)
 	</label>
 	<label class="hurikomi">
 		<%=o.radio_button :payment_methods, "銀行振込"%>銀行振込

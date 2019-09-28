@@ -8,9 +8,8 @@
 
 <div class="body_1">
   <h1>カート内商品</h1>
+  <% @cart_items.each do |c| %>
   <div class="well">
-    <% @cart_items.each do |c| %>
-    <%binding.pry%>
       <div class="cart_box">
         <div class="one_item">
           <div class="cd_info">
@@ -20,8 +19,10 @@
                 <% if gacket_images.empty? %>
                   <%= image_tag  'no_image.png', size:'240x240' %>
                 <% else %>
-                  <% gacket_images.each do |g| %>
-                    <%= attachment_image_tag g, :image, :fill, 240, 240 %>
+                  <% gacket_images.each_with_index do |g, index| %>
+                    <% if index == 0%>
+                      <%= attachment_image_tag g, :image, :fill, 240, 240 %>
+                    <% end %>
                   <% end %>
                 <% end %>
               </div>

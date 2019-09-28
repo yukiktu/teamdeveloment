@@ -27,12 +27,13 @@ before_action :authenticate_admin!, only: [:edit, :update]
         artist_id = Artist.where('artist_name LIKE ?', searchword).present? #部分一致のアーティストidを取得
         artists = Item.where(sales_status: "販売中").where(artist_id: artist_id) #アーティストidからアーティスト名を取得
 
-        genre_id = Genre.where('genre_name LIKE ?', searchword) #部分一致のジャンルidを取得
-        genres = Item.where(sales_status: "販売中").where(genre_id: genre_id) #ジャンルidからジャンル名を取得
 
-        @items = items + artists + genres #全てのidを@itemsに代入
-        @items.uniq! #重複した要素を削除
-        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12).order(id: "desc")
+        genre_id = Genre.where('genre_name LIKE ?', searchword)
+        genres = Item.where(sales_status: "販売中").where(genre_id: genre_id)
+        @items = items + artists + genres
+        @items.uniq!
+        @items = Kaminari.paginate_array(@items).page(params[:page]).per(12)
+
     end
     render 'index'
   end

@@ -7,8 +7,8 @@ def index
     @arrival = Arrival.new
     @arrivals = Arrival.page(params[:page]).per(PER).order(id: "desc")
     @artists = Artist.all
-     unless params[:artist].nil?
-       artist_id = Artist.find_by(artist_name: params[:artist] )
+     unless params[:artist].nil? #artistが空欄じゃなければ
+       artist_id = Artist.find_by(artist_name: params[:artist] ) #
        @categories = Item.where(artist_id: artist_id)
      else
        @categories = []

@@ -10,7 +10,8 @@
 
 .arrival-good {
 	background-color: silver;
-	height: 2100px;
+	height: 2000px;
+	top: 0;
 }
 
 .arrival-bad {
@@ -18,26 +19,22 @@
 	height: 1050px;
 }
 
-main {
-    padding-top: 15px;
-}
-
 .Arrival-title {
-	top: 0;
-	margin-left: 450px;
-	padding: 20px 0px 20px 80px;
+	margin-left: 40%;
+	padding: 30px 0px 20px 80px;
 	text-align: center;
 	letter-spacing: 15px;
 	border: solid 3px #364e96;
 	width: 480px;
 	padding: 0.5em;
 	border-radius: 0.5em;
+	font-size: 30px;
 }
 
 .Arrival-title2 {
     top: 0;
 	margin: 0px auto;
-	margin-left: 500px;
+	margin-left: 40%;
 	margin-top: 40px;
 	margin-bottom: 40px;
 	text-align: center;
@@ -52,7 +49,7 @@ main {
 
 .Arrival-title3 {
 	top: 0;
-	margin-left: 500px;
+	margin-left: 40%;
 	padding: 20px 0px 20px 80px;
 	text-align: center;
 	letter-spacing: 15px;
@@ -60,6 +57,10 @@ main {
 	width: 480px;
 	padding: 0.5em;
 	border-radius: 0.5em;
+}
+
+.Arrival-title4 {
+	padding-top: 15px;
 }
 
 .Arrival-index {
@@ -98,7 +99,7 @@ main {
 
 .form-sub {
 	padding: 20px 20px;
-	margin: 20px 0px 20px 350px;
+	margin: 20px 0px 20px 33%;
 	text-align: center;
 	font-size: 25px;
 	white-space: nowrap;
@@ -116,7 +117,7 @@ main {
 
 
 .form-group2 {
-	margin: 20px 0px 0px 600px;
+	margin: 20px 0px 0px 45%;
 	font-size: 20px;
 	color: white;
 }
@@ -126,7 +127,7 @@ main {
 }
 
 .form-group4 {
-	margin: 15px 0px 0px 600px;
+	margin: 15px 0px 0px 43%;
 	padding-bottom: 30px;
 	font-size: 30px;
 	color: green;
