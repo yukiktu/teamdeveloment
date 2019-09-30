@@ -5,14 +5,12 @@
 }
 
 .about {
-  height: 1000px;
+  height: 100%;
   width: 100%;
-  background-color: silver;
 }
 
 
 #wrap{
-  background-color: silver;
 }
 
 #slider{
@@ -21,7 +19,7 @@
   z-index: 10;
   opacity: 0.73;
   img{
-    height: 875px;
+    height: 850px;
     width: 100%;
   }
 }
@@ -48,12 +46,11 @@ button{
       text-indent: -9999px;
       &:before{
         content: '・';
-        font-size: 50px;
+        font-size: 80px;
         text-indent: 0px;
         position: absolute;
         top: -750%;
         left: 0;
-        opacity: 0.5;
       }
     }
     &.slick-active{
@@ -71,6 +68,7 @@ button{
 }
 
 .textphoto {
+  width: 80%;
   letter-spacing: 10px;
   font-size: 100px;
   position: absolute;
@@ -83,4 +81,43 @@ button{
   padding:0;
   color: #FFF;
   opacity: 0.73;
+}
+
+.gyoukan{
+  color: white;
+  padding-top: 10px;
+  padding-botton: 2px;
+}
+
+.textphoto2 {
+  letter-spacing: 0px;
+  font-size: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: #FFF;
+  opacity: 0.73;
+  letter-spacing: 5px;
+  white-space: nowrap;
+
+}
+
+.textphoto3 {
+  text-align: center;
+  letter-spacing: 0px;
+  font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  color: white;
 }
